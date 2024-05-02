@@ -1,0 +1,149 @@
+import { defineStore } from 'pinia'
+
+const usePropsStore = defineStore('props', {
+  state: () => ({
+    projectTypes: [
+      { title: 'Collaberation', value: 'collaberation' },
+      { title: 'Experiment', value: 'experiment' },
+      { title: 'Personal', value: 'personal' },
+      { title: 'New Role', value: 'new_role' },
+      { title: 'Work', value: 'work' }
+      // { title: '', value: '' },
+    ],
+
+    projectRoles: [
+      { title: 'Creative Director', value: 'creative_director' },
+      { title: 'Designer', value: 'designer' },
+      { title: 'Developer', value: 'developer' },
+      { title: 'Front-end Engineer', value: 'front_end_engineer' },
+      { title: 'Lead Developer', value: 'lead_developer' },
+      { title: 'Lead Front-end Engineer', value: 'lead_front_end_engineer' },
+      { title: 'Support Engineer', value: 'support_engineer' },
+      { title: 'Technical Consultant', value: 'technical_consultant' }
+    ],
+
+    projectClients: [
+      { title: 'Amazon', value: 'amazon' },
+      { title: 'Best Buy', value: 'best_buy' },
+      { title: 'Blowfish Shoes', value: 'blowfish_shoes' },
+      { title: 'Chevron', value: 'chevron' },
+      { title: 'City of New York', value: 'new_york' },
+      { title: 'Cirque Du Solel', value: 'cirque_du_solel' },
+      { title: 'DirecTv', value: 'directv' },
+      { title: 'Disney Channel', value: 'disney_channel' },
+      { title: 'ESPN', value: 'espn' },
+      { title: 'FX', value: 'fx' },
+      { title: 'The Gary Group', value: 'gary_group' },
+      { title: 'HBO', value: 'hbo' },
+      { title: 'iTunes', value: 'itunes' },
+      { title: 'MGM Grand', value: 'mgm_grand' },
+      { title: 'Nexon', value: 'nexon' },
+      { title: 'Nike', value: 'nike' },
+      { title: 'Oasis', value: 'oasis' },
+      { title: 'Propel', value: 'propel' },
+      { title: 'Satchi & Satchi', value: 'satchi_satchi' },
+      { title: 'Showtime', value: 'showtime' },
+      { title: 'Skechers', value: 'skechers' },
+      { title: 'Top Rank', value: 'top_rank' },
+      { title: 'Universal Orlando', value: 'universal_orlando' },
+      { title: 'Universal Pictures', value: 'universal_pictures' },
+      { title: 'Universal Studios', value: 'universal_studios' }
+    ],
+
+    roleClients: [
+      { title: 'Amazon', value: 'amazon' },
+      { title: 'Apple', value: 'apple' },
+      { title: 'Facebook', value: 'facebook' },
+      { title: 'Google', value: 'google' },
+      { title: 'Hulu', value: 'hulu' },
+      { title: 'Microsoft', value: 'microsoft' },
+      { title: 'Netflix', value: 'netflix' },
+      { title: 'PlayStation', value: 'playstation' },
+      { title: 'Snap', value: 'snap' },
+      { title: 'Sony', value: 'sony' },
+      { title: 'TikTok', value: 'tiktok' },
+      { title: 'Tinder', value: 'tinder' },
+      { title: 'Twitch', value: 'twitch' }
+    ],
+
+    projectLanguages: [
+      { title: 'ActionScript', value: 'actionscript' },
+      { title: 'C/C++', value: 'c_c_plusplus' },
+      { title: 'CSS', value: 'css' },
+      { title: 'HTML', value: 'html' },
+      { title: 'Javascript', value: 'javascript' },
+      { title: 'PHP', value: 'php' }
+    ],
+
+    projectResources: [
+      { id: 1, value: 'Adobe After Effects CC' },
+      { id: 2, value: 'Abode AIR' },
+      { id: 3, value: 'Adobe Animate CC' },
+      { id: 4, value: 'Adobe Audition CC' },
+      { id: 5, value: 'Adobe Illustrator CC' },
+      { id: 6, value: 'Adobe InDesign CC' },
+      { id: 7, value: 'Adobe Photoshop CC' },
+      { id: 8, value: 'Adobe Premiere CC' },
+      { id: 9, value: 'Akamai CMS' },
+      { id: 10, value: 'Angular' },
+      { id: 11, value: 'AWS - CodePipeline' },
+      { id: 12, value: 'AWS - Cognito' },
+      { id: 13, value: 'AWS - CloudFront' },
+      { id: 14, value: 'AWS - EC2 Instance' },
+      { id: 15, value: 'AWS - Elastic Beanstalk' },
+      { id: 16, value: 'AWS - Lambda' },
+      { id: 17, value: 'AWS - SES' },
+      { id: 18, value: 'Axios' },
+      { id: 19, value: 'Twitter Bootstrap' },
+      { id: 20, value: 'Box 2D' },
+      { id: 21, value: 'CloudConvert' },
+      { id: 22, value: 'Compass' },
+      { id: 23, value: 'DoubleClick' },
+      { id: 24, value: 'GCS - Maps API' },
+      { id: 25, value: 'Google Web Fonts' },
+      { id: 26, value: 'Grunt' },
+      { id: 27, value: 'Gulp' },
+      { id: 28, value: 'Handlebars' },
+      { id: 29, value: 'Juicer' },
+      { id: 30, value: 'JQuery' },
+      { id: 31, value: 'Laravel' },
+      { id: 32, value: 'Marionette-Backbone' },
+      { id: 33, value: 'Mocha Motion Tracking' },
+      { id: 34, value: 'Modernizr' },
+      { id: 35, value: 'Mustash' },
+      { id: 36, value: 'NodeJS' },
+      { id: 37, value: 'NPM' },
+      { id: 38, value: 'Papervision 3D' },
+      { id: 39, value: 'Particle Illusion' },
+      { id: 40, value: 'PDFjs' },
+      { id: 41, value: 'PointRoll' },
+      { id: 42, value: 'Postman' },
+      { id: 43, value: 'Quill Editor' },
+      { id: 44, value: 'ReactJS' },
+      { id: 45, value: 'REST API' },
+      { id: 46, value: 'SCSS/Sass' },
+      { id: 47, value: 'Service Workers' },
+      { id: 48, value: 'Sizmek/MediaMind' },
+      { id: 49, value: 'SocketJS' },
+      { id: 50, value: 'SquareSpace' },
+      { id: 51, value: 'Stripe' },
+      { id: 52, value: 'ThreeJS' },
+      { id: 53, value: 'Unity Engine' },
+      { id: 54, value: 'Vue Material' },
+      { id: 55, value: 'Vuelidate' },
+      { id: 56, value: 'VueJS' },
+      { id: 57, value: 'Vuetify' },
+      { id: 58, value: 'Vuex' },
+      { id: 59, value: 'Webpack' },
+      { id: 60, value: 'Wordpress' },
+      { id: 61, value: 'Yarn' }
+    ],
+
+    imageUsageTypes: [
+      { title: 'Thumbnail', value: 'thumbnail' },
+      { title: 'Main', value: 'main' }
+    ]
+  })
+})
+
+export default usePropsStore

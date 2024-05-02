@@ -1,0 +1,261 @@
+$animationSpeed: 100ms;
+$animationDelay: 100ms;
+
+.projects-item {
+    position: relative;
+
+    .project__inner {
+        @include center-content();
+        
+        width: 80%;
+        max-width: 100rem;
+
+        /* .hidden-img {
+            width: 70rem;
+            opacity: 0;
+        } */
+
+        .image__main {
+            // max-width: 70rem;
+            // width: 90%;
+			// opacity: 0;
+
+			/* img {
+				width: 100%;
+			} */
+
+            .scrim {
+				transition: background 0.25s ease-in-out;
+				position: absolute;
+				// padding: 1rem;
+				overflow: hidden;
+				background-clip: content-box;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+                background: {
+                    color: $color-app-black-alpha-25;
+                }
+            }
+        }
+
+        .image-container {
+            position: absolute;
+            // max-width: 70rem;
+            // width: 90%;
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            will-change: opacity,
+                         filter,
+                         transform,
+                         left,
+                         top;
+            transform: scale(1) translate(-50%, -50%);
+            transform-origin: top left;
+            transition: filter $animationSpeed linear $animationDelay,
+                        opacity $animationSpeed linear $animationDelay,
+                        transform $animationSpeed linear $animationDelay,
+                        left $animationSpeed linear $animationDelay,
+                        top $animationSpeed linear $animationDelay;
+
+            .v-image {
+                transition: left $animationSpeed linear $animationDelay,
+                            top $animationSpeed linear $animationDelay;
+			}
+
+            .poly,
+            .background-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                will-change: left,
+                             top;
+                transition: left $animationSpeed linear $animationDelay,
+                            top $animationSpeed linear $animationDelay;
+
+            }
+
+            .background-container {
+                transition: background 100ms linear 300ms;
+
+                &.light {
+                    background: {
+                        color: rgba(255,255,255,1);
+                    }
+                }
+
+                &.dark {
+                    background: {
+                        color: rgba(0,0,0,1);
+                    }
+                }
+            }
+        }
+
+        .title-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+
+            .title-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                .project-title {
+                    @include center-content('vertical', -20px);
+                    width: 100%;
+
+                    p, h4, h5 {
+						text-shadow: 2px 1px 3px rgba(0,0,0,0.2);
+                        text-align: center;
+                        width: 100%;
+                        color: $color-app-white;
+                        text-transform: uppercase;
+                    }
+
+                    p {
+                        font-family: 'DIN-CondLight';
+                        line-height: 3rem;
+                        font-size: 3rem;
+                    }
+
+                    h4 {
+                        font-family: 'DIN-CondBlack';
+                        font-size: 6rem;
+                        line-height: 6rem;
+                    }
+
+                    h5 {
+                        font-family: 'DIN-Cond';
+                        font-size: 1.2rem;
+                        line-height: 1.2rem;
+                        padding: {
+                            top: 0.5rem;
+                            bottom: 0.75rem;
+                        }
+                    }
+
+                    .divider {
+                        height: 20px;
+                        width: 1px;
+                        background-color: $color-app-text-light;
+                        margin: 0 auto;
+                    }
+
+                    .app-button__container {
+                        @include center-content('horizontal');
+                        margin: {
+                            top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* &:hover {
+
+            .image__main {
+                opacity:0;
+            }
+
+            .image-container {
+                filter: blur(0.5rem);
+                opacity: 0.5;
+                transform: scale(0.8) translate(-50%, -50%);
+
+                .background-container {
+                    transition: background 100ms linear 0ms;
+
+
+                    &.light {
+                        background: {
+                            color: rgba(255,255,255,0);
+                        }
+                    }
+
+                    &.dark {
+                        background: {
+                            color: rgba(0,0,0,0);
+                        }
+                    }
+                }
+
+                .poly-0 { left: -70px;}
+                .poly-1 { left: -70px; top: -70px}
+                .poly-2 { top: -70px}
+                .poly-3 { left: 70px; top: -70px}
+                .poly-4 { left: 20px; top: 40px}
+                .poly-5 { left: 60px; top: -40px}
+                .poly-6 { left: 60px; top: 70px}
+                .poly-7 { left: -70px; top: 70px}
+            }
+		} */
+
+		&:hover {
+			.image__main {
+
+				.scrim {
+					background: {
+						color: $color-app-black-alpha-15;
+					}
+				}
+			}
+		}
+    }
+}
+
+
+@include respond-to(medium) {
+
+    .projects-item {
+
+        .project__inner {
+            width: 100%;
+            height: 100%;
+
+            .image__main {
+				height: 100%;
+				padding: 0.5rem 0;
+
+                .v-image {
+                    height: 100%;
+
+                    .v-image__image--contain {
+                        background: {
+                            size: cover;
+                        }
+                    }
+				}
+
+				.scrim {
+					padding: 0.5rem 0;
+				}
+            }
+
+            .title-container {
+
+				.title-inner {
+
+                    .project-title {
+
+                        p {
+                            line-height: 2rem;
+                            font-size: 2rem;
+                        }
+
+                        h4 {
+                            font-size: 3rem;
+                            line-height: 3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

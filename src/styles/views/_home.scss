@@ -1,0 +1,53 @@
+.home-view {
+    position: relative;
+    color: $color-app-white;
+
+    .home-view--content {
+        @include center-content();
+
+        // .animated-logo {}
+
+        p {
+            color: $color-app-white;
+			margin: 15px auto;
+			text-align: center;
+			// text-transform: uppercase;
+		}
+
+		.divider {
+			height: 20px;
+			width: 1px;
+			background-color: $color-app-text-light;
+			margin: 0 auto 15px;
+        }
+
+        .view-work-btn {
+
+            & > div {
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+
+@include respond-to(medium) {
+
+    .home-view {
+
+        .home-view--content {
+            @include center-content(0, -50px);
+
+            .animated-logo {
+                transform: scale(0.75);
+            }
+
+            p {
+               margin: {
+                   top: 0;
+               }
+            }
+        }
+    }
+}

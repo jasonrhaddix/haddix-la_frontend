@@ -1,0 +1,369 @@
+.role-details-view {
+    position: relative;
+    width: 90%;
+    min-height:100%;
+	padding: 0;
+	// background: url('~@/assets/app/images/project-details-footer-grey.jpg') $color-m-white no-repeat center bottom;
+	// background-size: contain;
+	background: {
+		color: $color-m-white
+	}
+
+
+    .details__content {
+        position: relative;
+
+        .header__container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-height: 90vh;
+            border: {
+                bottom: 1px solid $color-m-grey-lighten-2;
+			}
+			background: {
+				color: $color-app-black;
+			}
+
+            .scrim {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: {
+                    color: $color-app-black-alpha-25
+                }
+            }
+
+            .title__container {
+                @include center-content();
+				width: 100%;
+				text-shadow: 2px 1px 3px rgba(0,0,0,0.2);
+
+				h4 {
+					text-shadow: 2px 1px 3px rgba(0,0,0,0.5);
+                    font-size: 2.5rem;
+                    font-family: 'DIN-CondLight';
+                    text-align: center;
+                    line-height: 2.4rem;
+					color: $color-m-white;
+
+					span {
+						font-size: 2.4rem !important;
+					}
+                }
+
+                h3 {
+                    font-size: 2.8rem;
+                    font-family: 'DIN-CondLight';
+                    text-align: center;
+                    padding: 0 3rem;
+                    line-height: 2.5rem;
+					color: $color-m-white;
+
+					span {
+						font-size: 2.4rem !important;
+					}
+                }
+
+                h1 {
+                    font-size: 5.6rem;
+                    font-family: 'DIN-CondBlack';
+                    text-align: center;
+                    text-transform: uppercase;
+                    padding: 0.25rem 3rem 0.5rem;
+                    color: $color-m-white;
+                    line-height: 5.4rem;
+                }
+			}
+
+			.project-info__container {
+				position: absolute;
+				height: 100px;
+				width: 100%;
+				bottom: 0px;
+				color: $color-app-text-light;
+
+				.project-info__inner {
+					padding: 1rem 2rem;
+					margin: 0 auto;
+					width: 75%;
+					height: 100%;
+					// display: flex;
+					background: {
+						color: rgba(20, 20, 20, 0.75);
+						// color: rgba(255, 255, 255, 0.9);
+					}
+
+					.project-info__item {
+
+						h4 {
+							text-transform: uppercase;
+							font-weight: bold;
+						}
+
+						.project-btn__container {
+							width: 100%;
+							height: 100%;
+							position: relative;
+
+							.project-btn {
+								@include center-content(0, -4px);
+								display: contents;
+							}
+						}
+					}
+				}
+			}
+
+            .header__close-btn {
+                @include center-content('horizontal');
+                top: 50px;
+                z-index: 99;
+            }
+		}
+
+		.project-info__container__mobile {
+			display: none;
+		}
+
+        .content__container {
+			h1, h2, h3, h4 {
+				color: $color-m-grey-darken-3 !important;
+			}
+
+			h2 {
+				font-size: 1.2rem !important;
+			}
+
+			h3 {
+				font-size: 1.2rem !important;
+			}
+
+            padding: {
+				top: 4rem;
+				left: 4rem;
+				right: 4rem;
+            }
+
+            & > div {
+                width: 100%;
+            }
+
+            .divider {
+                width: 100%;
+                height: 1px;
+                margin: 3rem 0;
+                background: {
+                    color: $color-m-grey-lighten-2;
+                }
+            }
+
+            .section {
+
+				.section-title {
+					margin: {
+						bottom: 2rem;
+					}
+
+					h2 {
+						font-size: 1.2rem;
+						display: initial;
+						text-transform: uppercase;
+                        background-color: $color-app-primary;
+                        color: $color-app-text-light !important;
+                        padding: 5px 20px;
+					}
+				}
+			}
+
+			.project__container {
+
+				.project-item {
+					margin: {
+						bottom: 6rem;
+					}
+
+					.divider {
+						margin: 4rem auto 6rem;
+						width: 50%;
+						height: 1px;
+						background: {
+							color: $color-m-grey-lighten-3;
+						}
+					}
+
+					.title__container {
+						display: flex;
+
+						.title__info {
+							flex: 1;
+
+							h3 {
+								// text-transform: uppercase;
+								// font-size: 1rem;
+							}
+
+							p {
+								// padding: 0.5rem 0;
+							}
+						}
+
+						.watch__btn {
+							width: 200px;
+							text-align: right;
+							/* margin: {
+								top: 2.5rem;
+							} */
+						}
+					}
+
+
+					.photos__inner {
+
+						& > div {
+							padding: 4px 4px 2rem 4px
+						}
+
+						.photo {
+							position: relative;
+							display: flex;
+							cursor: pointer;
+							// border: 1px solid $color-app-black-alpha-15;
+
+							img {
+								width: 100%
+							}
+
+							.img-hover {
+								transition: opacity 175ms ease-in-out;
+								padding: 4px;
+								position: absolute;
+								width: 100%;
+								height: 100%;
+								top: 0;
+								left: 0;
+								opacity: 0;
+								background: {
+									color: $color-app-black-alpha-35;
+								}
+
+								.skrim {
+									position: relative;
+								}
+
+								.icon {
+									@include center-content()
+								}
+							}
+
+							&:hover {
+								.img-hover {
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+			}
+        }
+    }
+}
+
+
+@include respond-to(medium) {
+
+    .role-details-view {
+        width: 100%;
+
+        .details__content {
+			padding: 0 0 60px;
+
+            .header__container {
+				border: 0;
+
+                .v-image {
+                    height: 40vh;
+
+                    .v-image__image--contain {
+                        background: {
+                            size: cover
+                        }
+                    }
+                }
+
+                .title__container {
+					@include center-content(0, 30px);
+
+					h4 {
+						font-size: 1.5rem;
+                        line-height: 2.25rem;
+						padding: 0 0.7rem;
+					}
+
+                    h3 {
+                        font-size: 1.5rem;
+                        line-height: 2.25rem;
+						padding: 0 0.7rem;
+
+						span {
+							font-size: 1.2rem !important;
+						}
+                    }
+
+                    h1 {
+                        font-size: 3.0rem;
+                        line-height: 2.75rem;
+                        padding: 0 0.7rem;
+                    }
+				}
+
+				.project-info__container {
+					display: none;
+				}
+			}
+
+			.project-info__container__mobile {
+				display: block;
+				color: $color-app-text-light;
+				padding: 1rem;
+
+				background: {
+					color: #121212;
+					// color: rgba(255, 255, 255, 0.9);
+				}
+
+				.item {
+					text-align: center;
+				}
+			}
+
+			.content__container {
+				padding: 1.5rem 1rem;
+
+				.divider {
+					margin: {
+						top: 3rem;
+						bottom: 3rem;
+					}
+				}
+
+				.project__container {
+
+					.project-item {
+
+						.title__container {
+							flex-direction: column;
+
+							.watch__btn {
+								padding: 1rem 0;
+								width: 100%;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+        }
+    }
+}

@@ -1,0 +1,183 @@
+.navigation-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+	z-index: 200;
+    overflow: hidden;
+    pointer-events: none;
+
+    & > div,
+    header {
+        pointer-events: all;
+	}
+
+	.navigation-skrim {
+		height: 100vh;
+		width: 100vw;
+		position: absolute;
+		display: none;
+
+		&.enabled {
+			display: block;
+		}
+	}
+
+    .navigation-poly {
+        position: fixed;
+		height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+        transition: clip-path 650ms ease-in-out, background-color 650ms ease-in-out;
+        background: {
+            color: $color-app-nav-background;
+        }
+
+        nav {
+            @include center-content(0, -4.5rem);
+			width: 400px;
+			pointer-events: none !important;
+
+            & > div {
+                margin: {
+                    top: 2rem;
+                    bottom: 2rem;
+                }
+            }
+        }
+    }
+
+    header {
+        position: absolute;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        transition: top 500ms ease-in-out 150ms, background-color 650ms ease-in-out;
+        background: {
+            color: $color-app-nav-background;
+        };
+
+        .header--logo-container {
+            display: flex;
+            flex-direction: row;
+            pointer-events: all;
+
+            .app-logo {
+                height: 40px;
+                cursor: pointer;
+                position: relative;
+                border: 1px solid #CCC;
+                background: $color-m-white;
+
+                img, svg {
+                    width: 100px;
+                }
+            }
+
+            .divider {
+                background-color: $color-app-text-light;
+                margin: 10px 10px;
+                width: 1px;
+                height: 20px;
+                transition: transform 0.25s ease-in-out;
+                transform: translateY(0);
+                box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+            }
+
+            .breadcrumb {
+                margin: 10px 0 0;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+
+                p {
+                    color: $color-app-text-light;
+                    line-height: 1.4rem;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .nav-menu-button {
+            position: absolute;
+            cursor: pointer;
+            height: 100%;
+            width: 4rem;
+            top: 0;
+            right: 0;
+
+            & > div {
+                @include center-content();
+            }
+        }
+
+        &:not(.open) { top: -50px; }
+        &.open { top: 0; }
+    }
+
+    &:not(.open) {
+        .navigation-poly {
+            clip-path: polygon(0% 0%, 110% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 100%);
+		}
+
+		nav {
+			* {
+				pointer-events: none !important;
+			}
+		}
+    }
+
+    &.open {
+		header {
+			background: {
+				color: $color-m-black;
+			}
+		}
+
+		.navigation-poly {
+			clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%);
+			background: {
+				color: $color-m-black;
+			}
+		}
+
+		nav {
+			* {
+				pointer-events: all !important;
+			}
+		}
+    }
+
+    /* &:not(.enabled) {
+
+    }
+
+    &.enabled {
+
+	} */
+
+	.header--under-construction {
+		background: {
+			color: red;
+		}
+	}
+}
+
+
+@include respond-to(medium) {
+
+    .navigation-container {
+
+        .navigation-poly {
+
+            nav {
+                & > div {
+                    margin: {
+                        top: 1rem;
+                        bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

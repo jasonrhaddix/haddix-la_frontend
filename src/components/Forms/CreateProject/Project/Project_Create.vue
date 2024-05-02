@@ -1,0 +1,762 @@
+<template>
+  <v-container class="form--project-create">
+    <div class="form-section create__form">
+      <v-row>
+        <v-col class="col-12 order-md-12 offset-md-4 col-md-4">
+          <div class="project__pending-id">
+            <p>{{ formModel.project_id }}</p>
+          </div>
+        </v-col>
+        <v-col class="col-12 col-md-4">
+          <v-select
+            dense
+            label="Project Type"
+            item-text="title"
+            item-value="value"
+            :error="/* $v.model.type.$invalid &&  */ submitted"
+            :items="propsStore.projectTypes"
+            v-model="formModel.type"
+          />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col class="col-12">
+          <v-text-field
+            label="Title"
+            :error="/* $v.model.title.$invalid &&  */ submitted"
+            v-model="formModel.title"
+          />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col class="col-12">
+          <v-text-field label="Subtitle" v-model="formModel.subtitle" />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col class="col-12 col-md-4">
+          <v-select
+            dense
+            label="Client"
+            item-text="title"
+            item-value="value"
+            :items="propsStore.projectClients"
+            v-model="formModel.client"
+          />
+        </v-col>
+        <v-col class="col-12 col-md-4">
+          <v-select
+            dense
+            label="Role"
+            item-text="title"
+            item-value="value"
+            :items="propsStore.projectRoles"
+            v-model="formModel.role"
+          />
+        </v-col>
+
+        <v-col class="col-12 col-md-4">
+          <v-menu v-model="projectDateMenu" :close-on-content-click="false">
+            <template v-slot:activator="{ props }">
+              <v-text-field
+                dense
+                readonly
+                label="Project Date"
+                :model-value="formattedDate"
+                v-bind="props"
+                hide-details
+              />
+            </template>
+            <v-date-picker
+              v-model="formattedDate"
+              hide-actions
+              title="Project Date"
+              color="primary"
+            >
+              <!-- <template v-slot:header /> -->
+            </v-date-picker>
+          </v-menu>
+          <!-- <v-menu
+              ref="projectDateMenu"
+              v-model="projectDateMenu"
+              :close-on-content-click="false"
+              :nudge-right="40"
+              :return-value="formattedDate"
+              transition="scale-transition"
+              offset-y
+              min-width="290px">
+              <template v-slot:activator="{ props }">
+              <v-text-field
+                  
+                  readonly
+
+                  append-icon="event"
+                  label="Project Date"
+                  v-model="formattedDateDisplay">
+              </v-text-field>
+              </template>
+              <v-date-picker v-model="formattedDate" type="month" scrollable>
+                  <v-spacer></v-spacer>
+                  <v-btn text color="primary" @click="projectDateMenu = false">Cancel</v-btn>
+                  <v-btn text color="primary" @click="$refs.projectDateMenu.save(formattedDate)">OK</v-btn>
+              </v-date-picker>
+              </v-menu> -->
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col class="col-12">
+          <v-text-field label="Excerpt" v-model="formModel.excerpt" />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col class="col-12">
+          <v-textarea label="Description" v-model="formModel.description" />
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col clasa="col-12">
+          <v-text-field
+            label="Project Link"
+            hint="Requires link format (Example: http://www.my-link.com)"
+            :error="/* $v.model.link.$invalid &&  */ submitted"
+            v-model="formModel.link"
+          />
+        </v-col>
+      </v-row>
+    </div>
+
+    <div class="form-section create__images">
+      <h2>Images</h2>
+
+      <div class="inner__divider" />
+
+      <v-row>
+        <v-col class="col-12 col-md-4">
+          <div class="images-section images__thumbnails">
+            <div class="section__title">
+              <h3>Thumbnail</h3>
+              <p>Projects page thumbnail.</p>
+            </div>
+            <div class="images__container">
+              <AttachmentUploader
+                ref="attachmentUploader_Thumbnail"
+                :attach-to="getAttachTo"
+                :file-usage-type="'thumbnail'"
+              />
+              <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+                <div
+                  :ripple="false"
+                  class="dropzone__button"
+                  @dragover.prevent
+                  @dragenter.prevent.stop="uploadDragOver(true)"
+                  @dragleave.prevent.stop="uploadDragOver(false)"
+                  @drop.prevent.stop="dropFiles"
+                  @click="uploadThumbnail"
+                >
+                  <div class="button__content">
+                    <p class="subheading">Upload Image</p>
+                    <v-icon color="grey darken-1">add</v-icon>
+                  </div>
+                </div>
+                <div class="dropzone__scrim" />
+              </div>
+              <div v-if="fileAttachments.length > 0" class="images__list">
+                <CreateAttachmentItem
+                  v-for="(file, i) in fileAttachments('thumbnail', true)"
+                  :key="`attachment-item--thumbnail-${i}-${$uuid.v4()}`"
+                  :data="file"
+                />
+              </div>
+            </div>
+          </div>
+        </v-col>
+
+        <!-- <div class="inner__divider" /> -->
+
+        <v-col class="col-12 col-md-4">
+          <div class="images-section images__carousel">
+            <div class="section__title">
+              <h3>Carousel Images</h3>
+              <p>Header images.</p>
+            </div>
+            <div class="images__container">
+              <AttachmentUploader
+                multiple
+                ref="attachmentUploader_Carousel"
+                :attach-to="getAttachTo"
+                :file-usage-type="'carousel'"
+              />
+              <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+                <div
+                  :ripple="false"
+                  class="dropzone__button"
+                  @dragover.prevent
+                  @dragenter.prevent.stop="uploadDragOver(true)"
+                  @dragleave.prevent.stop="uploadDragOver(false)"
+                  @drop.prevent.stop="dropFiles"
+                  @click="$refs.attachmentUploader_Carousel.select()"
+                >
+                  <div class="button__content">
+                    <p class="subheading">Upload Images</p>
+                    <v-icon color="grey darken-1">add</v-icon>
+                  </div>
+                </div>
+                <div class="dropzone__scrim" />
+              </div>
+              <div v-if="fileAttachments.length > 0" class="images__list">
+                <CreateAttachmentItem
+                  v-for="(file, i) in fileAttachments('carousel')"
+                  :key="`attachment-item--carousel-${i}-${$uuid.v4()}`"
+                  :data="file"
+                />
+              </div>
+            </div>
+          </div>
+        </v-col>
+
+        <!-- <div class="inner__divider" /> -->
+
+        <v-col class="col-12 col-md-4">
+          <div class="images-section images__body">
+            <div class="section__title">
+              <h3>Body Images <span class="caption">(Optional)</span></h3>
+              <p>Project images.</p>
+            </div>
+
+            <div class="images__container">
+              <AttachmentUploader
+                multiple
+                ref="attachmentUploader_Body"
+                :attach-to="getAttachTo"
+                :file-usage-type="'body'"
+              />
+              <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+                <div
+                  :ripple="false"
+                  class="dropzone__button"
+                  @dragover.prevent
+                  @dragenter.prevent.stop="uploadDragOver(true)"
+                  @dragleave.prevent.stop="uploadDragOver(false)"
+                  @drop.prevent.stop="dropFiles"
+                  @click="$refs.attachmentUploader_Body.select()"
+                >
+                  <div class="button__content">
+                    <p class="subheading">Upload Images</p>
+                    <v-icon color="grey darken-1">add</v-icon>
+                  </div>
+                </div>
+                <div class="dropzone__scrim" />
+              </div>
+              <div v-if="fileAttachments.length > 0" class="images__list">
+                <CreateAttachmentItem
+                  v-for="(file, i) in fileAttachments('body')"
+                  :key="`attachment-item--body-${i}-${$uuid.v4()}`"
+                  :data="file"
+                />
+              </div>
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+    </div>
+
+    <div class="form-section create__images">
+      <h2>Videos</h2>
+
+      <div class="inner__divider" />
+
+      <div class="images-section images__thumbnails">
+        <div class="section__title">
+          <h3>Body Videos <span class="caption">(Optional)</span></h3>
+          <p>Project videos.</p>
+        </div>
+        <div class="images__container">
+          <AttachmentUploader
+            multiple
+            ref="attachmentUploader_Video"
+            :attach-to="getAttachTo"
+            :accepted-file-types="['video/mp4']"
+            :file-usage-type="'video'"
+          />
+          <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+            <div
+              :ripple="false"
+              class="dropzone__button"
+              @dragover.prevent
+              @dragenter.prevent.stop="uploadDragOver(true)"
+              @dragleave.prevent.stop="uploadDragOver(false)"
+              @drop.prevent.stop="dropFiles"
+              @click="$refs.attachmentUploader_Video.select()"
+            >
+              <div class="button__content">
+                <p class="subheading">Upload Video</p>
+                <v-icon color="grey darken-1">add</v-icon>
+              </div>
+            </div>
+            <div class="dropzone__scrim" />
+          </div>
+          <div v-if="fileAttachments.length > 0" class="images__list">
+            <CreateAttachmentItem
+              v-for="(file, i) in fileAttachments('video')"
+              :key="`attachment-item--video-${i}-${$uuid.v4()}`"
+              :data="file"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section create__meta">
+      <h2>Meta</h2>
+
+      <div class="inner__divider" />
+
+      <div class="meta-section project__languages">
+        <div class="section__title">
+          <h3>Project Languages <span class="caption">(Optional)</span></h3>
+          <p>Languages used creating this project.</p>
+        </div>
+        <div class="languages__container">
+          <div
+            :ripple="false"
+            class="language__add-button"
+            @click="addLanguage"
+          >
+            <div class="button__content">
+              <p class="subheading">Add Language</p>
+              <v-icon color="grey darken-1">add</v-icon>
+            </div>
+          </div>
+          <div class="language__list">
+            <CreateLanguageItem
+              v-for="(item, i) in formModel.languages"
+              :key="`language-item-${item.id})`"
+              :id="item.id"
+              :value="formModel.languages[i].value"
+              :value-callback="updateLanguage"
+              :language="formModel.languages[i].language"
+              :language-callback="updateLanguage"
+              :remove-callback="removeLanguage"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-section project__languages">
+        <div class="section__title">
+          <h3>Project Resources <span class="caption">(Optional)</span></h3>
+          <p>Resources used creating this project.</p>
+        </div>
+        <div class="languages__container">
+          <CreateResourcePicker
+            :items="propsStore.projectResources"
+            :items-selected-callback="resourceItemsSelected"
+          />
+        </div>
+      </div>
+
+      <div class="meta-section project__file-tree">
+        <div class="section__title">
+          <h3>File Structure <span class="caption">(Optional)</span></h3>
+          <p>Project file structure. Requires JSON file.</p>
+        </div>
+        <div class="tree__input">
+          <div
+            :ripple="false"
+            class="tree__add-button"
+            @click="$refs.fileStructureControl.click()"
+          >
+            <div class="button__content">
+              <p class="subheading">Add JSON File</p>
+              <v-icon color="grey darken-1">add</v-icon>
+            </div>
+          </div>
+          <input
+            hidden
+            ref="fileStructureControl"
+            class="file-structure-uploader__input"
+            accept="application/json"
+            type="file"
+            name="file"
+            @change="handleSelectedFileStructFiles"
+          />
+        </div>
+        <div class="tree__container">
+          <v-treeview
+            hoverable
+            open-on-click
+            :items="projectTreeStore.tree_data"
+            :open="[1]"
+          >
+            <!-- <template v-slot:prepend="{ item, open }">
+                        <FontAwesomeIcon v-if="!item.file" :icon="folderIcon(open)" />
+                        <font-awesome-icon v-else :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
+                    </template> -->
+          </v-treeview>
+        </div>
+      </div>
+
+      <!-- <div class="meta-section project__code-sample">
+            <div class="section__title">
+                <h3>Code Sample</h3>
+                <p>Projects page image.</p>
+            </div>
+            <div class="code-sample__container">
+                  <codemirror v-model="model.code" :options="cmOptions"></codemirror>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="form-section project__save-btn">
+      <v-progress-circular
+        v-if="projectsStore.saving"
+        indeterminate
+        class="progress__ind"
+        color="primary"
+        width="8"
+        size="38"
+      />
+      <div v-if="/* $v.$invalid &&  */ submitted" class="error-prompt">
+        <p>Please complete all require fields</p>
+        <div class="divider" />
+      </div>
+      <AppButton
+        label="Save Project"
+        :disabled="projectsStore.saving"
+        @click.native="submitForm"
+      />
+    </div>
+  </v-container>
+</template>
+
+<script setup>
+// import { required, url } from 'vuelidate/lib/validators'
+
+// import { mapState, mapGetters, mapActions } from 'vuex'
+
+/* import {
+	VUEX_PROJECT_CREATE
+} from '@/store/constants/projects'
+import {
+	VUEX_PROJECT_TREE_CREATE_REQUEST
+} from '@/store/constants/projects/project_tree' */
+
+// import { FontAwesomeIcon, faFolder, faFolderOpen } from '@fortawesome/vue-fontawesome'
+
+import { ref, reactive, computed, onMounted } from 'vue'
+import { uuid } from 'vue-uuid'
+
+import store from '@/stores/index.js'
+
+import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
+import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
+import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
+import CreateResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
+import AppButton from '@/components/_global/App_Button.vue'
+
+// stores
+const propsStore = store.config.propsStore()
+const authStore = store.authStore()
+const projectsStore = store.projectsStore()
+const projectTreeStore = store.projectTreeStore()
+
+// refs
+const fileDragOver = ref(false)
+const submitted = ref(false)
+const projectDateMenu = ref(false)
+const attachmentUploader_Thumbnail = ref(null)
+const formModel = reactive({
+  project_id: null,
+  is_guest_project: null,
+  type: null,
+  title: null,
+  subtitle: null,
+  client: null,
+  role: null,
+  project_date: null,
+  excerpt: null,
+  description: null,
+  link: null,
+  published: true,
+  languages: [],
+  resources: [],
+  hasTree: false
+})
+
+// computed
+const fileAttachments = computed(() => '')
+const getAttachTo = computed(() => {})
+const formattedDate = new Date('2019-04-02Z04:00:00-8:00')
+const formattedDateDisplay = computed(() => '')
+
+// medthods
+function resourceItemsSelected() {}
+function submitForm() {}
+function uploadThumbnail() {
+  attachmentUploader_Thumbnail.value.select()
+}
+
+// lifecycle hooks
+onMounted(() => {
+  formModel.project_id = uuid.v4()
+  formModel.is_guest_project = authStore.appAuthenticated
+
+  console.log(attachmentUploader_Thumbnail.select)
+})
+
+/* const folderIcon = computed((open) => {
+    return open ? faFolder: faFolderOpen
+}) */
+
+/* export default {
+	name: 'project-create-form',
+
+	components: {
+		'attachment-uploader': AttachmentUploader,
+		'app-btn': AppButton,
+		'attachment-item': CreateAttachmentItem,
+		'language-item': CreateLanguageItem,
+		'resource-picker': CreateResourcePicker
+	},
+
+	data: () => ({
+		model: {
+			project_id: null,
+			is_guest_project: null,
+			type: null,
+			title: null,
+			subtitle: null,
+			client: null,
+			role: null,
+			project_date: null,
+			excerpt: null,
+			description: null,
+			link: null,
+			published: true,
+			languages: [],
+			resources: [],
+			hasTree: false
+		},
+
+		// TODO: Create as mixin
+		treeFoldersOpen: [1],
+		treeOptions: {
+			fileIcons: {
+				css: { prefix: 'fab', icon: 'css3' },
+				fav: { prefix: 'fas', icon: 'star' },
+				group: { prefix: 'fas', icon: 'ellipsis-h' },
+				html: { prefix: 'fab', icon: 'html5' },
+				image: { prefix: 'fas', icon: 'file-image' },
+				js: { prefix: 'fab', icon: 'js' },
+				json: { prefix: 'fas', icon: 'code' },
+				md: { prefix: 'fab', icon: 'markdown' },
+				node: { prefix: 'fab', icon: 'node-js' },
+				pdf: { prefix: 'fas', icon: 'file-pdf' },
+				vieo: { prefix: 'fas', icon: 'file-video' },
+				vue: { prefix: 'fab', icon: 'vuejs' },
+				yarn: { prefix: 'fab', icon: 'yarn' }
+			}
+		},
+
+		projectDateMenu: false,
+		fileDragOver: false,
+		submitted: false
+	}),
+
+	validations: {
+		model: {
+			type: { required },
+			title: { required },
+			// client: { required },
+			// role: { required },
+			project_date: { required },
+			// subtitle: { required },
+			// exerpt: { required },
+			// description: { required },
+			link: { url }
+		}
+	},
+
+	computed: {
+		...mapState({
+			projectSaving: state => state.projects.projectSaving,
+
+			projectTypes: state => state.config.projectTypes,
+			projectRoles: state => state.config.projectRoles,
+			projectResources: state => state.config.projectResources,
+			projectClients: state => state.config.projectClients,
+			projectTree: state => state.projectTree.projectTree
+		}),
+
+		...mapGetters({
+			appAuthenticated: 'appAuthenticated',
+			getQueuedFiles: 'getQueuedFiles',
+			getUploadingFiles: 'getUploadingFiles',
+			getProcessingFiles: 'getProcessingFiles',
+			getCompletedFiles: 'getCompletedFiles'
+		}),
+
+		fileAttachments () {
+			return (usageType, singleReturn) => {
+				let files = []
+
+				let paramsWithId = {
+					attach_to: {
+						model_id: this.model.project_id,
+						model: HADDIX_ATTACHMENT_TYPE__PROJECT
+					}
+				}
+
+				files = files
+					.concat(this.getCompletedFiles(paramsWithId))
+					.concat(this.getUploadingFiles(paramsWithId))
+					.concat(this.getProcessingFiles(paramsWithId))
+					.concat(this.getQueuedFiles(paramsWithId))
+
+				files.sort(function (a, b) {
+					return a.addedToQueue - b.addedToQueue
+				})
+
+				let filteredFiles = files.filter(file => file.usage_type === usageType)
+
+				if (filteredFiles.length === 0) return []
+				return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
+			}
+		},
+
+		getAttachTo () {
+			return {
+				model: HADDIX_ATTACHMENT_TYPE__PROJECT,
+				model_id: this.model.project_id
+			}
+		},
+
+		formattedDate: {
+			// get () {
+			// 	if (!this.model.project_date) return
+
+			// 	let [month, year] = this.model.project_date.split(' ')[0].split('-')
+			// 	return `${year}-${month}`
+			// },
+			// set (val) {
+			// 	let [year, month] = val.split('-')
+			// 	this.model.project_date = `${month}-01-${year} 00:00:00`
+			// }
+
+			get () {
+				return this.model.project_date
+			},
+
+			set (val) {
+				this.model.project_date = val
+			}
+		},
+
+		formattedDateDisplay () {
+			if (!this.model.project_date) return
+			return `${this.formattedDate.split('-').reverse().join('/')}`
+		}
+	},
+
+	mounted () {
+		this.model.project_id = this.$uuid.v4()
+		this.model.is_guest_project = !this.appAuthenticated
+	},
+
+	methods: {
+		...mapActions({
+			createProject: VUEX_PROJECT_CREATE,
+			createProjectTree: VUEX_PROJECT_TREE_CREATE_REQUEST
+		}),
+
+		uploadDragOver (value) {
+			this.fileDragOver = value
+		},
+
+		dropFiles (event) {
+			this.fileDragOver = false
+			this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files)
+		},
+
+		addLanguage () {
+			this.model.languages.push({
+				id: this.$uuid.v4(),
+				value: 0,
+				language: ''
+			})
+		},
+
+		updateLanguage (data) {
+			let index = this.model.languages.findIndex(x => x.id === data.id)
+			if (index > -1) {
+				Object.assign(this.model.languages[index], data)
+			}
+		},
+
+		removeLanguage (id) {
+			let index = this.model.languages.findIndex(x => x.id === id)
+			if (index > -1) {
+				this.model.languages.splice(index, 1)
+			}
+		},
+
+		resourceItemsSelected (items) {
+			this.model.resources = items
+		},
+
+		handleSelectedFileStructFiles (event) {
+			let file = this.$refs.fileStructureControl.files[0]
+
+			let reader = new FileReader()
+			reader.onload = this.onReaderLoad
+			reader.readAsText(file)
+		},
+
+		onReaderLoad (event) {
+			var jsonTree = JSON.parse(event.target.result)
+			this.createProjectTree(
+				{
+					project_id: this.model.project_id,
+					tree_data: jsonTree
+				}
+			)
+		},
+
+		submitForm () {
+			this.submitted = true
+
+			// Clean model before send
+			Object.keys(this.model).forEach(k => {
+				if (this.model[k] === null ||
+					this.model[k] === undefined ||
+					this.model[k].length === 0) delete this.model[k]
+			})
+
+			let [projectDateYear, projectDateMonth] = this.model.project_date.split('-')
+
+			if (!this.$v.$invalid) {
+				this.createProject({
+					...this.model,
+					project_date: `${projectDateMonth}-01-${projectDateYear} 00:00:00`
+
+				})
+			}
+		}
+	},
+
+	watch: {
+		projectTree: {
+			deep: true,
+			handler (val) {
+				// if (val && val.tree_data.length) this.model.hasTree = true
+			}
+		}
+	}
+} */
+</script>

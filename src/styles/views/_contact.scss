@@ -1,0 +1,18 @@
+.contact-view {
+
+    .contact-view--inner {
+        @extend .app-view--inner;
+
+        .contact-view--content {
+            // @extend .app-view--content;
+            
+            .contact-form {
+
+            }
+
+            .contact--map {
+                
+            }
+        }
+    }
+}
