@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const typesStore = defineStore('types', {
+export default defineStore('types', {
   state: () => ({
     // request types
     REQUEST_STATUS__READY: 'ready',
@@ -37,5 +37,3 @@ const typesStore = defineStore('types', {
 
   actions: {}
 })
-
-export default typesStore

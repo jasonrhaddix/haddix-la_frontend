@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useNavigationStore = defineStore('navigation', {
+export default defineStore('navigation', {
   // STATE
   state: () => ({
     title: null,
@@ -44,5 +44,3 @@ const useNavigationStore = defineStore('navigation', {
     }
   }
 })
-
-export default useNavigationStore

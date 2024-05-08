@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useHeaderStore = defineStore('header', {
+export default defineStore('header', {
   state: () => ({
     openState: false
   }),
@@ -15,5 +15,3 @@ const useHeaderStore = defineStore('header', {
     }
   }
 })
-
-export default useHeaderStore

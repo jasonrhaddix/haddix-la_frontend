@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useProjectsStore = defineStore('projects', {
+export default defineStore('projects', {
   state: () => ({
     projects: [],
 
@@ -20,5 +20,3 @@ const useProjectsStore = defineStore('projects', {
 
   actions: {}
 })
-
-export default useProjectsStore

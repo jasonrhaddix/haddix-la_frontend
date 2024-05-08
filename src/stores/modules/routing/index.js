@@ -1,15 +1,16 @@
 import { defineStore } from 'pinia'
 
 import router from '@/router'
-
 import store from '@/stores/index.js'
 
-const useRoutingStore = defineStore('routing', {
-  // const storeHeader = useHeaderStore(),
-
+export default defineStore('routing', {
   state: () => ({
+    localStore: store.config.localStore(),
     headerStore: store.ui.headerStore(),
     navigationStore: store.ui.navigationStore(),
+    rolesStore: store.rolesStore(),
+    userStore: store.userStore(),
+
     route: {
       previous: null,
       current: null
@@ -17,7 +18,10 @@ const useRoutingStore = defineStore('routing', {
   }),
 
   actions: {
-    init() {
+    async init() {
+      this.localStore.init()
+      await this.userStore.rehydrateUserFromToken()
+
       return new Promise((resolve, reject) => {
         this.route.current = router.currentRoute.value.name
         resolve(this)
@@ -28,31 +32,21 @@ const useRoutingStore = defineStore('routing', {
       router.push(payload)
     },
 
-    navigateToRoute(route) {
+    async navigateToRoute(route) {
       const toRoute = route.to.name
       const fromRoute = route.from.name
 
-      if (this.navigationStore.openState)
-        this.navigationStore.disableNavigation()
-      // if (rootState.ui.navigation.openState) { dispatch(VUEX_UI_NAVIGATION_DISABLED, 1000) }
+      if (this.navigationStore.openState) this.navigationStore.disableNavigation()
 
       this.navigationStore.hideNavigation()
-      // dispatch(VUEX_UI_NAVIGATION_HIDE)
 
       // Abort if incoming route is same as current current route
       if (toRoute === fromRoute) return
 
-      this.exitRouteTeardown(toRoute)
-      // await dispatch(VUEX_ROUTING_EXIT_ROUTE_TEARDOWN, toRoute)
-
-      this.setPreviousRoute(toRoute)
-      // await commit(VUEX_ROUTING_SET_PREVIOUS_ROUTE)
-
-      this.setCurrentRoute(toRoute)
-      // await commit(VUEX_ROUTING_SET_CURRENT_ROUTE, toRoute)
-
+      await this.exitRouteTeardown(toRoute)
+      await this.setPreviousRoute(toRoute)
+      await this.setCurrentRoute(toRoute)
       this.enterRoute(toRoute)
-      // dispatch(VUEX_ROUTING_ENTER_ROUTE, toRoute)
     },
 
     exitRouteTeardown(route) {
@@ -76,7 +70,9 @@ const useRoutingStore = defineStore('routing', {
 
     // enterProject() {},
 
-    // enterRoles() {},
+    enterRoles() {
+      this.rolesStore.fetchRoles()
+    },
 
     // enterRole() {},
 
@@ -93,5 +89,3 @@ const useRoutingStore = defineStore('routing', {
     }
   }
 })
-
-export default useRoutingStore

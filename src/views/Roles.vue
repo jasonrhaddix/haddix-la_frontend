@@ -1,43 +1,11 @@
 <template>
-    <div class="roles-view">
-		<div class="projects__add-btn">
-			<CreateButton />
-        </div>
-
-		<div class="roles__inner">
-			<v-data-table
-				dark
-				:headers="headers"
-				:items="rolesStore.roles"
-				:items-per-page="50"
-				class="elevation-1">
-
-				<template
-					v-slot:body="{ items }">
-
-					<tbody>
-						<tr
-							v-for="(item, index) in items"
-							:key="`role--items--${index}`"
-							class="">
-							<!-- Job Title -->
-							<td>{{ item.job_title || `--` }}</td>
-							<!-- Role ID -->
-							<td class="col__role-id" @click="roleClick(item.role_id)">{{ item.role_id || `--`  }}</td>
-							<!-- Client -->
-							<td>{{ getClient(item.client) || `--` }}</td>
-							<!-- Department -->
-							<td>{{ item.department || `--` }}</td>
-							<!-- Recruiter -->
-							<td>{{ item.recruiter || `--` }}</td>
-							<!-- Published -->
-							<td class="col__publish"><v-icon color="green">{{ getPublished(item.published) }}</v-icon></td>
-						</tr>
-					</tbody>
-				</template>
-			</v-data-table>
-		</div>
+  <div class="roles-view">
+    <div class="projects__add-btn">
+      <CreateButton />
     </div>
+
+    <div class="roles__inner"></div>
+  </div>
 </template>
 
 <script setup>
@@ -56,12 +24,12 @@ import CreateButton from '@/components/_global/Create_Button.vue'
 const rolesStore = store.rolesStore()
 
 const headers = reactive([
-	{ title: 'Job Title', value: 'job_title' },
-	{ title: 'Role ID', value: 'role_id' },
-	{ title: 'Client', value: 'client' },
-	{ title: 'Department', value: 'department' },
-	{ title: 'Recruiter', value: 'recruiter' },
-	{ title: 'Published', value: 'published', align: 'center' }
+  { title: 'Job Title', value: 'job_title' },
+  { title: 'Role ID', value: 'role_id' },
+  { title: 'Client', value: 'client' },
+  { title: 'Department', value: 'department' },
+  { title: 'Recruiter', value: 'recruiter' },
+  { title: 'Published', value: 'published', align: 'center' }
 ])
 
 /* export default {

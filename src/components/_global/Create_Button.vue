@@ -5,7 +5,27 @@
 </template>
 
 <script setup>
-function createClick() {}
+import store from '@/stores/index.js'
+
+const userStore = store.userStore()
+const dialogStore = store.ui.dialogStore()
+const overlayStore = store.ui.overlayStore()
+
+function createClick() {
+  if (userStore.userIsAuthenticated) {
+    dialogStore.showDialog({
+      component: '_global/Create_Picker.vue',
+      width: 900
+    })
+  } else {
+    overlayStore.setComponent({
+      component: 'Forms/CreateProject/Project/Project_Create.vue',
+      title: 'Create Project'
+    })
+
+    overlayStore.showOverlay()
+  }
+}
 // import { mapGetters, mapActions } from 'vuex'
 
 /* import {
@@ -21,7 +41,7 @@ function createClick() {}
 
   computed: {
     ...mapGetters({
-			appAuthenticated: 'appAuthenticated'
+			userIsAuthenticated: 'userIsAuthenticated'
 		})
   },
 
@@ -33,7 +53,7 @@ function createClick() {}
 			}),
 
     createClick() {
-      if (this.appAuthenticated) {
+      if (this.userIsAuthenticated) {
         this.showDialog({
           component: {
             path: '_global',

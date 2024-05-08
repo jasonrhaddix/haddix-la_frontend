@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useLoginStore = defineStore('login', {
+export default defineStore('login', {
   state: () => ({
     openState: false
   }),
@@ -19,5 +19,3 @@ const useLoginStore = defineStore('login', {
     }
   }
 })
-
-export default useLoginStore

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const usePropsStore = defineStore('props', {
+export default defineStore('props', {
   state: () => ({
     projectTypes: [
       { title: 'Collaberation', value: 'collaberation' },
@@ -145,5 +145,3 @@ const usePropsStore = defineStore('props', {
     ]
   })
 })
-
-export default usePropsStore

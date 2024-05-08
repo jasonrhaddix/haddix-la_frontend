@@ -5,6 +5,7 @@ import UUID from 'vue-uuid'
 // local imports
 import router from './router'
 import store from '@/stores'
+import interceptorService from '@/api/config/interceptors'
 
 // components
 import App from './App.vue'
@@ -27,6 +28,8 @@ const app = createApp({
   },
   render: () => h(App)
 })
+
+interceptorService(store.root)
 
 // use statements
 app.use(store.root)

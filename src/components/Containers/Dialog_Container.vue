@@ -1,67 +1,24 @@
 <template>
-    <v-dialog
-        transition="transition-slide-up"
-        content-class="dialog-container"
-		:width="getWidth"
-        v-model="openState">
-
-        <template>
-			<div class="dialog-container__content">
-				<component
-					:is="loadComponent"
-					v-bind="dialogProps"/>
-
-				<v-btn
-					light fab small
-					class="close-btn"
-					@click="closeDialog">
-					<v-icon>close</v-icon>
-				</v-btn>
-			</div>
-        </template>
-    </v-dialog>
+  <v-dialog light content-class="dialog-container" :max-width="width" v-model="openState">
+    <div class="dialog-container__content">
+      <component :is="loadedComponent" v-bind="props" />
+      <v-btn light small icon="close" class="close-btn" @click="dialogStore.hideDialog" />
+    </div>
+  </v-dialog>
 </template>
 
-<script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+<script setup>
+import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
+import { storeToRefs } from 'pinia'
 
-import {
-	VUEX_UI_DIALOG_CONTAINER_HIDE
-} from '@/store/constants/ui'
+import store from '@/stores/index.js'
 
-export default {
-	name: 'dialog-container',
+const dialogStore = store.ui.dialogStore()
+const { openState, component, width, props } = storeToRefs(dialogStore)
 
-	computed: {
-		...mapState({
-			dialogOpenState: state => state.ui.dialogContainer.openState,
-			dialogComponent: state => state.ui.dialogContainer.component,
-			dialogWidth: state => state.ui.dialogContainer.width,
-			dialogProps: state => state.ui.dialogContainer.props
-		}),
+const loadedComponent = ref(null)
 
-		...mapGetters({
-			appAuthenticated: 'appAuthenticated'
-		}),
-
-		getWidth () {
-			return this.dialogWidth
-		},
-
-		loadComponent () {
-			return this.dialogComponent ? this.$root.loadComponent(this.dialogComponent) : null
-		},
-
-		openState: {
-			get () { return this.dialogOpenState },
-			set (val) { this.$store.commit('VUEX_UI_DIALOG_CONTAINER_SET_STATE', val) }
-		}
-	},
-
-	methods: {
-		...mapActions({
-			closeDialog: VUEX_UI_DIALOG_CONTAINER_HIDE
-		})
-	}
-}
+watch(component, (val) => {
+  loadedComponent.value = markRaw(defineAsyncComponent(() => import(`../../components/${val}`)))
+})
 </script>

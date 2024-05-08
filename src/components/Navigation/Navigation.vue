@@ -26,10 +26,7 @@
     </div>
     <header :class="[{ open: headerStore.openState }]">
       <div class="header--logo-container">
-        <div
-          class="app-logo"
-          @click.native="routingStore.pushRoute({ name: 'home' })"
-        >
+        <div class="app-logo" @click.native="routingStore.pushRoute({ name: 'home' })">
           <img :src="logoImage" />
         </div>
         <div class="divider" />
@@ -45,6 +42,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 import store from '@/stores/index.js'
 import router from '@/router/index.js'
 
@@ -54,13 +53,16 @@ import sitenav from '@/config/sitenav.js'
 import HamburgerMenu from '@/components/_global/Hamburger_Menu.vue'
 import NavigationItem from '@/components/Navigation/Navigation_Item.vue'
 
+const userStore = store.userStore()
 const routingStore = store.routingStore()
 const headerStore = store.ui.headerStore()
 const navigationStore = store.ui.navigationStore()
 
-function hasAccess() {
-  return true
-}
+const hasAccess = computed(() => {
+  return (item) => {
+    return !item.needsAuth || (item.needsAuth && userStore.userIsAuthenticated)
+  }
+})
 
 function routeName() {
   return navigationStore.title || router.currentRoute.value.name
@@ -87,7 +89,7 @@ function routeName() {
 		}),
 
     ...mapGetters({
-			appAuthenticated: 'appAuthenticated'
+			userIsAuthenticated: 'userIsAuthenticated'
 		}),
 
     headerLogo() {
@@ -96,7 +98,7 @@ function routeName() {
 
     hasAccess(item) {
       return (item) => {
-        return !item.needsAuth || (item.needsAuth && this.appAuthenticated)
+        return !item.needsAuth || (item.needsAuth && this.userIsAuthenticated)
       }
     },
 

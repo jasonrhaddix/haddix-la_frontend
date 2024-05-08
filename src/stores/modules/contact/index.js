@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const useContactStore = defineStore('contact', {
+export default defineStore('contact', {
   state: () => ({
     roles: [],
     role: {},
@@ -13,9 +13,7 @@ const useContactStore = defineStore('contact', {
 
   actions: {
     sendEmail() {
-      // 
+      //
     }
   }
 })
-
-export default useContactStore

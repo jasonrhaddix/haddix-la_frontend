@@ -323,11 +323,7 @@
           <p>Languages used creating this project.</p>
         </div>
         <div class="languages__container">
-          <div
-            :ripple="false"
-            class="language__add-button"
-            @click="addLanguage"
-          >
+          <div :ripple="false" class="language__add-button" @click="addLanguage">
             <div class="button__content">
               <p class="subheading">Add Language</p>
               <v-icon color="grey darken-1">add</v-icon>
@@ -462,7 +458,7 @@ import AppButton from '@/components/_global/App_Button.vue'
 
 // stores
 const propsStore = store.config.propsStore()
-const authStore = store.authStore()
+const userStore = store.userStore()
 const projectsStore = store.projectsStore()
 const projectTreeStore = store.projectTreeStore()
 
@@ -505,9 +501,7 @@ function uploadThumbnail() {
 // lifecycle hooks
 onMounted(() => {
   formModel.project_id = uuid.v4()
-  formModel.is_guest_project = authStore.appAuthenticated
-
-  console.log(attachmentUploader_Thumbnail.select)
+  formModel.is_guest_project = userStore.userIsAuthenticated
 })
 
 /* const folderIcon = computed((open) => {
@@ -595,7 +589,7 @@ onMounted(() => {
 		}),
 
 		...mapGetters({
-			appAuthenticated: 'appAuthenticated',
+			userIsAuthenticated: 'userIsAuthenticated',
 			getQueuedFiles: 'getQueuedFiles',
 			getUploadingFiles: 'getUploadingFiles',
 			getProcessingFiles: 'getProcessingFiles',
@@ -666,7 +660,7 @@ onMounted(() => {
 
 	mounted () {
 		this.model.project_id = this.$uuid.v4()
-		this.model.is_guest_project = !this.appAuthenticated
+		this.model.is_guest_project = !this.userIsAuthenticated
 	},
 
 	methods: {

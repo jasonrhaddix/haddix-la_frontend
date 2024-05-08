@@ -5,9 +5,9 @@ import store from '@/stores/index.js'
 
 const beforeEnterGuard = (to, from, next) => {
   const routingStore = store.routingStore()
-  const authStore = store.authStore()
+  const userStore = store.userStore()
 
-  if (to.name === 'roles' && !authStore.appAuthenticated) {
+  if (to.name === 'roles' && !userStore.userIsAuthenticated) {
     /* store.dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
 			component: {
 				path: 'Notifications',

@@ -9,41 +9,28 @@
         v-model="loginStore.openState"
       >
         <div class="login-input__container">
-          <div 
-            v-if="!authStore.appAuthenticated"
-            class="login-input__inner">
-
+          <div v-if="!userStore.userIsAuthenticated" class="login-input__inner">
             <h3>Admin Login</h3>
+            <v-text-field solo dark label="Email" type="email" v-model="model.email" />
             <v-text-field
               solo
               dark
-              
-              label="Email"
-              type="email"
-              v-model="model.email"
-            />
-            <v-text-field
-              solo
-              dark
-              
               label="Password"
               type="password"
               v-model="model.password"
             />
             <v-btn
               class="auth-btn login-btn"
-              :disabled="authStore.appAuthenticated"
-              :loading="authStore.isAuthorizing"
+              :disabled="userStore.userIsAuthenticated"
+              :loading="userStore.isAuthorizing"
               color="primary"
-              @click="authStore.login(model)"
+              @click="userStore.login(model)"
               >Login</v-btn
             >
           </div>
           <div v-else class="login-input__inner">
             <h3>You're currently logged in</h3>
-            <v-btn
-              class="auth-btn logout-btn"
-              color="primary" @click="authStore.logout">
+            <v-btn class="auth-btn logout-btn" color="primary" @click="userStore.logout">
               Logout
             </v-btn>
           </div>
@@ -52,12 +39,7 @@
     </v-layout>
 
     <div class="login-btn__container">
-      <v-btn
-        small
-        class="login-btn"
-        icon="vpn_key"
-        @click="loginStore.showLogin"
-      />
+      <v-btn small class="login-btn" icon="vpn_key" @click="loginStore.showLogin" />
     </div>
   </div>
 </template>
@@ -68,7 +50,7 @@ import { reactive } from 'vue'
 import store from '@/stores/index.js'
 
 const loginStore = store.ui.loginStore()
-const authStore = store.authStore()
+const userStore = store.userStore()
 
 const model = reactive({
   email: null,
@@ -117,7 +99,7 @@ const model = reactive({
 		}),
 
 		...mapGetters({
-			appAuthenticated: 'appAuthenticated'
+			userIsAuthenticated: 'userIsAuthenticated'
 		}),
 
 		openState: {

@@ -1,123 +1,127 @@
 <template>
-	<div class="form--role-create--item">
-		<div class="inner">
-			<v-row>
-				<div class="col-12">
-					<div class="section__title">
-						<h3>Project Title</h3>
-						<!-- <p>Only 1 video allowed</p> -->
-					</div>
-					<v-btn
-						fab icon x-small
-						class="remove-btn"
-						@click="removeCallback(id)">
-						<v-icon>remove</v-icon>
-					</v-btn>
-					<div class="title__container">
-						<v-text-field
-							filled hide-details
-							v-model="model.title"/>
-					</div>
-				</div>
-			</v-row>
-			<v-row>
-				<div class="col-12">
-					<div class="section__title">
-						<h3>Project Summary</h3>
-						<!-- <p>Only 1 video allowed</p> -->
-					</div>
-					<div class="summary__container">
-						<text-editor
-							v-model="model.summary"/>
-					</div>
-				</div>
-			</v-row>
-			<v-row>
-				<v-col class="col-12 col-md-8">
-					<div class="images-section images__thumbnails">
-						<div class="section__title">
-							<h3>Project Images</h3>
-							<!-- <p>Projects page thumbnail.</p> -->
-						</div>
-						<div class="images__container">
-							<attachment-uploader
-								ref="attachmentUploader_Body"
-								:attach-to="getAttachTo"
-								:file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE"/>
-							<div :class="['images__dropzone', {'drag-over':fileDragOver}]">
-								<div
-									v-ripple
-									class="dropzone__button"
-									@dragover.prevent
-									@dragenter.prevent.stop="uploadDragOver(true)"
-									@dragleave.prevent.stop="uploadDragOver(false)"
-									@drop.prevent.stop="dropFiles"
-									@click="$refs.attachmentUploader_Body.select()">
-									<div class="button__content">
-										<p class="subheading">Upload Image</p>
-										<v-icon color="grey darken-1">add</v-icon>
-									</div>
-								</div>
-								<div class="dropzone__scrim" />
-							</div>
-							<div
-								v-if="fileAttachments.length > 0"
-								class="images__list">
-								<attachment-item
-									v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE)"
-									:key="`attachment-item--body-${i}}`"
-									:data="file"/>
-							</div>
-						</div>
-					</div>
-				</v-col>
-				<v-col class="col-12 col-md-4">
-					<div class="images-section videos__thumbnails">
-						<div class="section__title">
-							<h3>Project Video</h3>
-							<!-- <p>Only 1 video allowed</p> -->
-						</div>
-						<div class="images__container">
-							<attachment-uploader
-								ref="attachmentUploader_Video"
-								:attach-to="getAttachTo"
-								:accepted-file-types="['video/mp4']"
-								:file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE"/>
-							<div :class="['images__dropzone', {'drag-over':fileDragOver}]">
-								<div
-									v-ripple
-									class="dropzone__button"
-									@dragover.prevent
-									@dragenter.prevent.stop="uploadDragOver(true)"
-									@dragleave.prevent.stop="uploadDragOver(false)"
-									@drop.prevent.stop="dropFiles"
-									@click="$refs.attachmentUploader_Video.select()">
-									<div class="button__content">
-										<p class="subheading">Upload Video</p>
-										<v-icon color="grey darken-1">add</v-icon>
-									</div>
-								</div>
-								<div class="dropzone__scrim" />
-							</div>
-							<div
-								v-if="fileAttachments.length > 0"
-								class="images__list">
-								<attachment-item
-									v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE)"
-									:key="`attachment-item--video-${i}}`"
-									:data="file"/>
-							</div>
-						</div>
-					</div>
-				</v-col>
-			</v-row>
-		</div>
-		<div class="divider" />
-	</div>
+  <div class="form--role-create--item">
+    <div class="inner">
+      <v-row>
+        <div class="col-12">
+          <div class="section__title">
+            <h3>Project Title</h3>
+            <!-- <p>Only 1 video allowed</p> -->
+          </div>
+          <v-btn fab icon x-small class="remove-btn" @click="removeCallback(id)">
+            <v-icon>remove</v-icon>
+          </v-btn>
+          <div class="title__container">
+            <v-text-field filled hide-details v-model="model.title" />
+          </div>
+        </div>
+      </v-row>
+      <v-row>
+        <div class="col-12">
+          <div class="section__title">
+            <h3>Project Summary</h3>
+            <!-- <p>Only 1 video allowed</p> -->
+          </div>
+          <div class="summary__container">
+            <text-editor v-model="model.summary" />
+          </div>
+        </div>
+      </v-row>
+      <v-row>
+        <v-col class="col-12 col-md-8">
+          <div class="images-section images__thumbnails">
+            <div class="section__title">
+              <h3>Project Images</h3>
+              <!-- <p>Projects page thumbnail.</p> -->
+            </div>
+            <div class="images__container">
+              <attachment-uploader
+                ref="attachmentUploader_Body"
+                :attach-to="getAttachTo"
+                :file-usage-type="
+                  $store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE
+                "
+              />
+              <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+                <div
+                  v-ripple
+                  class="dropzone__button"
+                  @dragover.prevent
+                  @dragenter.prevent.stop="uploadDragOver(true)"
+                  @dragleave.prevent.stop="uploadDragOver(false)"
+                  @drop.prevent.stop="dropFiles"
+                  @click="$refs.attachmentUploader_Body.select()"
+                >
+                  <div class="button__content">
+                    <p class="subheading">Upload Image</p>
+                    <v-icon color="grey darken-1">add</v-icon>
+                  </div>
+                </div>
+                <div class="dropzone__scrim" />
+              </div>
+              <div v-if="fileAttachments.length > 0" class="images__list">
+                <attachment-item
+                  v-for="(file, i) in fileAttachments(
+                    $store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE
+                  )"
+                  :key="`attachment-item--body-${i}}`"
+                  :data="file"
+                />
+              </div>
+            </div>
+          </div>
+        </v-col>
+        <v-col class="col-12 col-md-4">
+          <div class="images-section videos__thumbnails">
+            <div class="section__title">
+              <h3>Project Video</h3>
+              <!-- <p>Only 1 video allowed</p> -->
+            </div>
+            <div class="images__container">
+              <attachment-uploader
+                ref="attachmentUploader_Video"
+                :attach-to="getAttachTo"
+                :accepted-file-types="['video/mp4']"
+                :file-usage-type="
+                  $store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE
+                "
+              />
+              <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
+                <div
+                  v-ripple
+                  class="dropzone__button"
+                  @dragover.prevent
+                  @dragenter.prevent.stop="uploadDragOver(true)"
+                  @dragleave.prevent.stop="uploadDragOver(false)"
+                  @drop.prevent.stop="dropFiles"
+                  @click="$refs.attachmentUploader_Video.select()"
+                >
+                  <div class="button__content">
+                    <p class="subheading">Upload Video</p>
+                    <v-icon color="grey darken-1">add</v-icon>
+                  </div>
+                </div>
+                <div class="dropzone__scrim" />
+              </div>
+              <div v-if="fileAttachments.length > 0" class="images__list">
+                <attachment-item
+                  v-for="(file, i) in fileAttachments(
+                    $store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE
+                  )"
+                  :key="`attachment-item--video-${i}}`"
+                  :data="file"
+                />
+              </div>
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+    </div>
+    <div class="divider" />
+  </div>
 </template>
 
-<script>
-	import { mapGetters } from 'vuex'
+<script setup>
+/* 	import { mapGetters } from 'vuex'
 
 	import AttachmentUploader from '@/components/_global/Attachment_Uploader'
 	import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item'
@@ -165,7 +169,7 @@
 
 		computed: {
 			...mapGetters({
-				appAuthenticated: 'appAuthenticated',
+				userIsAuthenticated: 'userIsAuthenticated',
 				getQueuedFiles: 'getQueuedFiles',
 				getUploadingFiles: 'getUploadingFiles',
 				getProcessingFiles: 'getProcessingFiles',
@@ -251,5 +255,5 @@
 				// this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files)
 			}
 		}
-	}
+	} */
 </script>

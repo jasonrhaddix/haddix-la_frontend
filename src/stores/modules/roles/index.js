@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 
-const useRolesStore = defineStore('roles', {
+import api from '@/api/index.js'
+
+export default defineStore('roles', {
   state: () => ({
     roles: [],
     role: {},
@@ -11,7 +13,7 @@ const useRolesStore = defineStore('roles', {
 
   getters: {
     hasRoles() {
-      return this.projects.length
+      return this.roles.length
     },
 
     projectsLoading() {
@@ -20,18 +22,21 @@ const useRolesStore = defineStore('roles', {
   },
 
   actions: {
-    fetchRoles() {
-      // 
+    async fetchRoles() {
+      try {
+        const res = await api.get(`/roles`)
+        this.roles = res.data
+      } catch (err) {
+        // console.log(err)
+      }
     },
 
     fetchSingleRole() {
-      // 
+      //
     },
 
-    createRole() {
-      // 
+    createRole(payload) {
+      console.log(payload)
     }
   }
 })
-
-export default useRolesStore

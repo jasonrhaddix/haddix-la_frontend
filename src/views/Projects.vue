@@ -1,7 +1,7 @@
 <template>
   <div class="projects-view">
     <div class="projects__add-btn">
-      <CreateButton @click="addProject" />
+      <CreateButton />
     </div>
     <div v-if="!projectsStore.hasProjects && projectsStore.projectsLoading">
       <v-progress-circular
@@ -36,9 +36,9 @@ import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
 const projectsStore = store.projectsStore()
-const overlayStore = store.ui.overlayStore()
+// const overlayStore = store.ui.overlayStore()
 
-function addProject () {
+/* function addProject () {
   
   overlayStore.setComponent({
     component: 'Forms/CreateProject/Project/Project_Create.vue',
@@ -46,7 +46,7 @@ function addProject () {
   })
 
   overlayStore.showOverlay()
-}
+} */
 
 // =====================================================
 

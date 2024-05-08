@@ -1,11 +1,9 @@
 import { defineStore } from 'pinia'
 
-const utilsStore = defineStore('utils', {
+export default defineStore('utils', {
   state: () => ({}),
 
   getters: {},
 
   actions: {}
 })
-
-export default utilsStore
