@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import beforeEnterGuard from '@/router/navigationGuards/beforeEnter'
 
@@ -26,8 +26,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home.vue'),
-      beforeEnter: beforeEnterGuard
+      component: () => import('@/views/Home.vue')
+      // beforeEnter: beforeEnterGuard
       /* meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '')
@@ -39,13 +39,13 @@ const router = createRouter({
       path: '/projects',
       name: 'projects',
       component: () => import('@/views/Projects.vue'),
-      beforeEnter: beforeEnterGuard
-      /* meta: {
-				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Projects')
-					next()
-				}
-			} */
+      beforeEnter: beforeEnterGuard,
+      meta: {
+        beforeEnterCallback: (to, from, next) => {
+          stores.routingStore().enterProjectsRoute()
+          next()
+        }
+      }
     },
     {
       path: '/roles',
@@ -54,7 +54,7 @@ const router = createRouter({
       beforeEnter: beforeEnterGuard,
       meta: {
         beforeEnterCallback: (to, from, next) => {
-          store.routingStore().enterRoles()
+          stores.routingStore().enterRolesRoute()
           next()
         }
       }

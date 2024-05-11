@@ -30,13 +30,13 @@
 </template>
 
 <script setup>
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
-const projectsStore = store.projectsStore()
-// const overlayStore = store.ui.overlayStore()
+const projectsStore = stores.projectsStore()
+// const overlayStore = stores.ui.overlayStore()
 
 /* function addProject () {
   

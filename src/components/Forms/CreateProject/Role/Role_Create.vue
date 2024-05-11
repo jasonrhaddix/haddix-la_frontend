@@ -99,14 +99,14 @@ import { ref, reactive, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { uuid } from 'vue-uuid'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import RoleProjectItem from '@/components/Forms/CreateProject/Role/Role_Create__Project_item.vue'
 import AppButton from '@/components/_global/App_Button.vue'
 import TextEditor from '@/components/_global/Text_Editor.vue'
 
-const propsStore = store.config.propsStore()
-const rolesStore = store.rolesStore()
+const propsStore = stores.config.propsStore()
+const rolesStore = stores.rolesStore()
 
 const { saving, createRole } = storeToRefs(rolesStore)
 

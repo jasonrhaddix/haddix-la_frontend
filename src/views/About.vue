@@ -471,7 +471,7 @@ import {
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import AppButton from '@/components/_global/App_Button.vue'
 import BioPhoto from '@/assets/app/images/profile-photo.png'
@@ -494,7 +494,7 @@ import LogoDirecTV from '@/assets/app/icons/client_logos/directv.svg'
 import LogoHBO from '@/assets/app/icons/client_logos/hbo.svg'
 import LogoESPN from '@/assets/app/icons/client_logos/espn.svg'
 
-const routingStore = store.routingStore()
+const routingStore = stores.routingStore()
 
 // import { mapActions } from 'vuex'
 

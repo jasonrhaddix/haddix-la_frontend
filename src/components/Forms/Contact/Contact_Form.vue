@@ -60,11 +60,11 @@
 
 import { ref } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import AppButton from '@/components/_global/App_Button.vue'
 
-const contactStore = store.contactStore()
+const contactStore = stores.contactStore()
 
 const model = ref({
 	first_name: null,

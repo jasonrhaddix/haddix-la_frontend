@@ -1,16 +1,10 @@
 import { defineStore } from 'pinia'
 
 import router from '@/router'
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 export default defineStore('routing', {
   state: () => ({
-    localStore: store.config.localStore(),
-    headerStore: store.ui.headerStore(),
-    navigationStore: store.ui.navigationStore(),
-    rolesStore: store.rolesStore(),
-    userStore: store.userStore(),
-
     route: {
       previous: null,
       current: null
@@ -19,8 +13,11 @@ export default defineStore('routing', {
 
   actions: {
     async init() {
-      this.localStore.init()
-      await this.userStore.rehydrateUserFromToken()
+      const localStore = stores.config.localStore()
+      const userStore = stores.userStore()
+      
+      await localStore.init()
+      await userStore.rehydrateUserFromToken()
 
       return new Promise((resolve, reject) => {
         this.route.current = router.currentRoute.value.name
@@ -33,12 +30,14 @@ export default defineStore('routing', {
     },
 
     async navigateToRoute(route) {
+      const navStore = stores.ui.navigationStore()
+
       const toRoute = route.to.name
       const fromRoute = route.from.name
 
-      if (this.navigationStore.openState) this.navigationStore.disableNavigation()
+      if (navStore.openState) navStore.disableNavigation()
 
-      this.navigationStore.hideNavigation()
+      navStore.hideNavigation()
 
       // Abort if incoming route is same as current current route
       if (toRoute === fromRoute) return
@@ -61,20 +60,14 @@ export default defineStore('routing', {
     },
 
     enterRoute(route) {
+      const headerStore = stores.ui.headerStore()
+
       if (route !== 'home') {
-        this.headerStore.showHeader()
+        headerStore.showHeader()
       } else {
-        this.headerStore.hideHeader()
+        headerStore.hideHeader()
       }
     },
-
-    // enterProject() {},
-
-    enterRoles() {
-      this.rolesStore.fetchRoles()
-    },
-
-    // enterRole() {},
 
     previousPage() {
       router.go(-1)
@@ -86,6 +79,19 @@ export default defineStore('routing', {
 
     setPreviousRoute(route) {
       this.route.previous = route
+    },
+
+    // ================================================
+    // ROUTES
+    // ================================================
+    enterProjectsRoute() {
+      const projectsStore = stores.projectsStore()
+      projectsStore.fetchProjects()
+    },
+
+    enterRolesRoute() {
+      const rolesStore = stores.rolesStore()
+      rolesStore.fetchRoles()
     }
   }
 })

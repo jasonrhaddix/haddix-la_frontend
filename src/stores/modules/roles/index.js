@@ -27,7 +27,7 @@ export default defineStore('roles', {
         const res = await api.get(`/roles`)
         this.roles = res.data
       } catch (err) {
-        // console.log(err)
+        console.log(err)
       }
     },
 

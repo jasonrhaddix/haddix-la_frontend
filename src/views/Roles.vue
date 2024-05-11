@@ -17,11 +17,11 @@
 
 import { reactive } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import CreateButton from '@/components/_global/Create_Button.vue'
 
-const rolesStore = store.rolesStore()
+const rolesStore = stores.rolesStore()
 
 const headers = reactive([
   { title: 'Job Title', value: 'job_title' },

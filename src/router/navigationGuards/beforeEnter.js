@@ -1,11 +1,11 @@
 // import store from '@/store'
 import router from '@/router'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 const beforeEnterGuard = (to, from, next) => {
-  const routingStore = store.routingStore()
-  const userStore = store.userStore()
+  const routingStore = stores.routingStore()
+  const userStore = stores.userStore()
 
   if (to.name === 'roles' && !userStore.userIsAuthenticated) {
     /* store.dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {

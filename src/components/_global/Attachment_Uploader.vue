@@ -27,10 +27,10 @@
 <script setup>
 import { ref, defineProps, defineExpose } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 // stores
-const propsStore = store.config.propsStore()
+const propsStore = stores.config.propsStore()
 
 const props = defineProps({
   attachTo: {

@@ -17,13 +17,13 @@
 </template>
 
 <script setup>
-import store from '@/stores'
+import stores from '@/stores'
 
 import SphereBG from '@/components/SphereBG/Sphere_BG.vue'
 import Logo from '@/components/AnimatedLogo/Animated_Logo.vue'
 import AppButton from '@/components/_global/App_Button.vue'
 
-const routingStore = store.routingStore()
+const routingStore = stores.routingStore()
 
 /* export default {
   name: 'home-view',

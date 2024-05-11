@@ -3,13 +3,11 @@ import { defineStore } from 'pinia'
 import api from '@/api'
 import TokenService from '@/api/auth/TokenService.js'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 export default defineStore('user', {
   // STATE
   state: () => ({
-    localStorage: store.config.localStore(),
-
     accessToken: null,
     isAuthorizing: false
   }),
@@ -49,6 +47,8 @@ export default defineStore('user', {
 
     // user logout
     async logout() {
+      const routingStore = stores.routingStore()
+
       this.isAuthorizing = true
 
       try {
@@ -62,7 +62,9 @@ export default defineStore('user', {
 
         this.accessToken = null
         TokenService.clearLocalAccessToken()
+        routingStore.pushRoute({ name: 'home' })
       } catch (err) {
+        console.log(err)
         // throw err message to user
       }
 

@@ -44,7 +44,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 import router from '@/router/index.js'
 
 import logoImage from '@/assets/app/images/header-logo.svg'
@@ -53,10 +53,10 @@ import sitenav from '@/config/sitenav.js'
 import HamburgerMenu from '@/components/_global/Hamburger_Menu.vue'
 import NavigationItem from '@/components/Navigation/Navigation_Item.vue'
 
-const userStore = store.userStore()
-const routingStore = store.routingStore()
-const headerStore = store.ui.headerStore()
-const navigationStore = store.ui.navigationStore()
+const userStore = stores.userStore()
+const routingStore = stores.routingStore()
+const headerStore = stores.ui.headerStore()
+const navigationStore = stores.ui.navigationStore()
 
 const hasAccess = computed(() => {
   return (item) => {

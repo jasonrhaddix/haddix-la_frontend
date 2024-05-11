@@ -1,5 +1,5 @@
 import api from '@/api/index.js'
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 import TokenService from '../auth/TokenService.js'
 
 export default (function () {
@@ -38,7 +38,7 @@ export default (function () {
 
             // get access token and save to store
             const { accessToken } = res.data
-            store.userStore().updateAccessTokenInState(accessToken)
+            stores.userStore().updateAccessTokenInState(accessToken)
             TokenService.updateLocalAccessToken(accessToken)
 
             return api(originalConfig)

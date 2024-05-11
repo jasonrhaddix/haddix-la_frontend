@@ -448,7 +448,7 @@ import {
 import { ref, reactive, computed, onMounted } from 'vue'
 import { uuid } from 'vue-uuid'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
 import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
@@ -457,10 +457,10 @@ import CreateResourcePicker from '@/components/Forms/CreateProject/Project/Proje
 import AppButton from '@/components/_global/App_Button.vue'
 
 // stores
-const propsStore = store.config.propsStore()
-const userStore = store.userStore()
-const projectsStore = store.projectsStore()
-const projectTreeStore = store.projectTreeStore()
+const propsStore = stores.config.propsStore()
+const userStore = stores.userStore()
+const projectsStore = stores.projectsStore()
+const projectTreeStore = stores.projectTreeStore()
 
 // refs
 const fileDragOver = ref(false)

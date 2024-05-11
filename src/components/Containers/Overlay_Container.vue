@@ -46,12 +46,12 @@
 import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import Geo from '@/assets/app/images/geo.svg'
 
-const userStore = store.userStore()
-const overlayStore = store.ui.overlayStore()
+const userStore = stores.userStore()
+const overlayStore = stores.ui.overlayStore()
 
 const loadedComponent = ref(null)
 

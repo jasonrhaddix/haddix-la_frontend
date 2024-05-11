@@ -5,11 +5,11 @@
 </template>
 
 <script setup>
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
-const userStore = store.userStore()
-const dialogStore = store.ui.dialogStore()
-const overlayStore = store.ui.overlayStore()
+const userStore = stores.userStore()
+const dialogStore = stores.ui.dialogStore()
+const overlayStore = stores.ui.overlayStore()
 
 function createClick() {
   if (userStore.userIsAuthenticated) {

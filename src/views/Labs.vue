@@ -53,13 +53,13 @@
 <script setup>
 import { computed, onMounted, onBeforeUnmount } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
 import ParticleText from '@/components/_global/Particle_Text.vue'
 import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 
-const projectsStore = store.projectsStore()
-const overlayStore = store.ui.overlayStore()
+const projectsStore = stores.projectsStore()
+const overlayStore = stores.ui.overlayStore()
 
 // #region LIFECYCLE HOOKS ------------------------------
 onMounted(() => {

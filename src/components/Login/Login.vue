@@ -47,10 +47,10 @@
 <script setup>
 import { reactive } from 'vue'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
-const loginStore = store.ui.loginStore()
-const userStore = store.userStore()
+const loginStore = stores.ui.loginStore()
+const userStore = stores.userStore()
 
 const model = reactive({
   email: null,

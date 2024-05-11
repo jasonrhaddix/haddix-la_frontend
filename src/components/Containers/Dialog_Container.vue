@@ -11,9 +11,9 @@
 import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
 
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
-const dialogStore = store.ui.dialogStore()
+const dialogStore = stores.ui.dialogStore()
 const { openState, component, width, props } = storeToRefs(dialogStore)
 
 const loadedComponent = ref(null)

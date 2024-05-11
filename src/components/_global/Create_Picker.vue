@@ -27,10 +27,10 @@
 </template>
 
 <script setup>
-import store from '@/stores/index.js'
+import stores from '@/stores/index.js'
 
-const typesStore = store.config.typesStore()
-const overlayStore = store.ui.overlayStore()
+const typesStore = stores.config.typesStore()
+const overlayStore = stores.ui.overlayStore()
 
 function openForm(type) {
   switch (type) {
