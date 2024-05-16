@@ -18,6 +18,7 @@ export default defineStore('routing', {
       
       await localStore.init()
       await userStore.rehydrateUserFromToken()
+      await userStore.createSessionToken()
 
       return new Promise((resolve, reject) => {
         this.route.current = router.currentRoute.value.name

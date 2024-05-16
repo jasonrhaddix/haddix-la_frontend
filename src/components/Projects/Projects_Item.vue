@@ -47,7 +47,7 @@
             <h4>{{ title }}</h4>
             <h5>{{ subtitle }}</h5>
             <div v-if="clickCallback || link" class="divider" />
-            <app-btn
+            <AppButton
               v-if="clickCallback || link"
               label="View Project"
               @click.native.stop="clickItem"
@@ -59,12 +59,76 @@
   </div>
 </template>
 
-<script>
-// import detectImageDark from '@/js/detectImageDark'
+<script setup>
+import { defineProps } from 'vue'
 
 import AppButton from '@/components/_global/App_Button.vue'
 
-export default {
+import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.jpg'
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+    default: null
+  },
+  sessionId: {
+    type: String,
+    required: false,
+    default: null
+  },
+  client: {
+    type: String,
+    required: true,
+    default: null
+  },
+  title: {
+    type: String,
+    required: true,
+    default: null
+  },
+  subtitle: {
+    type: String,
+    required: true,
+    default: null
+  },
+  image: {
+    type: [String, null],
+    required: false,
+    default: placeholderImg
+  },
+  link: {
+    type: String,
+    required: false,
+    default: null
+  },
+  clickCallback: {
+    type: [Function, Promise],
+    required: false,
+    default: null
+  }
+})
+
+function clickItem() {
+  console.log(props.image)
+  if (props.clickCallback) {
+    props.clickCallback({
+      project_id: props.id,
+      session_id: props.sessionId,
+      is_guest_project: props.isGuestProject,
+      title: props.title
+    })
+  } else {
+    var win = window.open(props.link, '_blank')
+    win.focus()
+  }
+}
+
+
+
+// import detectImageDark from '@/js/detectImageDark'
+
+/* export default {
   name: 'projects-item',
 
   components: {
@@ -117,22 +181,22 @@ export default {
   data: () => ({
     // hue: null,
     // visible: null
-    /* hover: false,
-		patterns: [
-			{
-				p: [
-					'0% 0%, 20% 50%, 0% 100%',
-					'0% 0%, 20% 0%, 50% 20%, 20% 50%',
-					'20% 0%, 75% 0%, 50% 20%',
-					'75% 0%, 100% 0%, 100% 20%, 90% 50%, 50% 20%',
-					'50% 20%, 90% 50%, 75% 100%, 60% 100%, 20% 50%',
-					'100% 20%, 100% 57%, 90% 50%',
-					'90% 50%, 100% 57%, 100% 100%, 75% 100%',
-					'20% 50%, 60% 100% , 75% 100%, 0% 100%'
-				]
+    // hover: false,
+		// patterns: [
+		// 	{
+		// 		p: [
+		// 			'0% 0%, 20% 50%, 0% 100%',
+		// 			'0% 0%, 20% 0%, 50% 20%, 20% 50%',
+		// 			'20% 0%, 75% 0%, 50% 20%',
+		// 			'75% 0%, 100% 0%, 100% 20%, 90% 50%, 50% 20%',
+		// 			'50% 20%, 90% 50%, 75% 100%, 60% 100%, 20% 50%',
+		// 			'100% 20%, 100% 57%, 90% 50%',
+		// 			'90% 50%, 100% 57%, 100% 100%, 75% 100%',
+		// 			'20% 50%, 60% 100% , 75% 100%, 0% 100%'
+		// 		]
 
-			}
-		] */
+		// 	}
+		// ]
   }),
 
   mounted() {
@@ -140,11 +204,11 @@ export default {
   },
 
   methods: {
-    /* setHue (val) { this.hue = val },
+    // setHue (val) { this.hue = val },
 
-		itemHover (val) {
-			this.hover = val
-		}, */
+		// itemHover (val) {
+		// 	this.hover = val
+		// },
 
     clickItem() {
       if (this.clickCallback) {
@@ -160,5 +224,5 @@ export default {
       }
     }
   }
-}
+} */
 </script>

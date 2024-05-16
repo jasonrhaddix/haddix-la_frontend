@@ -75,6 +75,28 @@ export default defineStore('props', {
       { title: 'PHP', value: 'php' }
     ],
 
+    projectYears: [
+      '2007',
+      '2008',
+      '2009',
+      '2010',
+      '2011',
+      '2012',
+      '2013',
+      '2014',
+      '2015',
+      '2015',
+      '2016',
+      '2017',
+      '2018',
+      '2019',
+      '2020',
+      '2021',
+      '2022',
+      '2023',
+      '2024'
+    ],
+
     projectResources: [
       { id: 1, value: 'Adobe After Effects CC' },
       { id: 2, value: 'Abode AIR' },

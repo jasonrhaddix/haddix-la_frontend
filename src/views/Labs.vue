@@ -127,7 +127,7 @@ const getClientName = computed((client) => {
 })
 
 const getThumbnailImage = computed((id) => {
-  let images = this.attachmentsByUsageType(
+  let images = projectsStore.attachmentsByUsageType(
     typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
     'projects',
     id

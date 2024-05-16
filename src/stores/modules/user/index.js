@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { uuid } from 'vue-uuid'
 
 import api from '@/api'
 import TokenService from '@/api/auth/TokenService.js'
@@ -9,6 +10,7 @@ export default defineStore('user', {
   // STATE
   state: () => ({
     accessToken: null,
+    sessionToken: null, // used for guest project creation, not for auth
     isAuthorizing: false
   }),
 
@@ -52,13 +54,7 @@ export default defineStore('user', {
       this.isAuthorizing = true
 
       try {
-        await api.post(
-          `/auth/logout`,
-          {},
-          {
-            withCredentials: true
-          }
-        )
+        await api.post( `/auth/logout`, {}, { withCredentials: true })
 
         this.accessToken = null
         TokenService.clearLocalAccessToken()
@@ -76,6 +72,10 @@ export default defineStore('user', {
 
       this.accessToken = accessToken
       TokenService.updateLocalAccessToken(accessToken)
+    },
+
+    createSessionToken() {
+      this.sessionToken = uuid.v4()
     }
   }
 })

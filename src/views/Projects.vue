@@ -15,28 +15,73 @@
     <div v-if="projectsStore.hasProjects" class="projects__list">
       <projects-item
         v-for="(item, i) in filteredProjects"
-        :key="`project-${item.project_id}-${i}`"
-        :id="item.project_id"
-        :session-id="item.session_id"
+        :key="`project-${item.projectId}-${i}`"
+        :id="item.projectId"
+        :session-id="item.sessionId"
         :client="getClientName(item.client)"
         :title="item.title"
         :subtitle="item.subtitle"
-        :is-guest-project="item.is_guest_project"
+        :is-guest-project="item.isGuestProject"
         :click-callback="navigateToProject"
-        :image="getThumbnailImage(item.project_id)"
+        :image="getThumbnailImage(item.projectId)"
       />
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 import stores from '@/stores/index.js'
 
 import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
+const propsStore = stores.config.propsStore()
+const typesStore = stores.config.typesStore()
+const routingStore = stores.routingStore()
 const projectsStore = stores.projectsStore()
+const userStore = stores.userStore()
 // const overlayStore = stores.ui.overlayStore()
+
+const filteredProjects = computed(() => {
+  return projectsStore.projects.filter((p) => {
+    if (
+      p.type !== typesStore.PROJECT_TYPE__EXPERIMENT
+        && (!p.isGuestProject || p.sessionId === userStore.sessionId)
+    )
+      return p
+  })
+})
+
+const getThumbnailImage = computed(() => {
+  return (id) => {
+    let images = projectsStore.attachmentsByUsageType(
+      typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
+      'projects',
+      id
+    )
+    
+    return images[0]?.uri
+  }
+})
+
+const getClientName = computed(() => {
+  return (clientValue) => {
+    if (!clientValue) return ''
+    return propsStore.projectClients.find(item => item.value === clientValue).title
+  }
+})
+
+
+function navigateToProject(data) {
+  routingStore.navigateToRoute({
+    name: 'project-details',
+    params: data
+  })
+}
+
+
 
 /* function addProject () {
   

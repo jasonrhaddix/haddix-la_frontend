@@ -1,8 +1,8 @@
 import AWS from 'aws-sdk'
 
-const bucketName = process.env.VUE_APP_AWS_BUCKET_NAME || 'test'
-const bucketRegion = process.env.VUE_APP_AWS_BUCKET_REGION || 'test'
-const IdentityPoolId = process.env.VUE_APP_AWS_IDENTITY_POOL_ID || 'test'
+const bucketName = import.meta.env.VITE_AWS_BUCKET_NAME
+const bucketRegion = import.meta.env.VITE_AWS_BUCKET_REGION
+const IdentityPoolId = import.meta.env.VITE_AWS_BUCKET_IDENTITY_POOL_ID
 
 // Configure the AWS Instance
 AWS.config.update({

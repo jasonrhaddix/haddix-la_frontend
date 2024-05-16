@@ -6,6 +6,10 @@ import propsStore from './modules/config/properties.js'
 import typesStore from './modules/config/types.js'
 import utilsStore from './modules/config/utils.js'
 
+// S3
+import uploadManagerStore from './modules/uploadManager/index.js'
+import s3UploadStore from './modules/uploadManager/s3Upload.js'
+
 //
 import userStore from './modules/user/index.js'
 import contactStore from './modules/contact/index.js'
@@ -30,6 +34,11 @@ export default {
     propsStore,
     typesStore,
     utilsStore
+  },
+
+  s3: {
+    uploadManagerStore,
+    s3UploadStore
   },
 
   // ui modules

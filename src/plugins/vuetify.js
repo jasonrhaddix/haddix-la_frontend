@@ -1,28 +1,22 @@
-// import '@mdi/font/css/materialdesignicons.css'
-import 'vuetify/lib/styles/main.sass'
-// import colors from 'vuetify/lib/util/colors'
 import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-// import * as components from 'vuetify/lib/components'
-// import * as directives from 'vuetify/lib/directives'
-import { aliases, md } from 'vuetify/iconsets/md'
 
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+import { aliases, md } from 'vuetify/iconsets/md'
 import { VTreeview } from 'vuetify/labs/VTreeview'
 
-// import { VDataTable } from 'vuetify/labs/VDataTable'
-// import { VDatePicker } from 'vuetify/labs/VDatePicker'
+import 'vuetify/lib/styles/main.sass'
 
 export default createVuetify({
+  directives,
   components: {
     ...components,
     VTreeview
-    // VDatePicker
-    // VDataTable // TODO: Pre-prod feature!!!
   },
-  // directives,
 
   icons: {
-    defaultSet: 'md', // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
+    defaultSet: 'md',
     aliases,
     sets: {
       md
