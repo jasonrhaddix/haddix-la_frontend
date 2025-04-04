@@ -28,7 +28,7 @@ export default defineStore('user', {
         const res = await api.post(`/auth/tokenrefresh`, {}, { withCredentials: true })
         this.updateAccessTokenInState(res.data?.accessToken)
       } catch (err) {
-        console.log('cannot rehydrate from token')
+        console.error('cannot rehydrate from token')
       }
     },
 
@@ -41,7 +41,7 @@ export default defineStore('user', {
         this.updateAccessTokenInState(res.data?.accessToken)
       } catch (err) {
         // throw err message to user
-        console.log(err)
+        console.error(err)
       }
 
       this.isAuthorizing = false
@@ -60,7 +60,7 @@ export default defineStore('user', {
         TokenService.clearLocalAccessToken()
         routingStore.pushRoute({ name: 'home' })
       } catch (err) {
-        console.log(err)
+        console.error(err)
         // throw err message to user
       }
 

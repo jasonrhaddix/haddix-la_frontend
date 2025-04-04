@@ -6,26 +6,27 @@ import stores from '@/stores'
 export default defineStore('projects', {
   state: () => ({
     projects: [],
+    project: {},
 
     loading: false,
     saving: false
   }),
 
   getters: {
-    sortedProjects: (state) => (sortedProp, direction) => {
+    /* sortedProjects: (state) => (sortedProp, direction) => {
       return _sort(state.projects, [sortedProp], direction)
-    },
+    }, */
 
     hasProjects:(state) => state.projects.length,
     
     projectsLoading:(state) => state.loading,
 
     attachmentsByUsageType: (state) => (type = null, obj = null, id = null) => {
-      console.log(state.projects)
-      if (!type || !obj) return []
+      // console.log(state.projects)
+      if (!type || !obj || !id) return []
   
       let attachments = (obj === 'projects')
-        ? state.projects.find(p => p.projectId === id).attachments
+        ? state.projects.find(p => p.projectId === id)?.attachments
         : state.project.attachments
   
       if (!attachments || attachments.length === 0) return []
@@ -39,7 +40,16 @@ export default defineStore('projects', {
         const res = await api.get(`/projects`)
         this.projects = res.data
       } catch (err) {
-        console.log(err)
+        console.error(err)
+      }
+    },
+
+    async fetchProjectById(id) {
+      try {
+        const res = await api.get(`/projects/${id}`)
+        this.project = res.data
+      } catch (err) {
+        console.error(err)
       }
     },
 
@@ -55,7 +65,7 @@ export default defineStore('projects', {
           sessionId: userStore.sessionToken
         })
 
-        this.projects.push(res.data)
+        this.projects.unshift(res.data)
 
         overlayStore.hideOverlay()
         //show success

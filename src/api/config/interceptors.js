@@ -43,7 +43,7 @@ export default (function () {
 
             return api(originalConfig)
           } catch (_error) {
-            console.log(_error)
+            console.error(_error)
             return Promise.reject(_error)
           }
         }

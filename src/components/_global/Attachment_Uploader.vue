@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineExpose, reactive } from 'vue'
+import { ref, onMounted, defineExpose, reactive } from 'vue'
 import { uuid } from 'vue-uuid'
 
 import stores from '@/stores/index.js'
@@ -80,6 +80,17 @@ const previewsPending = reactive([])
 let processedFiles = reactive([])
 let files = reactive([])
 let previewLoadTicker = reactive(null)
+
+/* onMounted(() => {
+	console.log({
+		attachTo: props.attachTo,
+		fileUsageType: props.fileUsageType,
+		setProps: props.setProps,
+		multiple: props.multiple,
+		acceptedFileTypes: props.acceptedFileTypes,
+		dispatchOnItemsSelected: props.dispatchOnItemsSelected
+	})
+}) */
 
 // upload methods
 function select() {
@@ -158,6 +169,7 @@ function handleSelectedFiles(event) {
 				fr.onload = function () {
 					Object.assign(data, { preview: fr.result })
 					processedFiles.push(data)
+					console.log(data)
 				}
 
 				fr.readAsDataURL(file)

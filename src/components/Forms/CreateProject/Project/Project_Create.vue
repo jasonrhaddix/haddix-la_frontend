@@ -101,8 +101,8 @@
         <v-col class="col-12 col-md-4">
           <div class="images-section images__thumbnails">
             <div class="section__title">
-              <h3>Thumbnail</h3>
-              <p>Projects page thumbnail.</p>
+              <h3>Thumbnail Image</h3>
+              <p>Projects page thumbnail</p>
             </div>
             <div class="images__container">
               <AttachmentUploader
@@ -144,7 +144,7 @@
           <div class="images-section images__carousel">
             <div class="section__title">
               <h3>Carousel Images</h3>
-              <p>Header images.</p>
+              <p>Header images</p>
             </div>
             <div class="images__container">
               <AttachmentUploader
@@ -187,7 +187,7 @@
           <div class="images-section images__body">
             <div class="section__title">
               <h3>Body Images <span class="caption">(Optional)</span></h3>
-              <p>Project images.</p>
+              <p>Project images</p>
             </div>
 
             <div class="images__container">
@@ -497,16 +497,16 @@ const folderIcon = computed((open) => {
     return open ? faFolder: faFolderOpen
 })
 
-// medthods
-function uploadThumbnail() {
-  attachmentUploader_Thumbnail.value.select()
-}
-
 // lifecycle hooks
 onMounted(() => {
   formModel.projectId = uuid.v4()
   formModel.isGuestProject = !userStore.userIsAuthenticated
 })
+
+// medthods
+function uploadThumbnail() {
+  attachmentUploader_Thumbnail.value.select()
+}
 
 function uploadDragOver (value) {
   fileDragOver = value

@@ -11,7 +11,7 @@
           <v-select
             filled
             dense
-            label="Client"
+            label="Company"
             item-text="name"
             :items="propsStore.roleClients"
             v-model="formModel.client"
@@ -49,7 +49,7 @@
     </div>
 
     <div class="form-section create__projects">
-      <h2>Projects</h2>
+      <h2>Project Examples</h2>
 
       <div class="inner__divider" />
 

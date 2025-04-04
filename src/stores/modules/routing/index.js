@@ -90,6 +90,12 @@ export default defineStore('routing', {
       projectsStore.fetchProjects()
     },
 
+    enterProjectDetailsRoute(params) {
+      console.log('enterProjectDetailsRoute', params)
+      const projectsStore = stores.projectsStore()
+      projectsStore.fetchProjectById(params?._id)
+    },
+
     enterRolesRoute() {
       const rolesStore = stores.rolesStore()
       rolesStore.fetchRoles()

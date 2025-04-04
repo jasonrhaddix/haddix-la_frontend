@@ -7,7 +7,7 @@
     <div class="labs__header">
       <div class="header__content">
         <particle-text text="HADDIX" />
-        <p>Experiments for Jason R. Haddix</p>
+        <p>Experiments from Jason R. Haddix</p>
         <div class="scroll-arrow">
           <v-icon color="grey darken-2">keyboard_arrow_down</v-icon>
         </div>
@@ -58,6 +58,7 @@ import stores from '@/stores/index.js'
 import ParticleText from '@/components/_global/Particle_Text.vue'
 import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 
+const typesStore = stores.config.typesStore()
 const projectsStore = stores.projectsStore()
 const overlayStore = stores.ui.overlayStore()
 
@@ -114,7 +115,7 @@ const projects = projectsStore.projects
 const filteredProjects = computed(() => {
   projects.filter((p) => {
     if (
-      p.type === HADDIX_PROJECT_TYPE__EXPERIMENT &&
+      p.type === typesStore.PROJECT_TYPE__EXPERIMENT &&
       (!p.is_guest_project || p.session_id === this.sessionId)
     )
       return p

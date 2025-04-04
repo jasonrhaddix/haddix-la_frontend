@@ -64,8 +64,8 @@ export default defineStore('s3Upload', {
 
 			var params = {
 				Key: destinationFileKey,
-				Body: payload.file,
-				ACL: 'public-read'
+				Body: payload.file
+				// ACL: 'public-read' // causes an upload error
 			}
 	
 			var options = {
@@ -105,6 +105,7 @@ export default defineStore('s3Upload', {
 		},
 
 		requestSuccess(payload) {
+			console.log('requestSuccess', payload)
 			const typesStore = stores.config.typesStore()
 			const uploadManagerStore = stores.s3.uploadManagerStore()
 
@@ -150,6 +151,7 @@ export default defineStore('s3Upload', {
 				session_id: userStore.accessToken
 			}
 
+			console.log(data)
 			api.post(`/attachments`, data).then(response => {
 				uploadManagerStore.changeStatus({
 					hashId: payload.hashId,

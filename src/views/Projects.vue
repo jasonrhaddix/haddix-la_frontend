@@ -13,10 +13,11 @@
       />
     </div>
     <div v-if="projectsStore.hasProjects" class="projects__list">
-      <projects-item
+      <project-item
         v-for="(item, i) in filteredProjects"
         :key="`project-${item.projectId}-${i}`"
-        :id="item.projectId"
+        :_id="item._id"
+        :project-id="item.projectId"
         :session-id="item.sessionId"
         :client="getClientName(item.client)"
         :title="item.title"
@@ -34,7 +35,7 @@ import { computed } from 'vue'
 
 import stores from '@/stores/index.js'
 
-import ProjectsItem from '@/components/Projects/Projects_Item.vue'
+import ProjectItem from '@/components/Projects/Project_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
 const propsStore = stores.config.propsStore()
@@ -45,13 +46,13 @@ const userStore = stores.userStore()
 // const overlayStore = stores.ui.overlayStore()
 
 const filteredProjects = computed(() => {
-  return projectsStore.projects.filter((p) => {
+  return projectsStore.projects.filter(p => {
     if (
       p.type !== typesStore.PROJECT_TYPE__EXPERIMENT
-        && (!p.isGuestProject || p.sessionId === userStore.sessionId)
+      && (!p.isGuestProject || p.sessionId === userStore.sessionToken)
     )
       return p
-  })
+  })/* .sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated)); */
 })
 
 const getThumbnailImage = computed(() => {
@@ -69,13 +70,13 @@ const getThumbnailImage = computed(() => {
 const getClientName = computed(() => {
   return (clientValue) => {
     if (!clientValue) return ''
-    return propsStore.projectClients.find(item => item.value === clientValue).title
+    return propsStore.projectClients.find(item => item.value === clientValue)?.title || clientValue
   }
 })
 
 
 function navigateToProject(data) {
-  routingStore.navigateToRoute({
+  routingStore.pushRoute({
     name: 'project-details',
     params: data
   })
@@ -119,7 +120,7 @@ function navigateToProject(data) {
     filteredProjects() {
       return this.projects.filter((p) => {
         if (
-          p.type !== HADDIX_PROJECT_TYPE__EXPERIMENT &&
+          p.type !== PROJECT_TYPE__EXPERIMENT &&
           (!p.is_guest_project || p.session_id === this.sessionId)
         )
           return p

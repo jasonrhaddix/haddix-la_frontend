@@ -60,18 +60,21 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 import AppButton from '@/components/_global/App_Button.vue'
 
 import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.jpg'
 
 const props = defineProps({
-  id: {
+  _id: {
     type: String,
     required: true,
     default: null
   },
+  /* projectId: {
+    type: String,
+    required: true,
+    default: null
+  }, */
   sessionId: {
     type: String,
     required: false,
@@ -89,7 +92,7 @@ const props = defineProps({
   },
   subtitle: {
     type: String,
-    required: true,
+    required: false,
     default: null
   },
   image: {
@@ -110,12 +113,12 @@ const props = defineProps({
 })
 
 function clickItem() {
-  console.log(props.image)
   if (props.clickCallback) {
     props.clickCallback({
-      project_id: props.id,
-      session_id: props.sessionId,
-      is_guest_project: props.isGuestProject,
+      _id: props._id,
+      // projectId: props.projectId,
+      sessionId: props.sessionId,
+      isGuestProject: props.isGuestProject,
       title: props.title
     })
   } else {
