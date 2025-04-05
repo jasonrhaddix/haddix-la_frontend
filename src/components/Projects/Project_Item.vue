@@ -36,19 +36,19 @@
             </div> -->
 
       <div class="image__main">
-        <v-img eager contain :src="image"></v-img>
+        <v-img eager contain :src="data?.attachments.thumbnail[0].uri"></v-img>
         <div class="scrim" />
       </div>
 
       <div class="title-container">
         <div class="title-inner">
           <div class="project-title">
-            <p>{{ client }}</p>
-            <h4>{{ title }}</h4>
-            <h5>{{ subtitle }}</h5>
-            <div v-if="clickCallback || link" class="divider" />
+            <p>{{ data.client }}</p>
+            <h4>{{ data.title }}</h4>
+            <h5>{{ data.subtitle }}</h5>
+            <div v-if="clickCallback || data.link" class="divider" />
             <AppButton
-              v-if="clickCallback || link"
+              v-if="clickCallback || data.link"
               label="View Project"
               @click.native.stop="clickItem"
             />
@@ -60,51 +60,17 @@
 </template>
 
 <script setup>
+import { onMounted} from 'vue'
 import AppButton from '@/components/_global/App_Button.vue'
 
 import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.jpg'
 
 const props = defineProps({
-  _id: {
-    type: String,
-    required: true,
-    default: null
+  data: {
+    type: Object,
+    default: () => {}
   },
-  /* projectId: {
-    type: String,
-    required: true,
-    default: null
-  }, */
-  sessionId: {
-    type: String,
-    required: false,
-    default: null
-  },
-  client: {
-    type: String,
-    required: true,
-    default: null
-  },
-  title: {
-    type: String,
-    required: true,
-    default: null
-  },
-  subtitle: {
-    type: String,
-    required: false,
-    default: null
-  },
-  image: {
-    type: [String, null],
-    required: false,
-    default: placeholderImg
-  },
-  link: {
-    type: String,
-    required: false,
-    default: null
-  },
+
   clickCallback: {
     type: [Function, Promise],
     required: false,
@@ -115,17 +81,18 @@ const props = defineProps({
 function clickItem() {
   if (props.clickCallback) {
     props.clickCallback({
-      _id: props._id,
-      // projectId: props.projectId,
-      sessionId: props.sessionId,
-      isGuestProject: props.isGuestProject,
-      title: props.title
+      _id: props.data?._id,
+      projectId: props.data?.projectId,
+      sessionId: props.data?.sessionId,
+      isGuestProject: props.data?.isGuestProject,
+      title: props.data?.title
     })
   } else {
     var win = window.open(props.link, '_blank')
     win.focus()
   }
 }
+
 
 
 
@@ -216,7 +183,7 @@ function clickItem() {
     clickItem() {
       if (this.clickCallback) {
         this.clickCallback({
-          project_id: this.id,
+          projectId: this.id,
           session_id: this.sessionId,
           is_guest_project: this.isGuestProject,
           title: this.title

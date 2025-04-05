@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import hash from 'object-hash'
-import isEqual from 'lodash.isequal'
+import _pick from 'lodash.pick'
+import _isEqual from 'lodash.isequal'
 
 import stores from '@/stores'
 
@@ -8,19 +9,19 @@ export default defineStore('uploadManage', {
 	state: () => ({
 		fileHash: {},
 
-		filesHolding: [], // Files added from upload but holding for user input | comment attachment usage
-		filesQueued: [], // Files ready to be processed
-		filesAttaching: [], // ONLY used for file that are being attached and NOT uploaded
-		filesUploading: [], // Files that are being uploaded
-		filesProcessing: [], // Files currently being processed; Signal from BE not implemented yet, v2.1
-		filesCompleted: [], // Successfully uploaded files
-		filesFailed: [] // File that failed upload
+		filesHolding: [], // files added from upload but holding for user input | comment attachment usage
+		filesQueued: [], // files ready to be processed
+		filesAttaching: [], // ONLY used for files that are being attached and NOT uploaded
+		filesUploading: [], // files that are being uploaded
+		filesProcessing: [], // files currently being processed; Signal from BE not implemented yet, v2.1
+		filesCompleted: [], // successfully uploaded files
+		filesFailed: [] // file that failed upload
 	}),
 
 	getters: {
 		getHoldingFiles () {
 			return params => this.filesHolding.map(hashId => this.fileHash[hashId]).reduce(function (filtered, fileObject) {
-				if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+				if (!params || _isEqual(fileObject.attachTo, params.attachTo)) {
 					filtered.push(fileObject)
 				}
 				return filtered
@@ -29,7 +30,7 @@ export default defineStore('uploadManage', {
 	
 		getQueuedFiles () {
 			return params => this.filesQueued.map(hashId => this.fileHash[hashId]).reduce(function (filtered, fileObject) {
-				if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+				if (!params || _isEqual(fileObject.attachTo, params.attachTo)) {
 					filtered.push(fileObject)
 				}
 				return filtered
@@ -38,7 +39,7 @@ export default defineStore('uploadManage', {
 	
 		getUploadingFiles () {
 			return params => this.filesUploading.map(hashId => this.fileHash[hashId]).reduce(function (filtered, fileObject) {
-				if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+				if (!params || _isEqual(fileObject.attachTo, params.attachTo)) {
 					filtered.push(fileObject)
 				}
 				return filtered
@@ -47,7 +48,7 @@ export default defineStore('uploadManage', {
 	
 		getProcessingFiles () {
 			return params => this.filesProcessing.map(hashId => this.fileHash[hashId]).reduce(function (filtered, fileObject) {
-				if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+				if (!params || _isEqual(fileObject.attachTo, params.attachTo)) {
 					filtered.push(fileObject)
 				}
 				return filtered
@@ -56,7 +57,7 @@ export default defineStore('uploadManage', {
 	
 		getCompletedFiles () {
 			return params => this.filesCompleted.map(hashId => this.fileHash[hashId]).reduce(function (filtered, fileObject) {
-				if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+				if (!params || _isEqual(fileObject.attachTo, params.attachTo)) {
 					filtered.push(fileObject)
 				}
 				return filtered
@@ -87,6 +88,7 @@ export default defineStore('uploadManage', {
 				fileObj.addedToQueue = Date.now()
 
 				this.fileHash[hashId] = fileObj
+
 				/* await commit(VUEX_ATTACHMENT_QUEUE_MANAGER_HASH_PUSH_FILE, {
 					key: hashId,
 					val: fileObj
@@ -141,7 +143,7 @@ export default defineStore('uploadManage', {
 			const typesStore = stores.config.typesStore()
 
 			// Save the deets to the object before continuing (status, URI, etc)
-			this.fileHash[payload.hashId].upload_status = payload.status
+			this.fileHash[payload.hashId].uploadStatus = payload.status
 			this.fileHash[payload.hashId].uri = payload.uri ? payload.uri : null
 			
 			if (payload.status === typesStore.REQUEST_STATUS__SUCCESS) {
@@ -248,7 +250,7 @@ const state = {
 const getters = {
 	getHoldingFiles (state) {
 		return params => state.filesHolding.map(hashId => state.fileHash[hashId]).reduce(function (filtered, fileObject) {
-			if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+			if (!params || isEqual(fileObject.attachTo, params.attachTo)) {
 				filtered.push(fileObject)
 			}
 			return filtered
@@ -257,7 +259,7 @@ const getters = {
 
 	getQueuedFiles (state) {
 		return params => state.filesQueued.map(hashId => state.fileHash[hashId]).reduce(function (filtered, fileObject) {
-			if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+			if (!params || isEqual(fileObject.attachTo, params.attachTo)) {
 				filtered.push(fileObject)
 			}
 			return filtered
@@ -266,7 +268,7 @@ const getters = {
 
 	getUploadingFiles (state) {
 		return params => state.filesUploading.map(hashId => state.fileHash[hashId]).reduce(function (filtered, fileObject) {
-			if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+			if (!params || isEqual(fileObject.attachTo, params.attachTo)) {
 				filtered.push(fileObject)
 			}
 			return filtered
@@ -275,7 +277,7 @@ const getters = {
 
 	getProcessingFiles (state) {
 		return params => state.filesProcessing.map(hashId => state.fileHash[hashId]).reduce(function (filtered, fileObject) {
-			if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+			if (!params || isEqual(fileObject.attachTo, params.attachTo)) {
 				filtered.push(fileObject)
 			}
 			return filtered
@@ -284,7 +286,7 @@ const getters = {
 
 	getCompletedFiles (state) {
 		return params => state.filesCompleted.map(hashId => state.fileHash[hashId]).reduce(function (filtered, fileObject) {
-			if (!params || isEqual(fileObject.attach_to, params.attach_to)) {
+			if (!params || isEqual(fileObject.attachTo, params.attachTo)) {
 				filtered.push(fileObject)
 			}
 			return filtered
@@ -434,7 +436,7 @@ const mutations = {
 
 	// Once the S3 upload is complete, we store the result
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT]: (state, payload) => {
-		state.fileHash[payload.hashId].upload_status = payload.status
+		state.fileHash[payload.hashId].uploadStatus = payload.status
 		state.fileHash[payload.hashId].uri = payload.uri ? payload.uri : null
 	},
 

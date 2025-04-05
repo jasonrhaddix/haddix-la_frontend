@@ -210,11 +210,44 @@
 </template>
 
 <script setup>
-	import { computed } from 'vue'
+	import { ref, computed } from 'vue'
 
 	import stores from '@/stores/index.js'
 
+	import AppButton from '@/components/_global/App_Button.vue'
+	import LanguageGraph from '@/components/_global/Language_Graph.vue'
+
+	const projectsStore = stores.projectsStore()
 	
+	const treeFoldersOpen = ref([1])
+	const treeOptions = ref({
+		fileIcons: {
+			css: { prefix: 'fab', icon: 'css3' },
+			fav: { prefix: 'fas', icon: 'star' },
+			group: { prefix: 'fas', icon: 'ellipsis-h' },
+			html: { prefix: 'fab', icon: 'html5' },
+			image: { prefix: 'fas', icon: 'file-image' },
+			js: { prefix: 'fab', icon: 'js' },
+			json: { prefix: 'fas', icon: 'code' },
+			md: { prefix: 'fab', icon: 'markdown' },
+			node: { prefix: 'fab', icon: 'node-js' },
+			pdf: { prefix: 'fas', icon: 'file-pdf' },
+			vieo: { prefix: 'fas', icon: 'file-video' },
+			vue: { prefix: 'fab', icon: 'vuejs' },
+			yarn: { prefix: 'fab', icon: 'yarn' }
+		}
+	})
+
+	const headerImage = computed(() => {
+		let images = null // stores.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details') // DO I NEED THIS?
+		return (images && images.length > 0)
+			? images[0].uri
+			: '@/assets/app/images/project-placeholder-thumb.jpg'
+	})
+
+	const project = computed(() => {
+		return projectsStore.project
+	})
 </script>
 
 
@@ -354,7 +387,7 @@ export default {
 				width: '80%',
 				props: {
 					images: this.photos,
-					startImageId: item.attachment_id
+					startImageId: item.attachmentId
 				}
 			})
 		}

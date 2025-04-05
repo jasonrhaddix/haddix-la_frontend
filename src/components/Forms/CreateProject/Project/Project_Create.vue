@@ -108,7 +108,7 @@
               <AttachmentUploader
                 ref="attachmentUploader_Thumbnail"
                 :attach-to="getAttachTo"
-                :file-usage-type="'thumbnail'"
+                file-usage-type="thumbnail"
               />
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
@@ -151,7 +151,7 @@
                 multiple
                 ref="attachmentUploader_Carousel"
                 :attach-to="getAttachTo"
-                :file-usage-type="'carousel'"
+                file-usage-type="carousel"
               />
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
@@ -195,7 +195,7 @@
                 multiple
                 ref="attachmentUploader_Body"
                 :attach-to="getAttachTo"
-                :file-usage-type="'body'"
+                file-usage-type="body"
               />
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
@@ -243,7 +243,7 @@
             ref="attachmentUploader_Video"
             :attach-to="getAttachTo"
             :accepted-file-types="['video/mp4']"
-            :file-usage-type="'video'"
+            file-usage-type="video"
           />
           <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
             <div
@@ -393,6 +393,7 @@
 </template>
 
 <script setup>
+import _pick from 'lodash.pick'
 import { ref, reactive, computed, onMounted } from 'vue'
 import { uuid } from 'vue-uuid'
 
@@ -462,36 +463,8 @@ const projectYears = computed(() => {
 
 const getAttachTo = computed(() => ({ 
   model: typesStore.ATTACHMENT_TYPE__PROJECT,
-  model_id: formModel.projectId
+  modelId: formModel.projectId
 }))
-
-const fileAttachments = computed(() => {
-  return (usageType, singleReturn) => {
-    let files = []
-
-    let paramsWithId = {
-      attach_to: {
-        model_id: formModel.projectId,
-        model: typesStore.ATTACHMENT_TYPE__PROJECT
-      }
-    }
-
-    files = files
-      .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
-      .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
-      .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
-      .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
-
-    files.sort(function (a, b) {
-      return a.addedToQueue - b.addedToQueue
-    })
-
-    let filteredFiles = files.filter(file => file.usage_type === usageType)
-
-    if (filteredFiles.length === 0) return []
-    return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
-  }
-})
 
 const folderIcon = computed((open) => {
     return open ? faFolder: faFolderOpen
@@ -509,12 +482,38 @@ function uploadThumbnail() {
 }
 
 function uploadDragOver (value) {
-  fileDragOver = value
+  fileDragOver.value = value
 }
 
 function dropFiles (event) {
-  fileDragOver = false
+  fileDragOver.value = false
   // this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files) // <--------------------------- MAKE THIS WORK (refs?)
+}
+
+function fileAttachments (usageType, singleReturn) {
+    let files = []
+
+    let paramsWithId = {
+      attachTo: {
+        modelId: formModel.projectId,
+        model: typesStore.ATTACHMENT_TYPE__PROJECT
+      }
+    }
+
+    files = files
+      .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
+      .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
+      .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
+      .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
+
+    files.sort(function (a, b) {
+      return a.addedToQueue - b.addedToQueue
+    })
+
+    let filteredFiles = files?.filter(file => file.usageType === usageType) || []
+
+    if (filteredFiles.length === 0) return []
+    return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
 }
 
 function addLanguage () {
@@ -570,16 +569,35 @@ function submitForm () {
       formModel[k] === undefined ||
       formModel[k].length === 0) delete formModel[k]
   })
-
-  // let [projectDateYear, projectDateMonth] = formModel.project_date.split('-')
+   
+  // addedToQueue: 1743825149313
+  // attachTo: {model: 'app_project', modelId: '8a1182e9-99c9-40b5-9e90-b60be176ea32'}
+  // file: File {name: 'thumb-1', lastModified: 1566157675000, lastModifiedDate: Sun Aug 18 2019 12:47:55 GMT-0700 (Pacific Daylight Time), webkitRelativePath: '', size: 210110, …}
+  // fileId: "47bb49dd-af26-4550-a740-79ba6283a32b"
+  // filemeta: {hashId: '79743f79ee28ca37708c3090f18f215bfd1dd297'}
+  // filename: "thumb-1"
+  // hashId: "79743f79ee28ca37708c3090f18f215bfd1dd297"
+  // key: "files/8a1182e9-99c9-40b5-9e90-b60be176ea32/47bb49dd-af26-4550-a740-79ba6283a32b_thumb-1"
+  // preview: "data:application/octet-stream;base64,/9j/4QAYRXhp
+  // progress: {loaded: 210110, total: 210110}
+  // projectId: "8a1182e9-99c9-40b5-9e90-b60be176ea32"
+  // status: "success"
+  // uploadStatus: "success"
+  // uri: "https://haddix-la--attachments.s3.us-east-2.amazonaws.com/files/8a1182e9-99c9-40b5-9e90-b60be176ea32/47bb49dd-af26-4550-a740-79ba6283a32b_thumb-1"
+  // usageSubtype: null
+  // usageType: "thumbnail"
 
   // if (!this.$v.$invalid) {
-    projectsStore.createProject(formModel)
 
-    /* this.createProject({
-      ...formModel,
-      project_date: `${projectDateMonth}-01-${projectDateYear} 00:00:00`
-    }) */
+    const fileProps = ['key', 'uri', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType']
+    const attachments = {
+      thumbnail: fileAttachments('thumbnail', true).map(file => _pick(file, fileProps)),
+      carousel: fileAttachments('carousel').map(file => _pick(file, fileProps)),
+      body: fileAttachments('body').map(file => _pick(file, fileProps)),
+      video:fileAttachments('video').map(file => _pick(file, fileProps))
+    }
+
+    projectsStore.createProject({ ...formModel, attachments })
   // }
 }
 

@@ -30,7 +30,7 @@ export default {
 		getImage () {
 			if (this.images.hasOwnProperty('uri')) return this.images.uri
 
-			let index = this.images.findIndex(i => i.attachment_id === this.startImageId)
+			let index = this.images.findIndex(i => i.attachmentId === this.startImageId)
 			return this.images[index].uri
 		}
 	},

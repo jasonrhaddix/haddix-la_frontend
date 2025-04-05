@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineExpose, reactive } from 'vue'
+import { ref, defineExpose, reactive } from 'vue'
 import { uuid } from 'vue-uuid'
 
 import stores from '@/stores/index.js'
@@ -81,17 +81,6 @@ let processedFiles = reactive([])
 let files = reactive([])
 let previewLoadTicker = reactive(null)
 
-/* onMounted(() => {
-	console.log({
-		attachTo: props.attachTo,
-		fileUsageType: props.fileUsageType,
-		setProps: props.setProps,
-		multiple: props.multiple,
-		acceptedFileTypes: props.acceptedFileTypes,
-		dispatchOnItemsSelected: props.dispatchOnItemsSelected
-	})
-}) */
-
 // upload methods
 function select() {
   fileControl.value?.click()
@@ -120,16 +109,16 @@ function handleSelectedFiles(event) {
 	// 3) Loop through files
 	Array.prototype.forEach.call(files, (file, index) => {
 		let	data = {
-			project_id: props.attachTo.model_id,
-			file_id: uuid.v4(),
+			projectId: props.attachTo.modelId,
+			fileId: uuid.v4(),
 			file: file,
 			filename: file.name.replace(/\s/g, '_'),
-			usage_type: props.fileUsageType,
-			usage_sub_type: null,
+			usageType: props.fileUsageType,
+			usageSubtype: null,
 			progress: {},
 			status: typesStore.REQUEST_STATUS__PENDING,
-			upload_status: typesStore.REQUEST_STATUS__PENDING,
-			attach_to: props.attachTo
+			uploadStatus: typesStore.REQUEST_STATUS__PENDING,
+			attachTo: props.attachTo
 		}
 
 		// Assign props from incoming 'setProps Obj'
@@ -169,7 +158,6 @@ function handleSelectedFiles(event) {
 				fr.onload = function () {
 					Object.assign(data, { preview: fr.result })
 					processedFiles.push(data)
-					console.log(data)
 				}
 
 				fr.readAsDataURL(file)

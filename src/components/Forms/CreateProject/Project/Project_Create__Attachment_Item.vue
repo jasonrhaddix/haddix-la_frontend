@@ -3,14 +3,14 @@
         <div class="item__inner">
             <div class="item__image">
                 <video
-                    v-if="data.file.type == 'video/mp4' || data.file.type == 'video/quicktime'"
+                    v-if="data?.file.type == 'video/mp4' || data?.file.type == 'video/quicktime'"
                     autoplay loop
                     controls muted
                     :src="compileVideoSrc"></video>
 
                 <img v-else :src="data.preview" />
             </div>
-            <div :class="['item__progress', `upload_${data.upload_status}`]">
+            <div :class="['item__progress', `upload_${data.uploadStatus}`]">
                 <div
                     v-if="data.status == typesStore.REQUEST_STATUS__PENDING"
                     class="progress">

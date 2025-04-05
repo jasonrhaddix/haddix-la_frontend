@@ -35,16 +35,16 @@
     </div>
 
     <div v-if="projectsStore.hasProjects" class="projects__list">
-      <projects-item
+      <project-item
         v-for="(item, i) in filteredProjects"
-        :key="`project-${item.project_id}-${i}`"
-        :id="item.project_id"
+        :key="`project-${item.projectId}-${i}`"
+        :id="item.projectId"
         :session-id="item.session_id"
         :client="getClientName(item.client)"
         :title="item.title"
         :subtitle="item.subtitle"
         :link="item.link"
-        :image="getThumbnailImage(item.project_id)"
+        :image="getThumbnailImage(item.projectId)"
       />
     </div>
   </div>
@@ -56,7 +56,7 @@ import { computed, onMounted, onBeforeUnmount } from 'vue'
 import stores from '@/stores/index.js'
 
 import ParticleText from '@/components/_global/Particle_Text.vue'
-import ProjectsItem from '@/components/Projects/Projects_Item.vue'
+import ProjectItem from '@/components/Projects/Project_Item.vue'
 
 const typesStore = stores.config.typesStore()
 const projectsStore = stores.projectsStore()

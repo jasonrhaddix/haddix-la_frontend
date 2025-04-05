@@ -158,7 +158,7 @@
 		data: () => ({
 			blah: [],
 			model: {
-				project_id: null,
+				projectId: null,
 				title: '',
 				summary: '',
 				attachments: []
@@ -181,9 +181,9 @@
 					let files = []
 
 					let paramsWithId = {
-						attach_to: {
-							model_id: this.roleId,
-							project_id: this.model.project_id,
+						attachTo: {
+							modelId: this.roleId,
+							projectId: this.model.projectId,
 							model: HADDIX_ATTACHMENT_TYPE__NEW_ROLE
 						}
 					}
@@ -198,7 +198,7 @@
 						return a.addedToQueue - b.addedToQueue
 					})
 
-					let filteredFiles = files.filter(file => file.usage_type === usageType)
+					let filteredFiles = files.filter(file => file.usageType === usageType)
 					if (filteredFiles.length === 0) return []
 
 					let data = singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
@@ -213,33 +213,33 @@
 
 			getAttachTo () {
 				return {
-					model_id: this.roleId,
-					project_id: this.model.project_id,
+					modelId: this.roleId,
+					projectId: this.model.projectId,
 					model: HADDIX_ATTACHMENT_TYPE__NEW_ROLE
 				}
 			}
 		},
 
 		mounted () {
-			this.model.project_id = this.$uuid.v4()
+			this.model.projectId = this.$uuid.v4()
 		},
 
 		methods: {
 			addToAttachments (files) {
 				files.forEach(projectFile => {
-					let idx = this.model.attachments.findIndex(item => item.file_id === projectFile.file_id)
+					let idx = this.model.attachments.findIndex(item => item.fileId === projectFile.fileId)
 					if (idx === -1) {
 						// eslint-disable-next-line camelcase
-						const { key, uri, file_id, filename, attach_to, project_id, usage_type } = projectFile
+						const { key, uri, fileId, filename, attachTo, projectId, usageType } = projectFile
 
 						this.model.attachments.push({
 							key,
 							uri,
-							file_id,
+							fileId,
 							filename,
-							attach_to,
-							project_id,
-							usage_type
+							attachTo,
+							projectId,
+							usageType
 						})
 					}
 				})

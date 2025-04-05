@@ -24,7 +24,7 @@ export default {
 		getVideo () {
 			return this.videos.uri
 
-			/* let index = this.videos.findIndex(i => i.attachment_id === this.startImageId)
+			/* let index = this.videos.findIndex(i => i.attachmentId === this.startImageId)
 			return this.video[index].uri */
 		}
 	}

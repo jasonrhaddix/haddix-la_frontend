@@ -16,15 +16,8 @@
       <project-item
         v-for="(item, i) in filteredProjects"
         :key="`project-${item.projectId}-${i}`"
-        :_id="item._id"
-        :project-id="item.projectId"
-        :session-id="item.sessionId"
-        :client="getClientName(item.client)"
-        :title="item.title"
-        :subtitle="item.subtitle"
-        :is-guest-project="item.isGuestProject"
+        :data="item"
         :click-callback="navigateToProject"
-        :image="getThumbnailImage(item.projectId)"
       />
     </div>
   </div>
@@ -56,14 +49,17 @@ const filteredProjects = computed(() => {
 })
 
 const getThumbnailImage = computed(() => {
-  return (id) => {
-    let images = projectsStore.attachmentsByUsageType(
+  return (item) => {
+    console.log(item)
+    return ''
+
+    /* let images = projectsStore.attachmentsByUsageType(
       typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
       'projects',
       id
     )
     
-    return images[0]?.uri
+    return images[0]?.uri */
   }
 })
 

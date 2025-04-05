@@ -22,15 +22,14 @@ export default defineStore('projects', {
     projectsLoading:(state) => state.loading,
 
     attachmentsByUsageType: (state) => (type = null, obj = null, id = null) => {
-      // console.log(state.projects)
       if (!type || !obj || !id) return []
   
       let attachments = (obj === 'projects')
         ? state.projects.find(p => p.projectId === id)?.attachments
         : state.project.attachments
   
-      if (!attachments || attachments.length === 0) return []
-      return attachments.filter(item => item.usage_type === type)
+      if (!attachments || !attachments?.length) return []
+      return attachments.filter(item => item.usageType === type)
     }
   },
 

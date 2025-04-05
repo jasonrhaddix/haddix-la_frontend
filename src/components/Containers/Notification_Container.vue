@@ -21,22 +21,22 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+// import { mapState, mapActions } from 'vuex'
 
-import {
+/* import {
 	VUEX_NOTIFICATIONS_CLEAR_NOTIFICATION
-} from '@/store/constants/notifications'
+} from '@/store/constants/notifications' */
 
 export default {
 	name: 'notification-container',
 
 	computed: {
-		...mapState({
+		/* ...mapState({
 			notificationsOpenState: state => state.ui.notificationsContainer.openState,
 			notificationTimeout: state => state.ui.notificationsContainer.timeout,
 			notificationData: state => state.ui.notificationsContainer.data,
 			notificationsComponent: state => state.ui.notificationsContainer.component
-		}),
+		}), */
 
 		loadComponent () {
 			return this.notificationsComponent ? this.$root.loadComponent(this.notificationsComponent) : null
@@ -49,9 +49,9 @@ export default {
 	},
 
 	methods: {
-		...mapActions({
+		/* ...mapActions({
 			clearNotification: VUEX_NOTIFICATIONS_CLEAR_NOTIFICATION
-		})
+		}) */
 	}
 }
 </script>

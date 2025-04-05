@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import api from '@/api/index.js'
+// import api from '@/api/index.js'
 import s3 from '@/api/aws.js'
 
 import stores from '@/stores'
@@ -12,16 +12,8 @@ export default defineStore('s3Upload', {
 
 	actions: {
 		s3UlopadRequest(payload) {
-			// was VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT
-			// ...but this didn't seem right.
-			// Also is this needed? Shouldn't I set status in AQM?
-			/* dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
-				hashId: payload.hashId,
-				status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__STARTED
-			}) */
-
 			const uploadManagerStore = stores.s3.uploadManagerStore()
-			let destinationFileKey = `files/${payload.project_id}/${payload.file_id}_${payload.filename}`
+			let destinationFileKey = `files/${payload.projectId}/${payload.fileId}_${payload.filename}`
 
 			uploadManagerStore.assignS3Key({
 				hashId: payload.hashId,
@@ -31,36 +23,6 @@ export default defineStore('s3Upload', {
 			const handleS3UploadProgress = function (evt) {
 				uploadManagerStore.uploadProgress(evt)
 			}
-
-			// const handleS3Response = async function (error, data) {
-			// 	if (error) {
-			// 		// S3 UPLOAD - FAILURE
-			// 		/* dispatch(VUEX_UPLOAD_S3_REQUEST_FAILURE, {
-			// 			hashId: payload.hashId,
-			// 			error: error
-			// 		}) */
-			// 	} else {
-			// 		// S3 UPLOAD - SUCCESS
-			// 		await this.requestSuccess({
-			// 			hashId: payload.hashId,
-			// 			data: data
-			// 		})
-
-			// 		// ATTACHMENT REQUEST
-			// 		this.attachmentRequest({
-			// 			hashId: payload.hashId,
-			// 			attachment_id: payload.file_id,
-			// 			model_id: payload.attach_to.model_id,
-			// 			model: payload.attach_to.model,
-			// 			name: payload.filename,
-			// 			filename: payload.filename,
-			// 			usage_type: payload.usage_type,
-			// 			mimetype: payload.file.type,
-			// 			size: payload.file.size,
-			// 			uri: payload.uri
-			// 		})
-			// 	}
-			// }
 
 			var params = {
 				Key: destinationFileKey,
@@ -76,10 +38,10 @@ export default defineStore('s3Upload', {
 			s3.upload(params, options, async (error, data) => {
 				if (error) {
 					// S3 UPLOAD - FAILURE
-					/* dispatch(VUEX_UPLOAD_S3_REQUEST_FAILURE, {
+					await this.requestFailure({
 						hashId: payload.hashId,
-						error: error
-					}) */
+						data: data
+					})
 				} else {
 					// S3 UPLOAD - SUCCESS
 					await this.requestSuccess({
@@ -88,26 +50,30 @@ export default defineStore('s3Upload', {
 					})
 
 					// ATTACHMENT REQUEST
-					this.attachmentRequest({
+					/* this.attachmentRequest({
 						hashId: payload.hashId,
-						attachment_id: payload.file_id,
-						model_id: payload.attach_to.model_id,
-						model: payload.attach_to.model,
+						attachmentId: payload.fileId,
+						modelId: payload.attachTo.modelId,
+						model: payload.attachTo.model,
 						name: payload.filename,
 						filename: payload.filename,
-						usage_type: payload.usage_type,
+						usageType: payload.usageType,
 						mimetype: payload.file.type,
 						size: payload.file.size,
 						uri: payload.uri
-					})
+					}) */
 				}
 			}).on('httpUploadProgress', handleS3UploadProgress)
 		},
 
 		requestSuccess(payload) {
-			console.log('requestSuccess', payload)
 			const typesStore = stores.config.typesStore()
 			const uploadManagerStore = stores.s3.uploadManagerStore()
+
+			uploadManagerStore.changeStatus({
+				hashId: payload.hashId,
+				status: typesStore.REQUEST_STATUS__SUCCESS
+			})
 
 			uploadManagerStore.handleResult({
 				hashId: payload.hashId,
@@ -120,23 +86,18 @@ export default defineStore('s3Upload', {
 			const typesStore = stores.config.typesStore()
 			const uploadManagerStore = stores.s3.uploadManagerStore()
 
-			uploadManagerStore.handleResult({
+			uploadManagerStore.changeStatus({
 				hashId: payload.hashId,
 				status: typesStore.REQUEST_STATUS__FAILURE
 			})
 
-			// SHOW ERROR NOTIFICATION
-			/* component: {
-				path: 'Notifications',
-				file: 'Notification_Message'
-			},
-			data: {
-				type: 'error',
-				message: 'Error: Attachment Failed upload to Amazon S3'
-			} */
-		},
+			uploadManagerStore.handleResult({
+				hashId: payload.hashId,
+				status: typesStore.REQUEST_STATUS__FAILURE
+			})
+		}
 
-		attachmentRequest(payload) {
+		/* attachmentRequest(payload) {
 			const userStore = stores.userStore()
 			const typesStore = stores.config.typesStore()
 			const uploadManagerStore = stores.s3.uploadManagerStore()
@@ -151,7 +112,6 @@ export default defineStore('s3Upload', {
 				session_id: userStore.accessToken
 			}
 
-			console.log(data)
 			api.post(`/attachments`, data).then(response => {
 				uploadManagerStore.changeStatus({
 					hashId: payload.hashId,
@@ -164,184 +124,15 @@ export default defineStore('s3Upload', {
 				})
 	
 				// SHOW ERROR NOTIFICATION
-				/* component: {
-					path: 'Notifications',
-					file: 'Notification_Message'
-				},
-				data: {
-					type: 'error',
-					message: 'Attachment Upload Failed'
-				} */
+				// component: {
+				// 	path: 'Notifications',
+				// 	file: 'Notification_Message'
+				// },
+				// data: {
+				// 	type: 'error',
+				// 	message: 'Attachment Upload Failed'
+				// }
 			})
-		}
+		} */
 	}
 })
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-import api from '@/api'
-import s3 from '@/api/aws'
-
-import {
-	VUEX_UPLOAD_S3_REQUEST,
-	VUEX_UPLOAD_S3_REQUEST_SUCCESS,
-	VUEX_UPLOAD_S3_REQUEST_FAILURE,
-
-	VUEX_UPLOAD_ATTACHMENT_REQUEST
-} from '@/store/constants/attachments/attachment_upload'
-import {
-	VUEX_ATTACHMENT_QUEUE_MANAGER_ASSIGN_S3_KEY,
-	VUEX_ATTACHMENT_QUEUE_MANAGER_UPLOAD_PROGRESS,
-	VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT,
-	VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS
-} from '@/store/constants/attachments/attachment_queue_manager'
-import {
-	VUEX_NOTIFICATIONS_ADD_TO_QUEUE
-} from '@/store/constants/notifications'
-
-const state = {}
-
-const getters = {}
-
-const actions = {
-	[VUEX_UPLOAD_S3_REQUEST]: ({ dispatch, commit }, payload) => {
-		let destinationFileKey = `files/${payload.project_id}/${payload.file_id}_${payload.filename}`
-
-		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_ASSIGN_S3_KEY, {
-			hashId: payload.hashId,
-			key: destinationFileKey
-		})
-
-		const handleS3Response = async function (error, data) {
-			if (error) {
-				// S3 UPLOAD - FAILURE
-				dispatch(VUEX_UPLOAD_S3_REQUEST_FAILURE, {
-					hashId: payload.hashId,
-					error: error
-				})
-			} else {
-				// S3 UPLOAD - SUCCESS
-				await dispatch(VUEX_UPLOAD_S3_REQUEST_SUCCESS, {
-					hashId: payload.hashId,
-					data: data
-				})
-
-				// ATTACHMENT REQUEST
-				dispatch(VUEX_UPLOAD_ATTACHMENT_REQUEST, {
-					hashId: payload.hashId,
-					attachment_id: payload.file_id,
-					model_id: payload.attach_to.model_id,
-					model: payload.attach_to.model,
-					name: payload.filename,
-					filename: payload.filename,
-					usage_type: payload.usage_type,
-					mimetype: payload.file.type,
-					size: payload.file.size,
-					uri: payload.uri
-				})
-			}
-		}
-
-		const handleS3UploadProgress = function (evt) {
-			commit(VUEX_ATTACHMENT_QUEUE_MANAGER_UPLOAD_PROGRESS, evt)
-		}
-
-		var params = {
-			Key: destinationFileKey,
-			Body: payload.file,
-			ACL: 'public-read'
-		}
-
-		var options = {
-			partSize: 5 * 1024 * 1024,
-			queueSize: 4
-		}
-
-		s3.upload(params, options, handleS3Response).on('httpUploadProgress', handleS3UploadProgress)
-	},
-
-	[VUEX_UPLOAD_S3_REQUEST_SUCCESS]: async ({ dispatch }, payload) => {
-		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
-			hashId: payload.hashId,
-			uri: payload.data.Location,
-			status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__SUCCESS
-		})
-	},
-
-
-	[VUEX_UPLOAD_S3_REQUEST_FAILURE]: async ({ dispatch }, payload) => {
-		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
-			hashId: payload.hashId,
-			status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__FAILURE
-		})
-
-		dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
-			component: {
-				path: 'Notifications',
-				file: 'Notification_Message'
-			},
-			data: {
-				type: 'error',
-				message: 'Error: Attachment Failed upload to Amazon S3'
-			}
-		})
-	},
-
-	[VUEX_UPLOAD_ATTACHMENT_REQUEST]: ({ rootState, dispatch, commit }, payload) => {
-		commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
-			hashId: payload.hashId,
-			status: HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED
-		})
-
-		let data = {
-			...payload,
-			session_id: rootState.app.sessionToken
-		}
-
-		api.post(`/attachments`, data).then(response => {
-			commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
-				hashId: payload.hashId,
-				status: HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS
-			})
-		}).catch(() => {
-			commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
-				hashId: payload.hashId,
-				status: HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE
-			})
-
-			dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
-				component: {
-					path: 'Notifications',
-					file: 'Notification_Message'
-				},
-				data: {
-					type: 'error',
-					message: 'Attachment Upload Failed'
-				}
-			})
-		})
-	}
-}
-
-const mutations = {
-
-}
-
-export default {
-	state,
-	getters,
-	actions,
-	mutations
-}
- */

@@ -91,7 +91,6 @@ export default defineStore('routing', {
     },
 
     enterProjectDetailsRoute(params) {
-      console.log('enterProjectDetailsRoute', params)
       const projectsStore = stores.projectsStore()
       projectsStore.fetchProjectById(params?._id)
     },
