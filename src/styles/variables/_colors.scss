@@ -4,52 +4,55 @@
 */
 
 // Base Colors
-$color-app-white          : #EFEFEF;
-$color-app-black          : #040408;
-$color-app-primary        : #190052;
-$color-app-primary-dark   : #06001e;
-$color-app-secondary      : #34009C;
-$color-app-accent         : #FF6400;
+$app-color-white          : #EFEFEF;
+$app-color-black          : #040408;
+$app-color-primary        : #190052;
+$app-color-primary-dark   : #06001e;
+$app-color-secondary      : #34009C;
+$app-color-accent         : #FF6400;
+$app-color-error          : #B20000;
+$app-color-success        : #00B200;
 
 // Transparencies
-$color-app-white-alpha-10 : rgba( 255, 255, 255, 0.1 );
-$color-app-white-alpha-25 : rgba( 255, 255, 255, 0.25 );
-$color-app-white-alpha-50 : rgba( 255, 255, 255, 0.5 );
-$color-app-white-alpha-75 : rgba( 255, 255, 255, 0.75 );
-$color-app-black-alpha-10 : rgba( 0, 0, 0, 0.1 );
-$color-app-black-alpha-15 : rgba( 0, 0, 0, 0.15 );
-$color-app-black-alpha-25 : rgba( 0, 0, 0, 0.25 );
-$color-app-black-alpha-35 : rgba( 0, 0, 0, 0.35 );
-$color-app-black-alpha-50 : rgba( 0, 0, 0, 0.5 );
-$color-app-black-alpha-75 : rgba( 0, 0, 0, 0.75 );
+$app-color-white-alpha-10 : rgba( 255, 255, 255, 0.1 );
+$app-color-white-alpha-25 : rgba( 255, 255, 255, 0.25 );
+$app-color-white-alpha-50 : rgba( 255, 255, 255, 0.5 );
+$app-color-white-alpha-75 : rgba( 255, 255, 255, 0.75 );
+$app-color-black-alpha-10 : rgba( 0, 0, 0, 0.1 );
+$app-color-black-alpha-15 : rgba( 0, 0, 0, 0.15 );
+$app-color-black-alpha-25 : rgba( 0, 0, 0, 0.25 );
+$app-color-black-alpha-35 : rgba( 0, 0, 0, 0.35 );
+$app-color-black-alpha-50 : rgba( 0, 0, 0, 0.5 );
+$app-color-black-alpha-75 : rgba( 0, 0, 0, 0.75 );
 $color-accent-purple-alpha: rgba( 55, 15, 174, 0.5 );
 
 // Background Colors
-$color-app-background     : linear-gradient(to right, #040011 0%, #150044 50%, #040011 100%);
-$color-app-nav-background : $color-app-primary;
-$color-app-ui-background  : #141417;
+$app-color-background     : linear-gradient(to right, #040011 0%, #150044 50%, #040011 100%);
+$app-color-nav-background : $app-color-primary;
+$app-color-ui-background  : #141417;
 
 // Typography Colors
-$color-app-text-dark      : $color-m-grey-darken-4;
-$color-app-text-light     : $color-app-white;
+$app-color-text-dark      : $color-m-grey-darken-4;
+$app-color-text-light     : $app-color-white;
 
 
 
 ////// GLOBAL COMPONENTS //////
 // App Button
-$color-app-button-background: $color-app-black-alpha-75;
-$color-app-button-text: $color-app-text-light;
-$color-app-button-border: $color-app-text-light;
+$app-color-button-background: $app-color-black-alpha-75;
+$app-color-button-text: $app-color-text-light;
+$app-color-button-border: $app-color-text-light;
 
-$color-app-button-background-animate: $color-app-secondary;
-$color-app-button-background-hover: $color-app-text-light;
-$color-app-button-text-hover: $color-app-text-dark;
+$app-color-button-background-animate: $app-color-secondary;
+$app-color-button-background-hover: $app-color-text-light;
+$app-color-button-text-hover: $app-color-text-dark;
 
 // App Button (Inverse)
-$color-app-button-background-light: $color-m-white;
-$color-app-button-text-light: $color-app-text-dark;
-$color-app-button-border-light: $color-app-text-dark;
+$app-color-button-background-light: $color-m-white;
+$app-color-button-text-light: $app-color-text-dark;
+$app-color-button-border-light: $app-color-text-light;
 
-// $color-app-button-background-animate: $color-accent-purple-alpha;
-$color-app-button-background-hover-light: $color-app-text-dark;
-$color-app-button-text-hover-light: $color-app-text-light;
+// $app-color-button-background-animate: $color-accent-purple-alpha;
+// $app-color-button-background-hover-light: $app-color-text-dark;
+$app-color-button-background-hover-light: $app-color-primary;
+$app-color-button-text-hover-light: $app-color-text-light;

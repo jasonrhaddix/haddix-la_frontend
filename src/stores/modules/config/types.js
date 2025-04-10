@@ -25,7 +25,7 @@ export default defineStore('types', {
 
     // attachment usage types
     ATTACHMENT_USAGE_TYPE__THUMBNAIL: 'thumbnail',
-    ATTACHMENT_USAGE_TYPE__CAROUSEL: 'carousel',
+    ATTACHMENT_USAGE_TYPE__HEADER: 'header',
     ATTACHMENT_USAGE_TYPE__BODY: 'body',
     ATTACHMENT_USAGE_TYPE__VIDEO: 'video',
 

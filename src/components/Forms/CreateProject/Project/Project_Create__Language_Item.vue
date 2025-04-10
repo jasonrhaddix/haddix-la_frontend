@@ -1,142 +1,97 @@
 <template>
     <div class="create-language-item">
         <div class="language__graph">
-            <language-graph
-                :value="parseFloat(value)"
-                :language="languageName"/>
+          <language-graph
+            :value="localValue"
+            :language="langName"/>
         </div>
         <div class="language__content">
-            <div class="content__inner">
-                <div class="content__type">
-                    <v-select
-                        filled
-                        dense
-                        label="Language"
-                        item-text="name"
-                        :items="projectLanguages"
-                        v-model="localLang"/>
-                </div>
-                <div class="content__percentage">
-                    <v-text-field
-                        filled
-						dense
-                        label="Percentage"
-                        :type="computedValue >= 100 ? '' : 'number'"
-                        v-model="computedValue"
-                        :value="0"/>
-                </div>
-                <div class="content__actions">
-                    <v-btn
-                        fab small
-                        color="grey darken-3"
-                        @click="remove">
-                        <v-icon>remove</v-icon>
-                    </v-btn>
-                </div>
+          <div class="content__inner">
+            <div class="content__type">
+              <v-select
+                filled dense
+                label="Language"
+                item-text="name"
+                :items="propsStore.projectLanguages"
+                v-model="localLang"/>
             </div>
+            <div class="content__percentage">
+              <v-text-field
+                filled dense
+                label="Percentage"
+                min="0"
+                max="100"
+                type="number"
+                v-model="localValue"
+                />
+            </div>
+            <div class="content__actions">
+              <v-btn
+                icon small
+                color="primary"
+                @click="remove">
+                <v-icon>remove</v-icon>
+              </v-btn>
+            </div>
+          </div>
         </div>
     </div>
 </template>
 
 <script setup>
-// import { mapState, mapGetters } from 'vuex'
+  import { ref, computed, watch } from 'vue'
+  
+  import stores from '@/stores/index.js'
 
-import LanguageGraph from '@/components/_global/Language_Graph.vue'
+  import LanguageGraph from '@/components/_global/Language_Graph.vue'
 
-/* export default {
-	name: 'create-language-item',
+  const propsStore = stores.config.propsStore()
 
-	components: {
-		'language-graph': LanguageGraph
-	},
+  const emit = defineEmits(['valueChanged', 'remove'])
 
-	props: {
-		id: {
-			type: String,
-			required: true
-		},
-		value: {
-			type: [String, Number],
-			required: false
-		},
-		valueCallback: {
-			type: Function,
-			required: false
-		},
-		language: {
-			type: String,
-			required: false
-		},
-		languageCallback: {
-			type: Function,
-			required: false
-		},
+  const props = defineProps({
+    id: {
+      type: String,
+      required: true
+    },
 
-		removeCallback: {
-			type: Function,
-			default: null
-		}
-	},
+    value: {
+      type: [String, null],
+      required: false
+    },
 
-	data: () => ({
-		localLang: {},
-		localValue: 0
-	}),
+    language: {
+      type: [String, null],
+      required: false
+    }
+  })
 
-	computed: {
-		...mapState({
-			projectLanguages: state => state.config.projectLanguages
-		}),
+  let localLang = ref('')
+  let localValue = ref('0')
 
-		...mapGetters({
-			getPropertyByKey: 'getPropertyByKey'
-		}),
+  const langName = computed(() => {
+    if (!localLang.value) return ''
+    return propsStore.getPropertyByKey('projectLanguages', localLang.value, 'value', 'title')
+  })
 
-		languageName () {
-			if (!this.language) return ''
-			return this.getPropertyByKey('projectLanguages', this.language, 'value', 'name')
-		},
+  const emitData = () => {
+    emit('valueChanged', {
+      id: props.id,
+      language: localLang.value,
+      value: localValue.value
+    })
+  }
 
-		computedValue: {
-			get () { return this.localValue },
-			set (val) {
-				this.localValue = (val >= 100) ? 100 : val
-			}
-		}
-	},
+  const remove = () =>{
+    emit('remove', props.id)
+  }
 
-	updated () {
-		if (this.value) this.localValue = this.value
-		if (this.language) this.localLang = this.language
-	},
+  // Watch and emit
+  watch(localLang, (value) => {
+    emitData()
+  })
 
-	methods: {
-		remove () {
-			this.removeCallback(this.id)
-		}
-	},
-
-	watch: {
-		localValue: {
-			handler (value) {
-				if (this.valueCallback) {
-					this.valueCallback({
-						id: this.id,
-						value: value
-					})
-				}
-			}
-		},
-		localLang: {
-			handler (value) {
-				if (this.languageCallback) {
-					this.languageCallback({
-						id: this.id,
-						language: value
-					})
-				}
-			}
-		}
-	}
-} */
+  watch(localValue, (value) => {
+    emitData()
+  })
 </script>

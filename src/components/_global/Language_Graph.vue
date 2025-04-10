@@ -18,6 +18,7 @@ export default {
 			required: true,
 			default: 0
 		},
+		
 		language: {
 			type: String,
 			required: true,
@@ -40,6 +41,10 @@ export default {
 	},
 
 	mounted () {
+		this.createGraph()
+	},
+
+	updated () {
 		this.createGraph()
 	},
 
@@ -83,14 +88,6 @@ export default {
 			this.canvas_context.lineWidth = 3
 			this.canvas_context.strokeStyle = '#FF0099'
 			this.canvas_context.stroke()
-		}
-	},
-
-	watch: {
-		value: {
-			handler (val) {
-				this.createGraph()
-			}
 		}
 	}
 }

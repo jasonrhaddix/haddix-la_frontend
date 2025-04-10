@@ -33,3 +33,8 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+## TODO ##
+## - Add IMDB ratings for movies (using OMMDB API)
+## - Implement Project details carousel

@@ -35,7 +35,7 @@
         </v-container>
 
         <div class="section section__content">
-          <component :is="loadedComponent" />
+          <component :is="loadedComponent" :data="props"/>
         </div>
       </v-layout>
     </v-container>
@@ -43,60 +43,23 @@
 </template>
 
 <script setup>
-import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
-import { storeToRefs } from 'pinia'
+  import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
+  import { storeToRefs } from 'pinia'
 
-import stores from '@/stores/index.js'
+  import stores from '@/stores/index.js'
 
-import Geo from '@/assets/app/images/geo.svg'
+  import Geo from '@/assets/app/images/geo.svg'
 
-const userStore = stores.userStore()
-const overlayStore = stores.ui.overlayStore()
+  const userStore = stores.userStore()
+  const overlayStore = stores.ui.overlayStore()
 
-const loadedComponent = ref(null)
+  const loadedComponent = ref(null)
 
-const { component } = storeToRefs(overlayStore)
+  const { component, props } = storeToRefs(overlayStore)
 
-watch(component, (val) => {
-  loadedComponent.value = markRaw(
-    defineAsyncComponent(() => import(`../../components/${val}`))
-  )
-})
-
-// import { mapState, mapGetters, mapActions } from 'vuex'
-
-// import {
-// 	VUEX_UI_OVERLAY_CONTAINER_HIDE
-// } from '@/store/constants/ui'
-
-/* export default {
-	name: 'overlay-container',
-
-	computed: {
-		...mapState({
-			overlayOpenState: state => state.ui.overlayContainer.openState,
-			overlayComponent: state => state.ui.overlayContainer.component,
-			overlayTitle: state => state.ui.overlayContainer.title
-		}),
-
-		...mapGetters({
-			userIsAuthenticated: 'userIsAuthenticated'
-		}),
-
-		loadComponent () {
-			return this.overlayComponent ? this.$root.loadComponent(this.overlayComponent) : null
-		},
-
-		openState: {
-			get () { return this.overlayOpenState },
-			set (val) { this.$store.commit('VUEX_UI_OVERLAY_CONTAINER_SET_STATE', val) }
-		}
-	},
-
-	methods: {
-		...mapActions({
-			closeOverlay: VUEX_UI_OVERLAY_CONTAINER_HIDE
-		})
-	}
-} */
+  watch(component, (val) => {
+    loadedComponent.value = markRaw(
+      defineAsyncComponent(() => import(`../../components/${val}`))
+    )
+  })
 </script>

@@ -64,8 +64,8 @@ const hasAccess = computed(() => {
   }
 })
 
-function routeName() {
-  return navigationStore.title || router.currentRoute.value.name
+const routeName = () => {
+  return headerStore.title || router.currentRoute.value.name
 }
 
 /* export default {

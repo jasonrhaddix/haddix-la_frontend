@@ -32,7 +32,7 @@
         clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
         transition: clip-path 650ms ease-in-out, background-color 650ms ease-in-out;
         background: {
-            color: $color-app-nav-background;
+            color: $app-color-nav-background;
         }
 
         nav {
@@ -42,8 +42,8 @@
 
             & > div {
                 margin: {
-                    top: 2rem;
-                    bottom: 2rem;
+                    top: 1rem;
+                    bottom: 1rem;
                 }
             }
         }
@@ -56,7 +56,7 @@
         left: 0;
         transition: top 500ms ease-in-out 150ms, background-color 650ms ease-in-out;
         background: {
-            color: $color-app-nav-background;
+            color: $app-color-nav-background;
         };
 
         .header--logo-container {
@@ -77,7 +77,7 @@
             }
 
             .divider {
-                background-color: $color-app-text-light;
+                background-color: $app-color-text-light;
                 margin: 10px 10px;
                 width: 1px;
                 height: 20px;
@@ -91,7 +91,7 @@
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 
                 p {
-                    color: $color-app-text-light;
+                    color: $app-color-text-light;
                     line-height: 1.4rem;
                     text-transform: uppercase;
                 }

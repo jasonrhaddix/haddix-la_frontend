@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { uuid } from 'vue-uuid'
 
 import stores from '@/stores/index.js'

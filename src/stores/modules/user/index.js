@@ -34,11 +34,15 @@ export default defineStore('user', {
 
     // user login
     async login(credentials) {
+      const loginStore = stores.ui.loginStore()
+
       this.isAuthorizing = true
 
       try {
         const res = await api.post(`/auth/login`, credentials, { withCredentials: true })
         this.updateAccessTokenInState(res.data?.accessToken)
+
+        loginStore.hideLogin()
       } catch (err) {
         // throw err message to user
         console.error(err)

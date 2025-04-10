@@ -136,7 +136,7 @@
 
                 &.drag-over {
                     .dropzone__scrim {
-                        border: 2px dashed $color-app-primary;
+                        border: 2px dashed $app-color-primary;
                         background: rgba(49, 0, 189, 0.2);
                     }
                 }
@@ -261,7 +261,7 @@
             padding: 1.25rem;
             min-height: 30rem;
             background: {
-                color: $color-app-black-alpha-25;
+                color: $app-color-black-alpha-25;
 			}
 			border: {
 				radius: 4px;
@@ -311,7 +311,7 @@
     // Override
     .theme--dark.v-text-field--box>.v-input__control>.v-input__slot {
         background: {
-            color: $color-app-black-alpha-25
+            color: $app-color-black-alpha-25
         }
     }
 }

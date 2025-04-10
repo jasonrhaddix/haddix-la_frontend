@@ -4,7 +4,8 @@ export default defineStore('overlay', {
   state: () => ({
     openState: false,
     component: null,
-    title: ''
+    title: '',
+    props: {}
   }),
 
   actions: {
@@ -23,6 +24,7 @@ export default defineStore('overlay', {
     setComponent(payload) {
       if (payload.component) this.component = payload.component
       if (payload.title) this.title = payload.title
+      if (payload.props) this.props = payload.props
     }
   }
 })

@@ -11,7 +11,7 @@
 		padding: 0 1rem !important;
 		border-radius: 4px;
 		background: {
-			color: $color-app-black-alpha-25;
+			color: $app-color-black-alpha-25;
 		}
 
 		.images__dropzone {
@@ -64,7 +64,7 @@
 
 			&.drag-over {
 				.dropzone__scrim {
-					border: 2px dashed $color-app-primary;
+					border: 2px dashed $app-color-primary;
 					background: rgba(49, 0, 189, 0.2);
 				}
 			}
@@ -76,7 +76,7 @@
 		width: 90%;
 		margin: 3rem auto;
 		background: {
-			color: $color-app-white-alpha-10;
+			color: $app-color-white-alpha-10;
 		}
 	}
 }

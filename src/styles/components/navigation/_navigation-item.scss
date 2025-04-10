@@ -14,7 +14,7 @@
 
         h1 {
 			text-transform: uppercase;
-			// color: $color-app-secondary !important;
+			// color: $app-color-secondary !important;
         }
 
         &:not(.nav-item__hidden) {
@@ -71,7 +71,7 @@
             transition: none;
 
             h1 {
-                color: $color-app-text-light !important;
+                color: $app-color-text-light !important;
             }
         }
     }

@@ -26,14 +26,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home.vue')
-      // beforeEnter: beforeEnterGuard
-      /* meta: {
-				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '')
-					next()
-				}
-			} */
+      component: () => import('@/views/Home.vue'),
+      beforeEnter: () => {
+        stores.ui.headerStore().hideHeader()
+      }
     },
     {
       path: '/projects',
@@ -108,6 +104,12 @@ const router = createRouter({
 			} */
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  stores.ui.navigationStore().hideNavigation()
+  stores.ui.headerStore().removeTitle()
+  next()
 })
 
 export default router

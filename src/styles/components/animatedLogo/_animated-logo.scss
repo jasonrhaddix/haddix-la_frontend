@@ -1,7 +1,7 @@
 .animated-logo-container {
 
 	.logo {
-		background-color: $color-app-white;
+		background-color: $app-color-white;
 		width: 500px;
 		overflow: hidden;
 	    height: 170px;
@@ -10,7 +10,7 @@
 
         #logo-svg {
             .cls-1,.cls-2,.cls-3,.cls-5{ fill: none; }
-            .cls-2,.cls-3,.cls-5{ stroke: $color-app-black ; stroke-miterlimit: 10; }
+            .cls-2,.cls-3,.cls-5{ stroke: $app-color-black ; stroke-miterlimit: 10; }
             .cls-2,.cls-5{ stroke-width: 36px; }
             .cls-3{ stroke-width: 37px; }
             .cls-4{ clip-path: url( #clip-path ); }

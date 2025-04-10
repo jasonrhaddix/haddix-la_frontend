@@ -1,6 +1,6 @@
 .home-view {
     position: relative;
-    color: $color-app-white;
+    color: $app-color-white;
 
     .home-view--content {
         @include center-content();
@@ -8,7 +8,7 @@
         // .animated-logo {}
 
         p {
-            color: $color-app-white;
+            color: $app-color-white;
 			margin: 15px auto;
 			text-align: center;
 			// text-transform: uppercase;
@@ -17,7 +17,7 @@
 		.divider {
 			height: 20px;
 			width: 1px;
-			background-color: $color-app-text-light;
+			background-color: $app-color-text-light;
 			margin: 0 auto 15px;
         }
 

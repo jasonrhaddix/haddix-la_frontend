@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import api from '@/api'
 import stores from '@/stores'
 
+import { Project } from '@/models'
+
 export default defineStore('projects', {
   state: () => ({
     projects: [],
@@ -37,16 +39,22 @@ export default defineStore('projects', {
     async fetchProjects() {
       try {
         const res = await api.get(`/projects`)
-        this.projects = res.data
+        this.projects = res.data.map((item) => Project.projectBase(item))
       } catch (err) {
         console.error(err)
       }
     },
 
     async fetchProjectById(id) {
+      const headerStore = stores.ui.headerStore()
+      
       try {
         const res = await api.get(`/projects/${id}`)
-        this.project = res.data
+        this.project = Project.projectDetails(res.data)
+
+        headerStore.setTitle(this.project.title)
+
+        return res.data
       } catch (err) {
         console.error(err)
       }
@@ -64,15 +72,49 @@ export default defineStore('projects', {
           sessionId: userStore.sessionToken
         })
 
-        this.projects.unshift(res.data)
+        this.projects.unshift(Project.projectDetails(res.data))
 
-        overlayStore.hideOverlay()
+        overlayStore.hideOverlay() // <------------------ move to component
         //show success
       } catch (err) {
         // throw error
       }
 
+      this.saving = false
+    },
+
+    async updateProject(id, payload) {
+      const overlayStore = stores.ui.overlayStore()
+      
       this.saving = true
+      
+      try {
+        const res = await api.patch(`/projects/${id}`, payload)
+        this.project = Project.projectDetails(res.data)
+
+        // overlayStore.hideOverlay() // <------------------ move to component
+        //show success
+      } catch (err) {
+        // throw error
+      } finally {
+        this.saving = false
+      }
+
+    },
+
+    async deleteProject(id) {
+      this.saving = true
+      
+      try {
+        await api.delete(`/projects/${id}`)
+        this.projects.splice(this.projects.findIndex(p => p._id === id), 1)
+
+        //show success
+      } catch (err) {
+        // throw error
+      } finally {
+        this.saving = false
+      }
     }
   }
 })

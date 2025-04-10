@@ -1,5 +1,5 @@
 #app {
-  background-image: $color-app-background;
+  background-image: $app-color-background;
   background-repeat: no-repeat;
   min-height: 100%;
   width: 100vw;
@@ -13,4 +13,9 @@
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
   }
+}
+
+.v-overlay--active {
+  background: rgba(0, 0, 0, 0.5);
+  // backdrop-filter: blur(3px);
 }

@@ -1,406 +1,409 @@
 .project-details-view {
+    padding: 0 !important;
     position: relative;
     width: 90%;
-    min-height:100%;
-	padding: 0;
-	background: url('~@/assets/app/images/project-details-footer-grey.jpg') $color-m-white no-repeat center bottom;
-	background-size: contain;
-
+    min-height: 100%;
+    background: url('~@/assets/app/images/project-details-footer-grey.jpg') $color-m-white no-repeat center bottom;
+    background-size: contain;
+  
     .details__content {
+      position: relative;
+  
+      .header__container {
         position: relative;
-
-        .header__container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-height: 90vh;
-            border: {
-                bottom: 1px solid $color-m-grey-lighten-2;
-			}
-			background: {
-				color: $color-app-black;
-			}
-
-            .scrim {
-                position: absolute;
-                top: 0;
+        overflow: hidden;
+        width: 100%;
+        max-height: 90vh;
+  
+        border: {
+          bottom: 1px solid $color-m-grey-lighten-2;
+        }
+  
+        background: {
+          color: $app-color-black;
+        }
+  
+        .scrim {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          
+          // background: radial-gradient(ellipse 75% 45% at 50% 52%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+          background: {
+            color: $app-color-black-alpha-25;
+          }
+        }
+  
+        .title__container {
+          @include center-content();
+          width: 100%;
+          text-shadow: 2px 1px 3px rgba(0, 0, 0, 1.2);
+  
+          h3 {
+            font-size: 2.5rem;
+            font-family: 'DIN-CondLight';
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0 3rem;
+            line-height: 2rem;
+            color: $color-m-white;
+          }
+  
+          h1 {
+            font-size: 7rem;
+            font-family: 'DIN-CondBlack';
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0.25rem 3rem 0.5rem;
+            color: $color-m-white;
+            line-height: 6.5rem;
+          }
+        }
+  
+        .project-info__container {
+          position: absolute;
+          height: 90px;
+          width: 100%;
+          bottom: 0px;
+          color: $app-color-text-light;
+  
+          .project-info__inner {
+            padding: 0rem 2rem;
+            margin: 0 auto;
+            width: 75%;
+            height: 100%;
+  
+            background: {
+              color: rgba(20, 20, 20, 0.75);
+            }
+  
+            .project-info__item {
+              h4 {
+                text-transform: uppercase;
+                font-weight: bold;
+              }
+  
+              .project-btn__container {
                 width: 100%;
                 height: 100%;
-                background: {
-                    color: $color-app-black-alpha-25
+                position: relative;
+  
+                .project-btn {
+                  @include center-content(0, -4px);
+                  display: contents;
                 }
+              }
             }
-
-            .title__container {
-                @include center-content();
-				width: 100%;
-				text-shadow: 2px 1px 3px rgba(0,0,0,0.2);
-
-                h3 {
-                    // font-size: 7rem;
-                    font-size: 3rem;
-                    font-family: 'DIN-CondLight';
-                    text-align: center;
-                    text-transform: uppercase;
-                    padding: 0 3rem;
-                    line-height: 2.5rem;
-                    color: $color-m-white;
-                }
-
-                h1 {
-                    font-size: 7rem;
-                    font-family: 'DIN-CondBlack';
-                    text-align: center;
-                    text-transform: uppercase;
-                    padding: 0.25rem 3rem 0.5rem;
-                    color: $color-m-white;
-                    line-height: 6.5rem;
-                }
-			}
-
-			.project-info__container {
-				position: absolute;
-				height: 100px;
-				width: 100%;
-				bottom: 0px;
-				color: $color-app-text-light;
-
-				.project-info__inner {
-					padding: 1rem 2rem;
-					margin: 0 auto;
-					width: 75%;
-					height: 100%;
-					// display: flex;
-					background: {
-						color: rgba(20, 20, 20, 0.75);
-						// color: rgba(255, 255, 255, 0.9);
-					}
-
-					.project-info__item {
-
-						h4 {
-							text-transform: uppercase;
-							font-weight: bold;
-						}
-
-						.project-btn__container {
-							width: 100%;
-							height: 100%;
-							position: relative;
-
-							.project-btn {
-								@include center-content(0, -4px);
-								display: contents;
-							}
-						}
-					}
-				}
-			}
-
-            .header__close-btn {
-                @include center-content('horizontal');
-                top: 50px;
-                z-index: 99;
-            }
+          }
         }
-
-        .content__container {
-            padding: {
-                top: 4rem;
+  
+        .header__close-btn {
+          @include center-content('horizontal');
+          top: 50px;
+          z-index: 99;
+        }
+      }
+  
+      .content__container {
+        color: $app-color-text-dark;
+        padding: {
+          top: 4rem;
+        }
+  
+        & > div {
+          width: 100%;
+        }
+  
+        .divider {
+          width: 100%;
+          height: 1px;
+  
+          margin: 3rem 0;
+  
+          background: {
+            color: $color-m-grey-lighten-2;
+          }
+        }
+  
+        .section {
+          /* margin: {
+            bottom: 2rem;
+          } */
+        }
+  
+        .subsection {
+          margin: {
+            bottom: 2rem;
+          }
+        }
+  
+        .excerpt__container {
+          h3 {
+            color: #888;
+            font-family: 'DIN-Medium';
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+          }
+        }
+  
+        .video__container {
+          width: 100%;
+          margin: {
+            bottom: 2rem;
+          }
+  
+          .video__inner {
+            border: 0;
+  
+            video {
+              outline: 0;
+              border: 1px solid $color-m-grey-lighten-2;
+              width: 100%;
             }
-
+          }
+        }
+  
+        .description__container {
+          .description__inner {
+            .description {
+              @include drop-cap();
+              column-count: 2;
+            }
+          }
+        }
+  
+        .photos__container {
+          .photos__inner {
             & > div {
-                width: 100%;
+              padding: 4px;
             }
-
-            .divider {
+  
+            .photo {
+              position: relative;
+              display: flex;
+              cursor: pointer;
+              border: 1px solid $app-color-black-alpha-15;
+  
+              img {
                 width: 100%;
-                height: 1px;
-                margin: {
-                    top: 5rem;
-                    bottom: 5rem;
-                }
+              }
+  
+              .img-hover {
+                transition: opacity 175ms ease-in-out;
+                padding: 4px;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+  
                 background: {
-                    color: $color-m-grey-lighten-2;
+                  color: $app-color-black-alpha-35;
                 }
+  
+                .skrim {
+                  position: relative;
+                }
+  
+                .icon {
+                  @include center-content();
+                }
+              }
+  
+              &:hover {
+                .img-hover {
+                  opacity: 1;
+                }
+              }
             }
-
-            .section {
-                //
-            }
-
-            .subsection {
-                margin: {
-                    bottom: 2rem;
-                }
-            }
-
-            .excerpt__container {
-
-                h3 {
-                    font-family: 'DIN-Medium';
-                    width: 100%;
-                    text-align: center;
-                    font-style: italic;
-                }
-            }
-
-            .video__container {
-                width:100%;
-
-                .video__inner {
-                    border: 0;
-
-                    video {
-                        outline: 0;
-                        border: 1px solid $color-m-grey-lighten-2;
-                        width: 100%;
-                    }
-                }
-            }
-
-            .description__container {
-
-                .description__inner {
-
-                    .description {
-                        @include drop-cap();
-                        column-count: 2;
-                    }
-                }
-            }
-
-            .photos__container {
-
-                .photos__inner {
-
-                    & > div {
-						padding: 4px;
-                    }
-
-					.photo {
-						position: relative;
-						display: flex;
-						cursor: pointer;
-						border: 1px solid $color-app-black-alpha-15;
-
-						img {
-							width: 100%
-						}
-
-						.img-hover {
-							transition: opacity 175ms ease-in-out;
-							padding: 4px;
-							position: absolute;
-							width: 100%;
-							height: 100%;
-							top: 0;
-							left: 0;
-							opacity: 0;
-							background: {
-								color: $color-app-black-alpha-35;
-							}
-
-							.skrim {
-								position: relative;
-							}
-
-							.icon {
-								@include center-content()
-							}
-						}
-
-						&:hover {
-							.img-hover {
-								opacity: 1;
-							}
-						}
-					}
-                }
-            }
-
-            .meta__container {
-
-                .meta__title {
-                    color: $color-m-grey-darken-2;
-                    text-transform: uppercase;
-                    font-size: 1rem;
-                }
-
-                .meta_languages {
-                    width: 100%;
-                    padding: 1rem;
-                    background: {
-                        color: $color-app-black-alpha-10;
-                    }
-
-                    .languages__inner {
-                        background: url('./assets/app/images/project-languages-bg.jpg') no-repeat center;
-                        background-size: cover;
-                        width: 100%;
-                        display: inline-flex;
-                        padding: 1rem;
-						color: $color-m-white;
-                        background: {
-                            color: $color-m-grey-darken-4;
-                        }
-                    }
-                }
-
-                .meta_resources {
-                    padding: 1.25rem;
-                    background: {
-                        color: $color-m-grey-lighten-3;
-                    }
-
-                    .resources__inner {
-                        // min-height: 30rem;
-                        border: 1px solid $color-m-grey-lighten-3;
-                        background: {
-                            color: $color-m-white;
-                        }
-
-                        .resource-item {
-                            position: relative;
-                            height: 2.5rem;
-                            border: 1px solid $color-app-white;
-                            background: {
-                                color: $color-m-grey-lighten-4;
-                            }
-
-                            p {
-                                @include center-content('vertical');
-                                padding: 0 1rem;
-                            }
-                        }
-                    }
-                }
-
-                .meta_tree {
-                    // height: 30rem;
-                    padding: 1.25rem;
-                    background: {
-                        color: $color-m-grey-lighten-3;
-                    }
-
-                    .tree__inner {
-                        min-height: 30rem;
-                        border: 1px solid $color-m-grey-lighten-3;
-                        background: {
-                            color: $color-m-white;
-                        }
-
-                        .v-treeview-node__label {
-                            font-size: 0.95rem;
-                            color: $color-m-grey-darken-1 !important;
-                        }
-                    }
-                }
-            }
-
+          }
         }
+  
+        .meta__container {
+          .meta__title {
+            color: $color-m-grey-darken-2;
+            text-transform: uppercase;
+            font-size: 1rem;
+          }
+  
+          .meta_languages {
+            width: 100%;
+            padding: 1rem;
+  
+            background: {
+              color: $app-color-black-alpha-10;
+            }
+  
+            .languages__inner {
+              background: url('./assets/app/images/project-languages-bg.jpg') no-repeat center;
+              background-size: cover;
+              width: 100%;
+              display: inline-flex;
+              padding: 1rem;
+              color: $color-m-white;
+  
+              background: {
+                color: $color-m-grey-darken-4;
+              }
+            }
+          }
+  
+          .meta_resources {
+            padding: 1.25rem;
+  
+            background: {
+              color: $color-m-grey-lighten-3;
+            }
+  
+            .resources__inner {
+              border: 1px solid $color-m-grey-lighten-3;
+  
+              background: {
+                color: $color-m-white;
+              }
+  
+              .resource-item {
+                position: relative;
+                height: 2.5rem;
+                border: 1px solid $app-color-white;
+  
+                background: {
+                  color: $color-m-grey-lighten-4;
+                }
+  
+                p {
+                  @include center-content('vertical');
+                  padding: 0 1rem;
+                }
+              }
+            }
+          }
+  
+          .meta_tree {
+            padding: 1.25rem;
+  
+            background: {
+              color: $color-m-grey-lighten-3;
+            }
+  
+            .tree__inner {
+              min-height: 30rem;
+              border: 1px solid $color-m-grey-lighten-3;
+  
+              background: {
+                color: $color-m-white;
+              }
+  
+              .v-treeview-node__label {
+                font-size: 0.95rem;
+                color: $color-m-grey-darken-1 !important;
+              }
+            }
+          }
+        }
+      }
     }
+  
     .footer__container {
-        position: fixed;
-		width: 100%;
-		height: 60px;
-		bottom: 0;
-		background: {
-			color: $color-app-black;
-		}
-
-		.project-btn__container {
-			width: 100%;
-			height: 100%;
-			position: relative;
-			display: flex;
-
-			.project-btn {
-				@include center-content(0, -4px);
-				display: contents;
-			}
-		}
-    }
-}
-
-
-@include respond-to(medium) {
-
-    .project-details-view {
+      position: fixed;
+      width: 100%;
+      height: 60px;
+      bottom: 0;
+  
+      background: {
+        color: $app-color-black;
+      }
+  
+      .project-btn__container {
         width: 100%;
-
-        .details__content {
-			padding: 0 0 60px;
-
-            .header__container {
-
-                .v-image {
-                    height: 50vh;
-
-                    .v-image__image--contain {
-                        background: {
-                            size: cover
-                        }
-                    }
-                }
-
-                .title__container {
-					@include center-content(0, -25px);
-
-                    h3 {
-                        font-size: 1.5rem;
-                        line-height: 2.25rem;
-                        padding: 0 0.7rem;
-                    }
-
-                    h1 {
-                        font-size: 3.0rem;
-                        line-height: 2.75rem;
-                        padding: 0 0.7rem;
-                    }
-				}
-
-				.project-info__container {
-					height: auto;
-					position: relative;
-
-					.project-info__inner {
-						width: 100%;
-                        background: {
-                            color: $color-app-black;
-                        };
-
-                        .project-info__item {
-
-                            h4 {
-                                text-transform: uppercase;
-                                font-weight: bold;
-                            }
-
-                            .project-btn__container {
-                                width: 100%;
-                                height: 100%;
-                                position: relative;
-                                display: inline-grid;
-
-                                .project-btn {
-                                    position: relative;
-                                }
-                            }
-                        }
-					}
-				}
-			}
-
-			.content__container {
-
-				.excerpt__container {
-
-					h3 {
-						font-size: 1.3rem !important;
-					}
-				}
-			}
+        height: 100%;
+        position: relative;
+        display: flex;
+  
+        .project-btn {
+          @include center-content(0, -4px);
+          display: contents;
         }
+      }
     }
-}
+  }
+  
+  @include respond-to(medium) {
+    .project-details-view {
+      width: 100%;
+  
+      .details__content {
+        padding: 0 0 60px;
+  
+        .header__container {
+          .v-image {
+            height: 50vh;
+  
+            .v-image__image--contain {
+              background: {
+                size: cover;
+              }
+            }
+          }
+  
+          .title__container {
+            @include center-content(0, -25px);
+  
+            h3 {
+              font-size: 1.5rem;
+              line-height: 2.25rem;
+              padding: 0 0.7rem;
+            }
+  
+            h1 {
+              font-size: 3rem;
+              line-height: 2.75rem;
+              padding: 0 0.7rem;
+            }
+          }
+  
+          .project-info__container {
+            height: auto;
+            position: relative;
+  
+            .project-info__inner {
+              width: 100%;
+  
+              background: {
+                color: $app-color-black;
+              }
+  
+              .project-info__item {
+                h4 {
+                  text-transform: uppercase;
+                  font-weight: bold;
+                }
+  
+                .project-btn__container {
+                  width: 100%;
+                  height: 100%;
+                  position: relative;
+                  display: inline-grid;
+  
+                  .project-btn {
+                    position: relative;
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        .content__container {
+          .excerpt__container {
+            h3 {
+              font-size: 1.3rem !important;
+            }
+          }
+        }
+      }
+    }
+  }

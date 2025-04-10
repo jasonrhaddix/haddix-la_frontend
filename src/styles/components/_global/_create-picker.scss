@@ -2,13 +2,13 @@
 	// position: relative;
 	height: 32rem;
 	background: {
-		// color: $color-app-ui-background;
-		color: $color-app-primary-dark;
+		// color: $app-color-ui-background;
+		color: $app-color-primary-dark;
 	}
 
 	.create-picker__content {
 		@include center-content();
-		color: $color-app-white;
+		color: $app-color-white;
 
 		.picker__title {
 			text-align: center;
@@ -40,7 +40,7 @@
 
 				&:hover {
 					background: {
-						color: $color-app-white-alpha-10;
+						color: $app-color-white-alpha-10;
 					}
 				}
 			}

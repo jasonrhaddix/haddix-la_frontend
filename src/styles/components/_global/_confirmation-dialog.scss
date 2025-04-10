@@ -1,0 +1,41 @@
+.confirmation-dialog {
+	// border: 1px solid white;
+	height: 22rem;
+	background: {
+		color: $app-color-primary-dark;
+	}
+
+	.confirmation-dialog__content {
+		@include center-content();
+		color: $app-color-white;
+		width: 100%;
+		
+		.confirmation__title {
+			font-size: 1.6rem;
+			text-transform: uppercase;
+			text-align: center;
+
+			h1 {
+				font-family: 'Din-CondBlack';
+			}
+			
+			h4 {
+				font-family: "DIN-Cond";
+			}
+		}
+
+		.confirmation__options {
+			display: flex;
+			justify-content: center;
+			margin: 1.5rem 0;
+			
+			.options__inner {
+				display: flex;
+
+				.btn {
+					margin: 0 1.5rem;
+				}
+			}
+		}
+	}
+}

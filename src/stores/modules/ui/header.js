@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 
 export default defineStore('header', {
   state: () => ({
-    openState: false
+    openState: false,
+    title: null
   }),
 
   actions: {
@@ -12,6 +13,14 @@ export default defineStore('header', {
 
     hideHeader() {
       this.openState = false
+    },
+
+    setTitle(title) {
+      this.title = title
+    },
+
+    removeTitle() {
+      this.title = null
     }
   }
 })

@@ -10,7 +10,7 @@
 
         padding: 1rem;
         background: {
-            color: $color-app-black-alpha-25;
+            color: $app-color-black-alpha-25;
 		}
 		border: {
 			radius: 4px;
@@ -19,7 +19,7 @@
         & > div {
             // flex: 1;
             background: {
-                color: $color-app-black-alpha-25;
+                color: $app-color-black-alpha-25;
             }
         }
 

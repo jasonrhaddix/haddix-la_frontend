@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 export default defineStore('navigation', {
   // STATE
   state: () => ({
-    title: null,
     isEnabled: true,
     openState: false
   }),

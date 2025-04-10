@@ -9,10 +9,9 @@
         </v-col>
         <v-col class="col-12 col-md-4">
           <v-select
+            :key="projectTypesKey"
             dense
             label="Project Type"
-            item-text="title"
-            item-value="value"
             :error="/* $v.model.type.$invalid &&  */ submitted"
             :items="propsStore.projectTypes"
             v-model="formModel.type"
@@ -41,8 +40,6 @@
           <v-select
             dense
             label="Client"
-            item-text="title"
-            item-value="value"
             :items="propsStore.projectClients"
             v-model="formModel.client"
           />
@@ -51,8 +48,6 @@
           <v-select
             dense
             label="Role"
-            item-text="title"
-            item-value="value"
             :items="propsStore.projectRoles"
             v-model="formModel.role"
           />
@@ -128,7 +123,7 @@
                 <div class="dropzone__scrim" />
               </div>
               <div v-if="fileAttachments.length > 0" class="images__list">
-                <CreateAttachmentItem
+                <AttachmentItem
                   v-for="(file, i) in fileAttachments('thumbnail', true)"
                   :key="`attachment-item--thumbnail-${i}-${$uuid.v4()}`"
                   :data="file"
@@ -138,8 +133,7 @@
           </div>
         </v-col>
 
-        <!-- <div class="inner__divider" /> -->
-
+        <!-- CAROUSEL IMAGES -->
         <v-col class="col-12 col-md-4">
           <div class="images-section images__carousel">
             <div class="section__title">
@@ -149,9 +143,9 @@
             <div class="images__container">
               <AttachmentUploader
                 multiple
-                ref="attachmentUploader_Carousel"
+                ref="attachmentUploader_Header"
                 :attach-to="getAttachTo"
-                file-usage-type="carousel"
+                file-usage-type="header"
               />
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
@@ -161,7 +155,7 @@
                   @dragenter.prevent.stop="uploadDragOver(true)"
                   @dragleave.prevent.stop="uploadDragOver(false)"
                   @drop.prevent.stop="dropFiles"
-                  @click="attachmentUploader_Carousel.select()"
+                  @click="attachmentUploader_Header.select()"
                 >
                   <div class="button__content">
                     <p class="subheading">Upload Images</p>
@@ -171,8 +165,8 @@
                 <div class="dropzone__scrim" />
               </div>
               <div v-if="fileAttachments.length > 0" class="images__list">
-                <CreateAttachmentItem
-                  v-for="(file, i) in fileAttachments('carousel')"
+                <AttachmentItem
+                  v-for="(file, i) in fileAttachments('header')"
                   :key="`attachment-item--carousel-${i}-${$uuid.v4()}`"
                   :data="file"
                 />
@@ -181,8 +175,7 @@
           </div>
         </v-col>
 
-        <!-- <div class="inner__divider" /> -->
-
+        <!-- BODY IMAGES -->
         <v-col class="col-12 col-md-4">
           <div class="images-section images__body">
             <div class="section__title">
@@ -215,7 +208,7 @@
                 <div class="dropzone__scrim" />
               </div>
               <div v-if="fileAttachments.length > 0" class="images__list">
-                <CreateAttachmentItem
+                <AttachmentItem
                   v-for="(file, i) in fileAttachments('body')"
                   :key="`attachment-item--body-${i}-${$uuid.v4()}`"
                   :data="file"
@@ -227,6 +220,7 @@
       </v-row>
     </div>
 
+    <!-- VIDEOS -->
     <div class="form-section create__images">
       <h2>Videos</h2>
 
@@ -263,7 +257,7 @@
             <div class="dropzone__scrim" />
           </div>
           <div v-if="fileAttachments.length > 0" class="images__list">
-            <CreateAttachmentItem
+            <AttachmentItem
               v-for="(file, i) in fileAttachments('video')"
               :key="`attachment-item--video-${i}-${$uuid.v4()}`"
               :data="file"
@@ -273,46 +267,32 @@
       </div>
     </div>
 
+    <!-- META -->
     <div class="form-section create__meta">
       <h2>Meta</h2>
 
       <div class="inner__divider" />
 
+      <!-- Languages -->
       <div class="meta-section project__languages">
         <div class="section__title">
           <h3>Project Languages <span class="caption">(Optional)</span></h3>
           <p>Languages used creating this project.</p>
         </div>
         <div class="languages__container">
-          <div :ripple="false" class="language__add-button" @click="addLanguage">
-            <div class="button__content">
-              <p class="subheading">Add Language</p>
-              <v-icon color="grey darken-1">add</v-icon>
-            </div>
-          </div>
-          <div class="language__list">
-            <CreateLanguageItem
-              v-for="(item, i) in formModel.languages"
-              :key="`language-item-${item.id})`"
-              :id="item.id"
-              :value="formModel.languages[i].value"
-              :value-callback="updateLanguage"
-              :language="formModel.languages[i].language"
-              :language-callback="updateLanguage"
-              :remove-callback="removeLanguage"
-            />
-          </div>
+          <LanguagePicker v-model="formModel.languages"/>
         </div>
       </div>
 
+      <!-- Resources -->
       <div class="meta-section project__languages">
         <div class="section__title">
           <h3>Project Resources <span class="caption">(Optional)</span></h3>
           <p>Resources used creating this project.</p>
         </div>
         <div class="languages__container">
-          <CreateResourcePicker
-            :items="propsStore.projectResources"
+          <ResourcePicker
+            v-model="formModel.resources"
             :items-selected-callback="resourceItemsSelected"
           />
         </div>
@@ -394,15 +374,20 @@
 
 <script setup>
 import _pick from 'lodash.pick'
-import { ref, reactive, computed, onMounted } from 'vue'
+import _isEqual from 'lodash.isequal'
+import _isObject from 'lodash.isobject'
 import { uuid } from 'vue-uuid'
+import { ref, reactive, computed, onMounted } from 'vue'
 
 import stores from '@/stores/index.js'
+import { Project } from '@/models'
 
 import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
-import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
-import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
-import CreateResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
+import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
+// import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
+
+import LanguagePicker from '@/components/Forms/CreateProject/Project/Project_Create__Language_Picker.vue'
+import ResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
 import AppButton from '@/components/_global/App_Button.vue'
 
 // stores
@@ -413,11 +398,20 @@ const projectsStore = stores.projectsStore()
 const uploadManagerStore = stores.s3.uploadManagerStore()
 // const projectTreeStore = stores.projectTreeStore()
 
+const props = defineProps({
+  data: {
+    type: [Boolean, Number, String, Array, Object, null],
+    required: false
+  }
+})
+
 // refs
-let submitted = ref(false)
+const updateProject = ref({})
+
+const submitted = ref(false)
 const fileDragOver = ref(false)
 const attachmentUploader_Thumbnail = ref(null)
-const attachmentUploader_Carousel = ref(null)
+const attachmentUploader_Header = ref(null)
 const attachmentUploader_Body = ref(null)
 const attachmentUploader_Video = ref(null)
 const formModel = reactive({
@@ -434,8 +428,8 @@ const formModel = reactive({
   link: null,
   published: true,
   languages: [],
-  resources: [],
-  hasTree: false
+  resources: []
+  // hasTree: false
 })
 
 const treeOptions = reactive({
@@ -457,6 +451,10 @@ const treeOptions = reactive({
 })
 
 // computed
+const projectTypesKey = computed((open) => {
+    return propsStore.projectTypes.map(i => i.value).join('-')
+})
+
 const projectYears = computed(() => {
   return propsStore.projectYears.slice().reverse()
 })
@@ -466,18 +464,47 @@ const getAttachTo = computed(() => ({
   modelId: formModel.projectId
 }))
 
-const folderIcon = computed((open) => {
-    return open ? faFolder: faFolderOpen
+const isEditMode = computed(() => {
+  return !!props.data.id
 })
+
+/* const folderIcon = computed((open) => {
+    return open ? faFolder: faFolderOpen
+}) */
 
 // lifecycle hooks
-onMounted(() => {
-  formModel.projectId = uuid.v4()
-  formModel.isGuestProject = !userStore.userIsAuthenticated
+onMounted(async () => {
+  if (props.data.id) {
+    const project = await projectsStore.fetchProjectById(props.data.id)
+    updateProject.value = Project.projectDetails(project)
+  }
+  initForm()
+  
 })
 
+function initForm () {
+  formModel.isGuestProject = !userStore.userIsAuthenticated
+  if (isEditMode.value) {
+    formModel.projectId = updateProject.value.projectId
+    formModel.type = updateProject.value.type
+    formModel.title = updateProject.value.title
+    formModel.subtitle = updateProject.value.subtitle
+    formModel.client = propsStore.getPropertyByKey('projectClients', updateProject.value.client, 'title', 'value')
+    formModel.role = propsStore.getPropertyByKey('projectRoles', updateProject.value.role, 'title', 'value')
+    formModel.projectYear = updateProject.value.projectYear
+    formModel.excerpt = updateProject.value.excerpt
+    formModel.description = updateProject.value.description
+    formModel.link = updateProject.value.link
+    formModel.published = updateProject.value.published
+    formModel.attachments = updateProject.value.attachments // ?.map(i => i.id)
+    formModel.languages = updateProject.value.languages?.map(i => i.value)
+    formModel.resources = updateProject.value.resources?.map(i => i.value)
+  } else {
+    formModel.projectId = uuid.v4()
+  }
+}
 // medthods
-function uploadThumbnail() {
+function uploadThumbnail () {
   attachmentUploader_Thumbnail.value.select()
 }
 
@@ -516,30 +543,8 @@ function fileAttachments (usageType, singleReturn) {
     return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
 }
 
-function addLanguage () {
-  formModel.languages.push({
-    id: uuid.v4(),
-    value: 0,
-    language: ''
-  })
-}
-
-function updateLanguage (data) {
-  let index = formModel.languages.findIndex(x => x.id === data.id)
-  if (index > -1) {
-    Object.assign(formModel.languages[index], data)
-  }
-}
-
-function removeLanguage (id) {
-  let index = formModel.languages.findIndex(x => x.id === id)
-  if (index > -1) {
-    formModel.languages.splice(index, 1)
-  }
-}
-
 function resourceItemsSelected (items) {
-  formModel.resources = items
+  formModel.resources = items.map(item => item.value)
 }
 
 /* function handleSelectedFileStructFiles (event) {
@@ -560,8 +565,40 @@ function resourceItemsSelected (items) {
   )
 } */
 
+function deepDiff(obj1, obj2) {
+  if (_isEqual(obj1, obj2)) return undefined;
+
+  if (!_isObject(obj1) || !_isObject(obj2)) return obj2;
+
+  if (Array.isArray(obj1) && Array.isArray(obj2)) {
+    if (obj1.length !== obj2.length || !obj1.every((val, i) => _isEqual(val, obj2[i]))) {
+      return obj2; // replace the array if it’s different
+    }
+    return undefined;
+  }
+
+  const diff = {};
+  const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
+
+  for (const key of allKeys) {
+    const value1 = obj1[key];
+    const value2 = obj2[key];
+
+    if (!obj2.hasOwnProperty(key)) {
+      diff[key] = undefined; // key was removed
+    } else {
+      const difference = deepDiff(value1, value2);
+      if (difference !== undefined) {
+        diff[key] = difference;
+      }
+    }
+  }
+
+  return Object.keys(diff).length > 0 ? diff : undefined;
+}
+
 function submitForm () {
-  submitted = true
+  submitted.value = true
 
   // Clean model before send
   Object.keys(formModel).forEach(k => {
@@ -570,38 +607,29 @@ function submitForm () {
       formModel[k].length === 0) delete formModel[k]
   })
    
-  // addedToQueue: 1743825149313
-  // attachTo: {model: 'app_project', modelId: '8a1182e9-99c9-40b5-9e90-b60be176ea32'}
-  // file: File {name: 'thumb-1', lastModified: 1566157675000, lastModifiedDate: Sun Aug 18 2019 12:47:55 GMT-0700 (Pacific Daylight Time), webkitRelativePath: '', size: 210110, …}
-  // fileId: "47bb49dd-af26-4550-a740-79ba6283a32b"
-  // filemeta: {hashId: '79743f79ee28ca37708c3090f18f215bfd1dd297'}
-  // filename: "thumb-1"
-  // hashId: "79743f79ee28ca37708c3090f18f215bfd1dd297"
-  // key: "files/8a1182e9-99c9-40b5-9e90-b60be176ea32/47bb49dd-af26-4550-a740-79ba6283a32b_thumb-1"
-  // preview: "data:application/octet-stream;base64,/9j/4QAYRXhp
-  // progress: {loaded: 210110, total: 210110}
-  // projectId: "8a1182e9-99c9-40b5-9e90-b60be176ea32"
-  // status: "success"
-  // uploadStatus: "success"
-  // uri: "https://haddix-la--attachments.s3.us-east-2.amazonaws.com/files/8a1182e9-99c9-40b5-9e90-b60be176ea32/47bb49dd-af26-4550-a740-79ba6283a32b_thumb-1"
-  // usageSubtype: null
-  // usageType: "thumbnail"
-
   // if (!this.$v.$invalid) {
-
     const fileProps = ['key', 'uri', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType']
     const attachments = {
       thumbnail: fileAttachments('thumbnail', true).map(file => _pick(file, fileProps)),
-      carousel: fileAttachments('carousel').map(file => _pick(file, fileProps)),
+      header: fileAttachments('header').map(file => _pick(file, fileProps)),
       body: fileAttachments('body').map(file => _pick(file, fileProps)),
       video:fileAttachments('video').map(file => _pick(file, fileProps))
     }
+    console.log('submitForm', isEditMode.value)
+    if (isEditMode.value) {
+      console.log('update')
 
-    projectsStore.createProject({ ...formModel, attachments })
+      const diff = deepDiff(updateProject.value, Project.projectDetails(formModel))
+      console.log('diff', diff, updateProject.value, Project.projectDetails(formModel))
+      
+      projectsStore.updateProject(props.data.id, diff)
+    } else { 
+      console.log('create')
+      
+      projectsStore.createProject({ ...formModel, attachments })
+    }
+
+    window.scrollTo(0, 0)
   // }
 }
-
-/* watch(projectTree, (val) => {
-  // if (val && val.tree_data.length) this.model.hasTree = true
-}) */
 </script>

@@ -1,48 +1,32 @@
+
+
 <template>
 	<div class="photo-viewer">
-		<img :src="getImage"/>
+		<img :src="selectedImage"/>
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'photo-viewer',
+<script setup>
+	import { defineProps, computed } from 'vue'
 
-	props: {
-		images: {
-			type: [Object, Array],
-			required: false,
-			default: null
-		},
+	import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.jpg'
 
-		startImageId: {
+	const props = defineProps({
+		image: {
 			type: String,
 			required: false,
 			default: null
 		}
-	},
+	})
 
-	data: () => ({
-		currentImageId: null
-	}),
-
-	computed: {
-		getImage () {
-			if (this.images.hasOwnProperty('uri')) return this.images.uri
-
-			let index = this.images.findIndex(i => i.attachmentId === this.startImageId)
-			return this.images[index].uri
-		}
-	},
-
-	mounted () {
-		this.currentImageId = this.startImageId ? this.startImageId : null
-	}
-}
+	const selectedImage = computed(() => {
+		return props.image || placeholderImg
+	})
 </script>
 
 <style lang="scss">
 	.photo-viewer {
 		display: flex;
+		// border: 1px solid #FFF;
 	}
 </style>

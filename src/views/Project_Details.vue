@@ -1,213 +1,204 @@
 <template>
-    <v-container fluid class="project-details-view">
+  <v-container fluid class="project-details-view">
+    <div class="details__content">
+      <div class="header__container">
+        <v-img
+          contain
+          v-if="headerImage"
+          :src="headerImage"
+        />
 
-        <div class="details__content">
-            <div class="header__container">
-                <v-img
-                    contain
-                    v-if="headerImage"
-                    :src="headerImage"></v-img>
+        <div class="scrim" />
 
-                <div class="scrim"/>
-
-                <div class="title__container">
-                    <h3>{{ client }}</h3>
-                    <h1>{{ title }}</h1>
-                    <h3>{{ subtitle }}</h3>
-                </div>
-
-				<div class="project-info__container">
-					<v-row class="project-info__inner">
-						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
-							<div class="item">
-								<h4>Client</h4>
-								<p>{{ client }}</p>
-							</div>
-						</v-col>
-
-						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
-							<div class="item">
-								<h4>Role</h4>
-								<p>{{ role }}</p>
-							</div>
-						</v-col>
-
-						<v-col align-self="center" class="d-none d-md-block col-12 col-md-4 project-info__item">
-							<div class="item">
-								<div
-									v-if="link"
-									class="project-btn__container"
-									@click="navigateToProject">
-									<app-btn class="project-btn" label="View Project"/>
-								</div>
-							</div>
-						</v-col>
-					</v-row>
-				</div>
-
-                <v-btn
-                    fab small depressed
-                    class="header__close-btn"
-                    @click="navigateToPreviousPage">
-                    <v-icon>close</v-icon>
-                </v-btn>
-            </div>
-
-            <v-container class="content__container">
-                <!-- <div class="divider" /> -->
-
-                <div class="section excerpt__container">
-                    <h3 class="headline">{{ excerpt }}</h3>
-                </div>
-
-                <div
-                  v-if="videos"
-                  class="divider" />
-
-                <div class="section video__container">
-                    <div
-                        v-if="videos"
-                        class="video__inner">
-                        <video
-                            loop muted autoplay
-                            controls playsInline
-                            class="project-video">
-                            <source :src="videos.uri" :type="videos.mimetype"/>
-                        </video>
-                    </div>
-                </div>
-
-                <div
-					v-if="description"
-					class="divider" />
-
-                <div class="section description__container">
-                    <div class="description__inner">
-                        <!-- <div class="description" v-html="description">
-                            {{ description }} 
-                        </div> -->
-                    </div>
-                </div>
-
-                <div
-					v-if="photos"
-					class="divider" />
-
-                <div class="section photos__container">
-                    <v-layout
-                      row wrap
-                      class="photos__inner">
-                        <v-flex
-                            xs6
-                            align-content-center
-                            v-for="(item,i) in photos"
-                            :key="`project-photo-${$uuid.v4()}-${i}`"
-							@click="showFullsizeImage(item)">
-
-							<div class="photo">
-								<img :src="item.uri" />
-
-								<div class="img-hover">
-									<div class="skrim"/>
-									<v-icon
-										size="32"
-										class="icon"
-										color="white">
-										search
-									</v-icon>
-								</div>
-							</div>
-
-                        </v-flex>
-                    </v-layout>
-                </div>
-
-                <div
-					v-if="languages || resources || tree"
-					class="divider" />
-
-                <div class="section meta__container">
-                    <div
-						v-if="languages"
-						class="meta__title languages">
-                        <h4>Languages</h4>
-                    </div>
-                    <div
-						v-if="languages"
-						class="subsection meta_languages">
-                        <v-layout class="languages__inner">
-                            <LanguageGraph
-                                v-for="(item, i) in languages"
-                                :key="`project-language-${$uuid.v4()}-${i}`"
-                                :value="item.value"
-                                :language="item.language"/>
-                        </v-layout>
-                    </div>
-
-                    <div
-						v-if="resources"
-						class="meta__title languages">
-                        <h4>Resources</h4>
-                    </div>
-                    <div
-						v-if="resources"
-						class="subsection meta_resources">
-                        <v-layout row wrap class="resources__inner">
-                            <v-flex xs6
-                                v-for="(item,i) in resources"
-                                :key="`resource-item-${i}`"
-                                class="resource-item">
-                                <p> {{ item.value }}</p>
-                            </v-flex>
-                        </v-layout>
-                    </div>
-
-                    <div
-                        v-if="tree"
-                        class="meta__title languages">
-                        <h4>File Structure</h4>
-                    </div>
-                    <div
-                        v-if="tree"
-                        class="subsection meta_tree">
-                        <div class="tree__inner">
-                            <v-treeview
-                                hoverable
-                                open-on-click
-                                :items="tree"
-                                :open="[1]">
-                                <template v-slot:prepend="{ item, open }">
-                                    <font-awesome-icon
-                                        v-if="!item.file"
-                                        color="grey"
-                                        :icon="['fas', open ? 'folder-open': 'folder']"/>
-                                    <font-awesome-icon
-                                        v-else
-                                        color="grey"
-                                        :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
-                                </template>
-                            </v-treeview>
-                        </div>
-                    </div>
-                </div>
-            </v-container>
+        <div class="title__container">
+          <h3>{{ project.client }}</h3>
+          <h1>{{ project.title }}</h1>
+          <h3>{{ project.subtitle }}</h3>
         </div>
 
-		<div
-			v-if="link"
-			class="d-sm-block d-md-none footer__container">
-			<v-row class="footer__inner">
-				<v-col align-self="center" class="col-12 project-info__item">
-					<div
-						class="project-btn__container"
-						@click="navigateToProject">
-						<AppButton class="project-btn" label="View Project"/>
+        <div class="project-info__container">
+          <v-row class="project-info__inner">
+            <v-col
+              align-self="center"
+              class="col-6 col-md-4 project-info__item"
+            >
+              <div class="item">
+                <h4>Client</h4>
+                <p>{{ project.client }}</p>
+              </div>
+            </v-col>
+
+            <v-col
+              align-self="center"
+              class="col-6 col-md-4 project-info__item"
+            >
+              <div class="item">
+                <h4>Role</h4>
+                <p>{{ project.role }}</p>
+              </div>
+            </v-col>
+
+            <v-col
+              align-self="center"
+              class="d-none d-md-block col-12 col-md-4 project-info__item"
+            >
+              <div class="item">
+                <div
+                  v-if="project.link"
+                  class="project-btn__container"
+                  @click="navigateToProject"
+                >
+                  <AppButton class="project-btn" label="View Project" />
+                </div>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
+
+        <v-btn
+          icon small
+          class="header__close-btn"
+          @click="navigateToPreviousPage">
+          <v-icon>close</v-icon>
+        </v-btn>
+      </div>
+
+      <v-container class="content__container">
+        <div class="section excerpt__container">
+          <h3 class="headline">"{{ project.excerpt }}"</h3>
+        </div>
+
+        <div v-if="projectVideo" class="divider" />
+
+        <div class="section video__container">
+          <div v-if="projectVideo" class="video__inner">
+            <video
+              loop muted
+              autoplay controls playsInline
+              class="project-video">
+              <source :src="projectVideo.uri" :type="projectVideo.mimetype" />
+            </video>
+          </div>
+        </div>
+
+        <div v-if="project.description" class="divider" />
+
+        <div class="section description__container">
+          <div class="description__inner">
+            <div class="description" v-html="project.description" />
+          </div>
+        </div>
+
+        <div v-if="projectPhotos" class="divider" />
+
+        <div class="section photos__container">
+          <v-container class="photos__inner" fluid>
+            <v-row dense>
+              <v-col
+                cols="12"
+                sm="6"
+                v-for="(item, i) in projectPhotos"
+                :key="`project-photo-${$uuid.v4()}-${i}`"
+                @click="showFullsizeImage(item)"
+              >
+                <div class="photo">
+                  <img :src="item.uri" />
+                  <div class="img-hover">
+                    <div class="skrim" />
+                    <v-icon size="60" class="icon" color="white">zoom_in</v-icon>
+                  </div>
+                </div>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+
+        <div v-if="project.languages || project.resources || project.tree" class="divider" />
+
+        <div class="section meta__container">
+          <div v-if="project.languages?.length" class="meta__title languages">
+            <h4>Languages</h4>
+          </div>
+
+          <div v-if="project.languages?.length" class="subsection meta_languages">
+            <v-layout class="languages__inner">
+              <LanguageGraph
+                v-for="(item, i) in project.languages"
+                :key="`project-language-${item.value}-${i}`"
+                v-bind="item"
+              />
+            </v-layout>
+          </div>
+
+          <div v-if="project.resources?.length" class="meta__title languages">
+            <h4>Resources</h4>
+          </div>
+
+          <div v-if="project.resources?.length" class="subsection meta_resources">
+						<v-container class="resources__inner" fluid>
+							<v-row>
+								<v-col
+									cols="12"
+									sm="6"
+									v-for="(item, i) in projectResources"
+									:key="`resource-item-${i}`"
+									class="resource-item"
+								>
+									<p>{{ item.title }}</p>
+								</v-col>
+							</v-row>
+						</v-container>
 					</div>
-				</v-col>
-			</v-row>
-		</div>
-    </v-container>
+
+          <!-- <div v-if="tree" class="meta__title languages">
+            <h4>File Structure</h4>
+          </div>
+
+          <div v-if="tree" class="subsection meta_tree">
+            <div class="tree__inner">
+              <v-treeview
+                hoverable
+                open-on-click
+                :items="tree"
+                :open="[1]"
+              >
+                <template v-slot:prepend="{ item, open }">
+                  <font-awesome-icon
+                    v-if="!item.file"
+                    color="grey"
+                    :icon="['fas', open ? 'folder-open' : 'folder']"
+                  />
+                  <font-awesome-icon
+                    v-else
+                    color="grey"
+                    :icon="[
+                      treeOptions.fileIcons[item.file].prefix,
+                      treeOptions.fileIcons[item.file].icon
+                    ]"
+                  />
+                </template>
+              </v-treeview>
+            </div>
+          </div> -->
+        </div>
+      </v-container>
+    </div>
+
+    <div
+      v-if="project.link"
+      class="d-sm-block d-md-none footer__container"
+    >
+      <v-row class="footer__inner">
+        <v-col align-self="center" class="col-12 project-info__item">
+          <div class="project-btn__container" @click="navigateToProject">
+            <AppButton class="project-btn" label="View Project" />
+          </div>
+        </v-col>
+      </v-row>
+    </div>
+  </v-container>
 </template>
+
 
 <script setup>
 	import { ref, computed } from 'vue'
@@ -217,10 +208,21 @@
 	import AppButton from '@/components/_global/App_Button.vue'
 	import LanguageGraph from '@/components/_global/Language_Graph.vue'
 
+	import headerPlaceholder from '@/assets/app/images/project-placeholder-thumb.jpg'
+
+	const propsStore = stores.config.propsStore()
+	const dialogStore = stores.ui.dialogStore()
 	const projectsStore = stores.projectsStore()
+
+	const props = defineProps({
+		project: {
+			type: Object,
+			required: true
+		}
+	})
 	
-	const treeFoldersOpen = ref([1])
-	const treeOptions = ref({
+	// const treeFoldersOpen = ref([1])
+/* 	const treeOptions = ref({
 		fileIcons: {
 			css: { prefix: 'fab', icon: 'css3' },
 			fav: { prefix: 'fas', icon: 'star' },
@@ -236,18 +238,45 @@
 			vue: { prefix: 'fab', icon: 'vuejs' },
 			yarn: { prefix: 'fab', icon: 'yarn' }
 		}
-	})
-
-	const headerImage = computed(() => {
-		let images = null // stores.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details') // DO I NEED THIS?
-		return (images && images.length > 0)
-			? images[0].uri
-			: '@/assets/app/images/project-placeholder-thumb.jpg'
-	})
+	}) */
 
 	const project = computed(() => {
 		return projectsStore.project
 	})
+
+	const headerImage = computed(() => {
+		return project.value.attachments?.header[0]?.uri || headerPlaceholder
+	})
+
+	const projectVideo = computed(() => {
+		return project.value.attachments?.video[0] || null
+	})
+
+	const projectPhotos = computed(() => {
+		return project.value.attachments?.body || null
+	})
+
+	const projectResources = computed(() => {
+		return propsStore.projectResources.filter(item => project.value.resources.includes(item.value))
+	})
+
+	const showFullsizeImage = (item) => {
+		dialogStore.showDialog({
+      component: '_global/Photo_Viewer.vue',
+			width: '70%',
+				props: {
+					image: item.uri
+				}
+    })
+	}
+
+	const navigateToPreviousPage = () => {
+		stores.routingStore().previousPage()
+	}
+
+	const navigateToProject = () => {
+		window.location.href = project.link
+	}
 </script>
 
 
@@ -307,7 +336,7 @@ export default {
 		}),
 
 		headerImage () {
-			let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
+			let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__HEADER, 'project-details')
 			return (images && images.length > 0)
 				? images[0].uri
 				: require('@/assets/app/images/project-placeholder-thumb.jpg')
