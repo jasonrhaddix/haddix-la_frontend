@@ -32,6 +32,9 @@ export default defineStore('types', {
     // s3 settings
     S3__QUEUE_SIZE: 4,
 
+    // ui
+    UI__TOAST__DELAY__DEFAULT: 3500,
+
     UPLOAD_MANAGER_BUCKET__QUEUED: 'filesQueued',
     UPLOAD_MANAGER_BUCKET__UPLOADING: 'filesUploading',
     UPLOAD_MANAGER_BUCKET__COMPLETE: 'filesCompleted',

@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-  import { ref, computed, watch } from 'vue'
+  import { ref, computed, watch, onMounted } from 'vue'
   
   import stores from '@/stores/index.js'
 
@@ -74,6 +74,11 @@
     return propsStore.getPropertyByKey('projectLanguages', localLang.value, 'value', 'title')
   })
 
+  onMounted(() => {
+    localLang.value = props.language
+    localValue.value = props.value
+  })
+
   const emitData = () => {
     emit('valueChanged', {
       id: props.id,
@@ -94,4 +99,11 @@
   watch(localValue, (value) => {
     emitData()
   })
+
+  // if the props might change later (and you want to support external prop updates without a loop),
+  // then only update local values if they actually differ:
+  watch(() => [props.language, props.value], ([newLang, newValue]) => {
+    if (localLang.value !== newLang) localLang.value = newLang
+    if (localValue.value !== newValue) localValue.value = newValue
+  }, { immediate: true })
 </script>

@@ -50,7 +50,7 @@ export default defineStore('props', {
       { title: 'Universal Studios', value: 'universal_studios' }
     ],
 
-    roleClients: [
+    roleCompanies: [
       { title: 'Amazon', value: 'amazon' },
       { title: 'Apple', value: 'apple' },
       { title: 'Facebook', value: 'facebook' },

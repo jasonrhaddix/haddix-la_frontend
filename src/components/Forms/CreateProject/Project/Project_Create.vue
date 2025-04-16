@@ -113,7 +113,7 @@
                   @dragenter.prevent.stop="uploadDragOver(true)"
                   @dragleave.prevent.stop="uploadDragOver(false)"
                   @drop.prevent.stop="dropFiles"
-                  @click="uploadThumbnail"
+                  @click="attachmentUploader_Thumbnail.select()"
                 >
                   <div class="button__content">
                     <p class="subheading">Upload Image</p>
@@ -122,11 +122,12 @@
                 </div>
                 <div class="dropzone__scrim" />
               </div>
-              <div v-if="fileAttachments.length > 0" class="images__list">
+              <div class="images__list">
                 <AttachmentItem
                   v-for="(file, i) in fileAttachments('thumbnail', true)"
                   :key="`attachment-item--thumbnail-${i}-${$uuid.v4()}`"
                   :data="file"
+                  @remove-file="removeAttachment"
                 />
               </div>
             </div>
@@ -164,11 +165,12 @@
                 </div>
                 <div class="dropzone__scrim" />
               </div>
-              <div v-if="fileAttachments.length > 0" class="images__list">
+              <div class="images__list">
                 <AttachmentItem
                   v-for="(file, i) in fileAttachments('header')"
                   :key="`attachment-item--carousel-${i}-${$uuid.v4()}`"
                   :data="file"
+                  @remove-file="removeAttachment"
                 />
               </div>
             </div>
@@ -207,11 +209,12 @@
                 </div>
                 <div class="dropzone__scrim" />
               </div>
-              <div v-if="fileAttachments.length > 0" class="images__list">
+              <div class="images__list">
                 <AttachmentItem
                   v-for="(file, i) in fileAttachments('body')"
                   :key="`attachment-item--body-${i}-${$uuid.v4()}`"
                   :data="file"
+                  @remove-file="removeAttachment"
                 />
               </div>
             </div>
@@ -256,11 +259,12 @@
             </div>
             <div class="dropzone__scrim" />
           </div>
-          <div v-if="fileAttachments.length > 0" class="images__list">
+          <div class="images__list">
             <AttachmentItem
               v-for="(file, i) in fileAttachments('video')"
               :key="`attachment-item--video-${i}-${$uuid.v4()}`"
               :data="file"
+              @remove-file="removeAttachment"
             />
           </div>
         </div>
@@ -373,263 +377,308 @@
 </template>
 
 <script setup>
-import _pick from 'lodash.pick'
-import _isEqual from 'lodash.isequal'
-import _isObject from 'lodash.isobject'
-import { uuid } from 'vue-uuid'
-import { ref, reactive, computed, onMounted } from 'vue'
+  import _pick from 'lodash.pick'
+  import _isEqual from 'lodash.isequal'
+  import _isObject from 'lodash.isobject'
+  import { uuid } from 'vue-uuid'
+  import { ref, reactive, computed, onMounted } from 'vue'
 
-import stores from '@/stores/index.js'
-import { Project } from '@/models'
+  import stores from '@/stores/index.js'
+  import { Project } from '@/models'
+  import { objectHelpers } from '@/utils/helpers'
 
-import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
-import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
-// import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
+  import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
+  import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
+  // import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
 
-import LanguagePicker from '@/components/Forms/CreateProject/Project/Project_Create__Language_Picker.vue'
-import ResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
-import AppButton from '@/components/_global/App_Button.vue'
+  import LanguagePicker from '@/components/Forms/CreateProject/Project/Project_Create__Language_Picker.vue'
+  import ResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
+  import AppButton from '@/components/_global/App_Button.vue'
 
-// stores
-const typesStore = stores.config.typesStore()
-const propsStore = stores.config.propsStore()
-const userStore = stores.userStore()
-const projectsStore = stores.projectsStore()
-const uploadManagerStore = stores.s3.uploadManagerStore()
-// const projectTreeStore = stores.projectTreeStore()
+  // stores
+  const typesStore = stores.config.typesStore()
+  const propsStore = stores.config.propsStore()
+  const overlayStore = stores.ui.overlayStore()
+  const toastStore = stores.ui.toastStore()
+  const userStore = stores.userStore()
+  const projectsStore = stores.projectsStore()
+  const uploadManagerStore = stores.s3.uploadManagerStore()
+  // const projectTreeStore = stores.projectTreeStore()
 
-const props = defineProps({
-  data: {
-    type: [Boolean, Number, String, Array, Object, null],
-    required: false
-  }
-})
+  const props = defineProps({
+    data: {
+      type: [Boolean, Number, String, Array, Object, null],
+      required: false
+    }
+  })
 
-// refs
-const updateProject = ref({})
+  // refs
+  const updateProject = ref({})
 
-const submitted = ref(false)
-const fileDragOver = ref(false)
-const attachmentUploader_Thumbnail = ref(null)
-const attachmentUploader_Header = ref(null)
-const attachmentUploader_Body = ref(null)
-const attachmentUploader_Video = ref(null)
-const formModel = reactive({
-  projectId: null,
-  isGuestProject: null,
-  type: null,
-  title: null,
-  subtitle: null,
-  client: null,
-  role: null,
-  projectYear: null,
-  excerpt: null,
-  description: null,
-  link: null,
-  published: true,
-  languages: [],
-  resources: []
-  // hasTree: false
-})
+  const submitted = ref(false)
+  const fileDragOver = ref(false)
+  const attachmentUploader_Thumbnail = ref(null)
+  const attachmentUploader_Header = ref(null)
+  const attachmentUploader_Body = ref(null)
+  const attachmentUploader_Video = ref(null)
+  const formModel = reactive({
+    projectId: null,
+    isGuestProject: null,
+    type: null,
+    title: null,
+    subtitle: null,
+    client: null,
+    role: null,
+    projectYear: null,
+    excerpt: null,
+    description: null,
+    link: null,
+    published: true,
+    languages: [],
+    resources: []
+  })
 
-const treeOptions = reactive({
-  fileIcons: {
-    css: { prefix: 'fab', icon: 'css3' },
-    fav: { prefix: 'fas', icon: 'star' },
-    group: { prefix: 'fas', icon: 'ellipsis-h' },
-    html: { prefix: 'fab', icon: 'html5' },
-    image: { prefix: 'fas', icon: 'file-image' },
-    js: { prefix: 'fab', icon: 'js' },
-    json: { prefix: 'fas', icon: 'code' },
-    md: { prefix: 'fab', icon: 'markdown' },
-    node: { prefix: 'fab', icon: 'node-js' },
-    pdf: { prefix: 'fas', icon: 'file-pdf' },
-    vieo: { prefix: 'fas', icon: 'file-video' },
-    vue: { prefix: 'fab', icon: 'vuejs' },
-    yarn: { prefix: 'fab', icon: 'yarn' }
-  }
-})
+  /* const treeOptions = reactive({
+    fileIcons: {
+      css: { prefix: 'fab', icon: 'css3' },
+      fav: { prefix: 'fas', icon: 'star' },
+      group: { prefix: 'fas', icon: 'ellipsis-h' },
+      html: { prefix: 'fab', icon: 'html5' },
+      image: { prefix: 'fas', icon: 'file-image' },
+      js: { prefix: 'fab', icon: 'js' },
+      json: { prefix: 'fas', icon: 'code' },
+      md: { prefix: 'fab', icon: 'markdown' },
+      node: { prefix: 'fab', icon: 'node-js' },
+      pdf: { prefix: 'fas', icon: 'file-pdf' },
+      vieo: { prefix: 'fas', icon: 'file-video' },
+      vue: { prefix: 'fab', icon: 'vuejs' },
+      yarn: { prefix: 'fab', icon: 'yarn' }
+    }
+  }) */
 
-// computed
-const projectTypesKey = computed((open) => {
-    return propsStore.projectTypes.map(i => i.value).join('-')
-})
+  // computed
+  const projectTypesKey = computed((open) => {
+      return propsStore.projectTypes.map(i => i.value).join('-')
+  })
 
-const projectYears = computed(() => {
-  return propsStore.projectYears.slice().reverse()
-})
+  const projectYears = computed(() => {
+    return propsStore.projectYears.slice().reverse()
+  })
 
-const getAttachTo = computed(() => ({ 
-  model: typesStore.ATTACHMENT_TYPE__PROJECT,
-  modelId: formModel.projectId
-}))
+  const getAttachTo = computed(() => ({ 
+    model: typesStore.ATTACHMENT_TYPE__PROJECT,
+    modelId: formModel.projectId
+  }))
 
-const isEditMode = computed(() => {
-  return !!props.data.id
-})
+  const isEditMode = computed(() => {
+    return !!props.data.id
+  })
 
-/* const folderIcon = computed((open) => {
-    return open ? faFolder: faFolderOpen
-}) */
+  /* const folderIcon = computed((open) => {
+      return open ? faFolder: faFolderOpen
+  }) */
 
-// lifecycle hooks
-onMounted(async () => {
-  if (props.data.id) {
-    const project = await projectsStore.fetchProjectById(props.data.id)
-    updateProject.value = Project.projectDetails(project)
-  }
-  initForm()
-  
-})
-
-function initForm () {
-  formModel.isGuestProject = !userStore.userIsAuthenticated
-  if (isEditMode.value) {
-    formModel.projectId = updateProject.value.projectId
-    formModel.type = updateProject.value.type
-    formModel.title = updateProject.value.title
-    formModel.subtitle = updateProject.value.subtitle
-    formModel.client = propsStore.getPropertyByKey('projectClients', updateProject.value.client, 'title', 'value')
-    formModel.role = propsStore.getPropertyByKey('projectRoles', updateProject.value.role, 'title', 'value')
-    formModel.projectYear = updateProject.value.projectYear
-    formModel.excerpt = updateProject.value.excerpt
-    formModel.description = updateProject.value.description
-    formModel.link = updateProject.value.link
-    formModel.published = updateProject.value.published
-    formModel.attachments = updateProject.value.attachments // ?.map(i => i.id)
-    formModel.languages = updateProject.value.languages?.map(i => i.value)
-    formModel.resources = updateProject.value.resources?.map(i => i.value)
-  } else {
-    formModel.projectId = uuid.v4()
-  }
-}
-// medthods
-function uploadThumbnail () {
-  attachmentUploader_Thumbnail.value.select()
-}
-
-function uploadDragOver (value) {
-  fileDragOver.value = value
-}
-
-function dropFiles (event) {
-  fileDragOver.value = false
-  // this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files) // <--------------------------- MAKE THIS WORK (refs?)
-}
-
-function fileAttachments (usageType, singleReturn) {
-    let files = []
-
-    let paramsWithId = {
-      attachTo: {
-        modelId: formModel.projectId,
-        model: typesStore.ATTACHMENT_TYPE__PROJECT
-      }
+  // lifecycle hooks
+  onMounted(async () => {
+    if (props.data.id) {
+      const project = await projectsStore.fetchProjectById(props.data.id)
+      updateProject.value = Project.projectDetails(project)
     }
 
-    files = files
-      .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
-      .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
-      .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
-      .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
+    initForm()
+  })
 
-    files.sort(function (a, b) {
-      return a.addedToQueue - b.addedToQueue
+  const initForm = () => {
+    if (isEditMode.value) {
+      Object.assign(formModel, {
+        ...updateProject.value,
+        projectId: updateProject.value.projectId,
+        type: updateProject.value.type,
+        title: updateProject.value.title,
+        subtitle: updateProject.value.subtitle,
+        client: propsStore.getPropertyByKey('projectClients', updateProject.value.client, 'title', 'value'),
+        role: propsStore.getPropertyByKey('projectRoles', updateProject.value.role, 'title', 'value'),
+        projectYear: updateProject.value.projectYear,
+        excerpt: updateProject.value.excerpt,
+        description: updateProject.value.description,
+        link: updateProject.value.link,
+        published: updateProject.value.published,
+        attachments: updateProject.value.attachments,
+        languages: JSON.parse(JSON.stringify(updateProject.value.languages)),
+        resources: JSON.parse(JSON.stringify(updateProject.value.resources))
+      })
+    } else {
+      formModel.isGuestProject = !userStore.userIsAuthenticated
+      formModel.projectId = uuid.v4()
+    }
+  }
+
+  // medthods
+  const uploadDragOver = (value) => {
+    fileDragOver.value = value
+  }
+
+  const dropFiles = (event) => {
+    fileDragOver.value = false
+    // this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files) // <--------------------------- MAKE THIS WORK (refs?)
+  }
+
+  const fileAttachments = (usageType, singleReturn) => {
+      let files = !!usageType
+        ? formModel.attachments?.[usageType]
+        : Object.values(formModel.attachments || {}).flat()
+          || []
+
+      let paramsWithId = {
+        attachTo: {
+          modelId: formModel.projectId,
+          model: typesStore.ATTACHMENT_TYPE__PROJECT
+        }
+      }
+
+      files = [...files || []]
+        .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
+        .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
+        .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
+        .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
+
+      files.sort(function (a, b) {
+        return a.addedToQueue - b.addedToQueue
+      })
+
+      let filteredFiles = !!usageType ? files?.filter(file => file.usageType === usageType) : files
+
+      if (filteredFiles.length === 0) return []
+      return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
+  }
+
+  const resourceItemsSelected = (items) => {
+    formModel.resources = items.map(item => item.value)
+  }
+
+  /* function handleSelectedFileStructFiles (event) {
+    // let file = this.$refs.fileStructureControl.files[0] // <--------------------------- MAKE THIS WORK (refs?)
+
+    let reader = new FileReader()
+    reader.onload = this.onReaderLoad
+    reader.readAsText(file)
+  } */
+
+  /* function onReaderLoad (event) {
+    var jsonTree = JSON.parse(event.target.result)
+    this.createProjectTree(
+      {
+        projectId: formModel.projectId,
+        tree_data: jsonTree
+      }
+    )
+  } */
+
+  const removeAttachment = (removeFile) => {
+    if (removeFile.hashId) {
+      // remove from upload manager
+      uploadManagerStore.removeFile(removeFile.hashId)
+    } else {
+      // remove from model
+      const modelAttachments = formModel.attachments || {}
+    
+      // remove file from model
+      Object.keys(modelAttachments).forEach(key => {
+        modelAttachments[key] = modelAttachments[key].filter(file => file.fileId !== removeFile.fileId)
+      })
+    }
+  }
+
+  const extractAttachmentData = (types, wrapperKeys, fileKeys) => {
+    return Object.fromEntries(
+      types.map(type => {
+        const files = fileAttachments(type, true)
+
+        const mapped = files.map(entry => {
+          const fileData = Object.fromEntries(
+            fileKeys.map(key => [key, entry.file?.[key]])
+          )
+
+          const wrapperData = Object.fromEntries(
+            wrapperKeys.map(key => [key, entry[key]])
+          )
+
+          return {
+            ...wrapperData,
+            file: fileData
+          }
+        })
+
+        return [type, mapped]
+      })
+    )
+  }
+
+  const submitForm = async () => {
+    submitted.value = true
+
+    // Clean model before send
+    Object.keys(formModel).forEach(k => {
+      if (formModel[k] === null ||
+        formModel[k] === undefined ||
+        formModel[k].length === 0) delete formModel[k]
     })
 
-    let filteredFiles = files?.filter(file => file.usageType === usageType) || []
+    const wrapperKeys = ['key', 'uri', 'status', 'file', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType', 'usageSubtype']
+    const fileKeys = ['name', 'type']
+    
+    const attachments = extractAttachmentData(['thumbnail', 'header', 'body', 'video'], wrapperKeys, fileKeys)
 
-    if (filteredFiles.length === 0) return []
-    return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
-}
+    if (isEditMode.value) {
 
-function resourceItemsSelected (items) {
-  formModel.resources = items.map(item => item.value)
-}
+      const diff = objectHelpers.deepDiff(updateProject.value, {...formModel, attachments})
 
-/* function handleSelectedFileStructFiles (event) {
-  // let file = this.$refs.fileStructureControl.files[0] // <--------------------------- MAKE THIS WORK (refs?)
+      try {
+        await projectsStore.updateProject(props.data.id, diff)
+        
+        toastStore.addToast({
+          component: '_global/Toast/Toast_Message.vue',
+          data: {
+            type: 'success',
+            title: 'Project Updated!',
+            message: `${formModel.title}`
+          }
+        })
+      } catch (error) {
+        toastStore.addToast({
+          component: '_global/Toast/Toast_Message.vue',
+          data: {
+            type: 'error',
+            title: 'Error',
+            message: 'An error occurred while updating the project.'
+          }
+        })
+      }
+    } else {       
+      // Create new project
+      try {
+        await projectsStore.createProject({ ...formModel, attachments })
 
-  let reader = new FileReader()
-  reader.onload = this.onReaderLoad
-  reader.readAsText(file)
-} */
-
-/* function onReaderLoad (event) {
-  var jsonTree = JSON.parse(event.target.result)
-  this.createProjectTree(
-    {
-      projectId: formModel.projectId,
-      tree_data: jsonTree
-    }
-  )
-} */
-
-function deepDiff(obj1, obj2) {
-  if (_isEqual(obj1, obj2)) return undefined;
-
-  if (!_isObject(obj1) || !_isObject(obj2)) return obj2;
-
-  if (Array.isArray(obj1) && Array.isArray(obj2)) {
-    if (obj1.length !== obj2.length || !obj1.every((val, i) => _isEqual(val, obj2[i]))) {
-      return obj2; // replace the array if it’s different
-    }
-    return undefined;
-  }
-
-  const diff = {};
-  const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
-
-  for (const key of allKeys) {
-    const value1 = obj1[key];
-    const value2 = obj2[key];
-
-    if (!obj2.hasOwnProperty(key)) {
-      diff[key] = undefined; // key was removed
-    } else {
-      const difference = deepDiff(value1, value2);
-      if (difference !== undefined) {
-        diff[key] = difference;
+        toastStore.addToast({
+          component: '_global/Toast/Toast_Message.vue',
+          data: {
+            type: 'success',
+            title: 'Project Created!',
+            message: `${formModel.title}`
+          }
+        })
+      } catch (error) {
+        toastStore.addToast({
+          component: '_global/Toast/Toast_Message.vue',
+          data: {
+            type: 'error',
+            title: 'Error',
+            message: 'An error occurred while updating the project.'
+          }
+        })
       }
     }
+
+    overlayStore.hideOverlay()
   }
-
-  return Object.keys(diff).length > 0 ? diff : undefined;
-}
-
-function submitForm () {
-  submitted.value = true
-
-  // Clean model before send
-  Object.keys(formModel).forEach(k => {
-    if (formModel[k] === null ||
-      formModel[k] === undefined ||
-      formModel[k].length === 0) delete formModel[k]
-  })
-   
-  // if (!this.$v.$invalid) {
-    const fileProps = ['key', 'uri', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType']
-    const attachments = {
-      thumbnail: fileAttachments('thumbnail', true).map(file => _pick(file, fileProps)),
-      header: fileAttachments('header').map(file => _pick(file, fileProps)),
-      body: fileAttachments('body').map(file => _pick(file, fileProps)),
-      video:fileAttachments('video').map(file => _pick(file, fileProps))
-    }
-    console.log('submitForm', isEditMode.value)
-    if (isEditMode.value) {
-      console.log('update')
-
-      const diff = deepDiff(updateProject.value, Project.projectDetails(formModel))
-      console.log('diff', diff, updateProject.value, Project.projectDetails(formModel))
-      
-      projectsStore.updateProject(props.data.id, diff)
-    } else { 
-      console.log('create')
-      
-      projectsStore.createProject({ ...formModel, attachments })
-    }
-
-    window.scrollTo(0, 0)
-  // }
-}
 </script>

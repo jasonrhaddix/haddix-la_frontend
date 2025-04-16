@@ -1,0 +1,22 @@
+.toast-message {
+  display: flex;
+  color: $app-color-text-dark;
+
+  .v-icon {
+      margin: {
+          top: 0.2rem;
+          right: 1rem;
+      }
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+      margin: {
+          top: 5px;
+          bottom: 0;
+      }
+  }
+}

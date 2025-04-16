@@ -68,6 +68,18 @@ const router = createRouter({
       }
     },
     {
+      path: '/roles/role-details/:_id',
+      name: 'role-details',
+      component: () => import('@/views/Role_Details.vue'),
+      beforeEnter: beforeEnterGuard,
+      meta: {
+        beforeEnterCallback: (to, from, next) => {
+          stores.routingStore().enterRoleDetailsRoute(to.params)
+          next()
+        }
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/About.vue'),

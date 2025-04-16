@@ -46,6 +46,7 @@ export default defineStore('routing', {
       await this.exitRouteTeardown(toRoute)
       await this.setPreviousRoute(toRoute)
       await this.setCurrentRoute(toRoute)
+      
       this.enterRoute(toRoute)
     },
 
@@ -98,6 +99,11 @@ export default defineStore('routing', {
     enterRolesRoute() {
       const rolesStore = stores.rolesStore()
       rolesStore.fetchRoles()
-    }
+    },
+
+    enterRoleDetailsRoute(params) {
+      const rolesStore = stores.rolesStore()
+      rolesStore.fetchRoleById(params?._id)
+    },
   }
 })

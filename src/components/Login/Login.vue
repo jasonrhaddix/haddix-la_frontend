@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <v-layout class="login-drawer__container">
+    <div class="login-drawer__container">
       <v-navigation-drawer
         fixed
         temporary
@@ -24,19 +24,19 @@
               :disabled="userStore.userIsAuthenticated"
               :loading="userStore.isAuthorizing"
               color="primary"
-              @click="userStore.login(model)"
-              >Login</v-btn
-            >
+              @click="login">
+							Login
+						</v-btn>
           </div>
           <div v-else class="login-input__inner">
             <h3>You're currently logged in</h3>
-            <v-btn class="auth-btn logout-btn" color="primary" @click="userStore.logout">
+            <v-btn class="auth-btn logout-btn" color="primary" @click="logout">
               Logout
             </v-btn>
           </div>
         </div>
       </v-navigation-drawer>
-    </v-layout>
+    </div>
 
     <div class="login-btn__container">
       <v-btn small class="login-btn" icon="vpn_key" @click="loginStore.showLogin" />
@@ -45,85 +45,66 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 import stores from '@/stores/index.js'
 
 const loginStore = stores.ui.loginStore()
 const userStore = stores.userStore()
+const toastStore = stores.ui.toastStore()
 
 const model = reactive({
   email: null,
   password: null
 })
 
-// import { required } from 'vuelidate/lib/validators'
+const login = async () => {
+  try {
+    const res = await userStore.login(model)
+    loginStore.hideLogin()
 
-// import { mapState, mapGetters, mapActions } from 'vuex'
+    toastStore.addToast({
+      data: {
+        title: 'Login',
+        message: "You've logged in successfully",
+        type: 'success'
+      },
+      component: '_global/Toast/Toast_Message.vue'
+    })
+  } catch (error) {
+    toastStore.addToast({
+      data: {
+        title: 'Login',
+        message: 'There was an error logging you in',
+        type: 'error'
+      },
+      component: '_global/Toast/Toast_Message.vue'
+    })
+  }
+}
 
-/* import {
-	VUEX_UI_LOGIN_CONTAINER_SHOW
-} from '@/store/constants/ui' */
+const logout = async () => {
+  try {
+    const res = await userStore.logout()
+    console.log('Logout response:', res)
 
-/* import {
-	VUEX_AUTH_REQUEST,
-	VUEX_AUTH_LOGOUT
-} from '@/store/constants/auth' */
-
-/* export default {
-	name: 'login-container',
-
-	data: () => ({
-		model: {
-			email: null,
-			password: null
-		},
-		submitted: false
-	}),
-
-	validations: {
-		model: {
-			email: {
-				required
-			},
-			password: {
-				required
-			}
-		}
-	},
-
-	computed: {
-		...mapState({
-			loginOpenState: state => state.ui.loginContainer.openState,
-			isAuthorizing: state => state.auth.authorizing
-		}),
-
-		...mapGetters({
-			userIsAuthenticated: 'userIsAuthenticated'
-		}),
-
-		openState: {
-			get () { return this.loginOpenState },
-			set (val) { this.$store.dispatch('VUEX_UI_LOGIN_CONTAINER_SET_STATE', val) }
-		}
-	},
-
-	methods: {
-		...mapActions({
-			openLoginDrawer: VUEX_UI_LOGIN_CONTAINER_SHOW,
-			submitForAuth: VUEX_AUTH_REQUEST,
-			logout: VUEX_AUTH_LOGOUT
-		}),
-
-		submitCredentials () {
-			if (!this.$v.$invalid) {
-				this.submitted = false
-				// TODO: need spread operator?
-				this.submitForAuth({ ...this.model })
-			} else {
-				this.submitted = true
-			}
-		}
-	}
-} */
+    toastStore.addToast({
+      data: {
+        title: 'Logout',
+        message: "You've logged out successfully",
+        type: 'success'
+      },
+      component: '_global/Toast/Toast_Message.vue' // consider swapping this to an actual import
+    })
+  } catch (error) {
+    toastStore.addToast({
+      data: {
+        title: 'Logout',
+        message: 'There was an error logging you out',
+        type: 'error'
+      },
+      component: '_global/Toast/Toast_Message.vue'
+    })
+  }
+}
 </script>

@@ -31,12 +31,10 @@ import stores from '@/stores/index.js'
 import ProjectItem from '@/components/Projects/Project_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
-const propsStore = stores.config.propsStore()
 const typesStore = stores.config.typesStore()
 const routingStore = stores.routingStore()
 const projectsStore = stores.projectsStore()
 const userStore = stores.userStore()
-// const overlayStore = stores.ui.overlayStore()
 
 const filteredProjects = computed(() => {
   return projectsStore.projects.filter(p => {

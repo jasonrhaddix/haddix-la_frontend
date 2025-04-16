@@ -119,7 +119,7 @@ const props = defineProps({
 })
 
 const projectThumbnail = computed(() => {
-  return props.data?.attachments?.thumbnail[0]?.uri || placeholderImg
+  return props.data?.attachments?.thumbnail?.[0]?.uri || placeholderImg
 })
 
 function clickItem() {

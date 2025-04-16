@@ -37,30 +37,22 @@
 </template>
 
 <script setup>
-	import { defineProps, ref, onMounted, computed, watch } from 'vue'
+	import { ref, onMounted, computed, watch } from 'vue'
 
 	import stores from '@/stores'
 
 	const propsStore = stores.config.propsStore()
-
-	const props = defineProps({
-		/* itemsSelectedCallback: {
-			type: [Function, Promise],
-			required: false,
-			default: null
-		} */
-	})
 
 	const modelValue = defineModel()
 	const optionItems = ref([])
 	const selectedItems = ref([])
 
 	const optionsList = computed(() => {
-		return optionItems.value.filter(item => !selectedItems.value.includes(item.value)).sort((a, b) => a.value - b.value)
+		return optionItems.value.filter(item => !selectedItems.value?.includes(item.value)).sort((a, b) => a.value - b.value)
 	})
 
 	const selectedList = computed(() => {
-		return optionItems.value.filter(item => selectedItems.value.includes(item.value)).sort((a, b) => a - b)
+		return optionItems.value.filter(item => selectedItems.value?.includes(item.value)).sort((a, b) => a - b)
 	})
 
 	onMounted(() => {
@@ -80,12 +72,11 @@
 	}
 
 	watch(modelValue, (value) => {
-		console.lo
 		selectedItems.value = value
 	})
 
 	watch(selectedItems, (value) => {
 		modelValue.value = value
-	})
+	}, {deep: true})
 
 </script>

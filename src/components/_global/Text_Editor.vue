@@ -158,15 +158,18 @@
         />
       </button>
     </div>
-    <EditorContent class="editor__content" :editor="editor" />
+    <EditorContent v-model="modelValue" class="editor__content" :editor="editor" />
   </div>
 </template>
 
 <script setup>
-import { reactive, onMounted, onBeforeUnmount, watch } from 'vue'
+import { reactive, defineEmits, onMounted, onBeforeUnmount, watch } from 'vue'
 
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
+
+const modelValue = defineModel()
+const emit = defineEmits(['update:modelValue'])
 
 const iconOptions = reactive({
   iconSize: 22,
@@ -178,8 +181,11 @@ const iconOptions = reactive({
 
 const editor = reactive(
   new Editor({
-    content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-    extensions: [StarterKit]
+    content: '',
+    extensions: [StarterKit],
+    onUpdate: ({editor}) => {
+        emit('update:modelValue', editor.getHTML())
+    }
   })
 )
 

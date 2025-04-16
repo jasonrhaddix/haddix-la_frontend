@@ -10,7 +10,7 @@
     
     <div class="language__list">
       <CreateLanguageItem
-        v-for="(item, i) in model"
+        v-for="(item, i) in selectedLanguages"
         :key="`language-item-${item.id}-${i})`"
         v-bind="item"
         @value-changed="updateLanguage"
@@ -22,18 +22,16 @@
 </template>
 
 <script setup>
+  import { ref, watch } from 'vue'
   import shortid from 'shortid'
 
   import CreateLanguageItem from './Project_Create__Language_Item.vue';
 
-  import { computed, ref, watch } from 'vue'
-
-  const emit = defineEmits(['update:modelValue'])
-
-  const model = ref([])
+	const modelValue = defineModel()
+  const selectedLanguages = ref([])
 
   const addLanguage = () => {
-    model.value.push({
+    selectedLanguages.value.push({
       id: shortid.generate(),
       value: '0',
       language: ''
@@ -41,23 +39,27 @@
   }
   
   const updateLanguage = (data) => {
-    const index = model.value.findIndex(item => item.id === data.id)
+    const index = selectedLanguages.value.findIndex(item => item.id === data.id)
     
     if (index !== -1) {
-      model.value[index] = data
+      selectedLanguages.value[index] = data
     }
   }
 
   const removeLanguage = (id) => {
-    const index = model.value.findIndex(item => item.id === id)
+    const index = selectedLanguages.value.findIndex(item => item.id === id)
     
     if (index !== -1) {
-      model.value.splice(index, 1)
+      selectedLanguages.value.splice(index, 1)
     }
   }
 
-  watch(model, (value) => {
-    emit('update:modelValue', value)
+  watch(modelValue, (value) => {
+		selectedLanguages.value = value
+	})
+
+  watch(selectedLanguages, (value) => {
+    modelValue.value = value
   }, { deep: true })
 
 </script>

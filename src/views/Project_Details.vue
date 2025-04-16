@@ -11,7 +11,7 @@
         <div class="scrim" />
 
         <div class="title__container">
-          <h3>{{ project.client }}</h3>
+          <p>{{ project.client }}</p>
           <h1>{{ project.title }}</h1>
           <h3>{{ project.subtitle }}</h3>
         </div>
@@ -201,7 +201,7 @@
 
 
 <script setup>
-	import { ref, computed } from 'vue'
+	import { computed } from 'vue'
 
 	import stores from '@/stores/index.js'
 
@@ -214,12 +214,12 @@
 	const dialogStore = stores.ui.dialogStore()
 	const projectsStore = stores.projectsStore()
 
-	const props = defineProps({
+	/* const props = defineProps({
 		project: {
 			type: Object,
 			required: true
 		}
-	})
+	}) */
 	
 	// const treeFoldersOpen = ref([1])
 /* 	const treeOptions = ref({
@@ -249,7 +249,7 @@
 	})
 
 	const projectVideo = computed(() => {
-		return project.value.attachments?.video[0] || null
+		return project.value.attachments?.video?.[0] || null
 	})
 
 	const projectPhotos = computed(() => {

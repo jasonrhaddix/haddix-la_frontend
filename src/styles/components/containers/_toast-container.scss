@@ -1,0 +1,47 @@
+.toast-container {
+  .toast__clear-btn {
+    position: absolute;
+    top: 5px;
+    right: 1%;
+  }
+
+  .v-snackbar__wrapper {
+    color: red; // $app-color-text--dark;
+    border-radius: 2px;
+    min-height: 40px;
+    background: white;
+  }
+
+  &.success {
+    .v-snackbar__wrapper {
+      border-top: 3px solid green;
+      background: #E9F5EA;
+    }
+
+    .toast__clear-btn {
+      color: rgba(28, 94, 32, 0.5);
+    }
+  }
+
+  &.warning {
+    .v-snackbar__wrapper {
+      border-top: 3px solid rgba(214, 209, 36, 1);
+      background: #F5F4E9;
+    }
+
+    .toast__clear-btn {
+      color: rgba(130, 127, 22, 0.5);
+    }
+  }
+
+  &.error {
+    .v-snackbar__wrapper {
+      border-top: 3px solid red;
+      background: #F5E9E9;
+    }
+
+    .toast__clear-btn {
+      color: rgba(109, 32, 32, 0.5);
+    }
+  }
+}

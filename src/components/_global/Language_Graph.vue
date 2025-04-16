@@ -8,11 +8,10 @@
     </div>
 </template>
 
-<script>
-export default {
-	name: 'language-graph',
+<script setup>
+	import { ref, computed, onMounted, onUpdated } from 'vue'
 
-	props: {
+	const props = defineProps({
 		value: {
 			type: [String, Number],
 			required: true,
@@ -22,73 +21,68 @@ export default {
 		language: {
 			type: String,
 			required: true,
-			default: '--'
+			default: null
 		}
-	},
+	})
 
-	data: () => ({
-		canvas_context: null
-	}),
+	const languageGraphCanvas = ref(null)
+	const canvas_context = ref(null)
 
-	computed: {
-		languageValue () {
-			let value = parseInt(this.value)
+	const languageValue = computed(() => {
+		let value = parseInt(props.value)
 
-			if (!value) return 0
-			if (value >= 100) return value.toFixed(0)
-			return (value.toFixed(1) % 1 !== 0) ? value.toFixed(1) : parseInt(value.toFixed(1).toString().substring(0, value.toFixed(1).length - 1))
-		}
-	},
+		if (!value) return 0
+		if (value >= 100) return value.toFixed(0)
+		return (value.toFixed(1) % 1 !== 0) ? value.toFixed(1) : parseInt(value.toFixed(1).toString().substring(0, value.toFixed(1).length - 1))
+	})
 
-	mounted () {
-		this.createGraph()
-	},
+	const createGraph = () => {
+  if (!languageGraphCanvas.value) return
 
-	updated () {
-		this.createGraph()
-	},
+  const percent = props.value
+  const canvas = languageGraphCanvas.value
+  const ctx = canvas.getContext('2d')
+  canvas_context.value = ctx
 
-	methods: {
-		createGraph () {
-			let percent = this.value
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-			let canvas = this.$refs.languageGraphCanvas
-			this.canvas_context = canvas.getContext('2d')
+  const percentToRadian = (360 * (Math.PI / 180) / 100)
+  const x = canvas.width / 2
+  const y = canvas.height / 2
+  const startAngle = 0 * Math.PI
+  const counterClockwise = false
 
-			this.canvas_context.clearRect(0, 0, canvas.width, canvas.height)
+  let endAngle = 100 * percentToRadian
+  let radius = 47
+  ctx.beginPath()
+  ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
+  ctx.lineWidth = 3
+  ctx.strokeStyle = '#3100BD'
+  ctx.stroke()
 
-			let percentToRadian = (360 * (Math.PI / 180) / 100)
+  endAngle = 100 * percentToRadian
+  radius = 40
+  ctx.beginPath()
+  ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
+  ctx.lineWidth = 3
+  ctx.strokeStyle = 'rgba(255,0,133,0.2)'
+  ctx.stroke()
 
-			let x = canvas.width / 2
-			let y = canvas.height / 2
-			let startAngle = 0 * Math.PI
-			let counterClockwise = false
-
-			var endAngle = 100 * percentToRadian
-			var radius = 47
-			this.canvas_context.beginPath()
-			this.canvas_context.arc(x, y, radius, startAngle, endAngle, counterClockwise)
-			this.canvas_context.lineWidth = 3
-			this.canvas_context.strokeStyle = '#3100BD'
-			this.canvas_context.stroke()
-
-			endAngle = 100 * percentToRadian
-			radius = 40
-			this.canvas_context.beginPath()
-			this.canvas_context.arc(x, y, radius, startAngle, endAngle, counterClockwise)
-			this.canvas_context.lineWidth = 3
-			// this.canvas_context.strokeStyle = '#FF0099'
-			this.canvas_context.strokeStyle = 'rgba(255,0,133,0.2)'
-			this.canvas_context.stroke()
-
-			endAngle = percent * percentToRadian
-			radius = 40
-			this.canvas_context.beginPath()
-			this.canvas_context.arc(x, y, radius, startAngle, endAngle, counterClockwise)
-			this.canvas_context.lineWidth = 3
-			this.canvas_context.strokeStyle = '#FF0099'
-			this.canvas_context.stroke()
-		}
-	}
+  endAngle = percent * percentToRadian
+  radius = 40
+  ctx.beginPath()
+  ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
+  ctx.lineWidth = 3
+  ctx.strokeStyle = '#FF0099'
+  ctx.stroke()
 }
+
+
+	onMounted(() => {
+		createGraph()
+	})
+
+	onUpdated(() => {
+		createGraph()
+	})
 </script>

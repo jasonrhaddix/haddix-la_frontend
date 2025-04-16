@@ -74,13 +74,15 @@
 @import 'components/_global/_text-editor';
 @import 'components/_global/_under-construction_bar';
 
+@import 'components/_global/toast/_toast-message';
+
 // Animated Logo
 @import 'components/animatedLogo/_animated-logo';
 
 // Containers
 @import 'components/containers/_overlay-container';
 @import 'components/containers/_dialog-container';
-@import 'components/containers/_notifications-container';
+@import 'components/containers/_toast-container';
 
 // Forms
 @import 'components/forms/contact/_contact-form';
@@ -100,9 +102,6 @@
 
 // Footer
 @import 'components/footer/_footer';
-
-// Notifications
-@import 'components/notifications/_notifications';
 
 // Projects
 @import 'components/projects/_projects-item'

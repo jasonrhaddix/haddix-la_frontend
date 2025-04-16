@@ -79,7 +79,7 @@ const multiple = ref(null)
 const previewsPending = reactive([])
 let processedFiles = reactive([])
 let files = reactive([])
-let previewLoadTicker = reactive(null)
+const previewLoadTicker = ref(0)
 
 // upload methods
 function select() {
@@ -170,7 +170,7 @@ function handleSelectedFiles(event) {
 			}
 		}
 
-		previewLoadTicker = setInterval(checkPreviewsReadyState, 100)
+		previewLoadTicker.value = setInterval(checkPreviewsReadyState, 100)
 	})
 }
 

@@ -73,8 +73,8 @@ export default defineStore('projects', {
         })
 
         this.projects.unshift(Project.projectDetails(res.data))
-
-        overlayStore.hideOverlay() // <------------------ move to component
+        return res
+        
         //show success
       } catch (err) {
         // throw error
@@ -92,7 +92,10 @@ export default defineStore('projects', {
         const res = await api.patch(`/projects/${id}`, payload)
         this.project = Project.projectDetails(res.data)
 
-        // overlayStore.hideOverlay() // <------------------ move to component
+        this.projects.splice(this.projects.findIndex(p => p._id === id), 1, Project.projectDetails(res.data))
+
+        return res
+
         //show success
       } catch (err) {
         // throw error

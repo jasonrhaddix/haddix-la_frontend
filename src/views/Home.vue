@@ -24,20 +24,4 @@ import Logo from '@/components/AnimatedLogo/Animated_Logo.vue'
 import AppButton from '@/components/_global/App_Button.vue'
 
 const routingStore = stores.routingStore()
-
-/* export default {
-  name: 'home-view',
-
-  components: {
-    'sphere-bg': SphereBG,
-    logo: Logo,
-    'app-btn': AppButton
-  },
-
-  methods: {
-    ...mapActions({
-      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-    })
-  }
-} */
 </script>

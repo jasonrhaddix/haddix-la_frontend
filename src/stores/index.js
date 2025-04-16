@@ -24,6 +24,7 @@ import headerStore from './modules/ui/header.js'
 import loginStore from './modules/ui/login.js'
 import navigationStore from './modules/ui/navigation.js'
 import overlayStore from './modules/ui/overlay.js'
+import toastStore from './modules/ui/toast.js'
 
 export default {
   root: createPinia(),
@@ -47,7 +48,8 @@ export default {
     headerStore,
     loginStore,
     navigationStore,
-    overlayStore
+    overlayStore,
+    toastStore
   },
 
   // main modules

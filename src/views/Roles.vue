@@ -1,20 +1,37 @@
 <template>
-  <div class="roles-view">
-    <div class="projects__add-btn">
-      <CreateButton />
-    </div>
+    <div class="roles-view">
+		<div class="projects__add-btn">
+			<CreateButton />
+		</div>
 
-    <div class="roles__inner"></div>
-  </div>
+		<div class="roles__inner">
+			<v-data-table
+				dark
+				:headers="headers"
+				:items="rolesStore.roles"
+				:items-per-page="50"
+				class="elevation-1">
+					<template v-slot:item="{ item }">
+						<tr>
+							<td>{{ item.jobTitle || '--' }}</td>
+							<td class="col__role-id"
+								@click="roleClick(item._id)">
+								{{ item.roleId || '--' }}
+							</td>
+							<td>{{ item.company || '--' }}</td>
+							<td>{{ item.department || '--' }}</td>
+							<td>{{ item.recruiter || '--' }}</td>
+							<td class="col__publish">
+								<v-icon color="green">{{ getPublished(item.published) }}</v-icon>
+							</td>
+						</tr>
+					</template>
+				</v-data-table>
+			</div>
+    </div>
 </template>
 
 <script setup>
-// import { mapState, mapGetters, mapActions } from 'vuex'
-
-/* import {
-	VUEX_ROUTING_PUSH_ROUTE
-} from '@/store/constants/routing' */
-
 import { reactive } from 'vue'
 
 import stores from '@/stores/index.js'
@@ -22,15 +39,29 @@ import stores from '@/stores/index.js'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
 const rolesStore = stores.rolesStore()
+const routingStore = stores.routingStore()
 
 const headers = reactive([
-  { title: 'Job Title', value: 'job_title' },
-  { title: 'Role ID', value: 'role_id' },
-  { title: 'Client', value: 'client' },
+  { title: 'Job Title', value: 'jobTitle' },
+  { title: 'ID', value: 'roleId' },
+  { title: 'Company', value: 'company' },
   { title: 'Department', value: 'department' },
   { title: 'Recruiter', value: 'recruiter' },
   { title: 'Published', value: 'published', align: 'center' }
 ])
+
+const getPublished = (published) => {
+	return published ? 'mdi-check-circle' : 'close'
+}
+
+const roleClick = (id) => {
+	routingStore.pushRoute({
+		name: 'role-details',
+		params: {
+			_id: id
+		}
+	})
+}
 
 /* export default {
 	name: 'roles-view',
@@ -63,16 +94,7 @@ const headers = reactive([
 			return this.roles.filter(role => role.published)
 		},
 
-		getClient () {
-			return client => {
-				if (!client) return null
-				return this.getPropertyByKey('roleClients', client, 'value', 'name')
-			}
-		},
-
-		getPublished () {
-			return published => published ? 'check_circle_outline' : null
-		}
+		
 	},
 
 	methods: {
