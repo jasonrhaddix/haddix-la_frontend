@@ -10,36 +10,59 @@
       >
         <div class="login-input__container">
           <div v-if="!userStore.userIsAuthenticated" class="login-input__inner">
-            <h3>Admin Login</h3>
-            <v-text-field solo dark label="Email" type="email" v-model="model.email" />
+            <h3>CMS Admin Login</h3>
             <v-text-field
-              solo
-              dark
+              solo dark
+              label="Email"
+              type="email"
+              v-model="model.email" />
+
+            <v-text-field
+              solo dark
               label="Password"
               type="password"
               v-model="model.password"
             />
-            <v-btn
+            
+            <AppButton
+              variant="colorful" label="Login"
+              :disabled="userStore.userIsAuthenticated"
+              :loading="userStore.isAuthorizing"
+              class="auth-btn login-btn"
+              @click.native="login" />
+            
+            <!-- <v-btn
               class="auth-btn login-btn"
               :disabled="userStore.userIsAuthenticated"
               :loading="userStore.isAuthorizing"
               color="primary"
               @click="login">
 							Login
-						</v-btn>
+						</v-btn> -->
           </div>
           <div v-else class="login-input__inner">
             <h3>You're currently logged in</h3>
-            <v-btn class="auth-btn logout-btn" color="primary" @click="logout">
+
+            <AppButton
+              variant="colorful" label="Logout"
+              :loading="userStore.isAuthorizing"
+              class="auth-btn login-btn"
+              @click.native="logout" />
+
+            <!-- <v-btn class="auth-btn logout-btn" color="primary" @click="logout">
               Logout
-            </v-btn>
+            </v-btn> -->
           </div>
         </div>
       </v-navigation-drawer>
     </div>
 
     <div class="login-btn__container">
-      <v-btn small class="login-btn" icon="vpn_key" @click="loginStore.showLogin" />
+      <v-btn
+        small color="primary"
+        class="login-btn"
+        prepend-icon="vpn_key"
+        @click="loginStore.showLogin">CMS</v-btn>
     </div>
   </div>
 </template>
@@ -48,6 +71,8 @@
 import { reactive, ref } from 'vue'
 
 import stores from '@/stores/index.js'
+
+import AppButton from '@/components/_global/App_Button.vue'
 
 const loginStore = stores.ui.loginStore()
 const userStore = stores.userStore()
@@ -60,7 +85,7 @@ const model = reactive({
 
 const login = async () => {
   try {
-    const res = await userStore.login(model)
+    await userStore.login(model)
     loginStore.hideLogin()
 
     toastStore.addToast({
@@ -85,8 +110,7 @@ const login = async () => {
 
 const logout = async () => {
   try {
-    const res = await userStore.logout()
-    console.log('Logout response:', res)
+    await userStore.logout()
 
     toastStore.addToast({
       data: {

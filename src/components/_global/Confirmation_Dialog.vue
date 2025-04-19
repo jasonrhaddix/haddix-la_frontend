@@ -13,7 +13,7 @@
             @click="cancelAction" />
 
           <AppButton
-            light
+            variant="light"
             :label="props.confirm.label"
             class="btn confirm-btn"
             @click="confirmAction" />

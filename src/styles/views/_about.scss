@@ -255,6 +255,10 @@
             /* FOOTER */
             .about--footer {
                 text-align: center;
+
+                .app-button {
+                    border: 1px solid $app-color-text-dark;
+                }
             }
         }
     }

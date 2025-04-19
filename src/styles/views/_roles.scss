@@ -24,18 +24,28 @@
 				color: rgba(10,10,10, 0.75) !important;
 			}
 
+			.custom-menu-offset {
+				margin-top: -20px !important;
+			}
+
 			tbody {
 
-				td.col__publish {
-					text-align: center;
-				}
-
 				td.col__role-id {
-
+					
 					&:hover {
 						text-decoration: underline;
 					}
 				}
+
+				td.col__more {
+					
+				}
+				
+				td.col__publish {
+					text-align: center;
+				}
+
+
 
 				tr:hover {
 					cursor: pointer;

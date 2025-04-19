@@ -36,23 +36,37 @@ export default defineStore('role', {
       try {
         const res = await api.get(`/roles`)
         this.roles = res.data.map((item) => Role.roleBase(item))
-      } catch (err) {
-        console.error(err)
+
+        return this.roles
+      } catch (error) {
+        throw error
       }
     },
 
     async fetchRoleById(id) {
       const headerStore = stores.ui.headerStore()
+      const toastStore = stores.ui.toastStore()
+      const routesStore = stores.routingStore()
       
       try {
         const res = await api.get(`/roles/${id}`)
         this.role = Role.roleDetails(res.data)
 
-        headerStore.setTitle(this.role.title)
+        headerStore.setTitle(`${this.role.jobTitle} <span style="text-transform: lowercase">at</span> ${this.role.company}`)
 
-        return res.data
-      } catch (err) {
-        console.error(err)
+        return this.role
+      } catch (error) {
+        routesStore.pushRoute({ name: 'home' })
+        toastStore.addToast({
+          component: '_global/Toast/Toast_Message.vue',
+          data: {
+            type: 'error',
+            title: 'Error',
+            message: error.response?.data?.message
+          }
+        })
+
+        throw error
       }
     },
 
@@ -62,25 +76,20 @@ export default defineStore('role', {
       this.saving = true
       
       try {
-        const res = await api.post(`/roles`, {
-          ...payload,
-          sessionId: userStore.sessionToken
-        })
+        const res = await api.post(`/roles`, payload)
 
-        this.role.unshift(Role.roleDetails(res.data))
-        return res
-        
-        //show success
-      } catch (err) {
-        // throw error
+        const role = Role.roleDetails(res.data)
+        this.roles.unshift(role)
+
+        return role
+      } catch (error) {
+        throw error
+      } finally {
+        this.saving = false
       }
-
-      this.saving = false
     },
 
     async updateRole(id, payload) {
-      const overlayStore = stores.ui.overlayStore()
-      
       this.saving = true
       
       try {
@@ -89,11 +98,9 @@ export default defineStore('role', {
 
         this.roles.splice(this.roles.findIndex(p => p._id === id), 1, Role.roleDetails(res.data))
 
-        return res
-
-        //show success
-      } catch (err) {
-        // throw error
+        return this.role
+      } catch (error) {
+        throw error
       } finally {
         this.saving = false
       }
@@ -104,12 +111,12 @@ export default defineStore('role', {
       this.saving = true
       
       try {
-        await api.delete(`/roles/${id}`)
+        const res = await api.delete(`/roles/${id}`)
         this.roles.splice(this.roles.findIndex(p => p._id === id), 1)
-
-        //show success
-      } catch (err) {
-        // throw error
+        
+        return res.data
+      } catch (error) {
+        throw error
       } finally {
         this.saving = false
       }

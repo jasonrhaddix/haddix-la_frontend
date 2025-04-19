@@ -9,8 +9,7 @@
         </v-col>
         <v-col class="col-12 col-md-4">
           <v-select
-            filled
-            dense
+            filled dense
             label="Company"
             item-text="name"
             :items="propsStore.roleCompanies"
@@ -26,17 +25,22 @@
       </v-row>
 
       <v-row>
-        <v-col class="col-12">
+        <v-col class="col-6">
           <v-text-field filled label="Organization" v-model="formModel.organization" />
+        </v-col>
+
+        <v-col class="col-6">
+          <v-select
+            dense
+            label="Year"
+            :items="propsStore.roleYears"
+            v-model="formModel.year"
+          />
         </v-col>
       </v-row>
 
       <v-row>
         <v-col class="col-12">
-          <!-- <v-textarea
-						filled
-						label="Description"
-						v-model="formModel.description"/> -->
           <TextEditor v-model="formModel.description" />
         </v-col>
       </v-row>
@@ -100,6 +104,8 @@ import { storeToRefs } from 'pinia'
 import { uuid } from 'vue-uuid'
 
 import stores from '@/stores/index.js'
+import { Role } from '@/models'
+import { objectHelpers } from '@/utils/helpers'
 
 import RoleProjectItem from '@/components/Forms/CreateProject/Role/Role_Create__Project_item.vue'
 import AppButton from '@/components/_global/App_Button.vue'
@@ -119,7 +125,7 @@ const props = defineProps({
   }
 })
 
-const updateProject = ref({})
+const updateRole = ref({})
 
 const submitted = ref(false)
 const formModel = reactive({
@@ -127,31 +133,31 @@ const formModel = reactive({
   company: null,
   jobTitle: null,
   organization: null,
-  recruiter: null,
   description: null,
+  recruiter: null,
+  year: null,
   projects: [],
   published: true
 })
 
 onMounted(async () => {
   if (props.data.id) {
-    const project = await projectsStore.fetchProjectById(props.data.id)
-    updateProject.value = Project.projectDetails(project)
+    const role = await rolesStore.fetchRoleById(props.data.id)
+    updateRole.value = Role.roleDetails(role)
   }
 
   initForm()
-
-  // formModel.roleId = uuid.v4()
 })
 
 const initForm = () => {
   if (isEditMode.value) {
     Object.assign(formModel, {
-      ...updateProject.value,
-      roleId: updateRole.value.projectId,
-      company: updateRole.value.company,
+      ...updateRole.value,
+      roleId: updateRole.value.roleId,
       jobTitle: updateRole.value.jobTitle,
+      company: updateRole.value.company,
       organization: updateRole.value.organization,
+      year: updateRole.value.year,
       recruiter: updateRole.value.recruiter,
       description: updateRole.value.description,
       projects: updateRole.value.projects,
@@ -191,7 +197,7 @@ const submitForm = async () => {
     // const attachments = extractAttachmentData(['thumbnail', 'header', 'body', 'video'], wrapperKeys, fileKeys)
   
     if (isEditMode.value) {
-      const diff = objectHelpers.deepDiff(updateProject.value, {...formModel, attachments})
+      const diff = objectHelpers.deepDiff(updateRole.value, {...formModel, attachments})
 
       try {
         await rolessStore.updateRole(props.data.id, diff)
@@ -217,15 +223,14 @@ const submitForm = async () => {
     } else {       
       // Create new role
       try {
-        await rolesStore.createRole(formModel)
-        // await rolesStore.createRole({ ...formModel, attachments })
+        const role = await rolesStore.createRole(formModel)
 
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',
           data: {
             type: 'success',
             title: 'Role Created!',
-            message: `${formModel.title}`
+            message: `${role.jobTitle} for ${role.company}`
           }
         })
       } catch (error) {

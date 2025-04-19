@@ -5,7 +5,7 @@ import UUID from 'vue-uuid'
 // local imports
 import router from './router'
 import stores from '@/stores'
-import interceptorService from '@/api/config/interceptors'
+import '@/api/config/interceptors'
 
 // components
 import App from './App.vue'
@@ -29,22 +29,21 @@ const app = createApp({
   render: () => h(App)
 })
 
-interceptorService(stores.root)
+// interceptorService(stores.root)
 
 // use statements
 app.use(stores.root)
-app.use(router)
+
 app.use(Vuetify)
 app.use(UUID)
 
 // directives statements
 app.directive('match-route', MatchRoute)
-// app.directive('v-ripple', Ripple)
 
-// trigger route store -> mount app
 const routingStore = stores.routingStore()
 routingStore.init().then(() => {
-  app.mount('#app')
+  app.use(router)   // <<-- init router after store init
+  app.mount('#app') // <<-- mount application
 })
 
 export default app

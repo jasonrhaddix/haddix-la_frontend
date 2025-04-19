@@ -3,6 +3,7 @@
     @include not-selectable();
 
 	.app-button {
+		width: inherit;
 		min-width: 150px;
 		position: relative;
 		display: inline-block;
@@ -34,9 +35,9 @@
 			font-size: 0.7rem;
 			font-weight: $font-weight-medium;
 			padding: {
-                top: 10px;
-                bottom: 8px;
-            }
+					top: 10px;
+					bottom: 8px;
+			}
 		}
 
 		&:hover:not(.disabled) {
@@ -70,10 +71,10 @@
 			text-align: center;
 		}
 
-        .app-button__text-animated,
-        .app-button__bg-under,
-        .app-button__bg {
-            position: absolute;
+		.app-button__text-animated,
+		.app-button__bg-under,
+		.app-button__bg {
+			position: absolute;
 			display: block;
 			width: 100%;
 			height: 100%;
@@ -95,17 +96,19 @@
 			color: $app-color-button-text-hover;
 		}
 
-        .app-button__bg,
-        .app-button__bg-under {
+		.app-button__bg,
+		.app-button__bg-under {
 			transition-delay: 0.2s;
 			background-color: $app-color-button-background-hover;
-			transform: translateX( -150% );
+			transform: translateX( -180% );
 
 			&:after {
 				content: "";
 				margin-left: 145px;
+				position: inherit;
 				display: block;
-				width: 20px;
+				// width: 80%;
+				width: min(80%, 200px);
 				height: 20px;
 				border-top: 70px solid $app-color-button-background-hover;
 				border-right: 70px solid transparent;
@@ -131,6 +134,28 @@
 	    	// font-size: 0.8rem;
 		}
 
+		&.default {
+			color: $app-color-button-text;
+			background-color: $app-color-button-background;
+			border: 1px solid $app-color-button-border;
+
+			.app-button__text {
+				color: $app-color-button-text;
+			}
+
+			.app-button__text-animated {
+				color: $app-color-button-text-hover;
+			}
+
+			.app-button__bg {
+				background-color: $app-color-button-background-hover;
+
+				&:after {
+					border-top: 70px solid $app-color-button-background-hover;
+				}
+			}
+		}
+
 		&.light {
 			color: $app-color-button-text-light;
 			background-color: $app-color-button-background-light;
@@ -149,6 +174,28 @@
 
 				&:after {
 					border-top: 70px solid $app-color-button-background-hover-light;
+				}
+			}
+		}
+
+		&.colorful {
+			color: $app-color-button-text-colorful;
+			background-color: $app-color-button-background-colorful;
+			border: 1px solid $app-color-button-border-colorful;
+
+			.app-button__text {
+				color: $app-color-button-text-colorful;
+			}
+
+			.app-button__text-animated {
+				color: $app-color-button-text-hover-colorful;
+			}
+
+			.app-button__bg {
+				background-color: $app-color-button-background-hover-colorful;
+
+				&:after {
+					border-top: 70px solid $app-color-button-background-hover-colorful;
 				}
 			}
 		}

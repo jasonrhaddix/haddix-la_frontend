@@ -19,10 +19,37 @@
 								{{ item.roleId || '--' }}
 							</td>
 							<td>{{ item.company || '--' }}</td>
-							<td>{{ item.department || '--' }}</td>
-							<td>{{ item.recruiter || '--' }}</td>
+							<td>{{ item.organization || '--' }}</td>
+							<td>{{ item.year || '--' }}</td>
 							<td class="col__publish">
-								<v-icon color="green">{{ getPublished(item.published) }}</v-icon>
+								<v-btn
+									variant="text"
+									:color="getPublished(item.published).color"
+									:icon="getPublished(item.published).icon"
+									@click="togglePublished(item)" />
+							</td>
+							<td class="col__more">
+								<v-menu
+  								:offset="[-50, 15]">
+									<template v-slot:activator="{ props }">
+										<v-btn
+											v-bind="props"
+											variant="text"
+											color="grey"
+											icon="more_horiz"/>
+									</template>
+
+									<v-list>
+										<v-list-item
+											title="Edit"
+											@click="editRole(item)" />
+
+										<v-list-item
+										 	title="Delete"
+											style="color: red" 
+											@click="deleteRole(item)" />
+									</v-list>
+								</v-menu>
 							</td>
 						</tr>
 					</template>
@@ -39,19 +66,24 @@ import stores from '@/stores/index.js'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
 const rolesStore = stores.rolesStore()
+const dialogStore = stores.ui.dialogStore()
+const toastStore = stores.ui.toastStore()
 const routingStore = stores.routingStore()
 
 const headers = reactive([
   { title: 'Job Title', value: 'jobTitle' },
-  { title: 'ID', value: 'roleId' },
+  { title: 'Role ID', value: 'roleId' },
   { title: 'Company', value: 'company' },
-  { title: 'Department', value: 'department' },
-  { title: 'Recruiter', value: 'recruiter' },
-  { title: 'Published', value: 'published', align: 'center' }
+  { title: 'Organization', value: 'organization' },
+  { title: 'Year', value: 'year' },
+  { title: 'Published', value: 'published', align: 'center' },
+  { title: 'More', value: null, align: 'right' }
 ])
 
 const getPublished = (published) => {
-	return published ? 'mdi-check-circle' : 'close'
+	return published
+		? { color: 'green', icon: 'check' }
+		: { color: 'grey darken-4', icon: 'check' }
 }
 
 const roleClick = (id) => {
@@ -63,53 +95,89 @@ const roleClick = (id) => {
 	})
 }
 
-/* export default {
-	name: 'roles-view',
+const togglePublished = async (item) => {
+	try {
+		await rolesStore.updateRole(item._id, {
+			_id: item._id,
+			published: !item.published
+		})
 
-	components: {
-		'create-button': CreateButton
-	},
-
-	data: () => ({
-		headers: [
-			{ text: 'Job Title', value: 'job_title' },
-			{ text: 'Role ID', value: 'role_id' },
-			{ text: 'Client', value: 'client' },
-			{ text: 'Department', value: 'department' },
-			{ text: 'Recruiter', value: 'recruiter' },
-			{ text: 'Published', value: 'published', align: 'center' }
-		]
-	}),
-
-	computed: {
-		...mapState({
-			roles: state => state.roles.roles
-		}),
-
-		...mapGetters({
-			getPropertyByKey: 'getPropertyByKey'
-		}),
-
-		publishedRoles () {
-			return this.roles.filter(role => role.published)
-		},
-
-		
-	},
-
-	methods: {
-		...mapActions({
-			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-		}),
-
-		roleClick (id) {
-			this.navigateToRoute({
-				name: 'role-details',
-				params: {
-					role_id: id
-				}
-			})
-		}
+		toastStore.addToast({
+			component: '_global/Toast/Toast_Message.vue',
+			data: {
+				type: 'success',
+				title: 'Success',
+				message: 'Role updated successfully',
+			}
+		})
+	} catch (error) {
+		toastStore.addToast({
+			component: '_global/Toast/Toast_Message.vue',
+			data: {
+				type: 'error',
+				title: 'Error',
+				message: 'Failed to update role',
+			}
+		})
 	}
-} */
+}
+
+const editRole = (item) => {
+	const overlayStore = stores.ui.overlayStore()
+
+	overlayStore.setComponent({
+		component: 'Forms/CreateProject/Role/Role_Create.vue',
+		title: 'Edit Role',
+		props: {
+			id: item._id,
+			data: item
+		}
+	})
+
+	overlayStore.showOverlay()
+}
+
+const deleteRole = (item) => {
+	dialogStore.showDialog({
+    component: '_global/Confirmation_Dialog.vue',
+    width: 650,
+    props: {
+      title: 'Delete Role',
+      subtitle: 'Are you sure you want to delete this role?',
+      confirm: {
+        label: 'Delete',
+        action: async () => {
+					try {
+						await rolesStore.deleteRole(item._id)
+
+						toastStore.addToast({
+							component: '_global/Toast/Toast_Message.vue',
+							data: {
+								type: 'success',
+								title: 'Success',
+								message: 'Role deleted successfully',
+							}
+						})
+					} catch (error) {
+						toastStore.addToast({
+							component: '_global/Toast/Toast_Message.vue',
+							data: {
+								type: 'error',
+								title: 'Error',
+								message: 'Failed to delete role',
+							}
+						})
+					}
+        }
+      },
+
+      cancel: {
+        label: 'Cancel'
+        /* action: () => {
+          dialogStore.closeDialog()
+        } */
+      }
+    }
+  })
+}
 </script>

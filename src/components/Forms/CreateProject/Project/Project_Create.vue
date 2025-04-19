@@ -57,7 +57,7 @@
           <v-select
             dense
             label="Year"
-            :items="projectYears"
+            :items="propsStore.projectYears"
             v-model="formModel.projectYear"
           />
         </v-col>
@@ -403,11 +403,12 @@
   const userStore = stores.userStore()
   const projectsStore = stores.projectsStore()
   const uploadManagerStore = stores.s3.uploadManagerStore()
+  const routingStore = stores.routingStore()
   // const projectTreeStore = stores.projectTreeStore()
 
   const props = defineProps({
     data: {
-      type: [Boolean, Number, String, Array, Object, null],
+      type: Object,
       required: false
     }
   })
@@ -459,10 +460,6 @@
   // computed
   const projectTypesKey = computed((open) => {
       return propsStore.projectTypes.map(i => i.value).join('-')
-  })
-
-  const projectYears = computed(() => {
-    return propsStore.projectYears.slice().reverse()
   })
 
   const getAttachTo = computed(() => ({ 
@@ -645,6 +642,8 @@
           }
         })
       } catch (error) {
+        // <<-------------------------------------- this is getting fired when a token is expired (this 
+        // should if the token succeeds but the server reject the request -- do not push though if 403 or 401)
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',
           data: {
@@ -657,7 +656,12 @@
     } else {       
       // Create new project
       try {
-        await projectsStore.createProject({ ...formModel, attachments })
+        const project = await projectsStore.createProject({ ...formModel, attachments })
+
+        routingStore.pushRoute({
+          name: 'project-details',
+          params: { _id: project._id }
+        })
 
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',

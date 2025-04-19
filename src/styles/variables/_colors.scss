@@ -47,12 +47,19 @@ $app-color-button-background-animate: $app-color-secondary;
 $app-color-button-background-hover: $app-color-text-light;
 $app-color-button-text-hover: $app-color-text-dark;
 
-// App Button (Inverse)
+// App Button (light)
 $app-color-button-background-light: $color-m-white;
 $app-color-button-text-light: $app-color-text-dark;
 $app-color-button-border-light: $app-color-text-light;
 
-// $app-color-button-background-animate: $color-accent-purple-alpha;
-// $app-color-button-background-hover-light: $app-color-text-dark;
 $app-color-button-background-hover-light: $app-color-primary;
 $app-color-button-text-hover-light: $app-color-text-light;
+
+// App Button (colorful)
+$app-color-button-background-colorful: $app-color-secondary;
+$app-color-button-text-colorful: $app-color-text-light;
+$app-color-button-border-colorful: $app-color-text-light;
+$app-color-button-background-hover-colorful: $app-color-text-light;
+$app-color-button-text-hover-colorful: $app-color-text-dark;
+
+

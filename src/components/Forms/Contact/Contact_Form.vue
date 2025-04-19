@@ -46,10 +46,10 @@
 					<div class="form-submit--container">
 							<div class="form-submit__inner">
 									<AppButton
+										variant="light"
 										:disabled="!formValid"
 										:loading="contactStore.saving"
 										class="form-submit--btn"
-										light
 										label="Submit"
 										@click.native="sendEmail"/>
 							</div>
@@ -79,8 +79,9 @@
 
 
 	const sendEmail = async() => {
+		console.log('Sending email...', model)
 		try {
-			await contactStore.sendEmail(model.value)
+			await contactStore.sendEmail(model)
 
 			toastStore.addToast({
 				data: {
@@ -92,6 +93,7 @@
 
 			resetForm()
 		} catch (error) {
+			console.log(error)
 			toastStore.addToast({
 				data: {
 					message: 'Error sending message. Please try again.', // <-------- add proper error message from error.response
@@ -105,16 +107,16 @@
 
 	const formValid = computed(() => {
 		// Add proper validation logic later
-		return (model.value.first_name || model.value.last_name || model.value.email || model.value.message)
+		return (model.first_name || model.last_name || model.email || model.message)
 	})
 
 	const resetForm = () => {
-		model.value = {
+		Object.assign(model, {
 			first_name: null,
 			last_name: null,
 			email: null,
 			message: null,
 			website: null
-		}
+		})
 	}
 </script>

@@ -451,7 +451,7 @@
 
         <div class="section about--footer">
           <AppButton
-            light
+            variant="colorful"
             label="Contact"
             @click.native="routingStore.pushRoute({ name: 'contact' })"
           />

@@ -9,16 +9,16 @@
         <v-btn
           class="btn edit-btn"
           size="x-small"
-          color="grey--darken-4"
+          color="darkred"
           icon="edit"
-          @click="updateRecord" />
+          @click="updateProject" />
 
         <v-btn
           class="btn delete-btn"
           size="x-small"
           color="darkred"
           icon="close"
-          @click="deleteRecord" />
+          @click="deleteProject" />
 
         <!-- Old Buttons -->
         <!-- <div
@@ -30,7 +30,7 @@
         <div
           v-ripple
           class="btn delete-btn"
-          @click="deleteRecord">
+          @click="deleteProject">
           <v-icon size="26" icon="close" />
         </div> -->
       </div>
@@ -103,6 +103,7 @@ import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.j
 const projectsStore = stores.projectsStore()
 const overlayStore = stores.ui.overlayStore()
 const dialogStore = stores.ui.dialogStore()
+const toastStore = stores.ui.toastStore()
 const userStore = stores.userStore()
 
 const props = defineProps({
@@ -140,7 +141,7 @@ const projectClient = computed(() => {
     : props.data?.clientName || props.data?.client
 })
 
-const updateRecord = () => {
+const updateProject = () => {
   overlayStore.setComponent({
       component: 'Forms/CreateProject/Project/Project_Create.vue',
       title: 'Update Project',
@@ -152,131 +153,46 @@ const updateRecord = () => {
     overlayStore.showOverlay()
 }
 
-const deleteRecord = () => {
+const deleteProject = () => {
   dialogStore.showDialog({
-      component: '_global/Confirmation_Dialog.vue',
-      width: 650,
-      props: {
-        title: 'Delete Project',
-        subtitle: 'Are you sure you want to delete this project?',
-        confirm: {
-          label: 'Delete',
-          action: () => {
-            projectsStore.deleteProject(props.data._id)
+    component: '_global/Confirmation_Dialog.vue',
+    width: 650,
+    props: {
+      title: 'Delete Project',
+      subtitle: 'Are you sure you want to delete this project?',
+      confirm: {
+        label: 'Delete',
+        action: async () => {
+          try {
+            await projectsStore.deleteProject(props.data._id)
+
+            toastStore.addToast({
+              component: '_global/Toast/Toast_Message.vue',
+              data: {
+                message: 'Project deleted successfully!',
+                type: 'success'
+              }
+            })
+          } catch (error) {
+            toastStore.addToast({
+              component: '_global/Toast/Toast_Message.vue',
+              data: {
+                title: 'Error',
+                message: 'There was an error deleting the project',
+                type: 'error'
+              }
+            })
           }
-        },
-
-        cancel: {
-          label: 'Cancel'
-          /* action: () => {
-            dialogStore.closeDialog()
-          } */
         }
-      }
-    })
+      },
 
-  
+      cancel: {
+        label: 'Cancel'
+        /* action: () => {
+          dialogStore.closeDialog()
+        } */
+      }
+    }
+  })
 }
-
-
-
-// import detectImageDark from '@/js/detectImageDark'
-
-/* export default {
-  name: 'projects-item',
-
-  components: {
-    'app-btn': AppButton
-  },
-
-  props: {
-    id: {
-      type: String,
-      required: true,
-      default: null
-    },
-    sessionId: {
-      type: String,
-      required: false,
-      default: null
-    },
-    client: {
-      type: String,
-      required: true,
-      default: null
-    },
-    title: {
-      type: String,
-      required: true,
-      default: null
-    },
-    subtitle: {
-      type: String,
-      required: true,
-      default: null
-    },
-    image: {
-      type: String,
-      required: true,
-      default: null
-    },
-    link: {
-      type: String,
-      required: false,
-      default: null
-    },
-    clickCallback: {
-      type: [Function, Promise],
-      required: false,
-      default: null
-    }
-  },
-
-  data: () => ({
-    // hue: null,
-    // visible: null
-    // hover: false,
-		// patterns: [
-		// 	{
-		// 		p: [
-		// 			'0% 0%, 20% 50%, 0% 100%',
-		// 			'0% 0%, 20% 0%, 50% 20%, 20% 50%',
-		// 			'20% 0%, 75% 0%, 50% 20%',
-		// 			'75% 0%, 100% 0%, 100% 20%, 90% 50%, 50% 20%',
-		// 			'50% 20%, 90% 50%, 75% 100%, 60% 100%, 20% 50%',
-		// 			'100% 20%, 100% 57%, 90% 50%',
-		// 			'90% 50%, 100% 57%, 100% 100%, 75% 100%',
-		// 			'20% 50%, 60% 100% , 75% 100%, 0% 100%'
-		// 		]
-
-		// 	}
-		// ]
-  }),
-
-  mounted() {
-    // detectImageDark(this.image, this.setHue)
-  },
-
-  methods: {
-    // setHue (val) { this.hue = val },
-
-		// itemHover (val) {
-		// 	this.hover = val
-		// },
-
-    clickItem() {
-      if (this.clickCallback) {
-        this.clickCallback({
-          projectId: this.id,
-          session_id: this.sessionId,
-          is_guest_project: this.isGuestProject,
-          title: this.title
-        })
-      } else {
-        var win = window.open(this.link, '_blank')
-        win.focus()
-      }
-    }
-  }
-} */
 </script>

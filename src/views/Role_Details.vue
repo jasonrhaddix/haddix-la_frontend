@@ -79,7 +79,7 @@
           <div class="section-title">
             <h2>Relevant Experience</h2>
           </div>
-          <p class="" v-html="role.description" />
+          <p v-html="role.description" />
         </div>
 
         <div class="divider" />
@@ -102,11 +102,11 @@
                 </div>
 
                 <div
-                  v-if="projectVideos(project.project_id)"
+                  v-if="projectVideos(project.projectId)"
                   class="watch__btn"
                 >
                   <AppButton
-                    light label="Watch Video"
+										variant="light" label="Watch Video"
                     @click.native="loadVideo(projectVideos(project.projectId))"
                   />
                 </div>
@@ -115,8 +115,7 @@
 							<v-container fluid>
 								<v-row class="photos__inner" dense>
 									<v-col
-										cols="12"
-										md="6"
+										cols="12" md="6"
 										class="d-flex align-center"
 										v-for="(item, i) in projectImages(project.projectId)"
 										:key="`project-photo-${$uuid.v4()}-${i}`"
@@ -160,18 +159,6 @@
 	const rolesStore = stores.rolesStore()
 
 	const { role /* projectAttachmentsByUsageType */ } = storeToRefs(rolesStore)
-
-	// mapGetters
-	// const projectAttachmentsByUsageType = rolesStore.projectAttachmentsByUsageType
-	const getPropertyByKey = propsStore.getPropertyByKey
-
-	const client = computed(() =>
-		''
-		//getPropertyByKey('roleClients', role.client, 'value', 'name') || ''
-	)
-
-	const description = computed(() => ''/* role.description */)
-	const recruiter = computed(() => ''/* role.recruiter */)
 
 	// scoped methods
 	const projectVideos = (projectId) => {

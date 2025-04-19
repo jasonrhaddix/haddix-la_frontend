@@ -11,8 +11,9 @@ const roleBase = (data) => {
     jobTitle: data.jobTitle,
     company: propsStore.getPropertyByKey('roleCompanies', data.company, 'value', 'title'),    
     role: data.role,
-    recruiter: data.recruiter,
-    published: data.published
+    organization: data.organization,
+    year: data.year,
+    published: data.published,
   }
 }
 
@@ -21,7 +22,7 @@ const roleDetails = (data) => {
   return {
     ...roleBase(data),
     description: data.description,
-    organization: data.organization,
+    recruiter: data.recruiter,
     projects: data.projects
   }
 }

@@ -75,28 +75,6 @@ export default defineStore('props', {
       { title: 'PHP', value: 'php' }
     ],
 
-    projectYears: [
-      '2007',
-      '2008',
-      '2009',
-      '2010',
-      '2011',
-      '2012',
-      '2013',
-      '2014',
-      '2015',
-      '2015',
-      '2016',
-      '2017',
-      '2018',
-      '2019',
-      '2020',
-      '2021',
-      '2022',
-      '2023',
-      '2024'
-    ],
-
     projectResources: [
       { id: 1, title: 'Adobe After Effects CC', value: 'adobe_after_effects_cc' },
       { id: 2, title: 'Abode AIR', value: 'abode_air' },
@@ -168,6 +146,28 @@ export default defineStore('props', {
   }),
 
   getters: {
+    projectYears: () => {
+      const currentYear = new Date().getFullYear()
+      const years = []
+      for (let year = 2007; year <= currentYear; year++) {
+        years.push(year)
+      }
+      return years
+    },
+
+    roleYears: () => {
+      const currentYear = new Date().getFullYear()
+      const startYear = currentYear - 3
+      const endYear = currentYear + 3
+    
+      const years = []
+      for (let year = startYear; year <= endYear; year++) {
+        years.push(year)
+      }
+    
+      return years
+    },
+
     getPropertyItem: (state) => (whichList, val, sortKey) => {
       let idx = state[whichList].findIndex(x => x[sortKey] === val)
       return state[whichList][idx]

@@ -18,7 +18,7 @@ export default defineStore('localStorage', {
     },
 
     get(prop) {
-      return storage.get(this.storageName)[prop]
+      return storage.get(this.storageName)?.[prop] || null
     },
 
     set(data) {

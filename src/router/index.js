@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import stores from '@/stores/index.js'
 
-import beforeEnterGuard from '@/router/navigationGuards/beforeEnter'
+import requireAuthGuard from '@/router/navigationGuards/requireAuthGuard.js'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,22 +35,28 @@ const router = createRouter({
       path: '/projects',
       name: 'projects',
       component: () => import('@/views/Projects.vue'),
-      beforeEnter: beforeEnterGuard,
+      beforeEnter: [requireAuthGuard],
       meta: {
         beforeEnterCallback: (to, from, next) => {
           stores.routingStore().enterProjectsRoute()
+          
           next()
         }
       }
     },
+
+    { path: '/projects/project-details', redirect: { name: 'home' } },
+    
     {
       path: '/projects/project-details/:_id',
       name: 'project-details',
       component: () => import('@/views/Project_Details.vue'),
-      beforeEnter: beforeEnterGuard,
+      beforeEnter: [requireAuthGuard],
       meta: {
         beforeEnterCallback: (to, from, next) => {
+          if(!to.params._id) next({ name: 'Home' })
           stores.routingStore().enterProjectDetailsRoute(to.params)
+          
           next()
         }
       }
@@ -59,22 +65,28 @@ const router = createRouter({
       path: '/roles',
       name: 'roles',
       component: () => import('@/views/Roles.vue'),
-      beforeEnter: beforeEnterGuard,
+      beforeEnter: [requireAuthGuard],
       meta: {
         beforeEnterCallback: (to, from, next) => {
           stores.routingStore().enterRolesRoute()
+          
           next()
         }
       }
     },
+    
+    { path: '/roles/role-details', redirect: { name: 'home' } },
+
     {
       path: '/roles/role-details/:_id',
       name: 'role-details',
       component: () => import('@/views/Role_Details.vue'),
-      beforeEnter: beforeEnterGuard,
+      beforeEnter: [requireAuthGuard],
       meta: {
         beforeEnterCallback: (to, from, next) => {
+          if(!to.params._id) next({ name: 'Home' })
           stores.routingStore().enterRoleDetailsRoute(to.params)
+
           next()
         }
       }
@@ -83,19 +95,13 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: () => import('../views/About.vue'),
-      beforeEnter: beforeEnterGuard
-      /* meta: {
-				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'About')
-					next()
-				}
-			} */
+      beforeEnter: [requireAuthGuard]
     },
     {
       path: '/contact',
       name: 'contact',
       component: () => import('../views/Contact.vue'),
-      beforeEnter: beforeEnterGuard
+      beforeEnter: [requireAuthGuard]
       /* meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Contact')
@@ -107,7 +113,7 @@ const router = createRouter({
       path: '/labs',
       name: 'labs',
       component: () => import('../views/Labs.vue'),
-      beforeEnter: beforeEnterGuard
+      beforeEnter: [requireAuthGuard]
       /* meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Labs')

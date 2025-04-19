@@ -3,13 +3,13 @@
 
     <v-snackbar
       ref="snackbar"
+      location="bottom"
       v-for="(item, index) in reversedToasts"
       :key="item.id"
       v-model="item.open"
       :timeout="-1"
       :class="['toast-container', item.data.type]"
       :style="{
-        position: 'absolute',
         bottom: calcMargin(index),
         left: '50%',
         transform: 'translateX(-50%)'

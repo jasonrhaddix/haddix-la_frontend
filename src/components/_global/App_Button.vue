@@ -6,7 +6,7 @@
       { disabled: loading }
     ]"
   >
-    <div :class="['app-button', { light: light }]">
+    <div :class="['app-button', variant]">
       <div v-show="!loading" class="inner">
         <div class="text app-button__text">{{ label }}</div>
         <div class="app-button__bg-under" />
@@ -37,10 +37,10 @@ const props = defineProps({
     default: null
   },
 
-  light: {
-    type: Boolean,
+  variant: {
+    type: String,
     required: false,
-    default: false
+    default: 'default'
   },
 
   disabled: {

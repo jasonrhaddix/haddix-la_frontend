@@ -104,6 +104,6 @@ export default defineStore('routing', {
     enterRoleDetailsRoute(params) {
       const rolesStore = stores.rolesStore()
       rolesStore.fetchRoleById(params?._id)
-    },
+    }
   }
 })

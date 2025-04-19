@@ -31,7 +31,7 @@
         </div>
         <div class="divider" />
         <div class="breadcrumb">
-          <p>{{ routeName() }}</p>
+          <p v-html="routeName()" />
         </div>
       </div>
       <div class="nav-menu-button" @click="navigationStore.toggleNavigation">

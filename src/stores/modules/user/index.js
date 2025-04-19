@@ -35,12 +35,12 @@ export default defineStore('user', {
     // user login
     async login(credentials) {
       this.isAuthorizing = true
-
+      
       try {
         const res = await api.post(`/auth/login`, credentials, { withCredentials: true })
-        this.updateAccessTokenInState(res.data?.accessToken)
+        this.updateAccessTokenInState(res?.data?.accessToken)
         
-        return res
+        return res.data
       } catch (error) {
         throw error
       } finally {
@@ -56,7 +56,7 @@ export default defineStore('user', {
 
       try {
         await api.post( `/auth/logout`, {}, { withCredentials: true })
-
+        
         this.accessToken = null
         TokenService.clearLocalAccessToken()
         routingStore.pushRoute({ name: 'home' })

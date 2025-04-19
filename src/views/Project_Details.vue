@@ -73,8 +73,7 @@
         <div class="section video__container">
           <div v-if="projectVideo" class="video__inner">
             <video
-              loop muted
-              autoplay controls playsInline
+              loop muted autoplay controls playsInline
               class="project-video">
               <source :src="projectVideo.uri" :type="projectVideo.mimetype" />
             </video>
