@@ -8,9 +8,11 @@
   // background: url('~@/assets/app/images/project-details-footer-grey.jpg') $color-m-white no-repeat center bottom;
   // background-size: contain;
 
-  background: {
+  /* background: {
     color: $color-m-white;
-  }
+  } */
+
+  background-color: rgba(10, 10, 10, 1);
 
   .details__content {
     position: relative;

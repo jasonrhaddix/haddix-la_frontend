@@ -111,6 +111,10 @@
 
             .about-bio {
 
+                .about-bio--inner {
+                    padding: 0px 6rem;
+                }
+
                 h2 {
                     // text-align: left;
                     text-transform: uppercase;
@@ -236,6 +240,22 @@
 			}
 
 			.about--about-site {
+                * {
+                    text-align: left;
+                }
+
+                p{
+                    margin: {
+                        // top: 0.5rem;
+                        bottom: 1.25rem;
+                    }
+                }
+
+                ul {
+                    margin: {
+                        bottom: 1.25rem;
+                    }
+                }
 
 				.about--about-section {
 					margin: {
@@ -243,12 +263,6 @@
 						bottom: 2rem;
 					}
 
-					p {
-						margin: {
-							// top: 0.5rem;
-							bottom: 1.25rem;
-						}
-					}
 				}
 			}
 

@@ -8,7 +8,7 @@ const roleBase = (data) => {
     _id: data._id,
     dateCreated: data.dateCreated,
     roleId: data.roleId,
-    jobTitle: data.jobTitle,
+    role: data.role,
     company: propsStore.getPropertyByKey('roleCompanies', data.company, 'value', 'title'),    
     role: data.role,
     organization: data.organization,

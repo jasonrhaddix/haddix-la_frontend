@@ -13,7 +13,7 @@
 				class="elevation-1">
 					<template v-slot:item="{ item }">
 						<tr>
-							<td>{{ item.jobTitle || '--' }}</td>
+							<td>{{ item.role || '--' }}</td>
 							<td class="col__role-id"
 								@click="roleClick(item._id)">
 								{{ item.roleId || '--' }}
@@ -71,7 +71,7 @@ const toastStore = stores.ui.toastStore()
 const routingStore = stores.routingStore()
 
 const headers = reactive([
-  { title: 'Job Title', value: 'jobTitle' },
+  { title: 'Role', value: 'role' },
   { title: 'Role ID', value: 'roleId' },
   { title: 'Company', value: 'company' },
   { title: 'Organization', value: 'organization' },

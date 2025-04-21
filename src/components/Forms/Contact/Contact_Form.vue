@@ -79,7 +79,6 @@
 
 
 	const sendEmail = async() => {
-		console.log('Sending email...', model)
 		try {
 			await contactStore.sendEmail(model)
 
@@ -93,7 +92,6 @@
 
 			resetForm()
 		} catch (error) {
-			console.log(error)
 			toastStore.addToast({
 				data: {
 					message: 'Error sending message. Please try again.', // <-------- add proper error message from error.response

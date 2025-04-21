@@ -418,10 +418,12 @@
 
   const submitted = ref(false)
   const fileDragOver = ref(false)
+
   const attachmentUploader_Thumbnail = ref(null)
   const attachmentUploader_Header = ref(null)
   const attachmentUploader_Body = ref(null)
   const attachmentUploader_Video = ref(null)
+
   const formModel = reactive({
     projectId: null,
     isGuestProject: null,
@@ -479,7 +481,7 @@
   onMounted(async () => {
     if (props.data.id) {
       const project = await projectsStore.fetchProjectById(props.data.id)
-      updateProject.value = Project.projectDetails(project)
+      updateProject.value = project
     }
 
     initForm()
@@ -493,8 +495,8 @@
         type: updateProject.value.type,
         title: updateProject.value.title,
         subtitle: updateProject.value.subtitle,
-        client: propsStore.getPropertyByKey('projectClients', updateProject.value.client, 'title', 'value'),
-        role: propsStore.getPropertyByKey('projectRoles', updateProject.value.role, 'title', 'value'),
+        client: updateProject.value.client,
+        role: updateProject.value.role,
         projectYear: updateProject.value.projectYear,
         excerpt: updateProject.value.excerpt,
         description: updateProject.value.description,
@@ -624,7 +626,12 @@
     const wrapperKeys = ['key', 'uri', 'status', 'file', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType', 'usageSubtype']
     const fileKeys = ['name', 'type']
     
-    const attachments = extractAttachmentData(['thumbnail', 'header', 'body', 'video'], wrapperKeys, fileKeys)
+    const attachments = extractAttachmentData([
+      types.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
+      types.ATTACHMENT_USAGE_TYPE__HEADER,
+      types.ATTACHMENT_USAGE_TYPE__BODY,
+      types.ATTACHMENT_USAGE_TYPE__VIDEO
+    ], wrapperKeys, fileKeys)
 
     if (isEditMode.value) {
 

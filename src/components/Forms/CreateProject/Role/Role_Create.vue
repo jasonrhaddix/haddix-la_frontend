@@ -20,7 +20,7 @@
 
       <v-row>
         <v-col class="col-12">
-          <v-text-field filled label="Job Title" v-model="formModel.jobTitle" />
+          <v-text-field filled label="Role" v-model="formModel.role" />
         </v-col>
       </v-row>
 
@@ -60,25 +60,7 @@
       <v-row>
         <v-col cols="12">
           <div class="projects-section">
-            <div class="projects__container">
-              <div>
-                <RoleProjectItem
-                  ref="roleProjects"
-                  v-for="(project, i) in formModel.projects"
-                  :key="`project-item--${i}`"
-                  :id="i"
-                  :role-id="formModel.roleId"
-                  :removeCallback="removeProjectCallback"
-                />
-
-                <div :ripple="false" class="add-project-btn" @click="addProject">
-                  <div class="button__content">
-                    <p class="subheading">Add Project</p>
-                    <v-icon color="grey darken-1">add</v-icon>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CreateRoleProjects v-model="formModel.projects" />
           </div>
         </v-col>
       </v-row>
@@ -107,9 +89,9 @@ import stores from '@/stores/index.js'
 import { Role } from '@/models'
 import { objectHelpers } from '@/utils/helpers'
 
-import RoleProjectItem from '@/components/Forms/CreateProject/Role/Role_Create__Project_item.vue'
 import AppButton from '@/components/_global/App_Button.vue'
 import TextEditor from '@/components/_global/Text_Editor.vue'
+import CreateRoleProjects from '@/components/Forms/CreateProject/Role/Role_Create__Projects.vue'
 
 const propsStore = stores.config.propsStore()
 const rolesStore = stores.rolesStore()
@@ -126,16 +108,15 @@ const props = defineProps({
 })
 
 const updateRole = ref({})
-
 const submitted = ref(false)
 const formModel = reactive({
   roleId: null,
+  role: null,
   company: null,
-  jobTitle: null,
   organization: null,
-  description: null,
-  recruiter: null,
   year: null,
+  recruiter: null,
+  description: null,
   projects: [],
   published: true
 })
@@ -143,7 +124,7 @@ const formModel = reactive({
 onMounted(async () => {
   if (props.data.id) {
     const role = await rolesStore.fetchRoleById(props.data.id)
-    updateRole.value = Role.roleDetails(role)
+    updateRole.value = role
   }
 
   initForm()
@@ -154,7 +135,7 @@ const initForm = () => {
     Object.assign(formModel, {
       ...updateRole.value,
       roleId: updateRole.value.roleId,
-      jobTitle: updateRole.value.jobTitle,
+      role: updateRole.value.role,
       company: updateRole.value.company,
       organization: updateRole.value.organization,
       year: updateRole.value.year,
@@ -171,14 +152,6 @@ const initForm = () => {
 const isEditMode = computed(() => {
   return !!props.data.id
 })
-
-function addProject() {
-  formModel.projects.push({})
-}
-
-function removeProjectCallback(id) {
-  formModel.projects.splice(id, 1)
-}
 
 const submitForm = async () => {
     submitted.value = true
@@ -197,17 +170,17 @@ const submitForm = async () => {
     // const attachments = extractAttachmentData(['thumbnail', 'header', 'body', 'video'], wrapperKeys, fileKeys)
   
     if (isEditMode.value) {
-      const diff = objectHelpers.deepDiff(updateRole.value, {...formModel, attachments})
+      const diff = objectHelpers.deepDiff(updateRole.value, { ...formModel/* , attachments */ })
 
       try {
-        await rolessStore.updateRole(props.data.id, diff)
-        
+        await rolesStore.updateRole(props.data.id, diff)
+
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',
           data: {
             type: 'success',
             title: 'Role Updated!',
-            message: `${formModel.title}`
+            message: `${formModel.role} for ${formModel.company}`
           }
         })
       } catch (error) {
@@ -230,7 +203,7 @@ const submitForm = async () => {
           data: {
             type: 'success',
             title: 'Role Created!',
-            message: `${role.jobTitle} for ${role.company}`
+            message: `${role.role} for ${role.company}`
           }
         })
       } catch (error) {
@@ -247,6 +220,10 @@ const submitForm = async () => {
 
     overlayStore.hideOverlay()
   }
+
+  watch(formModel, (value) => {
+    console.log('formModel', value)
+  }, { deep: true })
 
 /* function submitForm() {
   submitted.value = true
@@ -286,7 +263,7 @@ export default {
     model: {
       roleId: null,
       client: null,
-      jobTitle: null,
+      role: null,
       organization: null,
       recruiter: null,
       description: null,

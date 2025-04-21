@@ -52,7 +52,7 @@ export default defineStore('role', {
         const res = await api.get(`/roles/${id}`)
         this.role = Role.roleDetails(res.data)
 
-        headerStore.setTitle(`${this.role.jobTitle} <span style="text-transform: lowercase">at</span> ${this.role.company}`)
+        headerStore.setTitle(`${this.role.role} <span style="text-transform: lowercase">at</span> ${this.role.company}`)
 
         return this.role
       } catch (error) {

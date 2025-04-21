@@ -12,7 +12,7 @@
 
         <div class="title__container">
           <h4>Relevant experience for</h4>
-          <h1>{{ role.jobTitle }}</h1>
+          <h1>{{ role.role }}</h1>
           <h3><!-- <span>at</span> --> {{ role.company }}</h3>
         </div>
 
@@ -92,9 +92,9 @@
           <div
             class="project-item"
             v-for="project in role.projects"
-            :key="`project-item--${project.projectId}}`"
-          >
-            <div>
+            :key="`project-item--${project.projectId}}`">
+            
+						<div>
               <div class="title__container">
                 <div class="title__info">
                   <h3>{{ project.title }}</h3>
@@ -102,9 +102,8 @@
                 </div>
 
                 <div
-                  v-if="projectVideos(project.projectId)"
-                  class="watch__btn"
-                >
+                  v-if="projectVideos(project)"
+                  class="watch__btn">
                   <AppButton
 										variant="light" label="Watch Video"
                     @click.native="loadVideo(projectVideos(project.projectId))"
@@ -113,14 +112,15 @@
               </div>
 
 							<v-container fluid>
-								<v-row class="photos__inner" dense>
+								<v-row
+									dense
+									class="photos__inner">
 									<v-col
 										cols="12" md="6"
 										class="d-flex align-center"
-										v-for="(item, i) in projectImages(project.projectId)"
+										v-for="(item, i) in projectImages(project)"
 										:key="`project-photo-${$uuid.v4()}-${i}`"
-										@click="showFullsizeImage(item)"
-									>
+										@click="showFullsizeImage(item)">
 										<div class="photo">
 											<img :src="item.uri" />
 											<div class="img-hover">
@@ -161,25 +161,13 @@
 	const { role /* projectAttachmentsByUsageType */ } = storeToRefs(rolesStore)
 
 	// scoped methods
-	const projectVideos = (projectId) => {
-		/* const videos = projectAttachmentsByUsageType(
-			types.ATTACHMENT_USAGE_TYPE__VIDEO,
-			'roles',
-			projectId
-		) */
-
-		const videos = []
+	const projectVideos = (project) => {
+		const videos = project.attachments.video
 		return videos.length > 0 ? videos[0] : null
 	}
 
-	const projectImages = (projectId) => {
-		/* const images = projectAttachmentsByUsageType(
-			ATTACHMENT_USAGE_TYPE__BODY,
-			'roles',
-			projectId
-		) */
-
-		const images = []
+	const projectImages = (project) => {
+		const images = project.attachments.body
 		return images.length > 0 ? images : headerPlaceholder
 	}
 
@@ -246,8 +234,8 @@ export default {
 			return this.getPropertyByKey('roleClients', this.role.client, 'value', 'name') || ''
 		},
 
-		jobTitle () {
-			return this.role.jobTitle
+		role () {
+			return this.role.role
 		},
 
 		organization () {

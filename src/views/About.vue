@@ -58,14 +58,9 @@
         <div class="about-bio">
           <div class="about-bio--inner">
             <h2>Hi, I'm Jason R. Haddix</h2>
-            <p>
-              I’m a Software Engineer with experience in development of
-              high-traffic, data-intensive web applications with a focus on
-              architecting systems for scalability. I’m looking to take
-              ownership in projects I enjoy and to expand my skillset, while
-              making a collaborative effort toward a central goal. In my free
-              time I enjoy DIY projects and being in nature with my family.
-            </p>
+            <p>I'm a Senior Full-Stack Engineer with over {{yearsExperience}} years of professional experience building large, data-driven applications using cutting-edge technologies. I specialize in developing scalable web platforms that balance performance, usability, and maintainability.</p>
+            <p>My motivation lies in solving complex problems, delivering clean, effective solutions, and staying ahead of the tech curve. I thrive in environments where I can push boundaries, learn continuously, and build products that make an impact.</p>
+            <p>I’m especially passionate about exploring new technologies and mentoring junior engineers — sharing knowledge, improving team dynamics, and shaping the next wave of builders in the industry.</p>
           </div>
         </div>
 
@@ -180,17 +175,9 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Back-end:</h4>
                 <ul>
+                  <li><p>Working with Back-end technologies like NoSQL, Web Tokens, NodeJS, Express</p></li>
                   <li><p>Creating REST API end-points</p></li>
-                  <li>
-                    <p>
-                      AWS (EC2, S3, RDS, CodePipline, CodeBuild, API Gateway)
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      Provisioning local dev servers with VirtualBox/Homestead
-                    </p>
-                  </li>
+                  <li><p>AWS (EC2, S3, RDS, CodePipline, CodeBuild, API Gateway)</p></li>
                 </ul>
               </v-col>
 
@@ -201,7 +188,6 @@
                   <li><p>Agile Methodology</p></li>
                   <li><p>Atlassian Suite (JIRA, BitBucket, Confluence)</p></li>
                   <li><p>CI/CD integration</p></li>
-                  <li><p>Algorithms and traversing data structures</p></li>
                   <li><p>Aptitude for learning new technologies</p></li>
                 </ul>
               </v-col>
@@ -214,10 +200,10 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Technical Proficiencies</h4>
                 <ul>
-                  <li><p>HTML / CSS • JavaScript (ES5/6/7)</p></li>
-                  <li><p>VueJS / Vuex • Sass/SCSS</p></li>
+                  <li><p>HTML / CSS • JavaScript</p></li>
+                  <li><p>Vue + Pinia (and Vuex) • Sass/SCSS</p></li>
                   <li><p>Bootstrap • Handlebars • Vuetify</p></li>
-                  <li><p>Webpack • Babel • Gulp • NodeJS • Express</p></li>
+                  <li><p>Webpack / Vite • Babel • Gulp / Grunt</p></li>
                   <li><p>Yarn / NPM • Electron</p></li>
                 </ul>
               </v-col>
@@ -225,9 +211,7 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Technical Experience</h4>
                 <ul>
-                  <li>
-                    <p>React / Redux • Angular • Backbone / Marionette</p>
-                  </li>
+                  <li><p>React + Redux • Angular</p></li>
                   <li><p>Foundation • Stylus • Grunt • ThreeJS</p></li>
                   <li><p>PHP • Laravel • Composer</p></li>
                 </ul>
@@ -268,81 +252,58 @@
             </div>
             <div class="subsection">
               <p>
-                Before I begin digging into my stack for this website, I need to
-                preface that, this site the exact inverse of the rule of Least
-                Power. I set out to build my site as a dual purpose medium; for
-                updating and displaying my most recent/fun projects, and as a
-                proving ground for my current skillset.
+                This site was built as both a portfolio and a playground—a place to showcase my projects and a space to experiment with modern web technologies. I created it to provide potential employers and collaborators with a hands-on look at my technical skills, thought process, and personal design style.
               </p>
 
-              <div class="about--about-section">
-                <h4>Front-end:</h4>
-                <ul>
-                  <li><span>JS Framework: </span>Vue.js</li>
-                  <li><span>CSS Pre-Processor: </span>Sass (SCSS)</li>
-                  <li><span>Compiler: </span>Babel</li>
-                  <li><span>Bundler: </span>Webpack</li>
-                </ul>
-              </div>
+              <p>
+                The primary audience for this site includes hiring managers, recruiters, and teams looking for a senior web engineer with a strong command of full-stack JavaScript technologies. Everything on the site is here to demonstrate that I don't just keep up—I build with purpose.
+              </p>
 
-              <div class="about--about-section">
-                <h4>Back-end:</h4>
-                <ul>
-                  <li><span>PHP Framework: </span>Laravel</li>
-                  <li><span>REST API: </span>Laravel</li>
-                  <li><span>DB: </span>MySQL</li>
-                </ul>
-              </div>
+              <h2>Structure & Features</h2>
+              <p>
+                The site is divided into several key sections:
+              </p>
+              <ul>
+                <li><strong>Projects:</strong> Real-world work and code samples.</li>
+                <li><strong>Roles:</strong> Career-focused experience entries tailored to tech hiring workflows.</li>
+                <li><strong>Labs:</strong> Prototypes, side projects, and experiments.</li>
+                <li><strong>Contact:</strong> A quick and simple way to get in touch.</li>
+              </ul>
 
-              <div class="about--about-section">
-                <h4>Build/Deploy Process</h4>
-                <p>
-                  Since I have a detached front- and back-end, I have two
-                  separate development and build processes.
-                </p>
-                <p>
-                  For the back-end, I run Laravel locally using a Homestead
-                  image for VirtualBox server. I also spin up a local MySQL
-                  instance for my DB. I run the build locally and then deploy on
-                  an AWS EC2 using an ElasticBeanstalk instance - I deploy using
-                  the ElasticBeanstalk API.
-                </p>
-                <p>
-                  The front-end runs locally on Webpack (webpack-dev-server),
-                  and accesses the local Laravel REST API served by the
-                  VirtualBox back-end. For my build process, I implemented CI/CD
-                  using AWS CodeBuild connected to my GitHub repo. This allows
-                  me to simply push commits and AWS will build and deploy my
-                  code to an S3 bucket (served through CloudFront).
-                </p>
-                <p>
-                  I have a login feature (authenticated using JSON Web Tokens),
-                  which allows me add projects through a custom CMS on the
-                  font-end. The CMS is also accessible on the front-end as a
-                  guest, but projects created as a guest will only be alive for
-                  the duration of the session. If the user refreshed the site
-                  the project will be gone. This is done by giving the user a
-                  session token, creating projects under that token. If the
-                  session token doesn't match the project token, it is not
-                  displayed. Further more saving projects as a guest are to a
-                  different DB table as an authenticated user, thus allow me to
-                  keep my 'guest' projects from contaminating my actual project
-                  table. The CMS supports asset uploads to an AWS S3 buck.
-                </p>
-                <p>
-                  I've also added section for displaying my experiments. I can
-                  create a new experiment project through the CMS, which is
-                  great for localizing content creation. I will (eventually)
-                  populate this section with some, hopefully cool, projects.
-                </p>
-                <p>
-                  Since this site is also a proving ground for my skills, I plan
-                  on eventually adding features to extend functionality. I'd
-                  like to try adding facial recognition for quick login using
-                  Google's Tensorflow library.
-                </p>
-                <p>There's a lot going on in this site, so, please enjoy!</p>
-              </div>
+              <h2>Tech Stack</h2>
+              <p>
+                I used the following technologies to build this app:
+              </p>
+              <ul>
+                <li><strong>Frontend:</strong> Vue 3, Vuetify, Pinia, SCSS</li>
+                <li><strong>Backend:</strong> Node.js, Express</li>
+                <li><strong>Database:</strong> MongoDB</li>
+                <li><strong>Storage:</strong> AWS S3 for asset handling</li>
+                <li><strong>Other:</strong> axios, TipTap for rich text editing</li>
+              </ul>
+
+              <p>
+                I chose these tools because they reflect both what’s currently being used in modern production environments and areas where I wanted to continue growing—like mastering Vue 3’s Composition API and working more deeply with MongoDB.
+              </p>
+
+              <h2>Development Style</h2>
+              <p>
+                As a senior developer, challenges are opportunities. Whether I’m debugging something myself or collaborating with AI, I always find a way to solve the problem and keep the experience smooth and scalable.
+              </p>
+
+              <h2>What’s Next?</h2>
+              <p>
+                I’m currently planning to implement localization using i18next, so the site can support multiple languages. I also have a few features on the roadmap:
+              </p>
+              <ul>
+                <li>An AI-powered project summarizer that can generate concise blurbs from longer project descriptions</li>
+                <li>Support for video intros or demos attached to roles and projects</li>
+                <li>A timeline view to visualize my career journey</li>
+              </ul>
+
+              <p>
+                This site will continue to evolve, just like my work. Thanks for stopping by—if anything here resonates, feel free to reach out.
+              </p>
             </div>
           </div>
         </div>
@@ -462,6 +423,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faGithub,
@@ -495,6 +457,12 @@ import LogoHBO from '@/assets/app/icons/client_logos/hbo.svg'
 import LogoESPN from '@/assets/app/icons/client_logos/espn.svg'
 
 const routingStore = stores.routingStore()
+
+const yearsExperience = computed(() => {
+  const startYear = 2007
+  const currentYear = new Date().getFullYear()
+  return currentYear - startYear
+})
 
 // import { mapActions } from 'vuex'
 
