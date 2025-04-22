@@ -627,10 +627,10 @@
     const fileKeys = ['name', 'type']
     
     const attachments = extractAttachmentData([
-      types.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
-      types.ATTACHMENT_USAGE_TYPE__HEADER,
-      types.ATTACHMENT_USAGE_TYPE__BODY,
-      types.ATTACHMENT_USAGE_TYPE__VIDEO
+      typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL,
+      typesStore.ATTACHMENT_USAGE_TYPE__HEADER,
+      typesStore.ATTACHMENT_USAGE_TYPE__BODY,
+      typesStore.ATTACHMENT_USAGE_TYPE__VIDEO
     ], wrapperKeys, fileKeys)
 
     if (isEditMode.value) {

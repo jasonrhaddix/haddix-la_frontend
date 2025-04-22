@@ -1,12 +1,12 @@
 .labs-view {
 	position: relative;
-    min-height: 100vh;
-    width: 100vw;
-	background: {
+	min-height: 100vh;
+	width: 100vw;
+	/* background: {
 		// color: $color-m-white;
 		color: #070707;
 		// color: rgba(0, 0, 0, 0.5);
-	}
+	} */
 
 	.labs__add-btn {
         @include center-content('horizontal');
@@ -26,7 +26,7 @@
 			p {
 				text-transform: uppercase;
 				text-align: center;
-				color: $color-m-grey-darken-2;
+				// color: $color-m-grey-darken-2;
 				padding: {
 					top: 0.5rem;
 				}

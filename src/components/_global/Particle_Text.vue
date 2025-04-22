@@ -36,7 +36,7 @@
 			return Math.floor(Math.random() * (max - min + 1) + min)
 		} */
 
-		render (colors = ['#3100BD', '#000']) {
+		render (colors = ['#ff0099', '#000']) {
 			this.canvas.beginPath()
 			this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
 			this.canvas.lineWidth = 2

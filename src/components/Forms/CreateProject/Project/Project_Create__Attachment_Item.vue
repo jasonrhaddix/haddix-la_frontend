@@ -93,13 +93,17 @@ const compileVideoSrc = computed(() => {
 
 // file progress percentage
 const fileProgressPercent = computed(() => {
-  const { total, loaded } = props.data.progress
+  const { total = null, loaded = null } = props?.data?.progress || {}
+  if (!total || !loaded) return 0
+  
   return total ? Math.round((loaded / total) * 100) + '%' : '0%'
 })
 
 // file progress style
 const fileProgress = computed(() => {
-  const { total, loaded } = props.data.progress
+  const { total = null, loaded = null } = props?.data?.progress || {}
+  if (!total || !loaded) return 0
+
   return total ? { transform: `scaleX(${loaded / total})` } : 0
 })
 
