@@ -30,6 +30,7 @@ const projects = ref([])
 const addProject = () => {
   projects.value.push({
     id: shortid.generate(),
+    projectId: shortid.generate(),
     title: '',
     summary: '',
     attachments: []

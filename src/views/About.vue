@@ -86,9 +86,9 @@
             <div class="about-section-experience-roles">
               <p>Roles Included:</p>
               <ul>
-                <li><p>Font-end systems design for maintainability</p></li>
-                <li><p>Supporting engineers through development sprints</p></li>
-                <li><p>Updates to legacy applications</p></li>
+                <li>Font-end systems design for maintainability</li>
+                <li>Supporting engineers through development sprints</li>
+                <li>Updates to legacy applications</li>
               </ul>
             </div>
           </div>
@@ -105,9 +105,9 @@
             <div class="about-section-experience-roles">
               <p>Roles Included:</p>
               <ul>
-                <li><p>Front-end development and CMS integration</p></li>
-                <li><p>Project concepting for client pitches</p></li>
-                <li><p>Guiding Junior developers</p></li>
+                <li>Front-end development and CMS integration</li>
+                <li>Project concepting for client pitches</li>
+                <li>Guiding Junior developers</li>
               </ul>
             </div>
           </div>
@@ -128,18 +128,9 @@
             <div class="about-section-experience-roles">
               <p>Roles Included:</p>
               <ul>
-                <li><p>Overseeing development of products</p></li>
-                <li>
-                  <p>
-                    Working directly with management and creative to understand
-                    and execute the client's needs
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    End-to-end management of stream events to digital products
-                  </p>
-                </li>
+                <li>Overseeing development of products</li>
+                <li>Working directly with management and creative to understand and execute the client's needs</li>
+                <li>End-to-end management of stream events to digital products</li>
               </ul>
             </div>
           </div>
@@ -165,7 +156,7 @@
                   <li>
                     <p>Diverse experience with JavaScript/CSS/UI frameworks</p>
                   </li>
-                  <li><p>Consuming/Creating/Testing RESTful APIs</p></li>
+                  <li><p>Consuming/Testing RESTful APIs</p></li>
                   <li><p>Cross-browser compatibility</p></li>
                   <li><p>Debugging and troubleshooting</p></li>
                   <li><p>Understanding of UI/UX</p></li>
@@ -175,7 +166,7 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Back-end:</h4>
                 <ul>
-                  <li><p>Working with Back-end technologies like NoSQL, Web Tokens, NodeJS, Express</p></li>
+                  <li><p>Working with Back-end technologies like SQL/NoSQL, Web Tokens, NodeJS, Express</p></li>
                   <li><p>Creating REST API end-points</p></li>
                   <li><p>AWS (EC2, S3, RDS, CodePipline, CodeBuild, API Gateway)</p></li>
                 </ul>
@@ -211,7 +202,7 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Technical Experience</h4>
                 <ul>
-                  <li><p>React + Redux • Angular</p></li>
+                  <li><p>React + Redux • Angular • NUXT</p></li>
                   <li><p>Foundation • Stylus • Grunt • ThreeJS</p></li>
                   <li><p>PHP • Laravel • Composer</p></li>
                 </ul>
@@ -225,18 +216,17 @@
               <v-col class="col-12 col-md-2 item-group">
                 <ul>
                   <li><p>GraphQL</p></li>
-                  <li><p>NUXT</p></li>
-                </ul>
-              </v-col>
-              <v-col class="col-12 col-md-2 item-group">
-                <ul>
                   <li><p>TensorflowJS</p></li>
-                  <li><p>Gatsby</p></li>
                 </ul>
               </v-col>
               <v-col class="col-12 col-md-2 item-group">
                 <ul>
+                  <li><p>Svelte</p></li>
                   <li><p>RUST for WebAssembly</p></li>
+                </ul>
+              </v-col>
+              <v-col class="col-12 col-md-2 item-group">
+                <ul>
                 </ul>
               </v-col>
             </v-row>
@@ -246,64 +236,60 @@
         <div class="section-divider" />
 
         <div class="section about--about-site">
-          <div class="client-list--inner">
-            <div class="section--title client-list--inner">
+          <div class="about-site--inner">
+            <div class="section--title">
               <h2>About this Site</h2>
             </div>
             <div class="subsection">
-              <p>
-                This site was built as both a portfolio and a playground—a place to showcase my projects and a space to experiment with modern web technologies. I created it to provide potential employers and collaborators with a hands-on look at my technical skills, thought process, and personal design style.
-              </p>
+              <div class="content-group">
+                <p>This site was built as both a portfolio and a playground—a place to showcase my projects and a space to experiment with modern web technologies. I created it to provide potential employers and collaborators with a hands-on look at my technical skills, thought process, and personal design style.</p>
+                <p>The primary audience for this site includes hiring managers, recruiters, and teams looking for a senior web engineer with a strong command of full-stack JavaScript technologies. Everything on the site is here to demonstrate that I don't just keep up—I build with purpose.</p>
+              </div>
 
-              <p>
-                The primary audience for this site includes hiring managers, recruiters, and teams looking for a senior web engineer with a strong command of full-stack JavaScript technologies. Everything on the site is here to demonstrate that I don't just keep up—I build with purpose.
-              </p>
+              <div class="content-group">
+                <h3>[ Structure & Features ]</h3>
+                <p>The site is divided into several key sections:</p>
+                <ul>
+                  <li><strong>Projects:</strong> Real-world work and code samples.</li>
+                  <li><strong>Roles:</strong> Career-focused experience entries tailored to tech hiring workflows.</li>
+                  <li><strong>Labs:</strong> Prototypes, side projects, and experiments.</li>
+                  <li><strong>Contact:</strong> A quick and simple way to get in touch.</li>
+                </ul>
+              </div>
 
-              <h2>Structure & Features</h2>
-              <p>
-                The site is divided into several key sections:
-              </p>
-              <ul>
-                <li><strong>Projects:</strong> Real-world work and code samples.</li>
-                <li><strong>Roles:</strong> Career-focused experience entries tailored to tech hiring workflows.</li>
-                <li><strong>Labs:</strong> Prototypes, side projects, and experiments.</li>
-                <li><strong>Contact:</strong> A quick and simple way to get in touch.</li>
-              </ul>
+              <div class="content-group">
+                <h3>[ Tech Stack ]</h3>
+                <p>I used the following technologies to build this app:</p>
+                <ul>
+                  <li><strong>Frontend:</strong> Vue 3, Vuetify, Pinia, SCSS</li>
+                  <li><strong>Backend:</strong> Node.js, Express</li>
+                  <li><strong>Database:</strong> MongoDB</li>
+                  <li><strong>Storage:</strong> AWS S3 for asset handling</li>
+                  <li><strong>Other:</strong> Axios, TipTap - for rich text editing</li>
+                </ul>
+              </div>
+              
+              <div class="content-group">
+                <p>I chose these tools because they reflect both what’s currently being used in modern production environments and areas where I wanted to continue growing—like mastering Vue 3’s Composition API and working more deeply with MongoDB.</p>
+              </div>
+              
+              <div class="content-group">
+                <h3>[ Development Style ]</h3>
+                <p>As a senior developer, challenges are opportunities. Whether I’m debugging something myself or collaborating with AI, I always find a way to solve the problem and keep the experience smooth and scalable.</p>
+              </div>
+              
+              <div class="content-group">
+                <h3>[ What’s Next? ]</h3>
+                <p>I’m currently planning to implement localization using i18next, so the site can support multiple languages. I also have a few features on the roadmap:</p>
+                <ul>
+                  <li> - An AI-powered project summarizer that can generate concise blurbs from longer project descriptions</li>
+                  <li> - Support for video intros or demos attached to roles and projects</li>
+                  <li> - A timeline view to visualize my career journey</li>
+                </ul>
 
-              <h2>Tech Stack</h2>
-              <p>
-                I used the following technologies to build this app:
-              </p>
-              <ul>
-                <li><strong>Frontend:</strong> Vue 3, Vuetify, Pinia, SCSS</li>
-                <li><strong>Backend:</strong> Node.js, Express</li>
-                <li><strong>Database:</strong> MongoDB</li>
-                <li><strong>Storage:</strong> AWS S3 for asset handling</li>
-                <li><strong>Other:</strong> axios, TipTap for rich text editing</li>
-              </ul>
+                <p>This site will continue to evolve, just like my work. Thanks for stopping by—if anything here resonates, feel free to reach out.</p>
+              </div>
 
-              <p>
-                I chose these tools because they reflect both what’s currently being used in modern production environments and areas where I wanted to continue growing—like mastering Vue 3’s Composition API and working more deeply with MongoDB.
-              </p>
-
-              <h2>Development Style</h2>
-              <p>
-                As a senior developer, challenges are opportunities. Whether I’m debugging something myself or collaborating with AI, I always find a way to solve the problem and keep the experience smooth and scalable.
-              </p>
-
-              <h2>What’s Next?</h2>
-              <p>
-                I’m currently planning to implement localization using i18next, so the site can support multiple languages. I also have a few features on the roadmap:
-              </p>
-              <ul>
-                <li>An AI-powered project summarizer that can generate concise blurbs from longer project descriptions</li>
-                <li>Support for video intros or demos attached to roles and projects</li>
-                <li>A timeline view to visualize my career journey</li>
-              </ul>
-
-              <p>
-                This site will continue to evolve, just like my work. Thanks for stopping by—if anything here resonates, feel free to reach out.
-              </p>
             </div>
           </div>
         </div>
@@ -318,91 +304,56 @@
             <v-row class="client-list">
               <v-col
                 align-self="center"
-                class="col-6 col-md-4 col-lg-3 client-item"
-              >
-                <div class="item">
-                  <img :src="LogoUniversal" alt="Universal Studios" />
-                </div>
+                class="col-6 col-md-4 col-lg-3 client-item">
+                <div class="item"><img :src="LogoUniversal" alt="Universal Studios" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoAmazon" alt="Amazon" />
-                </div>
+                <div class="item"><img :src="LogoAmazon" alt="Amazon" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoMGM" alt="MGM Grand" />
-                </div>
+                <div class="item"><img :src="LogoMGM" alt="MGM Grand" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoSkechers" alt="Skechers" />
-                </div>
+                <div class="item"><img :src="LogoSkechers" alt="Skechers" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoNike" alt="Nike" />
-                </div>
+                <div class="item"><img :src="LogoNike" alt="Nike" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoITunes" alt="iTunes" />
-                </div>
+                <div class="item"><img :src="LogoITunes" alt="iTunes" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoFX" alt="FX" />
-                </div>
+                <div class="item"><img :src="LogoFX" alt="FX" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoChevron" alt="Chevron" />
-                </div>
+                <div class="item"><img :src="LogoChevron" alt="Chevron" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoCricDuSoleil" alt="Cric Du Soleil" />
-                </div>
+                <div class="item"><img :src="LogoCricDuSoleil" alt="Cric Du Soleil" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoDisney" alt="Disney" />
-                </div>
+                <div class="item"><img :src="LogoDisney" alt="Disney" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoPropel" alt="Propel Fitness" />
-                </div>
+                <div class="item"><img :src="LogoPropel" alt="Propel Fitness" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoShowtime" alt="Showtime" />
-                </div>
+                <div class="item"><img :src="LogoShowtime" alt="Showtime" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoBestBuy" alt="Best Buy" />
-                </div>
+                <div class="item"><img :src="LogoBestBuy" alt="Best Buy" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoCVS" alt="CVS" />
-                </div>
+                <div class="item"><img :src="LogoCVS" alt="CVS" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoDirecTV" alt="DirecTV" />
-                </div>
+                <div class="item"><img :src="LogoDirecTV" alt="DirecTV" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoHBO" alt="HBO" />
-                </div>
+                <div class="item"><img :src="LogoHBO" alt="HBO" /></div>
               </v-col>
               <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item">
-                  <img :src="LogoESPN" alt="ESPN" />
-                </div>
+                <div class="item"><img :src="LogoESPN" alt="ESPN" /></div>
               </v-col>
             </v-row>
           </div>
@@ -425,6 +376,7 @@
 <script setup>
 import { computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import {
   faGithub,
   faMedium,

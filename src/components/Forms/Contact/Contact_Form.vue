@@ -9,13 +9,13 @@
 								<v-text-field
 										filled
 										label="First Name"
-										v-model="model.first_name" />
+										v-model="modelValue.first_name" />
 							</v-col>
 							<v-col class="py-0 col-12 col-sm-12 col-md-6">
 								<v-text-field
 										filled
 										label="Last Name"
-										v-model="model.last_name" />
+										v-model="modelValue.last_name" />
 							</v-col>
 					</v-row>
 					<v-row>
@@ -23,7 +23,7 @@
 								<v-text-field
 									filled
 									label="Email"
-									v-model="model.email" />
+									v-model="modelValue.email" />
 							</v-col>
 					</v-row>
 					<v-row>
@@ -32,10 +32,10 @@
 									filled
 									no-resize
 									label="Message"
-									v-model="model.message" />
+									v-model="modelValue.message" />
 
 									<v-text-field
-										v-model="model.website"
+										v-model="modelValue.website"
 										name="website"
 										label="Leave this empty"
 										style="position: absolute; left: -9999px; opacity: 0;"
@@ -69,7 +69,7 @@
 	const contactStore = stores.contactStore()
 	const toastStore = stores.ui.toastStore()
 
-	const model = reactive({
+	const modelValue = reactive({
 		first_name: null,
 		last_name: null,
 		email: null,
@@ -80,7 +80,7 @@
 
 	const sendEmail = async() => {
 		try {
-			await contactStore.sendEmail(model)
+			await contactStore.sendEmail(modelValue)
 
 			toastStore.addToast({
 				data: {
@@ -105,11 +105,11 @@
 
 	const formValid = computed(() => {
 		// Add proper validation logic later
-		return (model.first_name || model.last_name || model.email || model.message)
+		return (modelValue.first_name || modelValue.last_name || modelValue.email || modelValue.message)
 	})
 
 	const resetForm = () => {
-		Object.assign(model, {
+		Object.assign(modelValue, {
 			first_name: null,
 			last_name: null,
 			email: null,

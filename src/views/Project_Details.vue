@@ -90,8 +90,12 @@
 
         <div v-if="projectPhotos" class="divider" />
 
+				<div v-if="project.resources?.length" class="section-title photos">
+					<h2>Project Photos</h2>
+				</div>
+
         <div class="section photos__container">
-          <v-container class="photos__inner" fluid>
+          <v-container class="photos__inner ps-0 pe-0" fluid>
             <v-row dense>
               <v-col
                 cols="12"
@@ -104,7 +108,7 @@
                   <img :src="item.uri" />
                   <div class="img-hover">
                     <div class="skrim" />
-                    <v-icon size="60" class="icon" color="white">zoom_in</v-icon>
+                    <v-icon size="54" class="icon" color="white">zoom_in</v-icon>
                   </div>
                 </div>
               </v-col>
@@ -115,8 +119,8 @@
         <div v-if="project.languages || project.resources || project.tree" class="divider" />
 
         <div class="section meta__container">
-          <div v-if="project.languages?.length" class="meta__title languages">
-            <h4>Languages</h4>
+          <div v-if="project.languages?.length" class="section-title languages">
+            <h2>Languages</h2>
           </div>
 
           <div v-if="project.languages?.length" class="subsection meta_languages">
@@ -129,8 +133,8 @@
             </v-layout>
           </div>
 
-          <div v-if="project.resources?.length" class="meta__title languages">
-            <h4>Resources</h4>
+          <div v-if="project.resources?.length" class="section-title languages">
+            <h2>Technologies</h2>
           </div>
 
           <div v-if="project.resources?.length" class="subsection meta_resources">
@@ -148,37 +152,6 @@
 							</v-row>
 						</v-container>
 					</div>
-
-          <!-- <div v-if="tree" class="meta__title languages">
-            <h4>File Structure</h4>
-          </div>
-
-          <div v-if="tree" class="subsection meta_tree">
-            <div class="tree__inner">
-              <v-treeview
-                hoverable
-                open-on-click
-                :items="tree"
-                :open="[1]"
-              >
-                <template v-slot:prepend="{ item, open }">
-                  <font-awesome-icon
-                    v-if="!item.file"
-                    color="grey"
-                    :icon="['fas', open ? 'folder-open' : 'folder']"
-                  />
-                  <font-awesome-icon
-                    v-else
-                    color="grey"
-                    :icon="[
-                      treeOptions.fileIcons[item.file].prefix,
-                      treeOptions.fileIcons[item.file].icon
-                    ]"
-                  />
-                </template>
-              </v-treeview>
-            </div>
-          </div> -->
         </div>
       </v-container>
     </div>

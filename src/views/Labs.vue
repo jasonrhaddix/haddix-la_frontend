@@ -87,14 +87,11 @@ function checkScroll(e) {
 // #region ADD BUTTON -----------------------------------
 function addProject() {
   overlayStore.setComponent({
-    component: {
-      path: 'Forms/CreateProject/Project',
-      file: 'Project_Create'
-    },
-    title: 'Create Project'
-  })
+		component: 'Forms/CreateProject/Project/Project_Create.vue',
+		title: 'Create Project'
+	})
 
-  overlayStore.showOverlay()
+	overlayStore.showOverlay()
 }
 // #endregion -------------------------------------------
 

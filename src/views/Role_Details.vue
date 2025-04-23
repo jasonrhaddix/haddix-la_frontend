@@ -106,12 +106,12 @@
                   class="watch__btn">
                   <AppButton
 										variant="light" label="Watch Video"
-                    @click.native="loadVideo(projectVideos(project.projectId))"
+                    @click.native="loadVideo(projectVideos(project))"
                   />
                 </div>
               </div>
 
-							<v-container fluid>
+							<v-container fluid class="pe-0 ps-0">
 								<v-row
 									dense
 									class="photos__inner">
@@ -125,8 +125,8 @@
 											<img :src="item.uri" />
 											<div class="img-hover">
 												<div class="skrim" />
-												<v-icon size="32" class="icon" color="white">
-													search
+												<v-icon size="54" class="icon" color="white">
+													zoom_in
 												</v-icon>
 											</div>
 										</div>
@@ -190,7 +190,7 @@
       component: '_global/Photo_Viewer.vue',
 			width: '70%',
 				props: {
-					image: item.uri
+					video: item.uri
 				}
     })
 	}

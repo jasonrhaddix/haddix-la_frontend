@@ -1,5 +1,7 @@
 <template>
     <div class="roles-view">
+		<!-- <SphereBG :style="{position: 'fixed'}" class="sphere-bg" /> -->
+
 		<div class="projects__add-btn">
 			<CreateButton />
 		</div>

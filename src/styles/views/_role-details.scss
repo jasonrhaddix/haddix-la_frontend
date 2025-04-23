@@ -4,30 +4,16 @@
   width: 90%;
   min-height: 100%;
   padding: 0;
-
-  // background: url('~@/assets/app/images/project-details-footer-grey.jpg') $color-m-white no-repeat center bottom;
-  // background-size: contain;
-
-  /* background: {
-    color: $color-m-white;
-  } */
-
   background-color: rgba(10, 10, 10, 1);
 
   .details__content {
     position: relative;
 
     .header__container {
-      
       position: relative;
       overflow: hidden;
       width: 100%;
       max-height: 90vh;
-
-      border: {
-        bottom: 1px solid $color-m-grey-lighten-2;
-      }
-
       background: {
         color: $app-color-black;
       }
@@ -37,7 +23,6 @@
         top: 0;
         width: 100%;
         height: 100%;
-
         background: {
           color: $app-color-black-alpha-25;
         }
@@ -61,19 +46,6 @@
           }
         }
 
-        h3 {
-          font-size: 2.8rem;
-          font-family: 'DIN-CondLight';
-          text-align: center;
-          padding: 0 3rem;
-          line-height: 2.5rem;
-          color: $color-m-white;
-
-          span {
-            font-size: 2.4rem !important;
-          }
-        }
-
         h1 {
           font-size: 5.6rem;
           font-family: 'DIN-CondBlack';
@@ -82,6 +54,19 @@
           padding: 0.25rem 3rem 0.5rem;
           color: $color-m-white;
           line-height: 5.4rem;
+        }
+
+        h3 {
+          font-size: 4.4rem;
+          font-family: 'DIN-CondLight';
+          text-align: center;
+          padding: 0 3rem;
+          line-height: 4.1rem;
+          color: $color-m-white;
+
+          span {
+            font-size: 2.4rem !important;
+          }
         }
       }
 
@@ -97,10 +82,8 @@
           margin: 0 auto;
           width: 75%;
           height: 100%;
-
           background: {
             color: rgba(20, 20, 20, 0.75);
-            // color: rgba(255, 255, 255, 0.9);
           }
 
           .project-info__item {
@@ -135,7 +118,6 @@
     }
 
     .content__container {
-      color: $app-color-text-dark;
       padding: {
         top: 4rem;
         left: 4rem;
@@ -143,10 +125,11 @@
       }
 
       h1, h2, h3, h4 {
-        color: $color-m-grey-darken-3 !important;
+        color: $app-color-text-light !important;
       }
 
       h2, h3 {
+        text-transform: uppercase;
         font-size: 1.2rem !important;
       }
 
@@ -157,8 +140,7 @@
       .divider {
         width: 100%;
         height: 1px;
-        margin: 3rem 0;
-
+        margin: 4rem 0;
         background: {
           color: $color-m-grey-lighten-2;
         }
@@ -174,8 +156,8 @@
             font-size: 1.2rem;
             display: initial;
             text-transform: uppercase;
-            background-color: $app-color-primary;
-            color: $app-color-text-light !important;
+            background-color: $app-color-text-light;
+            color: $app-color-text-dark !important;
             padding: 5px 20px;
           }
         }
@@ -184,42 +166,40 @@
       .project__container {
         .project-item {
           margin: {
-            bottom: 6rem;
+            top: 3rem;
+            bottom: 4rem;
           }
 
           .divider {
             margin: 4rem auto 6rem;
             width: 50%;
             height: 1px;
-
             background: {
               color: $color-m-grey-lighten-3;
             }
           }
 
           .title__container {
-            
             display: flex;
+            margin: {
+              bottom: 0.75rem;
+            }
 
             .title__info {
               flex: 1;
 
               h3 {
-                // text-transform: uppercase;
-                // font-size: 1rem;
-              }
-
-              p {
-                // padding: 0.5rem 0;
+                // text-decoration: underline;
+                margin: {
+                  bottom: 1rem;
+                }
               }
             }
 
             .watch__btn {
+              align-content: center;
               width: 200px;
               text-align: right;
-              // margin: {
-              //   top: 2.5rem;
-              // }
             }
           }
 
@@ -232,8 +212,6 @@
               position: relative;
               display: flex;
               cursor: pointer;
-
-              // border: 1px solid $app-color-black-alpha-15;
 
               img {
                 width: 100%;
@@ -248,7 +226,6 @@
                 top: 0;
                 left: 0;
                 opacity: 0;
-
                 background: {
                   color: $app-color-black-alpha-35;
                 }
@@ -333,7 +310,6 @@
 
         background: {
           color: #121212;
-          // color: rgba(255, 255, 255, 0.9);
         }
 
         .item {

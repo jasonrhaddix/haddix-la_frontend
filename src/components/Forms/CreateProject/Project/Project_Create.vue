@@ -124,7 +124,7 @@
               </div>
               <div class="images__list">
                 <AttachmentItem
-                  v-for="(file, i) in fileAttachments('thumbnail', true)"
+                  v-for="(file, i) in fileAttachments(typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL, true)"
                   :key="`attachment-item--thumbnail-${i}-${$uuid.v4()}`"
                   :data="file"
                   @remove-file="removeAttachment"
@@ -167,7 +167,7 @@
               </div>
               <div class="images__list">
                 <AttachmentItem
-                  v-for="(file, i) in fileAttachments('header')"
+                  v-for="(file, i) in fileAttachments(typesStore.ATTACHMENT_USAGE_TYPE__HEADER)"
                   :key="`attachment-item--carousel-${i}-${$uuid.v4()}`"
                   :data="file"
                   @remove-file="removeAttachment"
@@ -211,7 +211,7 @@
               </div>
               <div class="images__list">
                 <AttachmentItem
-                  v-for="(file, i) in fileAttachments('body')"
+                  v-for="(file, i) in fileAttachments(typesStore.ATTACHMENT_USAGE_TYPE__BODY)"
                   :key="`attachment-item--body-${i}-${$uuid.v4()}`"
                   :data="file"
                   @remove-file="removeAttachment"
@@ -261,7 +261,7 @@
           </div>
           <div class="images__list">
             <AttachmentItem
-              v-for="(file, i) in fileAttachments('video')"
+              v-for="(file, i) in fileAttachments(typesStore.ATTACHMENT_USAGE_TYPE__VIDEO)"
               :key="`attachment-item--video-${i}-${$uuid.v4()}`"
               :data="file"
               @remove-file="removeAttachment"
@@ -291,7 +291,7 @@
       <!-- Resources -->
       <div class="meta-section project__languages">
         <div class="section__title">
-          <h3>Project Resources <span class="caption">(Optional)</span></h3>
+          <h3>Project Technologies<span class="caption"> (Optional)</span></h3>
           <p>Resources used creating this project.</p>
         </div>
         <div class="languages__container">
@@ -301,75 +301,24 @@
           />
         </div>
       </div>
-
-      <!-- <div class="meta-section project__file-tree">
-        <div class="section__title">
-          <h3>File Structure <span class="caption">(Optional)</span></h3>
-          <p>Project file structure. Requires JSON file.</p>
-        </div>
-        <div class="tree__input">
-          <div
-            v-ripple
-            class="tree__add-button"
-            @click="$refs.fileStructureControl.click()"
-          >
-            <div class="button__content">
-              <p class="subheading">Add JSON File</p>
-              <v-icon color="grey darken-1">add</v-icon>
-            </div>
-          </div>
-          <input
-            hidden
-            ref="fileStructureControl"
-            class="file-structure-uploader__input"
-            accept="application/json"
-            type="file"
-            name="file"
-            @change="handleSelectedFileStructFiles"
-          />
-        </div>
-        
-        <div class="tree__container">
-          <v-treeview
-            hoverable
-            open-on-click
-            :items="projectTreeStore.tree_data"
-            :open="[1]">
-            <template v-slot:prepend="{ item, open }">
-                <FontAwesomeIcon v-if="!item.file" :icon="folderIcon(open)" />
-                <font-awesome-icon v-else :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
-            </template>
-          </v-treeview>
-        </div>
-      </div> -->
-
-      <!-- <div class="meta-section project__code-sample">
-            <div class="section__title">
-                <h3>Code Sample</h3>
-                <p>Projects page image.</p>
-            </div>
-            <div class="code-sample__container">
-                  <codemirror v-model="model.code" :options="cmOptions"></codemirror>
-            </div>
-        </div> -->
     </div>
 
     <div class="form-section project__save-btn">
-      <v-progress-circular
+      <!-- <v-progress-circular
         v-if="projectsStore.saving"
         indeterminate
         class="progress__ind"
         color="primary"
         width="8"
         size="38"
-      />
+      /> -->
       <div v-if="false /* $v.$invalid && submitted */" class="error-prompt">
         <p>Please complete all require fields</p>
         <div class="divider" />
       </div>
       <AppButton
         label="Save Project"
-        :disabled="projectsStore.saving"
+        :loading="projectsStore.saving"
         @click.native="submitForm"
       />
     </div>
@@ -381,7 +330,7 @@
   import _isEqual from 'lodash.isequal'
   import _isObject from 'lodash.isobject'
   import { uuid } from 'vue-uuid'
-  import { ref, reactive, computed, onMounted } from 'vue'
+  import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 
   import stores from '@/stores/index.js'
   import { Project } from '@/models'
@@ -389,8 +338,6 @@
 
   import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
   import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
-  // import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item.vue'
-
   import LanguagePicker from '@/components/Forms/CreateProject/Project/Project_Create__Language_Picker.vue'
   import ResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
   import AppButton from '@/components/_global/App_Button.vue'
@@ -404,7 +351,6 @@
   const projectsStore = stores.projectsStore()
   const uploadManagerStore = stores.s3.uploadManagerStore()
   const routingStore = stores.routingStore()
-  // const projectTreeStore = stores.projectTreeStore()
 
   const props = defineProps({
     data: {
@@ -441,24 +387,6 @@
     resources: []
   })
 
-  /* const treeOptions = reactive({
-    fileIcons: {
-      css: { prefix: 'fab', icon: 'css3' },
-      fav: { prefix: 'fas', icon: 'star' },
-      group: { prefix: 'fas', icon: 'ellipsis-h' },
-      html: { prefix: 'fab', icon: 'html5' },
-      image: { prefix: 'fas', icon: 'file-image' },
-      js: { prefix: 'fab', icon: 'js' },
-      json: { prefix: 'fas', icon: 'code' },
-      md: { prefix: 'fab', icon: 'markdown' },
-      node: { prefix: 'fab', icon: 'node-js' },
-      pdf: { prefix: 'fas', icon: 'file-pdf' },
-      vieo: { prefix: 'fas', icon: 'file-video' },
-      vue: { prefix: 'fab', icon: 'vuejs' },
-      yarn: { prefix: 'fab', icon: 'yarn' }
-    }
-  }) */
-
   // computed
   const projectTypesKey = computed((open) => {
       return propsStore.projectTypes.map(i => i.value).join('-')
@@ -473,10 +401,6 @@
     return !!props.data.id
   })
 
-  /* const folderIcon = computed((open) => {
-      return open ? faFolder: faFolderOpen
-  }) */
-
   // lifecycle hooks
   onMounted(async () => {
     if (props.data.id) {
@@ -485,6 +409,10 @@
     }
 
     initForm()
+  })
+
+  onUnmounted(() => {
+    uploadManagerStore.reset() 
   })
 
   const initForm = () => {
@@ -523,55 +451,48 @@
   }
 
   const fileAttachments = (usageType, singleReturn) => {
-      let files = !!usageType
-        ? formModel.attachments?.[usageType]
-        : Object.values(formModel.attachments || {}).flat()
-          || []
+    let files = !!usageType
+      ? formModel.attachments?.[usageType]
+      : Object.values(formModel.attachments || {}).flat() || []
 
-      let paramsWithId = {
-        attachTo: {
-          modelId: formModel.projectId,
-          model: typesStore.ATTACHMENT_TYPE__PROJECT
-        }
+    const paramsWithId = {
+      attachTo: {
+        modelId: formModel.projectId,
+        model: typesStore.ATTACHMENT_TYPE__PROJECT
       }
+    }
 
-      files = [...files || []]
-        .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
-        .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
-        .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
-        .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
+    files = [...files || []]
+      .concat(uploadManagerStore.getCompletedFiles(paramsWithId))
+      .concat(uploadManagerStore.getUploadingFiles(paramsWithId))
+      .concat(uploadManagerStore.getProcessingFiles(paramsWithId))
+      .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
 
-      files.sort(function (a, b) {
-        return a.addedToQueue - b.addedToQueue
-      })
+    files.sort((a, b) => a.addedToQueue - b.addedToQueue)
 
-      let filteredFiles = !!usageType ? files?.filter(file => file.usageType === usageType) : files
+    let filteredFiles = !!usageType
+      ? files.filter(file => file.usageType === usageType)
+      : files
 
-      if (filteredFiles.length === 0) return []
-      return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
+    // ✅ Deduplicate by fileId (keep first occurrence)
+    const seen = new Set()
+    filteredFiles = filteredFiles.filter(file => {
+      if (!file.fileId) return false
+      if (seen.has(file.fileId)) return false
+      seen.add(file.fileId)
+      return true
+    })
+
+    if (filteredFiles.length === 0) return []
+
+    return singleReturn
+      ? new Array(filteredFiles[filteredFiles.length - 1])
+      : filteredFiles
   }
 
   const resourceItemsSelected = (items) => {
     formModel.resources = items.map(item => item.value)
   }
-
-  /* function handleSelectedFileStructFiles (event) {
-    // let file = this.$refs.fileStructureControl.files[0] // <--------------------------- MAKE THIS WORK (refs?)
-
-    let reader = new FileReader()
-    reader.onload = this.onReaderLoad
-    reader.readAsText(file)
-  } */
-
-  /* function onReaderLoad (event) {
-    var jsonTree = JSON.parse(event.target.result)
-    this.createProjectTree(
-      {
-        projectId: formModel.projectId,
-        tree_data: jsonTree
-      }
-    )
-  } */
 
   const removeAttachment = (removeFile) => {
     if (removeFile.hashId) {
@@ -591,7 +512,7 @@
   const extractAttachmentData = (types, wrapperKeys, fileKeys) => {
     return Object.fromEntries(
       types.map(type => {
-        const files = fileAttachments(type, true)
+        const files = fileAttachments(type)
 
         const mapped = files.map(entry => {
           const fileData = Object.fromEntries(
@@ -649,8 +570,6 @@
           }
         })
       } catch (error) {
-        // <<-------------------------------------- this is getting fired when a token is expired (this 
-        // should if the token succeeds but the server reject the request -- do not push though if 403 or 401)
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',
           data: {

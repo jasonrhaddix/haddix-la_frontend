@@ -1,296 +1,231 @@
 .about-view {
     color: $app-color-text-dark;
-
+  
     .about-view--inner {
-        @extend .app-view--inner;
-
-        .about-view--content {
-            @extend .app-view--content;
-
-            h2 {
-                text-align: center;
-            }
-
-            .section-divider {
-                background-color: #DDD;
-                width: 60%;
-                height: 1px;
-                margin: 6vw auto;
-
-                &.last-item {
-                    margin: 0 auto;
-                }
-            }
-
-            .section {
-
-                .section--title {
-                    display: flex;
-                    margin: {
-                        bottom: 0.5rem;
-                    }
-
-                    h2 {
-                        text-transform: uppercase;
-                        background-color: $app-color-primary;
-                        color: $app-color-text-light;
-                        padding: 5px 20px;
-                    }
-                }
-
-                .subsection {
-                    padding: 20px;
-                    margin: {
-                        bottom: 20px;
-                    }
-                    background: {
-                        color: #EFEFEF;
-                    }
-
-                    &:last-of-type {
-                        margin: 0;
-                    }
-
-                    h3 {
-                        text-transform: uppercase;
-                        margin: {
-                            bottom: 1rem;
-                        }
-                    }
-
-                    .about-items--list {
-                        display: flex;
-
-                        .item-group {
-                            padding: 0 !important;
-                        }
-                    }
-                }
-
-            }
-
-            /* HEADER */
-            .about--header {
-
-                .header--photo-container {
-                   display: flex;
-
-                    .header--photo {
-                        margin: 0 auto;
-
-                        img {
-                            height: 240px;
-                        }
-                    }
-                }
-
-                .social-media--container {
-                    display: flex;
-                    width: 100%;
-                    margin: {
-                        top: 2rem;
-                    }
-
-                    .social-media--list {
-                        position: relative;
-                        display: flex;
-                        margin: 0 auto;
-
-                        a {
-                            color: $app-color-text-dark;
-                            cursor: pointer;
-                            margin: 0 1.5rem;
-
-                            &:hover {
-                                color: $app-color-secondary;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .about-bio {
-
-                .about-bio--inner {
-                    padding: 0px 6rem;
-                }
-
-                h2 {
-                    // text-align: left;
-                    text-transform: uppercase;
-                    // font-size: 1.2rem;
-                    margin: {
-                        bottom: 0.5rem;
-                    }
-                }
-
-                p {
-                    text-align: left;
-                    margin: {
-                        bottom: 1rem;
-                    }
-                }
-            }
-
-            .quote-container {
-                color: $color-m-grey;
-
-                blockquote,
-                p {
-                    text-align: center;
-                }
-
-                p {
-                    font-style: italic;
-                }
-            }
-
-            .about--experience {
-
-                .about-experience-role {
-					text-transform: uppercase;
-
-                    h4 {
-                        font-weight: $font-weight-medium;
-
-                        span {
-                            color: $color-m-grey;
-                        }
-                    }
-				}
-
-				.about-section-experience-roles {
-					& > p {
-						font-weight: $font-weight-medium;
-					}
-				}
-
-                .description {
-                    margin: {
-                        top: 1rem;
-                        bottom: 1rem;
-                    }
-                 }
-
-                .about-section-experience-roles {
-
-                    ul {
-                        padding-left: 15px;
-
-                        li {
-                            padding-top: 10px;
-                            padding-left: 0.7em;
-                            text-indent:-0.7em;
-
-                            &:before {
-                                float: left;
-                                content: "-";
-                                padding-right: 10px;
-                            }
-                        }
-                    }
-                }
-			}
-
-			/* CLIENT LIST */
-            .about--client-list {
-
-                .client-list {
-                    // display: inline-block;
-
-                    .client-item {
-                        // float: left;
-                        // text-align: center;
-                        // width: 33.33%;
-                        padding-top: 40px;
-                        padding-bottom: 90px;
-
-                        .item {
-
-                            img {
-                                display: block;
-                                width: 120px;
-                                height: 60px;
-                                margin: 0 auto;
-                            }
-                        }
-                    }
-                }
-            }
-
-            /* CLIENT LIST */
-            .about--skillset {
-
-				.about-items--list {
-					margin: 0;
-				}
-
-                ul {
-					padding: {
-						left: 24px;
-					};
-					margin: {
-						bottom: 2rem;
-					}
-
-					li {
-						list-style: disc;
-					}
-				}
-			}
-
-			.about--about-site {
-                * {
-                    text-align: left;
-                }
-
-                p{
-                    margin: {
-                        // top: 0.5rem;
-                        bottom: 1.25rem;
-                    }
-                }
-
-                ul {
-                    margin: {
-                        bottom: 1.25rem;
-                    }
-                }
-
-				.about--about-section {
-					margin: {
-						top: 2rem;
-						bottom: 2rem;
-					}
-
-				}
-			}
-
-            /* FOOTER */
-            .about--footer {
-                text-align: center;
-
-                .app-button {
-                    border: 1px solid $app-color-text-dark;
-                }
-            }
+      @extend .app-view--inner;
+  
+      .about-view--content {
+        @extend .app-view--content;
+  
+        h2 {
+          text-align: center;
         }
+  
+        .section-divider {
+          background-color: #DDD;
+          width: 60%;
+          height: 1px;
+          margin: 4rem auto;
+  
+          &.last-item {
+            margin-bottom: 0;
+          }
+        }
+  
+        .section {
+          margin-bottom: 3rem;
+  
+          .section--title {
+            display: flex;
+            margin-bottom: 0.5rem;
+  
+            h2 {
+              text-transform: uppercase;
+              background-color: $app-color-primary;
+              color: $app-color-text-light;
+              padding: 5px 20px;
+            }
+          }
+  
+          .subsection {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background-color: #EFEFEF;
+  
+            h3 {
+              text-transform: uppercase;
+              margin-bottom: 1rem;
+            }
+  
+            .about-items--list {
+              display: flex;
+              flex-wrap: wrap;
+  
+              .item-group {
+                padding: 0 !important;
+              }
+            }
+          }
+        }
+  
+        .about--header {
+          margin-bottom: 3rem;
+  
+          .header--photo-container {
+            display: flex;
+  
+            .header--photo {
+              margin: 0 auto;
+  
+              img {
+                height: 240px;
+              }
+            }
+          }
+  
+          .social-media--container {
+            display: flex;
+            width: 100%;
+            margin-top: 2rem;
+  
+            .social-media--list {
+              display: flex;
+              margin: 0 auto;
+  
+              a {
+                color: $app-color-text-dark;
+                margin: 0 1.5rem;
+  
+                &:hover {
+                  color: $app-color-secondary;
+                }
+              }
+            }
+          }
+        }
+  
+        .about-bio {
+          .about-bio--inner {
+            padding: 0 4rem;
+          }
+  
+          h2 {
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+          }
+  
+          p {
+            text-align: left;
+            margin-bottom: 1rem;
+          }
+        }
+  
+        .about--experience {
+          .about-experience-role {
+            text-transform: uppercase;
+  
+            h4 {
+              font-weight: $font-weight-medium;
+  
+              span {
+                color: $color-m-grey;
+              }
+            }
+          }
+  
+          .about-section-experience-roles {
+            > p {
+              font-weight: $font-weight-medium;
+            }
+  
+            ul {
+              padding-left: 1.5rem;
+  
+              li {
+                padding-top: 10px;
+                padding-left: 0.7em;
+                text-indent: -0.7em;
+  
+                &:before {
+                  content: "-";
+                  padding-right: 10px;
+                }
+              }
+            }
+          }
+  
+          .description {
+            margin: 1rem 0;
+          }
+        }
+  
+        .about--skillset {
+          .about-items--list {
+            margin: 0;
+          }
+  
+          ul {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+  
+            li {
+              list-style: disc;
+            }
+          }
+        }
+  
+        .about--about-site {
+          * {
+            text-align: left;
+          }
+
+          .content-group {
+            margin: {
+                bottom: 2.5rem;
+            }
+
+            h3 {
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+              }
+            
+            p {
+              margin-bottom: 1.25rem;
+            }
+    
+            ul {
+              margin-bottom: 1.0rem;
+            }
+          }
+  
+        }
+  
+        .about--client-list {
+          .client-list {
+            .client-item {
+              padding: 2rem 0;
+  
+              .item img {
+                display: block;
+                width: 120px;
+                height: 60px;
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+  
+        .about--footer {
+          text-align: center;
+  
+          .app-button {
+            border: 1px solid $app-color-text-dark;
+          }
+        }
+      }
     }
-}
-
-@include respond-to(medium) {
-	.about-view {
-
-		.about-view--inner {
-
-			.about-view--content {
-
-				.about-bio {
-					p {
-						text-align: center;
-					}
-				}
-			}
-		}
-	}
-}
+  }
+  
+  @include respond-to(medium) {
+    .about-view {
+      .about-view--inner {
+        .about-view--content {
+          .about-bio {
+            p {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }

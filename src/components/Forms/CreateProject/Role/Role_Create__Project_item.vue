@@ -131,14 +131,22 @@ import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Cre
 const types = stores.config.typesStore()
 const uploadManagerStore = stores.s3.uploadManagerStore()
 
-const model = defineModel()
-const emit = defineEmits(['remove'])
+const props = defineProps({
+  modelValue: Object
+})
+
+const emit = defineEmits(['update:modelValue', 'remove'])
+
+const model = computed({
+  get: () => props.modelValue,
+  set: (val) => emit('update:modelValue', val)
+})
 
 const fileDragOver = ref(false)
 
 const getAttachTo = computed(() => ({
-  modelId: model.id,
-  projectId: model.id,
+  modelId: model.value.id,
+  projectId: model.value.projectId,
   model: types.PROJECT_TYPE__NEW_ROLE
 }))
 
@@ -186,7 +194,7 @@ const removeAttachment = (removeFile) => {
 const extractAttachmentData = (types, wrapperKeys, fileKeys) => {
   return Object.fromEntries(
     types.map(type => {
-      const files = fileAttachments(type, true)
+      const files = fileAttachments(type)
 
       const mapped = files.map(entry => {
         const fileData = Object.fromEntries(

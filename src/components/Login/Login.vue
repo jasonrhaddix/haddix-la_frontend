@@ -15,13 +15,13 @@
               solo dark
               label="Email"
               type="email"
-              v-model="model.email" />
+              v-model="modelValue.email" />
 
             <v-text-field
               solo dark
               label="Password"
               type="password"
-              v-model="model.password"
+              v-model="modelValue.password"
             />
             
             <AppButton
@@ -78,14 +78,14 @@ const loginStore = stores.ui.loginStore()
 const userStore = stores.userStore()
 const toastStore = stores.ui.toastStore()
 
-const model = reactive({
+const modelValue = reactive({
   email: null,
   password: null
 })
 
 const login = async () => {
   try {
-    await userStore.login(model)
+    await userStore.login(modelValue)
     loginStore.hideLogin()
 
     toastStore.addToast({

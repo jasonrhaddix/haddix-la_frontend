@@ -204,6 +204,18 @@ export default defineStore('uploadManage', {
 
 		removeFile(payload) {
 			delete this.fileHash[payload]
+		},
+
+		reset() {
+			this.fileHash = {}
+		
+			this.filesHolding = []
+			this.filesQueued = []
+			this.filesAttaching = []
+			this.filesUploading = []
+			this.filesProcessing = []
+			this.filesCompleted = []
+			this.filesFailed = []
 		}
 	}
 })
