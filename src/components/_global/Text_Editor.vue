@@ -181,17 +181,13 @@ const iconOptions = reactive({
 
 const editor = reactive(
   new Editor({
-    content: '',
+    content: modelValue.value,
     extensions: [StarterKit],
     onUpdate: ({editor}) => {
         emit('update:modelValue', editor.getHTML())
     }
   })
 )
-
-onMounted(() => {
-  //
-})
 
 onBeforeUnmount(() => {
   editor.destroy()

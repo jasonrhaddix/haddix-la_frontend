@@ -81,6 +81,7 @@
 </template>
 
 <script setup>
+import cloneDeep from 'lodash/cloneDeep' // or use your own deep clone util
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { uuid } from 'vue-uuid'
@@ -132,17 +133,19 @@ onMounted(async () => {
 
 const initForm = () => {
   if (isEditMode.value) {
+    const cleanRole = cloneDeep(updateRole.value)
+
     Object.assign(formModel, {
-      ...updateRole.value,
-      roleId: updateRole.value.roleId,
-      role: updateRole.value.role,
-      company: updateRole.value.company,
-      organization: updateRole.value.organization,
-      year: updateRole.value.year,
-      recruiter: updateRole.value.recruiter,
-      description: updateRole.value.description,
-      projects: updateRole.value.projects,
-      published: updateRole.value.published
+      ...cleanRole,
+      roleId: cleanRole.roleId,
+      role: cleanRole.role,
+      company: cleanRole.company,
+      organization: cleanRole.organization,
+      year: cleanRole.year,
+      recruiter: cleanRole.recruiter,
+      description: cleanRole.description,
+      projects: cleanRole.projects,
+      published: cleanRole.published
     })
   } else {
     formModel.roleId = uuid.v4()
@@ -156,22 +159,18 @@ const isEditMode = computed(() => {
 const submitForm = async () => {
     submitted.value = true
 
-    // Clean model before send
+    /* // Clean model before send
     Object.keys(formModel).forEach(k => {
       if (formModel[k] === null ||
         formModel[k] === undefined ||
         formModel[k].length === 0) delete formModel[k]
-    })
-
-
-    // const wrapperKeys = ['key', 'uri', 'status', 'file', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType', 'usageSubtype']
-    // const fileKeys = ['name', 'type']
-    
-    // const attachments = extractAttachmentData(['thumbnail', 'header', 'body', 'video'], wrapperKeys, fileKeys)
+    }) */
   
     if (isEditMode.value) {
-      const diff = objectHelpers.deepDiff(updateRole.value, { ...formModel/* , attachments */ })
+      console.log(updateRole.value)
+      const diff = objectHelpers.deepDiff(updateRole.value, formModel)
 
+      console.log('diff', diff)
       try {
         await rolesStore.updateRole(props.data.id, diff)
 
@@ -220,5 +219,4 @@ const submitForm = async () => {
 
     overlayStore.hideOverlay()
   }
-
 </script>

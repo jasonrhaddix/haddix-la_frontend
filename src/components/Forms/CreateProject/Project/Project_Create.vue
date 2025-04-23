@@ -456,10 +456,7 @@
       : Object.values(formModel.attachments || {}).flat() || []
 
     const paramsWithId = {
-      attachTo: {
-        modelId: formModel.projectId,
-        model: typesStore.ATTACHMENT_TYPE__PROJECT
-      }
+      attachTo: getAttachTo.value
     }
 
     files = [...files || []]

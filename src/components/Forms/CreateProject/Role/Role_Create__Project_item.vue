@@ -122,27 +122,35 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import shortid from 'shortid'
+
 import stores from '@/stores/index.js'
 
 import TextEditor from '@/components/_global/Text_Editor.vue'
 import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
 import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
 
+// Importing stores
 const types = stores.config.typesStore()
 const uploadManagerStore = stores.s3.uploadManagerStore()
 
+// Props
 const props = defineProps({
   modelValue: Object
 })
 
+// Emits
 const emit = defineEmits(['update:modelValue', 'remove'])
 
+// Refs
+const loadedAttachments = ref({})
+const fileDragOver = ref(false)
+
+// Computed
 const model = computed({
   get: () => props.modelValue,
   set: (val) => emit('update:modelValue', val)
 })
 
-const fileDragOver = ref(false)
 
 const getAttachTo = computed(() => ({
   modelId: model.value.id,
@@ -150,10 +158,11 @@ const getAttachTo = computed(() => ({
   model: types.PROJECT_TYPE__NEW_ROLE
 }))
 
-const fileAttachments = (usageType, singleReturn) => {
+// Methods
+const fileAttachments = (usageType, singleReturn) => {  
   let files = !!usageType
-    ? model.attachments?.[usageType]
-    : Object.values(model.attachments || {}).flat()
+    ? loadedAttachments.value?.[usageType]
+    : Object.values(loadedAttachments.value || {}).flat()
       || []
 
   let paramsWithId = {
@@ -167,13 +176,28 @@ const fileAttachments = (usageType, singleReturn) => {
     .concat(uploadManagerStore.getQueuedFiles(paramsWithId))
 
   files.sort(function (a, b) {
+    if (a.addedToQueue === b.addedToQueue) return a.fileId - b.fileId
     return a.addedToQueue - b.addedToQueue
   })
 
-  let filteredFiles = !!usageType ? files?.filter(file => file.usageType === usageType) : files
+  let filteredFiles = !!usageType 
+    ? files?.filter(file => file.usageType === usageType)
+    : files
+
+  // ✅ Deduplicate by fileId (keep first occurrence)
+  const seen = new Set()
+    filteredFiles = filteredFiles.filter(file => {
+      if (!file.fileId) return false
+      if (seen.has(file.fileId)) return false
+      seen.add(file.fileId)
+      return true
+    })
 
   if (filteredFiles.length === 0) return []
-  return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
+  
+  return singleReturn
+    ? new Array(filteredFiles[filteredFiles.length - 1])
+    : filteredFiles
 }
 
 const removeAttachment = (removeFile) => {
@@ -228,10 +252,16 @@ const removeProject = () => {
   emit('remove', model.value.id)
 }
 
+// Lifecycle hooks
+onMounted(() => {
+  loadedAttachments.value = model.value.attachments || {}
+})
+
+// Watchers
 watch(
   () => uploadManagerStore.fileHash,
   () => {
-    const wrapperKeys = ['key', 'uri', 'status', 'file', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType', 'usageSubtype']
+    const wrapperKeys = ['key', 'uri', 'status', 'file', 'fileId', 'filename', 'attachTo', 'projectId', 'usageType', 'usageSubtype', 'addedToQueue']
     const fileKeys = ['name', 'type']
 
     const attachments = extractAttachmentData([
