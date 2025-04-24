@@ -160,6 +160,7 @@
                   <li><p>Cross-browser compatibility</p></li>
                   <li><p>Debugging and troubleshooting</p></li>
                   <li><p>Understanding of UI/UX</p></li>
+                  <li><p>Analytics</p></li>
                 </ul>
               </v-col>
 
@@ -173,7 +174,7 @@
               </v-col>
 
               <v-col class="col-12 col-md-6 item-group">
-                <h4>General:</h4>
+                <h4>General/Misc:</h4>
                 <ul>
                   <li><p>VCS with Git/GitHub and BitBucket</p></li>
                   <li><p>Agile Methodology</p></li>
@@ -191,7 +192,7 @@
               <v-col class="col-12 col-md-6 item-group">
                 <h4>Technical Proficiencies</h4>
                 <ul>
-                  <li><p>HTML / CSS • JavaScript</p></li>
+                  <li><p>JavaScript • HTML / CSS</p></li>
                   <li><p>Vue + Pinia (and Vuex) • Sass/SCSS</p></li>
                   <li><p>Bootstrap • Handlebars • Vuetify</p></li>
                   <li><p>Webpack / Vite • Babel • Gulp / Grunt</p></li>
@@ -205,6 +206,7 @@
                   <li><p>React + Redux • Angular • NUXT</p></li>
                   <li><p>Foundation • Stylus • Grunt • ThreeJS</p></li>
                   <li><p>PHP • Laravel • Composer</p></li>
+                  <li><p>C++ / C#</p></li>
                 </ul>
               </v-col>
             </v-row>

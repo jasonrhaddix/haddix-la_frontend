@@ -13,7 +13,8 @@ export default defineStore('s3Upload', {
 	actions: {
 		s3UlopadRequest(payload) {
 			const uploadManagerStore = stores.s3.uploadManagerStore()
-			let destinationFileKey = `files/${payload.projectId}/${payload.fileId}_${payload.filename}`
+			// let destinationFileKey = `files/${payload.projectId}/${payload.fileId}_${payload.filename}`
+			let destinationFileKey = `files/${payload.attachTo.modelId}/${payload.fileId}_${payload.filename}`
 
 			uploadManagerStore.assignS3Key({
 				hashId: payload.hashId,

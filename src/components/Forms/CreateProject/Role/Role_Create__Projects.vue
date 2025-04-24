@@ -2,7 +2,7 @@
   <div class="projects__container">
     <RoleProjectItem
       v-for="(project, i) in projects"
-      :key="project.id"
+      :key="project.roleId"
       v-model="projects[i]"
       @remove="removeProject"
     />
@@ -25,11 +25,18 @@ import RoleProjectItem from '@/components/Forms/CreateProject/Role/Role_Create__
 const modelValue = defineModel()
 const emit = defineEmits(['update:modelValue'])
 
+const props = defineProps({
+  roleId: {
+    type: String,
+    required: true
+  }
+})
+
 const projects = ref([])
 
 const addProject = () => {
   projects.value.push({
-    id: shortid.generate(),
+    roleId: props.roleId,
     projectId: shortid.generate(),
     title: '',
     summary: '',
@@ -38,7 +45,7 @@ const addProject = () => {
 }
 
 const removeProject = removeId => {
-  projects.value = projects.value.filter(project => project.id !== removeId)
+  projects.value = projects.value.filter(project => project.roleId !== removeId)
 }
 
 watch(modelValue, (value) => {

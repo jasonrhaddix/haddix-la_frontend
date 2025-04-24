@@ -34,22 +34,24 @@ var spSphere2Geom
   // var spSphere2Wire_scale = 20;
 ;(() => {
   spInitMediaQueries()
-
   spInitWorld()
-  spInitGeomSphere1()
-  spInitGeomSphere2()
 
-  setTimeout(function () {
-    spInitDisplay()
-    spInitEvents()
-  }, 750)
-
+  setTimeout(() => {
+    spInitGeomSphere1()
+    spInitGeomSphere2()
+  }, 500)
+  
   setTimeout(function () {
     spInitAnimate()
   }, 20)
 
+  setTimeout(function () {
+    introAnimation()
+  }, 750)
+
   setTimeout(() => {
     introComplete = true
+    // animateWireColorHue() // 🌈 <<---- cycle rainbow colors
   }, 2000)
 
   setTimeout(function () {
@@ -57,7 +59,7 @@ var spSphere2Geom
   }, 5000)
 })()
 
-function spInitDisplay() {
+/* function spInitDisplay() {
   spScene.add(spD1Light)
   spScene.add(spD2Light)
 
@@ -67,7 +69,26 @@ function spInitDisplay() {
 
   spScene.add(spSphere2Particles)
   spScene.add(spCamera)
-}
+} */
+
+  function spInitDisplay() {
+    if (spSphere1Solid && spSphere1Wire && spSphere2Wire) {
+      spScene.add(spD1Light)
+      spScene.add(spD2Light)
+  
+      spScene.add(spSphere1Solid)
+      spScene.add(spSphere1Wire)
+      spScene.add(spSphere2Wire)
+  
+      if (spSphere2Particles) {
+        spScene.add(spSphere2Particles)
+      }
+  
+      spScene.add(spCamera)
+    } else {
+      console.warn('❗ Geometry not ready when trying to add to scene')
+    }
+  }
 
 function spInitEvents() {
   window.addEventListener('resize', spInitResize, false)
@@ -138,8 +159,9 @@ function spInitGeomSphere1() {
     ...[
       spSphere1Geom,
       new THREE.MeshLambertMaterial({
-        color: 0x070707,
-        vertexColors: THREE.FaceColors
+        color: 0x111111,
+        vertexColors: THREE.FaceColors,
+        opacity: 0
       })
     ]
   )
@@ -163,7 +185,8 @@ function spInitGeomSphere1() {
       new THREE.MeshLambertMaterial({
         color: 0xff0099, // 0xDA5200
         vertexColors: THREE.FaceColors,
-        wireframe: true
+        wireframe: true,
+        opacity: 0
       })
     ]
   )
@@ -179,7 +202,8 @@ function spInitGeomSphere2() {
       spSphere2Geom,
       new THREE.MeshLambertMaterial({
         color: 0x3100bd,
-        wireframe: true
+        wireframe: true,
+        opacity: 0
       })
     ]
   )
@@ -217,7 +241,7 @@ function spInitGeomSphere2() {
         sizeAttenuation: false,
         map: texture,
         transparent: true,
-        opacity: 1
+        opacity: 0
       })
 
       spSphere2ParticlesPointGeom.scale(1.3, 1.3, 1.3)
@@ -246,6 +270,41 @@ function spInitAnimate(time) {
   requestAnimationFrame(spInitAnimate)
   if (appState) spInitRender(time)
   // if (windowFocused) spInitRender( time )
+}
+
+function introAnimation() {
+  spInitDisplay()
+  spInitEvents()
+
+  const tl = new TimelineMax()
+
+  tl.fromTo(spSphere1Solid.scale, 1.4, { x: 0.5, y: 0.5, z: 0.5 }, { x: 1, y: 1, z: 1, ease: Power2.easeOut })
+    .to(spSphere1Solid.material, 1.4, { opacity: 1 }, '-=1.2')
+    .fromTo(spSphere1Wire.scale, 1.4, { x: 0.5, y: 0.5, z: 0.5 }, { x: 1.005, y: 1.005, z: 1.005, ease: Power2.easeOut }, '-=1.7')
+    .to(spSphere1Wire.material, 1.4, { opacity: 1 }, '-=1.7')
+    .fromTo(spSphere2Wire.scale, 1.4, { x: 0.2, y: 0.2, z: 0.2 }, { x: 1, y: 1, z: 1, ease: Power2.easeOut }, '-=1.5')
+    .to(spSphere2Wire.material, 1.4, { opacity: 1 }, '-=1.5')
+    .to(spSphere2Particles.material, 1.4, { opacity: 0.5 }, '-=0.8')
+}
+
+function animateWireColorHue() {
+  let hue = 0
+
+  function updateColor() {
+    hue += 0.0005
+    if (hue > 1) hue = 0
+
+    const color = new THREE.Color()
+    color.setHSL(hue, 1.0, 0.5)
+
+    spSphere1Wire.material.color.r = color.r
+    spSphere1Wire.material.color.g = color.g
+    spSphere1Wire.material.color.b = color.b
+
+    requestAnimationFrame(updateColor)
+  }
+
+  updateColor()
 }
 
 function spInitRender(time) {

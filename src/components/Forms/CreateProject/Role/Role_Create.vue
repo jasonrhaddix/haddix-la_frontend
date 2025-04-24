@@ -60,7 +60,7 @@
       <v-row>
         <v-col cols="12">
           <div class="projects-section">
-            <CreateRoleProjects v-model="formModel.projects" />
+            <CreateRoleProjects v-model="formModel.projects" :roleId="formModel.roleId" />
           </div>
         </v-col>
       </v-row>
@@ -167,10 +167,8 @@ const submitForm = async () => {
     }) */
   
     if (isEditMode.value) {
-      console.log(updateRole.value)
       const diff = objectHelpers.deepDiff(updateRole.value, formModel)
 
-      console.log('diff', diff)
       try {
         await rolesStore.updateRole(props.data.id, diff)
 

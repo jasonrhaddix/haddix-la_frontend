@@ -153,7 +153,7 @@ const model = computed({
 
 
 const getAttachTo = computed(() => ({
-  modelId: model.value.id,
+  modelId: model.value.roleId,
   projectId: model.value.projectId,
   model: types.PROJECT_TYPE__NEW_ROLE
 }))
