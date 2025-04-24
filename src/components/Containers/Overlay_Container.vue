@@ -16,7 +16,7 @@
       </p>
     </div>
 
-    <v-container>
+    <v-container class="content__container">
       <v-layout class="overlay-container__content">
         <v-container class="section section__header">
           <div class="header__content">

@@ -18,6 +18,13 @@
 	.roles__inner {
 		margin: 0 auto;
 		width: 80%;
+		max-width: 1600px;
+
+		.copy-link {
+			margin: {
+				left: 0.5rem;
+			}
+		}
 
 		.v-data-table {
 			background: {
@@ -30,7 +37,7 @@
 
 			tbody {
 
-				td.col__role-id {
+				.col__role-id {
 					
 					&:hover {
 						text-decoration: underline;

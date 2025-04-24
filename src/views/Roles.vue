@@ -16,9 +16,13 @@
 					<template v-slot:item="{ item }">
 						<tr>
 							<td>{{ item.role || '--' }}</td>
-							<td class="col__role-id"
-								@click="roleClick(item._id)">
-								{{ item.roleId || '--' }}
+							<td>
+								<span
+									class="col__role-id"
+									@click="roleClick(item._id)">
+									{{ item.roleId || '--' }}
+								</span>
+								<CopyLink class="copy-link" :postpend="`/role-details/${item._id}`" />
 							</td>
 							<td>{{ item.company || '--' }}</td>
 							<td>{{ item.organization || '--' }}</td>
@@ -66,6 +70,7 @@ import { reactive } from 'vue'
 import stores from '@/stores/index.js'
 
 import CreateButton from '@/components/_global/Create_Button.vue'
+import CopyLink from '@/components/_global/Copy_Link.vue'
 
 const rolesStore = stores.rolesStore()
 const dialogStore = stores.ui.dialogStore()

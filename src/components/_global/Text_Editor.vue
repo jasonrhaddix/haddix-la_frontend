@@ -158,12 +158,15 @@
         />
       </button>
     </div>
-    <EditorContent v-model="modelValue" class="editor__content" :editor="editor" />
+    <EditorContent v-if="editor"
+      v-model="modelValue"
+      class="editor__content"
+      :editor="editor" />
   </div>
 </template>
 
 <script setup>
-import { reactive, defineEmits, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, reactive, defineEmits, onMounted, onBeforeUnmount, watch } from 'vue'
 
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
@@ -179,15 +182,26 @@ const iconOptions = reactive({
   }
 })
 
-const editor = reactive(
-  new Editor({
+const editor = ref(null)
+
+onMounted(() => {
+  editor.value = new Editor({
     content: modelValue.value,
     extensions: [StarterKit],
-    onUpdate: ({editor}) => {
-        emit('update:modelValue', editor.getHTML())
+    onUpdate: ({ editor }) => {
+      emit('update:modelValue', editor.getHTML())
     }
   })
-)
+
+ /*  setTimeout(() => {
+    editor.value?.setContent(modelValue.value)
+  }, 100) */
+})
+
+
+onBeforeUnmount(() => {
+  editor.value?.destroy()
+})
 
 onBeforeUnmount(() => {
   editor.destroy()

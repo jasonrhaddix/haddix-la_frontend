@@ -6,7 +6,27 @@
         v-if="userStore.userIsAuthenticated"
         class="project__edit-btns">
 
-        <v-btn
+        <v-menu
+          :offset="[-39, 11]">
+          <template #activator="{ props }">
+            <v-btn v-bind="props">
+              <v-icon>more_horiz</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item
+              title="Edit"
+              @click="updateProject" />
+
+            <v-list-item
+              title="Delete"
+              style="color: red" 
+              @click="deleteProject" />
+          </v-list>
+        </v-menu>
+
+        <!-- <v-btn
           class="btn edit-btn"
           size="x-small"
           color="darkred"
@@ -18,7 +38,7 @@
           size="x-small"
           color="darkred"
           icon="close"
-          @click="deleteProject" />
+          @click="deleteProject" /> -->
 
         <!-- Old Buttons -->
         <!-- <div

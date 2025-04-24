@@ -24,6 +24,10 @@
     }
   }
 
+  .content__container {
+    max-width: 1600px;
+  }
+
   .overlay-container__content {
     display: flex;
     flex-direction: column;
