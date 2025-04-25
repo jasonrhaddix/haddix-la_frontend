@@ -58,9 +58,10 @@
         <div class="about-bio">
           <div class="about-bio--inner">
             <h2>Hi, I'm Jason R. Haddix</h2>
-            <p>I'm a Senior Full-Stack Engineer with over {{yearsExperience}} years of professional experience building large, data-driven applications using cutting-edge technologies. I specialize in developing scalable web platforms that balance performance, usability, and maintainability.</p>
+            <p>I'm a Senior Full-Stack Engineer with over {{yearsExperience}} years of professional experience building large, data-driven applications using cutting-edge technologies. I specialize in developing scalable web applications that balance performance, usability, and maintainability.</p>
             <p>My motivation lies in solving complex problems, delivering clean, effective solutions, and staying ahead of the tech curve. I thrive in environments where I can push boundaries, learn continuously, and build products that make an impact.</p>
             <p>I’m especially passionate about exploring new technologies and mentoring junior engineers — sharing knowledge, improving team dynamics, and shaping the next wave of builders in the industry.</p>
+            <p>Outside of engineering, I have a deep appreciation for analog experiences — I collect and shoot vintage film cameras, explore California’s landscapes with my family (Yosemite being a recent highlight), and unwind with classic video games. I’m also a fan of classic Japanese cars — there’s something timeless about elegant design paired with precision mechanics.</p>
           </div>
         </div>
 
@@ -298,68 +299,26 @@
 
         <div class="section-divider" />
 
-        <div class="section about--client-list">
-          <div class="client-list--inner">
-            <div class="section--title client-list--inner">
-              <h2>Notable Clients</h2>
-            </div>
-            <v-row class="client-list">
-              <v-col
-                align-self="center"
-                class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoUniversal" alt="Universal Studios" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoAmazon" alt="Amazon" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoMGM" alt="MGM Grand" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoSkechers" alt="Skechers" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoNike" alt="Nike" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoITunes" alt="iTunes" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoFX" alt="FX" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoChevron" alt="Chevron" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoCricDuSoleil" alt="Cric Du Soleil" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoDisney" alt="Disney" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoPropel" alt="Propel Fitness" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoShowtime" alt="Showtime" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoBestBuy" alt="Best Buy" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoCVS" alt="CVS" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoDirecTV" alt="DirecTV" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoHBO" alt="HBO" /></div>
-              </v-col>
-              <v-col class="col-6 col-md-4 col-lg-3 client-item">
-                <div class="item"><img :src="LogoESPN" alt="ESPN" /></div>
-              </v-col>
-            </v-row>
+        <v-container class="section about--client-list">
+          <div class="section--title">
+            <h2>Notable Clients</h2>
           </div>
-        </div>
+          <v-row class="client-list">
+            <v-col
+              v-for="(logo, index) in logos"
+              :key="index"
+              cols="6"
+              md="4"
+              lg="3"
+              class="client-item"
+              align-self="center"
+            >
+              <div class="item">
+                <img :src="logo.src" :alt="logo.alt" />
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
 
         <div class="section-divider" />
 
@@ -412,41 +371,30 @@ import LogoESPN from '@/assets/app/icons/client_logos/espn.svg'
 
 const routingStore = stores.routingStore()
 
+const logos = [
+  { src: LogoUniversal, alt: 'Universal Studios' },
+  { src: LogoAmazon, alt: 'Amazon' },
+  { src: LogoMGM, alt: 'MGM Grand' },
+  { src: LogoSkechers, alt: 'Skechers' },
+  { src: LogoNike, alt: 'Nike' },
+  { src: LogoITunes, alt: 'iTunes' },
+  { src: LogoFX, alt: 'FX' },
+  { src: LogoChevron, alt: 'Chevron' },
+  { src: LogoCricDuSoleil, alt: 'Cric Du Soleil' },
+  { src: LogoDisney, alt: 'Disney' },
+  { src: LogoPropel, alt: 'Propel Fitness' },
+  { src: LogoShowtime, alt: 'Showtime' },
+  { src: LogoBestBuy, alt: 'Best Buy' },
+  { src: LogoCVS, alt: 'CVS' },
+  { src: LogoDirecTV, alt: 'DirecTV' },
+  { src: LogoHBO, alt: 'HBO' },
+  { src: LogoESPN, alt: 'ESPN' }
+]
+
 const yearsExperience = computed(() => {
   const startYear = 2007
   const currentYear = new Date().getFullYear()
   return currentYear - startYear
 })
 
-// import { mapActions } from 'vuex'
-
-/* import {
-	VUEX_UI_ABOUT_BIO_PHOTO
-} from '@/store/constants/ui */
-
-/* import {
-	VUEX_ROUTING_PUSH_ROUTE
-} from '@/store/constants/routing' */
-
-/* export default {
-	name: 'about-view',
-
-	components: {
-		'app-btn': AppButton
-	},
-
-	computed: {
-		bioPhoto () { return VUEX_UI_ABOUT_BIO_PHOTO }
-	},
-
-	methods: {
-		...mapActions({
-			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-		}),
-
-		navigateToExternalRoute (route) {
-			// window.location
-		}
-	}
-} */
 </script>

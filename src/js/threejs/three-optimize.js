@@ -98,7 +98,7 @@ function spInitEvents() {
 function spInitResize() {
   spInitMediaQueries()
 
-  spCamera.position.set(0, -2, cameraZPos)
+  spCamera.position.set(0, -2, cameraZPos || 70)
 
   SCREEN_WIDTH = window.innerWidth
   SCREEN_HEIGHT = window.innerHeight
@@ -175,7 +175,7 @@ function spInitGeomSphere1() {
   var i = 0
   while (i < spSphere1SolidVertices?.length) {
     spSphere1SolidVertices[i].originalY = spSphere1SolidVertices[i].y
-    spSphere1SolidVertices[i].multiplyScalar(THREE.Math.randFloat(0.85, 1.15))
+    spSphere1SolidVertices[i].multiplyScalar(THREE.Math.randFloat(0.9, 1.15))
     ++i
   }
 
@@ -284,7 +284,7 @@ function introAnimation() {
     .to(spSphere1Wire.material, 1.4, { opacity: 1 }, '-=1.7')
     .fromTo(spSphere2Wire.scale, 1.4, { x: 0.2, y: 0.2, z: 0.2 }, { x: 1, y: 1, z: 1, ease: Power2.easeOut }, '-=1.5')
     .to(spSphere2Wire.material, 1.4, { opacity: 1 }, '-=1.5')
-    .to(spSphere2Particles.material, 1.4, { opacity: 0.5 }, '-=0.8')
+    .to(spSphere2Particles.material, 1.4, { opacity: 0.75 }, '-=0.8')
 }
 
 function animateWireColorHue() {
@@ -454,6 +454,32 @@ function spInitMouseMove(event) {
 }
 
 function spInitMediaQueries() {
+  if (window.matchMedia('(max-width: 379px)').matches) {
+    _screenSize = 'xxs'
+    cameraZPos = 60
+  } else if (window.matchMedia('(min-width: 380px) and (max-width: 579px)').matches) {
+    _screenSize = 'xs'
+    cameraZPos = 60
+  } else if (window.matchMedia('(min-width: 580px) and (max-width: 767px)').matches) {
+    _screenSize = 'sm'
+    cameraZPos = 60
+  } else if (window.matchMedia('(min-width: 768px) and (max-width: 990px)').matches) {
+    _screenSize = 'md'
+    cameraZPos = 70
+  } else if (window.matchMedia('(min-width: 991px) and (max-width: 1199px)').matches) {
+    _screenSize = 'lg'
+    cameraZPos = 70
+  } else if (window.matchMedia('(min-width: 1200px)').matches) {
+    _screenSize = 'xl'
+    cameraZPos = 70
+  } else {
+    _screenSize = 'unknown'
+    cameraZPos = 70 // safest fallback
+    console.warn('⚠️ Media query failed. Using default Z = 70')
+  }
+}
+
+/* function spInitMediaQueries() {
   // _screenWidth = window.innerWidth;
 
   var mqls = [
@@ -495,7 +521,7 @@ function spInitMediaQueries() {
       // console.error( "WINDOW RESIZE | Media Queries | No size found")
     }
   }
-}
+} */
 
 /*********************************/
 /*********************************/

@@ -552,11 +552,10 @@
     ], wrapperKeys, fileKeys)
 
     if (isEditMode.value) {
-
-      const diff = objectHelpers.deepDiff(updateProject.value, {...formModel, attachments})
-
+      // diff gets everything that is not equal except for the attachments
+      const diff = objectHelpers.deepDiff(updateProject.value, formModel)
       try {
-        await projectsStore.updateProject(props.data.id, diff)
+        await projectsStore.updateProject(props.data.id, {...diff, attachments})
         
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',

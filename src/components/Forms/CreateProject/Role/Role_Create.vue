@@ -158,16 +158,9 @@ const isEditMode = computed(() => {
 
 const submitForm = async () => {
     submitted.value = true
-
-    /* // Clean model before send
-    Object.keys(formModel).forEach(k => {
-      if (formModel[k] === null ||
-        formModel[k] === undefined ||
-        formModel[k].length === 0) delete formModel[k]
-    }) */
   
     if (isEditMode.value) {
-      const diff = objectHelpers.deepDiff(updateRole.value, formModel)
+      const diff = objectHelpers.deepDiffRoles(updateRole.value, formModel)
 
       try {
         await rolesStore.updateRole(props.data.id, diff)

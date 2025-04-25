@@ -189,6 +189,7 @@ const deleteProject = () => {
             toastStore.addToast({
               component: '_global/Toast/Toast_Message.vue',
               data: {
+								title: 'Success',
                 message: 'Project deleted successfully!',
                 type: 'success'
               }
