@@ -53,7 +53,7 @@ const deepDiffRoles = (obj1, obj2, path = []) => {
 
   if (!_isObject(obj1) || !_isObject(obj2)) return obj2;
 
-  // Handle arrays element-wise
+  // Handle arrays element-wise (for 'projects')
   if (Array.isArray(obj1) && Array.isArray(obj2)) {
     const diffs = [];
 
@@ -63,13 +63,17 @@ const deepDiffRoles = (obj1, obj2, path = []) => {
 
       const currentPath = [...path, i];
 
-      // Smart override for project.attachments
+      // 💡 Overwrite project[n].attachments entirely
       if (isAttachmentsPath(currentPath)) {
-        diffs[i] = { attachments: val2.attachments };
+        const diff = deepDiffRoles(val1, val2, currentPath);
+        diffs[i] = {
+          ...diff,
+          attachments: val2.attachments
+        };
         continue;
       }
 
-      const diff = deepDiff(val1, val2, currentPath);
+      const diff = deepDiffRoles(val1, val2, currentPath);
       if (diff !== undefined) {
         diffs[i] = diff;
       }
@@ -79,35 +83,38 @@ const deepDiffRoles = (obj1, obj2, path = []) => {
   }
 
   // Handle objects
-  const diff = {};
-  const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
+  const result = {};
+  const keys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
 
-  for (const key of allKeys) {
-    const value1 = obj1[key];
-    const value2 = obj2[key];
-    const currentPath = [...path, key];
+  for (const key of keys) {
+    const val1 = obj1[key];
+    const val2 = obj2[key];
 
-    if (!obj2.hasOwnProperty(key)) {
-      diff[key] = undefined;
-    } else {
-      // Special-case for individual project attachments
-      if (isAttachmentsPath(currentPath)) {
-        diff[key] = value2; // override attachments
-      } else {
-        const difference = deepDiff(value1, value2, currentPath);
-        if (difference !== undefined) {
-          diff[key] = difference;
-        }
-      }
+    const diff = deepDiffRoles(val1, val2, [...path, key]);
+    if (diff !== undefined) {
+      result[key] = diff;
     }
   }
 
-  return Object.keys(diff).length > 0 ? diff : undefined;
-}
+  return Object.keys(result).length ? result : undefined;
+};
+
+const isAttachmentsBodyPath = (pathArray) => {
+  return (
+    pathArray.length === 3 &&
+    typeof pathArray[0] === 'number' &&
+    pathArray[1] === 'attachments' &&
+    pathArray[2] === 'body'
+  );
+};
 
 // Determines if the current path is like ["projects", 0, "attachments"]
-const isAttachmentsPath = (path) => {
-  return path.length === 3 && path[0] === 'projects' && typeof path[1] === 'number' && path[2] === 'attachments';
+const isAttachmentsPath = (pathArray) => {
+  return (
+    pathArray.length === 2 && // e.g., [0, 'attachments']
+    typeof pathArray[0] === 'number' &&
+    pathArray[1] === 'attachments'
+  )
 }
 
 export default {

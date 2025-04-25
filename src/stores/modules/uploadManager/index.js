@@ -139,7 +139,7 @@ export default defineStore('uploadManage', {
 				s3UploadStore.s3UlopadRequest(fileObj)
 
 				// We may still have room, call again
-				if (this.filesQueued.length > 0 && this.filesUploading.length < S3__QUEUE_SIZE) {
+				if (this.filesQueued.length > 0 && this.filesUploading.length < typesStore.S3__QUEUE_SIZE) {
 					this.enqueueUpload()
 				}
 			}

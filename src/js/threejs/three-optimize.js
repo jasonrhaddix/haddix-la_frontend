@@ -6,7 +6,7 @@ const MESH_PARTICLE = '@/assets/3d/point.png'
 // eslint-disable-next-line no-unused-vars
 var introComplete = false
 var appState = true
-// var windowFocused = false
+var windowFocused = false
 
 var SCREEN_WIDTH = window.innerWidth
 var SCREEN_HEIGHT = window.innerHeight
@@ -264,12 +264,12 @@ function spInitAnimate(time) {
     appState = false
   }
 
-  // windowFocused = ( appState && document.hasFocus() ) ? true : false;
-  // windowFocused = (!introComplete || appState && document.hasFocus()) ? true : false
+  windowFocused = ( appState && document.hasFocus() ) ? true : false;
+  windowFocused = (!introComplete || appState && document.hasFocus()) ? true : false
 
   requestAnimationFrame(spInitAnimate)
   if (appState) spInitRender(time)
-  // if (windowFocused) spInitRender( time )
+  if (windowFocused) spInitMediaQueries()
 }
 
 function introAnimation() {

@@ -1,5 +1,13 @@
 <template>
   <v-container fluid class="project-details-view">
+		<v-btn
+			icon small
+			color="primary"
+			class="header__close-btn"
+			@click="navigateToPreviousPage">
+			<v-icon>close</v-icon>
+		</v-btn>
+
     <div class="details__content">
       <div class="header__container">
         <v-img
@@ -11,56 +19,57 @@
         <div class="scrim" />
 
         <div class="title__container">
-          <p>{{ project.client }}</p>
+          <h3>{{ project.client }}</h3>
           <h1>{{ project.title }}</h1>
-          <h3>{{ project.subtitle }}</h3>
+          <p><i>{{ project.subtitle }}</i></p>
         </div>
 
         <div class="project-info__container">
           <v-row class="project-info__inner">
             <v-col
               align-self="center"
-              class="col-6 col-md-4 project-info__item"
-            >
-              <div class="item">
-                <h4>Client</h4>
-                <p>{{ project.client }}</p>
-              </div>
+              class="col-6 col-md-4 project-info__item">
+							
+							<div class="project-info__item">
+								<div class="item">
+									<h4>Client</h4>
+									<p>{{ project.client }}</p>
+								</div>
+							</div>
+							
             </v-col>
 
             <v-col
               align-self="center"
-              class="col-6 col-md-4 project-info__item"
-            >
-              <div class="item">
-                <h4>Role</h4>
-                <p>{{ project.role }}</p>
+              class="col-6 col-md-4 project-info__item">
+							
+							<div class="project-info__item">
+              	<div class="item">
+									<h4>Role</h4>
+									<p>{{ project.role }}</p>
+								</div>
               </div>
+							
             </v-col>
 
             <v-col
               align-self="center"
-              class="d-none d-md-block col-12 col-md-4 project-info__item"
-            >
+              class="d-none d-md-block col-12 col-md-4 project-info__item">
               <div class="item">
                 <div
                   v-if="project.link"
                   class="project-btn__container"
-                  @click="navigateToProject"
-                >
-                  <AppButton class="project-btn" label="View Project" />
+                  @click="navigateToProject">
+
+                  <AppButton
+										variant="colorful"
+										class="project-btn"
+										label="View Project" />
                 </div>
               </div>
             </v-col>
           </v-row>
         </div>
-
-        <v-btn
-          icon small
-          class="header__close-btn"
-          @click="navigateToPreviousPage">
-          <v-icon>close</v-icon>
-        </v-btn>
       </div>
 
       <v-container class="content__container">
@@ -156,18 +165,21 @@
       </v-container>
     </div>
 
-    <div
+    <!-- <div
       v-if="project.link"
-      class="d-sm-block d-md-none footer__container"
-    >
+      class="d-sm-block d-md-none footer__container">
       <v-row class="footer__inner">
         <v-col align-self="center" class="col-12 project-info__item">
-          <div class="project-btn__container" @click="navigateToProject">
-            <AppButton class="project-btn" label="View Project" />
+          <div class="project-btn__container">
+            <AppButton
+							variant="colorful"
+							class="project-btn"
+							label="View Project"
+							@click="navigateToProject" />
           </div>
         </v-col>
       </v-row>
-    </div>
+    </div> -->
   </v-container>
 </template>
 

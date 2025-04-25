@@ -121,6 +121,14 @@
                             text-align: center;
                         }
                     }
+
+                    &.disabled {
+                        pointer-events: none;
+                        background: {
+                            color: $app-color-black-alpha-25; 
+
+                        }
+                    }
                 }
 
                 .dropzone__scrim {

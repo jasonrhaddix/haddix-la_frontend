@@ -40,6 +40,7 @@
             </div>
             <div class="images__container">
               <AttachmentUploader
+                multiple
                 ref="attachmentUploader_Body"
                 :attach-to="getAttachTo"
                 :file-usage-type="types.ATTACHMENT_USAGE_TYPE__BODY"
@@ -80,6 +81,7 @@
             </div>
             <div class="images__container">
               <AttachmentUploader
+
                 ref="attachmentUploader_Video"
                 :attach-to="getAttachTo"
                 :accepted-file-types="['video/mp4']"
@@ -206,7 +208,7 @@ const removeAttachment = (removeFile) => {
     uploadManagerStore.removeFile(removeFile.hashId)
   } else {
     // remove from model
-    const modelAttachments = model.attachments || {}
+    const modelAttachments = model.value.attachments || {}
   
     // remove file from model
     Object.keys(modelAttachments).forEach(key => {

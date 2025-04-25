@@ -1,6 +1,6 @@
 <template>
   <div class="projects-view">
-    <!-- <SphereBG :style="{position: 'fixed'}" class="sphere-bg" /> -->
+    <SphereBG :style="{position: 'fixed'}" class="sphere-bg" />
 
     <div class="projects__add-btn">
       <CreateButton />

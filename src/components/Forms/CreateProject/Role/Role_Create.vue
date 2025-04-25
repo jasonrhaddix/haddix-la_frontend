@@ -158,9 +158,11 @@ const isEditMode = computed(() => {
 
 const submitForm = async () => {
     submitted.value = true
-  
+
+    
     if (isEditMode.value) {
       const diff = objectHelpers.deepDiffRoles(updateRole.value, formModel)
+      console.log(updateRole.value, formModel, diff)
 
       try {
         await rolesStore.updateRole(props.data.id, diff)

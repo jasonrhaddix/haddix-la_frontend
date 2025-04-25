@@ -97,10 +97,11 @@
           <div class="images-section images__thumbnails">
             <div class="section__title">
               <h3>Thumbnail Image</h3>
-              <p>Projects page thumbnail</p>
+              <p>Projects page thumbnail (only 1)</p>
             </div>
             <div class="images__container">
               <AttachmentUploader
+                disabled
                 ref="attachmentUploader_Thumbnail"
                 :attach-to="getAttachTo"
                 file-usage-type="thumbnail"
@@ -108,7 +109,10 @@
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
                   v-ripple
-                  class="dropzone__button"
+                  :class="[
+                    'dropzone__button',
+                    {'disabled': fileAttachments(typesStore.ATTACHMENT_USAGE_TYPE__THUMBNAIL, true).length === 1}
+                  ]"
                   @dragover.prevent
                   @dragenter.prevent.stop="uploadDragOver(true)"
                   @dragleave.prevent.stop="uploadDragOver(false)"
@@ -297,7 +301,6 @@
         <div class="languages__container">
           <ResourcePicker
             v-model="formModel.resources"
-            :items-selected-callback="resourceItemsSelected"
           />
         </div>
       </div>
@@ -555,7 +558,11 @@
       // diff gets everything that is not equal except for the attachments
       const diff = objectHelpers.deepDiff(updateProject.value, formModel)
       try {
-        await projectsStore.updateProject(props.data.id, {...diff, attachments})
+        await projectsStore.updateProject(props.data.id, {
+          ...diff,
+          attachments,
+          resources: formModel.resources
+        })
         
         toastStore.addToast({
           component: '_global/Toast/Toast_Message.vue',
@@ -607,4 +614,8 @@
 
     overlayStore.hideOverlay()
   }
+
+  watch(formModel, (value) => {
+    console.log('resources', value.resources.length)
+  }, { deep: true })
 </script>

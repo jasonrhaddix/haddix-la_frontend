@@ -14,11 +14,11 @@
     <input
 			hidden
       ref="fileControl"
+      type="file"
+      name="thumbnail"
       class="attachment-uploader__input"
       :multiple="multiple"
       :accept="propsStore.acceptedFileTypes"
-      type="file"
-      name="thumbnail"
       @change="handleSelectedFiles"
     />
   </div>
@@ -73,7 +73,6 @@ const props = defineProps({
 // refs
 const fileControl = ref(null) // element
 const base64 = ref(null)
-const multiple = ref(null)
 
 // reactive
 const previewsPending = reactive([])
@@ -95,19 +94,28 @@ function handleSelectedFiles(event) {
 	// 1) Freshly read the files array in each change
 	// there is a bug where sometimes fileControl appears as undefined
 	// so grab files from the path
-	if (fileControl !== undefined) {
+	
+	/* if (fileControl !== undefined) {
 		files = fileControl.value.files
 	} else {
 		if (event.path && event.path[0].files) {
 			files = event.path[0].files
 		}
-	}
+	} */
 
-	// 2) Abort if no files are selected
-	if (!files.length) return
+	let selectedFiles = []
+
+	if (fileControl.value?.files?.length) {
+		selectedFiles = Array.from(fileControl.value.files)
+	} else if (event?.target?.files?.length) {
+		selectedFiles = Array.from(event.target.files)
+	}
+	
+	// // 2) Abort if no files are selected
+	if (!selectedFiles.length) return
 
 	// 3) Loop through files
-	Array.prototype.forEach.call(files, (file, index) => {
+	selectedFiles.forEach((file, index) => {
 		let	data = {
 			projectId: props.attachTo.modelId,
 			fileId: uuid.v4(),
