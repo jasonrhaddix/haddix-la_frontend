@@ -1,13 +1,13 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite';
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vitejs.dev/config/
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
+
 export default defineConfig({
   optimizeDeps: {
     esbuildOptions: {
@@ -26,15 +26,21 @@ export default defineConfig({
   plugins: [
     vue(),
     VueDevTools()
-    // vuetify({ autoImport: true }) // Enabled by default
   ],
-
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       stream: 'stream-browserify',
       buffer: 'buffer',
-      util: 'util'
+      util: 'util',
+      process: 'process/browser'
+    }
+  },
+  build: {
+    rollupOptions: {
+      plugins: [
+        rollupNodePolyFill()
+      ]
     }
   }
 })
