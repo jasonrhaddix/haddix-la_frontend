@@ -245,8 +245,27 @@
             </div>
             <div class="subsection">
               <div class="content-group">
-                <p>This site was built as both a portfolio and a playground—a place to showcase my projects and a space to experiment with modern web technologies. I created it to provide potential employers and collaborators with a hands-on look at my technical skills, thought process, and personal design style.</p>
+                <!-- <p>This site was built as both a portfolio and a playground—a place to showcase my projects and a space to experiment with modern web technologies. I created it to provide potential employers and collaborators with a hands-on look at my technical skills, thought process, and personal design style.</p>
                 <p>The primary audience for this site includes hiring managers, recruiters, and teams looking for a senior web engineer with a strong command of full-stack JavaScript technologies. Everything on the site is here to demonstrate that I don't just keep up—I build with purpose.</p>
+
+                <p>I built a full-stack portfolio management platform where I can organize my projects, roles, and all the supporting media like videos and thumbnails.</p>
+                <p>The frontend is Vue 3 with Pinia, and the backend is Node.js and Express with MongoDB.</p>
+                <p>I integrated AWS S3 and Cognito so users can upload files directly to cloud storage without overloading the server, and I automated the cleanup of assets when projects are deleted.</p>
+                <p>One of the bigger challenges was building a smart deep-merge system — allowing updates without accidentally overwriting complex nested data structures.</p>
+                <p>Overall, the project shows not just modern web development skills, but real attention to cloud architecture, security, and long-term maintenance.</p>
+                <p>It’s basically a personal experience management platform, but built to production standards.</p> -->
+
+                <p>This site was built as both a portfolio and a playground — a place to showcase my professional projects and a space to experiment with modern web technologies. I created it to give potential employers and collaborators a hands-on look at my technical skills, problem-solving approach, and personal design style.</p>
+
+                <p>The primary audience includes hiring managers, recruiters, and engineering teams seeking a senior web engineer with strong full-stack JavaScript expertise. Everything here is designed to demonstrate that I don’t just keep pace with modern development — I build with purpose, scalability, and real-world durability in mind.</p>
+
+                <p>Under the hood, the platform is a full-stack portfolio management system where I can dynamically organize projects, roles, and supporting media like videos, thumbnails, and carousel images. The frontend is built with Vue 3 and Pinia, emphasizing performance and modularity, while the backend runs on Node.js, Express, and MongoDB.</p>
+
+                <p>For asset management, I integrated AWS S3 and Cognito, allowing users to upload files securely and directly to cloud storage, minimizing server load and speeding up content delivery. I also automated the cleanup of orphaned assets by tying S3 file deletion to backend lifecycle events, ensuring that storage stays clean and cost-efficient.</p>
+
+                <p>One of the more interesting challenges was building a smart deep-merge system for handling project updates — carefully replacing fields like attachments while preserving other complex, nested structures without data loss.</p>
+
+                <p>Ultimately, this project goes beyond building a simple portfolio. It reflects a real-world application of modern web engineering principles — cloud-native architecture, security-first development, and systems designed for long-term maintainability and growth.</p>
               </div>
 
               <div class="content-group">
@@ -268,6 +287,7 @@
                   <li><strong>Backend:</strong> Node.js, Express</li>
                   <li><strong>Database:</strong> MongoDB</li>
                   <li><strong>Storage:</strong> AWS S3 for asset handling</li>
+                  <li><strong>Security:</strong> JSON Web Tokens (JWT), password hashing with BCrypt</li>
                   <li><strong>Other:</strong> Axios, TipTap - for rich text editing</li>
                 </ul>
               </div>
