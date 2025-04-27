@@ -18,7 +18,7 @@
       name="thumbnail"
       class="attachment-uploader__input"
       :multiple="multiple"
-      :accept="propsStore.acceptedFileTypes"
+      :accept="acceptedFileTypes"
       @change="handleSelectedFiles"
     />
   </div>
@@ -89,6 +89,27 @@ function loadFiles() {
 	this.handleSelectedFiles(files)
 }
 
+const getSafeMimeType = (file) => {
+  if (file?.type) {
+    return file.type
+  }
+
+  // If file.type is missing, try to guess based on file extension
+  const extension = file.name.split('.').pop().toLowerCase()
+	
+  const mimeTypes = {
+		jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    webp: 'image/webp',
+    pdf: 'application/pdf'
+    // add more if needed
+  }
+
+  return mimeTypes[extension] || 'image/jpeg' // fallback to image/jpeg if unknown
+}
+
 // handle upload
 function handleSelectedFiles(event) {
 	// 1) Freshly read the files array in each change
@@ -119,7 +140,7 @@ function handleSelectedFiles(event) {
 		let	data = {
 			projectId: props.attachTo.modelId,
 			fileId: uuid.v4(),
-			file: file,
+			file: new File([file], file.name, { type: getSafeMimeType(file) }),
 			filename: file.name.replace(/\s/g, '_'),
 			usageType: props.fileUsageType,
 			usageSubtype: null,

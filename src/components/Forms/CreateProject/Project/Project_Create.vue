@@ -105,6 +105,7 @@
                 ref="attachmentUploader_Thumbnail"
                 :attach-to="getAttachTo"
                 file-usage-type="thumbnail"
+                accept="image/jpg, image/jpeg"
               />
               <div :class="['images__dropzone', { 'drag-over': fileDragOver }]">
                 <div
@@ -614,8 +615,4 @@
 
     overlayStore.hideOverlay()
   }
-
-  watch(formModel, (value) => {
-    console.log('resources', value.resources.length)
-  }, { deep: true })
 </script>

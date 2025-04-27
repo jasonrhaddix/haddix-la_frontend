@@ -1,4 +1,94 @@
 import { defineStore } from 'pinia'
+import api from '@/api/index' // <- Axios instance you probably already have
+import axios from 'axios'
+
+import stores from '@/stores'
+
+export default defineStore('s3Upload', {
+  state: () => ({}),
+
+  getters: {},
+
+  actions: {
+    async s3UploadRequest(payload) {
+			const uploadManagerStore = stores.s3.uploadManagerStore()
+      
+      let destinationFileKey = `files/${payload.attachTo.modelId}/${payload.fileId}_${payload.filename}`
+
+      uploadManagerStore.assignS3Key({
+        hashId: payload.hashId,
+        key: destinationFileKey
+      })
+
+      try {
+        // 1. Get a presigned POST from backend
+        const { data: presignRes } = await api.post('/aws/s3/upload/presigned-url', {
+					key: destinationFileKey
+        })
+
+				const presignedUrl = presignRes.data.presignedUrl
+
+        // 2. Upload to S3
+				 const uploadRes = await axios.put(presignedUrl, payload.file, {
+          headers: {
+            'Content-Type': payload.file.type || 'application/octet-stream'
+          },
+          onUploadProgress: (progressEvent) => {
+						console.log('progressEvent', progressEvent)
+            uploadManagerStore.uploadProgress({ ...progressEvent, hashId: payload.hashId })
+          }
+        })
+
+        // 3. Success!
+        await this.requestSuccess({
+          hashId: payload.hashId,
+					data: presignRes.data
+        })
+
+      } catch (error) {
+				// Handle error | TOAST component
+        await this.requestFailure({
+          hashId: payload.hashId,
+          data: {}
+        })
+      }
+    },
+
+    requestSuccess(payload) {
+			const typesStore = stores.config.typesStore()
+      const uploadManagerStore = stores.s3.uploadManagerStore()
+
+      uploadManagerStore.changeStatus({
+        hashId: payload.hashId,
+        status: typesStore.REQUEST_STATUS__SUCCESS
+      })
+
+      uploadManagerStore.handleResult({
+        hashId: payload.hashId,
+        uri: payload.data.uri,
+        status: typesStore.REQUEST_STATUS__SUCCESS
+      })
+    },
+
+    requestFailure(payload) {
+      const typesStore = stores.config.typesStore()
+      const uploadManagerStore = stores.s3.uploadManagerStore()
+
+      uploadManagerStore.changeStatus({
+        hashId: payload.hashId,
+        status: typesStore.REQUEST_STATUS__FAILURE
+      })
+
+      uploadManagerStore.handleResult({
+        hashId: payload.hashId,
+        status: typesStore.REQUEST_STATUS__FAILURE
+      })
+    }
+  }
+})
+
+
+/* import { defineStore } from 'pinia'
 
 // import api from '@/api/index.js'
 import s3 from '@/api/aws.js'
@@ -11,7 +101,7 @@ export default defineStore('s3Upload', {
 	getters: {},
 
 	actions: {
-		s3UlopadRequest(payload) {
+		s3UploadRequest(payload) {
 			const uploadManagerStore = stores.s3.uploadManagerStore()
 			// let destinationFileKey = `files/${payload.projectId}/${payload.fileId}_${payload.filename}`
 			let destinationFileKey = `files/${payload.attachTo.modelId}/${payload.fileId}_${payload.filename}`
@@ -49,20 +139,6 @@ export default defineStore('s3Upload', {
 						hashId: payload.hashId,
 						data: data
 					})
-
-					// ATTACHMENT REQUEST
-					/* this.attachmentRequest({
-						hashId: payload.hashId,
-						attachmentId: payload.fileId,
-						modelId: payload.attachTo.modelId,
-						model: payload.attachTo.model,
-						name: payload.filename,
-						filename: payload.filename,
-						usageType: payload.usageType,
-						mimetype: payload.file.type,
-						size: payload.file.size,
-						uri: payload.uri
-					}) */
 				}
 			}).on('httpUploadProgress', handleS3UploadProgress)
 		},
@@ -97,43 +173,5 @@ export default defineStore('s3Upload', {
 				status: typesStore.REQUEST_STATUS__FAILURE
 			})
 		}
-
-		/* attachmentRequest(payload) {
-			const userStore = stores.userStore()
-			const typesStore = stores.config.typesStore()
-			const uploadManagerStore = stores.s3.uploadManagerStore()
-			
-			uploadManagerStore.changeStatus({
-				hashId: payload.hashId,
-				status: typesStore.REQUEST_STATUS__PENDING
-			})
-
-			const data = {
-				...payload,
-				session_id: userStore.accessToken
-			}
-
-			api.post(`/attachments`, data).then(response => {
-				uploadManagerStore.changeStatus({
-					hashId: payload.hashId,
-					status: typesStore.REQUEST_STATUS__SUCCESS
-				})
-			}).catch(() => {
-				uploadManagerStore.changeStatus({
-					hashId: payload.hashId,
-					status: typesStore.REQUEST_STATUS__FAILURE
-				})
-	
-				// SHOW ERROR NOTIFICATION
-				// component: {
-				// 	path: 'Notifications',
-				// 	file: 'Notification_Message'
-				// },
-				// data: {
-				// 	type: 'error',
-				// 	message: 'Attachment Upload Failed'
-				// }
-			})
-		} */
 	}
-})
+}) */

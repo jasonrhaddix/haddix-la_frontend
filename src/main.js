@@ -40,12 +40,6 @@ app.use(UUID)
 // directives statements
 app.directive('match-route', MatchRoute)
 
-console.log("DEBUG CHECK:", {
-  globalThisBuffer: typeof globalThis.Buffer,
-  globalThisProcess: typeof globalThis.process,
-  globalThisStream: typeof globalThis.stream
-});
-
 const routingStore = stores.routingStore()
 routingStore.init().then(() => {
   app.use(router)   // <<-- init router after store init

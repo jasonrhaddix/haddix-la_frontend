@@ -136,7 +136,7 @@ export default defineStore('uploadManage', {
 
 				this.fileHash[hashId].status = typesStore.REQUEST_STATUS__PENDING
 
-				s3UploadStore.s3UlopadRequest(fileObj)
+				s3UploadStore.s3UploadRequest(fileObj)
 
 				// We may still have room, call again
 				if (this.filesQueued.length > 0 && this.filesUploading.length < typesStore.S3__QUEUE_SIZE) {
@@ -188,8 +188,10 @@ export default defineStore('uploadManage', {
 		},
 
 		uploadProgress(payload) {
+			console.log('uploadProgress', payload)
+
 			Object.keys(this.fileHash).forEach((hashId) => {
-				if (this.fileHash[hashId].key === payload.key) {
+				if (hashId === payload.hashId) {
 					this.fileHash[hashId].progress = {
 						loaded: payload.loaded,
 						total: payload.total
