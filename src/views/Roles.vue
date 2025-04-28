@@ -159,7 +159,7 @@ const deleteRole = (item) => {
 						await rolesStore.deleteRole(item._id)
 
 						toastStore.addToast({
-							component: asyncComponents.ToastMessage,,
+							component: asyncComponents.ToastMessage,
 							data: {
 								type: 'success',
 								title: 'Success',
@@ -168,7 +168,7 @@ const deleteRole = (item) => {
 						})
 					} catch (error) {
 						toastStore.addToast({
-							component: asyncComponents.ToastMessage,,
+							component: asyncComponents.ToastMessage,
 							data: {
 								type: 'error',
 								title: 'Error',
