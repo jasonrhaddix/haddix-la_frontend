@@ -26,6 +26,7 @@ export default defineStore('user', {
     async rehydrateUserFromToken() {
       try {
         const res = await api.post(`/auth/tokenrefresh`, {}, { withCredentials: true })
+        console.log('rehydrateUserFromToken', res.data)
         this.updateAccessTokenInState(res.data?.accessToken)
       } catch (err) {
         // console.error('cannot rehydrate from token')

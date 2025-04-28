@@ -123,11 +123,7 @@ function spInitWorld() {
     1,
     1000
   )
-  // spCamera.position.x = 0
-  // spCamera.position.y = -2
-  // spCamera.position.z = 70 // cameraZPos
   
-  // spCamera.position.set(0, -2, 70)
   setInterval(() => {
     spCamera.position.set(0, -2, cameraZPos || 70)
   }, 250)
