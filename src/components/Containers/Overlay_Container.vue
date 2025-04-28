@@ -35,7 +35,7 @@
         </v-container>
 
         <div class="section section__content">
-          <component :is="loadedComponent" :data="props"/>
+          <component :is="component" :data="props"/>
         </div>
       </v-layout>
     </v-container>
@@ -57,9 +57,9 @@
 
   const { component, props } = storeToRefs(overlayStore)
 
-  watch(component, (val) => {
-    loadedComponent.value = markRaw(
-      defineAsyncComponent(() => import(`../../components/${val}`))
-    )
-  })
+  // watch(component, (val) => {
+  //   loadedComponent.value = markRaw(
+  //     defineAsyncComponent(() => import(`../../components/${val}`))
+  //   )
+  // })
 </script>

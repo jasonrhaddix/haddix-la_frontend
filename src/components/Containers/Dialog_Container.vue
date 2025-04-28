@@ -19,8 +19,9 @@ const { openState, component, width, props } = storeToRefs(dialogStore)
 const loadedComponent = ref(null)
 
 watch(component, (val) => {
-  loadedComponent.value = markRaw(
+  loadedComponent.value = component.value
+  /* loadedComponent.value = markRaw(
     defineAsyncComponent(() => import(`../../components/${val}`))
-  )
+  ) */
 })
 </script>

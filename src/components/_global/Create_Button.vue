@@ -5,7 +5,12 @@
 </template>
 
 <script setup>
+import { dynamicComponents } from '@/utils/helpers'
+
+
 import stores from '@/stores/index.js'
+
+console.log('dynamicComponents', dynamicComponents)
 
 const userStore = stores.userStore()
 const dialogStore = stores.ui.dialogStore()
@@ -14,12 +19,12 @@ const overlayStore = stores.ui.overlayStore()
 function createClick() {
   if (userStore.userIsAuthenticated) {
     dialogStore.showDialog({
-      component: '_global/Create_Picker.vue',
+      component: dynamicComponents.CreateProject,
       width: 900
     })
   } else {
     overlayStore.setComponent({
-      component: 'Forms/CreateProject/Project/Project_Create.vue',
+      component: dynamicComponents.CreateProject,
       title: 'Create Project'
     })
 
