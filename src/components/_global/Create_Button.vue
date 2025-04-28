@@ -5,12 +5,9 @@
 </template>
 
 <script setup>
-import { dynamicComponents } from '@/utils/helpers'
-
+import { asyncComponents } from '@/utils/helpers'
 
 import stores from '@/stores/index.js'
-
-console.log('dynamicComponents', dynamicComponents)
 
 const userStore = stores.userStore()
 const dialogStore = stores.ui.dialogStore()
@@ -19,12 +16,12 @@ const overlayStore = stores.ui.overlayStore()
 function createClick() {
   if (userStore.userIsAuthenticated) {
     dialogStore.showDialog({
-      component: dynamicComponents.CreateProject,
+      component: asyncComponents.CreatePicker,
       width: 900
     })
   } else {
     overlayStore.setComponent({
-      component: dynamicComponents.CreateProject,
+      component: asyncComponents.CreateProject,
       title: 'Create Project'
     })
 

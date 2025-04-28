@@ -2,6 +2,8 @@ import api from '@/api'
 import stores from '@/stores'
 // import TokenService from '@/auth/TokenService'
 
+import { asyncComponents } from '@/utils/helpers'
+
 // Core wrapped request
 export async function apiRequest(config) {
   const userStore = stores.userStore()
@@ -18,7 +20,7 @@ export async function apiRequest(config) {
 
     if (status !== 401 && status !== 403) {
       toastStore.addToast({
-        component: '_global/Toast/Toast_Message.vue',
+        component: asyncComponents.ToastMessage,
         data: {
           type: 'error',
           title: 'Error',

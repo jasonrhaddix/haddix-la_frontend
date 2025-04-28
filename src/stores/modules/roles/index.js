@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 
 import api from '@/api'
 import stores from '@/stores'
+import { asyncComponents } from '@/utils/helpers'
 
 import { Role } from '@/models'
 
@@ -58,7 +59,7 @@ export default defineStore('role', {
       } catch (error) {
         routesStore.pushRoute({ name: 'home' })
         toastStore.addToast({
-          component: '_global/Toast/Toast_Message.vue',
+          component: asyncComponents.ToastMessage,
           data: {
             type: 'error',
             title: 'Error',

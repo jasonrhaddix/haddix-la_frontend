@@ -43,7 +43,6 @@
 </template>
 
 <script setup>
-  import { watch, ref, markRaw, defineAsyncComponent } from 'vue'
   import { storeToRefs } from 'pinia'
 
   import stores from '@/stores/index.js'
@@ -53,13 +52,5 @@
   const userStore = stores.userStore()
   const overlayStore = stores.ui.overlayStore()
 
-  const loadedComponent = ref(null)
-
   const { component, props } = storeToRefs(overlayStore)
-
-  // watch(component, (val) => {
-  //   loadedComponent.value = markRaw(
-  //     defineAsyncComponent(() => import(`../../components/${val}`))
-  //   )
-  // })
 </script>

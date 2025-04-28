@@ -68,6 +68,7 @@
 import { reactive } from 'vue'
 
 import stores from '@/stores/index.js'
+import { asyncComponents } from '@/utils/helpers'
 
 import CreateButton from '@/components/_global/Create_Button.vue'
 import CopyLink from '@/components/_global/Copy_Link.vue'
@@ -110,7 +111,7 @@ const togglePublished = async (item) => {
 		})
 
 		toastStore.addToast({
-			component: '_global/Toast/Toast_Message.vue',
+			component: asyncComponents.ToastMessage,
 			data: {
 				type: 'success',
 				title: 'Success',
@@ -119,7 +120,7 @@ const togglePublished = async (item) => {
 		})
 	} catch (error) {
 		toastStore.addToast({
-			component: '_global/Toast/Toast_Message.vue',
+			component: asyncComponents.ToastMessage,
 			data: {
 				type: 'error',
 				title: 'Error',
@@ -158,7 +159,7 @@ const deleteRole = (item) => {
 						await rolesStore.deleteRole(item._id)
 
 						toastStore.addToast({
-							component: '_global/Toast/Toast_Message.vue',
+							component: asyncComponents.ToastMessage,,
 							data: {
 								type: 'success',
 								title: 'Success',
@@ -167,7 +168,7 @@ const deleteRole = (item) => {
 						})
 					} catch (error) {
 						toastStore.addToast({
-							component: '_global/Toast/Toast_Message.vue',
+							component: asyncComponents.ToastMessage,,
 							data: {
 								type: 'error',
 								title: 'Error',

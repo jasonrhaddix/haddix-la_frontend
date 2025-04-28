@@ -66,6 +66,8 @@
 
 	import AppButton from '@/components/_global/App_Button.vue'
 
+	import { asyncComponents } from '@/utils/helpers'
+
 	const contactStore = stores.contactStore()
 	const toastStore = stores.ui.toastStore()
 
@@ -87,7 +89,7 @@
 					message: 'Message sent successfully!',
 					type: 'success'
 				},
-				component: '_global/Toast/Toast_Message.vue'
+				component: asyncComponents.ToastMessage,
 			})
 
 			resetForm()
@@ -98,7 +100,7 @@
 					type: 'error'
 				},
 				// persist: true,
-				component: '_global/Toast/Toast_Message.vue'
+				component: asyncComponents.ToastMessage,
 			})
 		}
 	}

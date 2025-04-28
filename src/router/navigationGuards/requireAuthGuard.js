@@ -2,6 +2,7 @@
 import router from '@/router'
 
 import stores from '@/stores/index.js'
+import { asyncComponents } from '@/utils/helpers'
 
 const requireAuthGuard = (to, from, next) => {
   const routingStore = stores.routingStore()
@@ -12,7 +13,7 @@ const requireAuthGuard = (to, from, next) => {
 
   if (authRoutes.includes(to.name) && !userStore.userIsAuthenticated) {
     toastStore.addToast({
-      component: '_global/Toast/Toast_Message.vue',
+      component: asyncComponents.ToastMessage,
       data: {
         type: 'error',
         title: 'Unauthorized',

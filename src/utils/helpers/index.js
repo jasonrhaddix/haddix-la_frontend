@@ -1,8 +1,13 @@
 import objectHelpers from './helperObjects';
-import dynamicComponents from './dynamicComponents';
+import asyncComponents from './asyncComponents';
 
-export { 
-  objectHelpers,
+export {
+  // Structure these imports
+   
+  /* dataTypes: {
+     objectHelpers
+  } */
   
-  dynamicComponents
+  objectHelpers,
+  asyncComponents
 }

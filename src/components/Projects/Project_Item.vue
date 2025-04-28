@@ -119,6 +119,7 @@
 import { computed } from 'vue'
 
 import stores from '@/stores'
+import { asyncComponents } from '@/utils/helpers'
 
 import AppButton from '@/components/_global/App_Button.vue'
 
@@ -191,7 +192,7 @@ const deleteProject = () => {
             await projectsStore.deleteProject(props.data._id)
 
             toastStore.addToast({
-              component: '_global/Toast/Toast_Message.vue',
+              component: asyncComponents.ToastMessage,
               data: {
 								title: 'Success',
                 message: 'Project deleted successfully!',
@@ -200,7 +201,7 @@ const deleteProject = () => {
             })
           } catch (error) {
             toastStore.addToast({
-              component: '_global/Toast/Toast_Message.vue',
+              component: asyncComponents.ToastMessage,
               data: {
                 title: 'Error',
                 message: 'There was an error deleting the project',

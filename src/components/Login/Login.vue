@@ -74,6 +74,8 @@ import stores from '@/stores/index.js'
 
 import AppButton from '@/components/_global/App_Button.vue'
 
+import { asyncComponents } from '@/utils/helpers'
+
 const loginStore = stores.ui.loginStore()
 const userStore = stores.userStore()
 const toastStore = stores.ui.toastStore()
@@ -94,7 +96,7 @@ const login = async () => {
         message: "You've logged in successfully",
         type: 'success'
       },
-      component: '_global/Toast/Toast_Message.vue'
+      component: asyncComponents.ToastMessage
     })
   } catch (error) {
     toastStore.addToast({
@@ -103,7 +105,7 @@ const login = async () => {
         message: 'There was an error logging you in',
         type: 'error'
       },
-      component: '_global/Toast/Toast_Message.vue'
+      component: asyncComponents.ToastMessage
     })
   }
 }
@@ -118,7 +120,7 @@ const logout = async () => {
         message: "You've logged out successfully",
         type: 'success'
       },
-      component: '_global/Toast/Toast_Message.vue' // consider swapping this to an actual import
+      component: asyncComponents.ToastMessage
     })
   } catch (error) {
     toastStore.addToast({
@@ -127,7 +129,7 @@ const logout = async () => {
         message: 'There was an error logging you out',
         type: 'error'
       },
-      component: '_global/Toast/Toast_Message.vue'
+      component: asyncComponents.ToastMessage
     })
   }
 }

@@ -337,8 +337,7 @@
   import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 
   import stores from '@/stores/index.js'
-  import { Project } from '@/models'
-  import { objectHelpers } from '@/utils/helpers'
+  import { objectHelpers, asyncComponents } from '@/utils/helpers'
 
   import AttachmentUploader from '@/components/_global/Attachment_Uploader.vue'
   import AttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
@@ -566,7 +565,7 @@
         })
         
         toastStore.addToast({
-          component: '_global/Toast/Toast_Message.vue',
+          component: asyncComponents.ToastMessage,
           data: {
             type: 'success',
             title: 'Project Updated!',
@@ -575,7 +574,7 @@
         })
       } catch (error) {
         toastStore.addToast({
-          component: '_global/Toast/Toast_Message.vue',
+          component: asyncComponents.ToastMessage,
           data: {
             type: 'error',
             title: 'Error',
@@ -594,7 +593,7 @@
         })
 
         toastStore.addToast({
-          component: '_global/Toast/Toast_Message.vue',
+          component: asyncComponents.ToastMessage,
           data: {
             type: 'success',
             title: 'Project Created!',
@@ -603,7 +602,7 @@
         })
       } catch (error) {
         toastStore.addToast({
-          component: '_global/Toast/Toast_Message.vue',
+          component: asyncComponents.ToastMessage,
           data: {
             type: 'error',
             title: 'Error',

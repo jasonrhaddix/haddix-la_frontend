@@ -29,6 +29,8 @@
 <script setup>
 import stores from '@/stores/index.js'
 
+import { asyncComponents } from '@/utils/helpers'
+
 const typesStore = stores.config.typesStore()
 const overlayStore = stores.ui.overlayStore()
 const dialogStore = stores.ui.dialogStore()
@@ -40,7 +42,7 @@ function openForm(type) {
     case typesStore.PROJECT_TYPE__PERSONAL:
     case typesStore.PROJECT_TYPE__EXPERIMENT:
       overlayStore.setComponent({
-        component: 'Forms/CreateProject/Project/Project_Create.vue',
+        component: asyncComponents.CreateProject,
         title: 'Create Project'
       })
 
@@ -49,7 +51,7 @@ function openForm(type) {
 
     case typesStore.PROJECT_TYPE__NEW_ROLE:
       overlayStore.setComponent({
-        component: 'Forms/CreateProject/Role/Role_Create.vue',
+        component: asyncComponents.CreateRole,
         title: 'Create Role'
       })
 
