@@ -9,6 +9,8 @@ import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfil
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 
 export default defineConfig({
+  base: '/',
+
   optimizeDeps: {
     esbuildOptions: {
       define: {
@@ -23,10 +25,12 @@ export default defineConfig({
       ]
     }
   },
+  
   plugins: [
     vue(),
     VueDevTools()
   ],
+  
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -36,6 +40,7 @@ export default defineConfig({
       process: 'process/browser'
     }
   },
+  
   build: {
     rollupOptions: {
       plugins: [
