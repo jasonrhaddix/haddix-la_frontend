@@ -36,10 +36,8 @@ var spSphere2Geom
   spInitMediaQueries()
   spInitWorld()
 
-  setTimeout(() => {
-    spInitGeomSphere1()
-    spInitGeomSphere2()
-  }, 500)
+  spInitGeomSphere1()
+  spInitGeomSphere2()
   
   setTimeout(function () {
     spInitAnimate()
@@ -98,7 +96,9 @@ function spInitEvents() {
 function spInitResize() {
   spInitMediaQueries()
 
-  spCamera.position.set(0, -2, cameraZPos || 70)
+  /* setTimeout(() => {
+    spCamera.position.set(0, -2, cameraZPos || 70)
+  }, 100) */
 
   SCREEN_WIDTH = window.innerWidth
   SCREEN_HEIGHT = window.innerHeight
@@ -123,9 +123,15 @@ function spInitWorld() {
     1,
     1000
   )
-  spCamera.position.x = 0
-  spCamera.position.y = -2
-  spCamera.position.z = cameraZPos
+  // spCamera.position.x = 0
+  // spCamera.position.y = -2
+  // spCamera.position.z = 70 // cameraZPos
+  
+  // spCamera.position.set(0, -2, 70)
+  setInterval(() => {
+    spCamera.position.set(0, -2, cameraZPos || 70)
+  }, 250)
+    
   spCamera.updateProjectionMatrix()
 
   spRenderer = new THREE.WebGLRenderer({
