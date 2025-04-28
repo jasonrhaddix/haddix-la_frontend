@@ -419,6 +419,10 @@
   })
 
   const initForm = () => {
+    if (propsStore.projectTypes.length) {
+      formModel.type = propsStore.projectTypes.find(i => i.value === 'work')?.value
+    }
+
     if (isEditMode.value) {
       Object.assign(formModel, {
         ...updateProject.value,

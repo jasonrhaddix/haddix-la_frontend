@@ -134,7 +134,7 @@ const editRole = (item) => {
 	const overlayStore = stores.ui.overlayStore()
 
 	overlayStore.setComponent({
-		component: 'Forms/CreateProject/Role/Role_Create.vue',
+		component: asyncComponents.CreateRole,
 		title: 'Edit Role',
 		props: {
 			id: item._id,
@@ -147,7 +147,7 @@ const editRole = (item) => {
 
 const deleteRole = (item) => {
 	dialogStore.showDialog({
-    component: '_global/Confirmation_Dialog.vue',
+    component: asyncComponents.ConfirmationDialog,
     width: 650,
     props: {
       title: 'Delete Role',

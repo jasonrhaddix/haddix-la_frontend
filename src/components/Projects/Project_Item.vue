@@ -168,7 +168,7 @@ const projectClient = computed(() => {
 
 const updateProject = () => {
   overlayStore.setComponent({
-      component: 'Forms/CreateProject/Project/Project_Create.vue',
+      component: asyncComponents.CreateProject,
       title: 'Update Project',
       props: {
         id: props.data._id,
@@ -180,7 +180,7 @@ const updateProject = () => {
 
 const deleteProject = () => {
   dialogStore.showDialog({
-    component: '_global/Confirmation_Dialog.vue',
+    component: asyncComponents.ConfirmationDialog,
     width: 650,
     props: {
       title: 'Delete Project',
