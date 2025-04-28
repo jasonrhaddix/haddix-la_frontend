@@ -188,8 +188,6 @@ export default defineStore('uploadManage', {
 		},
 
 		uploadProgress(payload) {
-			console.log('uploadProgress', payload)
-
 			Object.keys(this.fileHash).forEach((hashId) => {
 				if (hashId === payload.hashId) {
 					this.fileHash[hashId].progress = {

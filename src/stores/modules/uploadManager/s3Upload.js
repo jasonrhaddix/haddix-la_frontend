@@ -34,7 +34,6 @@ export default defineStore('s3Upload', {
             'Content-Type': payload.file.type || 'application/octet-stream'
           },
           onUploadProgress: (progressEvent) => {
-						console.log('progressEvent', progressEvent)
             uploadManagerStore.uploadProgress({ ...progressEvent, hashId: payload.hashId })
           }
         })
