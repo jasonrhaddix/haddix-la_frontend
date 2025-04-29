@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import prerender from 'vite-plugin-prerender'
+import { ViteSSG } from 'vite-plugin-ssg'
 
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
@@ -30,8 +30,8 @@ export default defineConfig({
   plugins: [
     vue(),
     VueDevTools(),
-    prerender({
-      routes: ['/about'] // 👈 pre-generate /about.html at build
+    ViteSSG({
+      includedRoutes: ['/about']
     })
   ],
   
