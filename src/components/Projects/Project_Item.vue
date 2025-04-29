@@ -55,9 +55,6 @@
             <h3>{{ projectClient }}</h3>
             <h1>{{ data.title }}</h1>
             <p><i>{{ data.subtitle }}</i></p>
-            <!-- <p>{{ projectClient }}</p>
-            <h4>{{ data.title }}</h4>
-            <h5>{{ data.subtitle }}</h5> -->
             <div v-if="clickCallback || data.link" class="divider" />
             <AppButton
               v-if="clickCallback || data.link"

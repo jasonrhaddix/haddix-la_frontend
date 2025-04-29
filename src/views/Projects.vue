@@ -30,7 +30,7 @@ import { computed } from 'vue'
 
 import stores from '@/stores/index.js'
 
-import SphereBG from '@/components/SphereBG/Sphere_BG.vue'
+// import SphereBG from '@/components/SphereBG/Sphere_BG.vue'
 import ProjectItem from '@/components/Projects/Project_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
 
