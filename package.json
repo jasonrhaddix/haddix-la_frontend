@@ -23,7 +23,6 @@
     "@tiptap/pm": "^2.3.1",
     "@tiptap/starter-kit": "^2.3.1",
     "@tiptap/vue-3": "^2.3.1",
-    "@wroud/vite-plugin-ssg": "^5.1.4",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.6.8",
     "dayjs": "^1.11.11",

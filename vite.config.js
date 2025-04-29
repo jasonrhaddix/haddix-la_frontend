@@ -3,7 +3,6 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import { ViteSSG } from '@wroud/vite-plugin-ssg'
 
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
@@ -29,10 +28,7 @@ export default defineConfig({
   
   plugins: [
     vue(),
-    VueDevTools(),
-    ViteSSG({
-      includedRoutes: ['/about']
-    })
+    VueDevTools()
   ],
   
   resolve: {
