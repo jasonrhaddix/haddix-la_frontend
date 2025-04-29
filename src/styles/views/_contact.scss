@@ -1,18 +1,18 @@
 .contact-view {
+  .contact-view--inner {
+    @extend .app-view--inner;
 
+    max-width: 1600px;
+    width: 80%;
+  }
+}
+
+@include respond-to(medium) {
+  .contact-view {
     .contact-view--inner {
-        @extend .app-view--inner;
 
-        .contact-view--content {
-            // @extend .app-view--content;
-            
-            .contact-form {
-
-            }
-
-            .contact--map {
-                
-            }
-        }
+      max-width: 1200px;
+      width: 90% !important;
     }
+  }
 }

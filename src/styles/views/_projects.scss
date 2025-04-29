@@ -5,6 +5,7 @@
 
     .projects__add-btn {
         @include center-content('horizontal');
+        
         bottom: 1rem;
         position: fixed;
         z-index: 6;
@@ -21,14 +22,12 @@
 
 
 @include respond-to(medium) {
-    
     .projects-view {
-    
+        
         .projects__list {
-    
+            
             .projects-item {
-                // width: 100vw;
-                // height: 15rem;
+                height: 45vh;
                 
                 margin: {
                     // top: 5rem;

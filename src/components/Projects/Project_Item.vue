@@ -25,67 +25,24 @@
               @click="deleteProject" />
           </v-list>
         </v-menu>
-
-        <!-- <v-btn
-          class="btn edit-btn"
-          size="x-small"
-          color="darkred"
-          icon="edit"
-          @click="updateProject" />
-
-        <v-btn
-          class="btn delete-btn"
-          size="x-small"
-          color="darkred"
-          icon="close"
-          @click="deleteProject" /> -->
-
-        <!-- Old Buttons -->
-        <!-- <div
-          v-ripple
-          class="btn edit-btn"
-          @click="updateRecord">
-          <v-icon size="22" icon="edit" />
-        </div>
-        <div
-          v-ripple
-          class="btn delete-btn"
-          @click="deleteProject">
-          <v-icon size="26" icon="close" />
-        </div> -->
       </div>
+      
       <!-- <div
-                class="image-container">
-                <div
-                    v-for="(item, index) in patterns[0].p"
-                    :key="$uuid.v4()"
-                    :class="`poly poly-${index}`"
-                    :style="{clipPath:`polygon(${item})`}">
-                    <v-img
-                        contain
-                        :src="image"></v-img>
-                </div>
-                <v-img
-                    contain
-                    class="hidden-img"
-                    :src="image"></v-img>
-            </div> -->
-
-      <!-- <div class="title-container" >
-                <div class="title-inner">
-                    <div class="project-title">
-                        <p>{{ client }}</p>
-                        <h4>{{ title }}</h4>
-                        <h5>{{ subtitle }}</h5>
-                        <div class="divider" />
-                        <app-btn
-                            label="View Project"
-                            @click.native.stop="clickItem"
-                            @mouseover.native.stop="hover=true"
-                            @mouseout.native.stop="hover=false"/>
-                    </div>
-                </div>
-            </div> -->
+        class="image-container">
+        <div
+          v-for="(item, index) in patterns[0].p"
+          :key="index"
+          :class="`poly poly-${index}`"
+          :style="{ clipPath:`polygon(${item})` }">
+          <v-img
+            contain
+            :src="projectThumbnail"></v-img>
+        </div>
+        <v-img
+          contain
+          class="hidden-img"
+          :src="projectThumbnail"></v-img>
+      </div> -->
 
       <div class="image__main">
         <v-img eager contain :src="projectThumbnail"></v-img>
@@ -130,6 +87,22 @@ const overlayStore = stores.ui.overlayStore()
 const dialogStore = stores.ui.dialogStore()
 const toastStore = stores.ui.toastStore()
 const userStore = stores.userStore()
+
+/* const patterns = [
+  {
+    p: [
+      '0% 0%, 20% 50%, 0% 100%',
+      '0% 0%, 20% 0%, 50% 20%, 20% 50%',
+      '20% 0%, 75% 0%, 50% 20%',
+      '75% 0%, 100% 0%, 100% 20%, 90% 50%, 50% 20%',
+      '50% 20%, 90% 50%, 75% 100%, 60% 100%, 20% 50%',
+      '100% 20%, 100% 57%, 90% 50%',
+      '90% 50%, 100% 57%, 100% 100%, 75% 100%',
+      '20% 50%, 60% 100% , 75% 100%, 0% 100%'
+    ]
+
+  }
+] */
 
 const props = defineProps({
   data: {
