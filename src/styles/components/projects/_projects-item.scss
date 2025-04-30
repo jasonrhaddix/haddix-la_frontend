@@ -66,10 +66,12 @@ $animationDelay: 100ms;
         left: 0;
         height: 100%;
         width: 100%;
-        background: {
+        // background: linear-gradient(to bottom, rgba(0, 0, 0, 0) -25%, rgba(0, 0, 0, 0.4) 47%, rgba(0, 0, 0, 0) 125%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+        /* background: {
           color: rgba(0, 0, 0, 0.25);
           // color: $app-color-black-alpha-50;
-        }
+        } */
       }
     }
 
@@ -128,12 +130,12 @@ $animationDelay: 100ms;
       width: 100%;
       height: 100%;
       top: 0;
-
+      
       .title-inner {
         position: relative;
         width: 100%;
         height: 100%;
-
+        
         .project-title {
           @include center-content('vertical', -20px);
           width: 100%;
@@ -167,7 +169,7 @@ $animationDelay: 100ms;
 
           p {
             text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.6);
-            font-weight: 500;
+            font-weight: 600;
             font-family: 'DIN-CondLight';
             line-height: 3rem;
             font-size: 1.8rem;
@@ -256,7 +258,7 @@ $animationDelay: 100ms;
       }
     } */
 
-    &:hover {
+    /* &:hover {
       .image__main {
         .scrim {
           background: {
@@ -264,7 +266,7 @@ $animationDelay: 100ms;
           }
         }
       }
-    }
+    } */
   }
 }
 
