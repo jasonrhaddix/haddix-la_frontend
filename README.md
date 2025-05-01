@@ -117,6 +117,21 @@ Frontend will run at:\
 
 ---
 
+## Creating users (Postman)
+```
+1. Register a New User
+	•	Method: POST
+	•	URL: http://localhost:5000/api/auth/register
+	•	Body (JSON):
+
+    {
+      "email": "test@example.com",
+      "password": "YourSecurePassword"
+    }
+```
+
+---
+
 ## 📚 Project Structure Overview
 
 ```
