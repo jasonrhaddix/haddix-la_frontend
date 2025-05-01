@@ -5,6 +5,7 @@ import api from '@/api'
 import stores from '@/stores'
 
 import { Project } from '@/models'
+import { sort } from 'store/storages/all'
 
 export default defineStore('projects', {
   state: () => ({
@@ -83,25 +84,6 @@ export default defineStore('projects', {
       }
     },
 
-    // async updateProject(id, payload) {
-    //   this.saving = true
-      
-    //   try {
-    //     const res = await api.patch(`/projects/${id}`, payload)
-    //     const project = Project.projectDetails(res.data)
-        
-    //     // this.project = project <<-- this line is not needed as we are updating the project in the list
-    //     this.projects.splice(this.projects.findIndex(p => p._id === id), 1, project)
-
-    //     return project
-    //   } catch (err) {
-    //     throw error
-    //   } finally {
-    //     this.saving = false
-    //   }
-
-    // },
-
     async updateProject(id, payload) {
       this.saving = true
     
@@ -114,6 +96,21 @@ export default defineStore('projects', {
         return project
       } catch (error) {
         throw error
+      } finally {
+        this.saving = false
+      }
+    },
+
+    async sortProjects(payload) {
+      this.saving = true
+      
+      try {
+        const res = await api.patch(`/projects/sort`, payload)
+        this.projects = res.data.map((item) => Project.projectBase(item))
+        
+        return this.projects
+      } catch (err) {
+        throw err
       } finally {
         this.saving = false
       }

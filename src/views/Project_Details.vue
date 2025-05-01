@@ -189,6 +189,8 @@
 
 	import stores from '@/stores/index.js'
 
+	import { asyncComponents } from '@/utils/helpers'
+
 	import AppButton from '@/components/_global/App_Button.vue'
 	import LanguageGraph from '@/components/_global/Language_Graph.vue'
 
@@ -246,7 +248,7 @@
 
 	const showFullsizeImage = (item) => {
 		dialogStore.showDialog({
-      component: '_global/Photo_Viewer.vue',
+      component: asyncComponents.PhotoViewer,
 			width: '70%',
 				props: {
 					image: item.uri

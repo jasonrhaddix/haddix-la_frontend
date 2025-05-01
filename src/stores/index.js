@@ -20,6 +20,7 @@ import routingStore from './modules/routing/index.js'
 
 //
 import dialogStore from './modules/ui/dialog.js'
+import drawerStore from './modules/ui/drawer.js'
 import headerStore from './modules/ui/header.js'
 import loginStore from './modules/ui/login.js'
 import navigationStore from './modules/ui/navigation.js'
@@ -45,6 +46,7 @@ export default {
   // ui modules
   ui: {
     dialogStore,
+    drawerStore,
     headerStore,
     loginStore,
     navigationStore,

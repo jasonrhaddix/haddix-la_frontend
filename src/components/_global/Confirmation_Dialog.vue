@@ -8,6 +8,7 @@
       <div class="confirmation__options">
         <div class="options__inner">
           <AppButton
+            variant="colorful"
             :label="props.cancel.label"
             class="btn cancel-btn"
             @click="cancelAction" />

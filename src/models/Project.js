@@ -1,4 +1,5 @@
 import stores from '@/stores'
+import { sort } from 'store/storages/all'
 
 // PROJECT BASE ----------------------------------------
 const projectBase = (data) => {
@@ -6,6 +7,7 @@ const projectBase = (data) => {
 
   return {
     _id: data._id,
+    sortOrder: data.sortOrder,
     projectId: data.projectId,
     sessionId: data.sessionId,
     dateCreated: data.dateCreated,

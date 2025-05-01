@@ -2,6 +2,14 @@
   <div class="projects-view">
     <!-- <SphereBG :style="{position: 'fixed'}" class="sphere-bg" /> -->
 
+    <div
+      v-if="userStore.userIsAuthenticated"
+      class="projects__sort-btn">
+      <v-btn
+        color="primary"
+        @click="openSort">Sort</v-btn>
+    </div>
+
     <div class="projects__add-btn">
       <CreateButton />
     </div>
@@ -30,6 +38,8 @@ import { computed } from 'vue'
 
 import stores from '@/stores/index.js'
 
+import { asyncComponents } from '@/utils/helpers'
+
 // import SphereBG from '@/components/SphereBG/Sphere_BG.vue'
 import ProjectItem from '@/components/Projects/Project_Item.vue'
 import CreateButton from '@/components/_global/Create_Button.vue'
@@ -37,6 +47,7 @@ import CreateButton from '@/components/_global/Create_Button.vue'
 const typesStore = stores.config.typesStore()
 const routingStore = stores.routingStore()
 const projectsStore = stores.projectsStore()
+const drawerStore = stores.ui.drawerStore()
 const userStore = stores.userStore()
 
 const filteredProjects = computed(() => {
@@ -53,6 +64,12 @@ function navigateToProject(data) {
   routingStore.pushRoute({
     name: 'project-details',
     params: data
+  })
+}
+
+const openSort = () => {
+  drawerStore.showDrawer({
+    component: asyncComponents.ProjectsSort,
   })
 }
 

@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-	import { defineProps, computed } from 'vue'
+	import { computed } from 'vue'
 
 	import placeholderImg from '@/assets/app/images/project-placeholder-thumb-blur.jpg'
 
