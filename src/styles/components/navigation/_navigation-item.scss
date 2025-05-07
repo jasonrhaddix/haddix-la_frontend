@@ -14,7 +14,7 @@
 
         h1 {
 			text-transform: uppercase;
-			// color: $app-color-secondary !important;
+			color: $app-color-white !important;
         }
 
         &:not(.nav-item__hidden) {
@@ -50,7 +50,9 @@
         .nav-item:not(.nav-item__hidden) {
 
             h1 {
-                color: $color-m-white !important;
+                color: $color-m-grey !important;
+                // color: $color-m-white !important;
+                // color: $app-color-secondary !important;
             }
         }
 

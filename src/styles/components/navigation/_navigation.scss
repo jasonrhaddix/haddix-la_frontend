@@ -35,15 +35,29 @@
             color: $app-color-nav-background;
         }
 
+        
         nav {
-            @include center-content(0, -4.5rem);
+            @include center-content(0, -8.5rem);
 			width: 400px;
 			pointer-events: none !important;
+            
+            .header--photo-container {
+                display: flex;
+    
+                .header--photo {
+                    margin: 1rem auto;
+    
+                    img {
+                        height: 200px;
+                        opacity: 0.75;
+                    }
+                }
+            }
 
             & > div {
                 margin: {
-                    top: 1rem;
-                    bottom: 1rem;
+                    top: 0.5rem;
+                    bottom: 0.5rem;
                 }
             }
         }

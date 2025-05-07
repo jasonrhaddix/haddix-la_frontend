@@ -58,7 +58,7 @@
 
   .login-btn__container {
     transition: opacity 400ms ease-in-out;
-    opacity: 0.5; // <<-- Uncomment this line to hide the button initially
+    // opacity: 0.5; // <<-- Uncomment this line to hide the button initially
 
     .login-btn {
       position: fixed;

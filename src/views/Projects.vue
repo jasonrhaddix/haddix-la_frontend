@@ -6,7 +6,7 @@
       v-if="userStore.userIsAuthenticated"
       class="projects__sort-btn">
       <v-btn
-        color="primary"
+        small color="primary"
         @click="openSort">Sort</v-btn>
     </div>
 

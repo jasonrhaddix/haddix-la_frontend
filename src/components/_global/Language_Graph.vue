@@ -53,26 +53,31 @@
   const counterClockwise = false
 
   let endAngle = 100 * percentToRadian
-  let radius = 47
+  let radius = 52
   ctx.beginPath()
   ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
   ctx.lineWidth = 3
   ctx.strokeStyle = '#3100BD'
   ctx.stroke()
 
+  ctx.beginPath()
+  ctx.arc(x, y, 40, 0, 2 * Math.PI, false)
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.6)' // '#000000' // change to your desired background color
+  ctx.fill()
+
   endAngle = 100 * percentToRadian
-  radius = 40
+  radius = 45
   ctx.beginPath()
   ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
-  ctx.lineWidth = 3
-  ctx.strokeStyle = 'rgba(255,0,133,0.2)'
+  ctx.lineWidth = 5
+  ctx.strokeStyle = '#4C002E', // 'rgba(255,0,133,0.2)'
   ctx.stroke()
 
   endAngle = percent * percentToRadian
-  radius = 40
+  radius = 45
   ctx.beginPath()
   ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise)
-  ctx.lineWidth = 3
+  ctx.lineWidth = 5
   ctx.strokeStyle = '#FF0099'
   ctx.stroke()
 }

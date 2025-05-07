@@ -12,6 +12,12 @@
     />
     <div class="navigation-poly">
       <nav>
+        <div class="header--photo-container">
+          <div class="header--photo">
+            <img :src="BioPhoto" />
+          </div>
+        </div>
+
         <template v-for="item in sitenav">
           <navigation-item
             v-if="hasAccess(item)"
@@ -52,6 +58,8 @@ import sitenav from '@/config/sitenav.js'
 
 import HamburgerMenu from '@/components/_global/Hamburger_Menu.vue'
 import NavigationItem from '@/components/Navigation/Navigation_Item.vue'
+
+import BioPhoto from '@/assets/app/images/profile-photo.png'
 
 const userStore = stores.userStore()
 const routingStore = stores.routingStore()

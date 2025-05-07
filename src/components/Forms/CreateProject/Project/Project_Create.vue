@@ -296,7 +296,7 @@
       <!-- Resources -->
       <div class="meta-section project__languages">
         <div class="section__title">
-          <h3>Project Technologies<span class="caption"> (Optional)</span></h3>
+          <h3>Project Stack<span class="caption"> (Optional)</span></h3>
           <p>Resources used creating this project.</p>
         </div>
         <div class="languages__container">
