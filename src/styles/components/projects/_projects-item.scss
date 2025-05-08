@@ -50,13 +50,6 @@ $animationDelay: 100ms;
     .image__main {
       box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.3);
       background: $app-color-text-dark;
-      // max-width: 70rem;
-      // width: 90%;
-      // opacity: 0.7;
-
-      /* img {
-        width: 100%;
-      } */
 
       .scrim {
         transition: background 0.25s ease-in-out;
@@ -283,7 +276,7 @@ $animationDelay: 100ms;
       
       .image__main {
         height: 100%;
-        padding: 0.5rem 0;
+        margin: 1.5rem 0;
 
         .v-image {
           height: 100%;
