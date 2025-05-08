@@ -22,12 +22,56 @@
           <navigation-item
             v-if="hasAccess(item)"
             :key="`${item.label}-${$uuid.v4()}`"
-            v-match-route:class.active="item.routeName"
+            :class="[{ 'active': item.routeName === currentRouteName }]"
             :text="item.label"
             :styles="{ color: '#646468', fontSize: '3rem' }"
             @click.native="routingStore.pushRoute({ name: item.routeName })"
           />
         </template>
+
+        <div class="social-media--container">
+            <div class="social-media--list">
+              <a
+                class="social-list"
+                href="http://github.com/jasonrhaddix"
+                target="_blank"
+              >
+                <FontAwesomeIcon :icon="faGithub" size="2x" />
+              </a>
+
+              <a
+                class="social-list"
+                href="https://codepen.io/Jasonrhaddix/"
+                target="_blank"
+              >
+                <FontAwesomeIcon :icon="faCodepen" size="2x" />
+              </a>
+
+              <a
+                class="social-list"
+                href="https://medium.com/@jasonrhaddix"
+                target="_blank"
+              >
+                <FontAwesomeIcon :icon="faMedium" size="2x" />
+              </a>
+
+              <a
+                class="social-list"
+                href="https://x.com/jasonrhaddix"
+                target="_blank"
+              >
+                <FontAwesomeIcon :icon="faTwitter" size="2x" />
+              </a>
+
+              <a
+                class="social-list"
+                href="https://www.linkedin.com/in/jasonrhaddix/"
+                target="_blank"
+              >
+                <FontAwesomeIcon :icon="faLinkedin" size="2x" />
+              </a>
+            </div>
+          </div>
       </nav>
     </div>
     <header :class="[{ open: headerStore.openState }]">
@@ -49,6 +93,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import stores from '@/stores/index.js'
 import router from '@/router/index.js'
@@ -61,6 +106,14 @@ import NavigationItem from '@/components/Navigation/Navigation_Item.vue'
 
 import BioPhoto from '@/assets/app/images/profile-photo.png'
 
+import {
+  faGithub,
+  faMedium,
+  faTwitter,
+  faCodepen,
+  faLinkedin
+} from '@fortawesome/free-brands-svg-icons'
+
 const userStore = stores.userStore()
 const routingStore = stores.routingStore()
 const headerStore = stores.ui.headerStore()
@@ -71,6 +124,10 @@ const hasAccess = computed(() => {
     return !item.needsAuth || (item.needsAuth && userStore.userIsAuthenticated)
   }
 })
+
+const currentRouteName = computed(() => {
+return router.currentRoute.value.name
+})  
 
 const routeName = () => {
   return headerStore.title || router.currentRoute.value.name

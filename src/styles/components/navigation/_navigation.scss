@@ -37,7 +37,7 @@
 
         
         nav {
-            @include center-content(0, -8.5rem);
+            @include center-content(0, -6.5rem);
 			width: 400px;
 			pointer-events: none !important;
             
@@ -48,8 +48,8 @@
                     margin: 1rem auto;
     
                     img {
-                        height: 200px;
-                        opacity: 0.75;
+                        height: 175px;
+                        opacity: 0.8;
                     }
                 }
             }
@@ -58,6 +58,26 @@
                 margin: {
                     top: 0.5rem;
                     bottom: 0.5rem;
+                }
+            }
+
+            .social-media--container {
+                display: flex;
+                width: 100%;
+                margin-top: 2rem;
+      
+                .social-media--list {
+                  display: flex;
+                  margin: 0 auto;
+      
+                  a {
+                    color: $app-color-white-alpha-25;
+                    margin: 0 1.25rem;
+      
+                    &:hover {
+                      color: $app-color-secondary;
+                    }
+                  }
                 }
             }
         }
@@ -188,8 +208,8 @@
             nav {
                 & > div {
                     margin: {
-                        top: 1rem;
-                        bottom: 1rem;
+                        top: 0.4rem;
+                        bottom: 0.4rem;
                     }
                 }
             }
