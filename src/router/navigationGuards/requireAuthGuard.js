@@ -4,14 +4,21 @@ import router from '@/router'
 import stores from '@/stores/index.js'
 import { asyncComponents } from '@/utils/helpers'
 
-const requireAuthGuard = (to, from, next) => {
+const requireAuthGuard = async (to, from, next) => {
   const routingStore = stores.routingStore()
   const userStore = stores.userStore()
   const toastStore = stores.ui.toastStore()
 
   const authRoutes = ['roles'] // <<-- MOVE TO CONFIG
 
-  if (authRoutes.includes(to.name) && !userStore.userIsAuthenticated) {
+  const isAuthRoute = authRoutes.includes(to.name)
+  const userIsAuthenticated = userStore.userIsAuthenticated
+
+  /* if (isAuthRoute && !userIsAuthenticated) {
+    await userStore.rehydrateUserFromToken()
+  } */
+
+  if (isAuthRoute && !userIsAuthenticated) {    
     toastStore.addToast({
       component: asyncComponents.ToastMessage,
       data: {
