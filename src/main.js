@@ -15,6 +15,7 @@ import { MatchRoute } from '@/directives'
 
 // plugins
 import Vuetify from '@/plugins/vuetify'
+import i18next from '@/plugins/i18nextParser'
 // import Ripple from 'vuetify/lib/directives/ripple/index.mjs';
 
 // ===============================================================
@@ -36,6 +37,8 @@ app.use(stores.root)
 
 app.use(Vuetify)
 app.use(UUID)
+
+i18next(app)
 
 // directives statements
 app.directive('match-route', MatchRoute)

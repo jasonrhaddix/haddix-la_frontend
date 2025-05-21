@@ -4,7 +4,7 @@
 
     <div class="home-view--content">
       <Logo class="animated-logo" />
-      <p>Portfolio for Jason R. Haddix</p>
+      <p>{{ $t('views:HOME.SUBTITLE', { name: 'Jason R. Haddix' }) }}</p>
       <div class="divider" />
       <div class="view-work-btn">
         <AppButton

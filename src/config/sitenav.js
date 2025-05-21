@@ -6,6 +6,12 @@ const sitenav = [
 		children: []
 	},
 	{
+		label: 'Workflows',
+		routeName: 'workflows',
+		needsAuth: false,
+		children: []
+	},
+	{
 		label: 'Roles',
 		routeName: 'roles',
 		needsAuth: true,

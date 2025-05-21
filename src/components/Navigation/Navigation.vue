@@ -24,7 +24,7 @@
             :key="`${item.label}-${$uuid.v4()}`"
             :class="[{ 'active': item.routeName === currentRouteName }]"
             :text="item.label"
-            :styles="{ color: '#646468', fontSize: '3rem' }"
+            :styles="{ color: '#646468', fontSize: '2.5rem' }"
             @click.native="routingStore.pushRoute({ name: item.routeName })"
           />
         </template>

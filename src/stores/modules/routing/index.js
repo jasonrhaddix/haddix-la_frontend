@@ -96,6 +96,11 @@ export default defineStore('routing', {
       projectsStore.fetchProjectById(params?._id)
     },
 
+    enterWorkflowsRoute() {
+      // const rolesStore = stores.rolesStore()
+      // rolesStore.fetchRoles()
+    },
+
     enterRolesRoute() {
       const rolesStore = stores.rolesStore()
       rolesStore.fetchRoles()

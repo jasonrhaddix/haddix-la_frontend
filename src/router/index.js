@@ -64,6 +64,19 @@ const router = createRouter({
       }
     },
     {
+      path: '/workflows',
+      name: 'workflows',
+      component: () => import('@/views/Workflows.vue'),
+      beforeEnter: [requireAuthGuard],
+      meta: {
+        beforeEnterCallback: (to, from, next) => {
+          stores.routingStore().enterWorkflowsRoute()
+          
+          next()
+        }
+      }
+    },
+    {
       path: '/roles',
       name: 'roles',
       component: () => import('@/views/Roles.vue'),
