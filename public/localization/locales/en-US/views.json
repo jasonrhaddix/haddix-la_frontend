@@ -1,5 +1,8 @@
 {
     "HOME": {
         "SUBTITLE": "Portfolio for {{name}}"
+    },
+    "ROLE_DETAILS": {
+        "SUBTITLE": "Relevant experience for"
     }
 }

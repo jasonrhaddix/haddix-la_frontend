@@ -11,7 +11,7 @@
         <div class="scrim" />
 
         <div class="title__container">
-          <h4>Relevant experience for</h4>
+          <h4>{{ $t('views:ROLE_DETAILS.SUBTITLE') }}</h4>
           <h1>{{ role.role }}</h1>
           <h3><!-- <span>at</span> --> {{ role.company }}</h3>
         </div>

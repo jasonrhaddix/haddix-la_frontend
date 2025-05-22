@@ -1,7 +1,7 @@
 <template>
 	<div class="contact-form">
 			<div class="contact--title">
-					<h2>Drop Me a Line</h2>
+					<h2>{{ $t('components:CONTACT_FORM.TITLE') }}</h2>
 			</div>
 			<div class="contact--form">
 					<v-row class="form-flield--name">
