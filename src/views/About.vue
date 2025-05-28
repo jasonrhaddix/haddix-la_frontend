@@ -57,7 +57,7 @@
 
         <div class="about-bio">
           <div class="about-bio--inner">
-            <h2>Hi, I'm Jason R. Haddix</h2>
+            <h2>{{ $t('views:ABOUT.GREETING_NAME', { name: 'Jason R. Haddix' }) }}</h2>
             <p>I'm a Senior Full-Stack Engineer with over {{yearsExperience}} years of professional experience building large, data-driven applications using cutting-edge technologies. I specialize in developing scalable web applications that balance performance, usability, and maintainability.</p>
             <p>My motivation lies in solving complex problems, delivering clean, effective solutions, and staying ahead of the tech curve. I thrive in environments where I can push boundaries, learn continuously, and build products that make an impact.</p>
             <p>I’m especially passionate about exploring new technologies and mentoring junior engineers — sharing knowledge, improving team dynamics, and shaping the next wave of builders in the industry.</p>

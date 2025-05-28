@@ -1,4 +1,7 @@
 {
+    "ABOUT": {
+        "GREETING_NAME": "Hi, I'm {{name}}"
+    },
     "HOME": {
         "SUBTITLE": "Portfolio for {{name}}"
     },
