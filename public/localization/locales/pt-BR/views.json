@@ -1,8 +1,8 @@
 {
-    "HOME": {
-        "SUBTITLE": ""
-    },
-    "ROLE_DETAILS": {
-        "SUBTITLE": ""
-    }
+  "HOME": {
+    "SUBTITLE": "Portfólio de {{name}}"
+  },
+  "ROLE_DETAILS": {
+    "SUBTITLE": "Experiência relevante para"
+  }
 }
