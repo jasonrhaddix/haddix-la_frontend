@@ -1,24 +1,11 @@
 {
-<<<<<<< Updated upstream
-  "ABOUT": {
-    "GREETING_NAME": "Hola, soy {{name}}"
-  },
-  "HOME": {
-    "SUBTITLE": "Portafolio de {{name}}"
-  },
-  "ROLE_DETAILS": {
-    "SUBTITLE": "Experiencia relevante para"
-  }
-}
-=======
     "ABOUT": {
-        "GREETING_NAME": "Hola, soy {{name}}"
+        "GREETING_NAME": ""
     },
     "HOME": {
-        "SUBTITLE": "Portafolio para {{name}}"
+        "SUBTITLE": ""
     },
     "ROLE_DETAILS": {
-        "SUBTITLE": "Experiencia relevante para"
+        "SUBTITLE": ""
     }
 }
->>>>>>> Stashed changes
