@@ -1,6 +1,6 @@
 {
     "ABOUT": {
-        "GREETING_NAME": "Hi, I'm {{name}}"
+        "GREETING_NAME": " {{name}}"
     },
     "HOME": {
         "SUBTITLE": "Portfolio for {{name}}"
