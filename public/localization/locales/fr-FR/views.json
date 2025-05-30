@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "ABOUT": {
     "GREETING_NAME": "Salut, je suis {{name}}"
   },
@@ -9,3 +10,15 @@
     "SUBTITLE": "Expérience pertinente pour"
   }
 }
+=======
+    "ABOUT": {
+        "GREETING_NAME": "Salut, je m'appelle {{name}}"
+    },
+    "HOME": {
+        "SUBTITLE": "Portefeuille pour {{name}}"
+    },
+    "ROLE_DETAILS": {
+        "SUBTITLE": "Expérience pertinente pour"
+    }
+}
+>>>>>>> Stashed changes
