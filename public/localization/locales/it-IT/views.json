@@ -3,9 +3,9 @@
     "GREETING_NAME": "Ciao, sono {{name}}"
   },
   "HOME": {
-    "SUBTITLE": "Portfolio di {{name}}"
+    "SUBTITLE": "Portfolio per {{name}}"
   },
   "ROLE_DETAILS": {
-    "SUBTITLE": "Esperienza rilevante per"
+    "SUBTITLE": "Esperienza pertinente per"
   }
 }
