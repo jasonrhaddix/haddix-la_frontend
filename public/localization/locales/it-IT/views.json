@@ -3,7 +3,7 @@
     "GREETING_NAME": "Ciao, sono {{name}}"
   },
   "HOME": {
-    "SUBTITLE": "Portafoglio per {{name}}"
+    "SUBTITLE": "Portfolio di {{name}}"
   },
   "ROLE_DETAILS": {
     "SUBTITLE": "Esperienza rilevante per"
