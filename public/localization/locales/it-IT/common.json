@@ -1,12 +1,12 @@
 {
-  "SITE_NAV": {
-    "ROUTES": {
-      "ABOUT": "Chi siamo",
-      "CONTACT": "Contatto",
-      "LABS": "Laboratori",
-      "PROJECTS": "Progetti",
-      "ROLES": "Ruoli",
-      "WORKFLOWS": "Flussi di lavoro"
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "Chi siamo",
+            "CONTACT": "Contatto",
+            "LABS": "Laboratori",
+            "PROJECTS": "Progetti",
+            "ROLES": "Ruoli",
+            "WORKFLOWS": "Flussi di lavoro"
+        }
     }
-  }
 }

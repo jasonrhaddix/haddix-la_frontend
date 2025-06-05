@@ -15,7 +15,9 @@ export default function (app) {
         loadPath: '/localization/locales/{{lng}}/{{ns}}.json' + '?cb=' + new Date().getTime()
       },
       ns: [
-        'views'
+        'common',
+        'views',
+        'components',
       ]
     })
     .catch(() => {
