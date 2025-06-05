@@ -1,36 +1,38 @@
+import i18next from 'i18next'
+
 const sitenav = [
 	{
-		label: 'Projects',
+		label: i18next.t('common:SITE_NAV.ROUTES.PROJECTS'),
 		routeName: 'projects',
 		needsAuth: false,
 		children: []
 	},
 	{
-		label: 'Workflows',
+		label: i18next.t('common:SITE_NAV.ROUTES.WORKFLOWS'),
 		routeName: 'workflows',
 		needsAuth: false,
 		children: []
 	},
 	{
-		label: 'Roles',
+		label: i18next.t('common:SITE_NAV.ROUTES.ROLES'),
 		routeName: 'roles',
 		needsAuth: true,
 		children: []
 	},
 	{
-		label: 'About',
+		label: i18next.t('common:SITE_NAV.ROUTES.ABOUT'),
 		routeName: 'about',
 		needsAuth: false,
 		children: []
 	},
 	{
-		label: 'Contact',
+		label: i18next.t('common:SITE_NAV.ROUTES.CONTACT'),
 		routeName: 'contact',
 		needsAuth: false,
 		children: []
 	},
 	{
-		label: 'Labs',
+		label: i18next.t('common:SITE_NAV.ROUTES.LABS'),
 		routeName: 'labs',
 		needsAuth: false,
 		children: []

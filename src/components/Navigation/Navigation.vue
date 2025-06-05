@@ -75,7 +75,7 @@
       </nav>
     </div>
     <header :class="[{ open: headerStore.openState }]">
-      <div class="header--logo-container">
+      <div class="header--logo-container left-container">
         <div class="app-logo" @click.native="routingStore.pushRoute({ name: 'home' })">
           <img :src="logoImage" />
         </div>
@@ -84,8 +84,11 @@
           <p v-html="routeName()" />
         </div>
       </div>
-      <div class="nav-menu-button" @click="navigationStore.toggleNavigation">
-        <hamburger-menu :menu-state="navigationStore.openState" />
+      <div class="nav-action-btns right-container">
+        <LanguagePicker />
+        <div class="nav-menu-button" @click="navigationStore.toggleNavigation">
+          <hamburger-menu :menu-state="navigationStore.openState" />
+        </div>
       </div>
     </header>
   </div>
@@ -103,6 +106,7 @@ import sitenav from '@/config/sitenav.js'
 
 import HamburgerMenu from '@/components/_global/Hamburger_Menu.vue'
 import NavigationItem from '@/components/Navigation/Navigation_Item.vue'
+import LanguagePicker from '@/components/_global/Language_Picker.vue'
 
 import BioPhoto from '@/assets/app/images/profile-photo.png'
 

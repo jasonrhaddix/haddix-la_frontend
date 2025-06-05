@@ -1,0 +1,12 @@
+{
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "About",
+            "CONTACT": "Contact",
+            "LABS": "Labs",
+            "PROJECTS": "Projects",
+            "ROLES": "Roles",
+            "WORKFLOWS": "Workflows"
+        }
+    }
+}

@@ -1,7 +1,6 @@
 import { createPinia } from 'pinia'
 
 //
-import localStore from './modules/config/localStorage.js'
 import propsStore from './modules/config/properties.js'
 import typesStore from './modules/config/types.js'
 import utilsStore from './modules/config/utils.js'
@@ -17,6 +16,8 @@ import projectsStore from './modules/projects/index.js'
 import projectTreeStore from './modules/projectTree/index.js'
 import rolesStore from './modules/roles/index.js'
 import routingStore from './modules/routing/index.js'
+import localStorageStore from './modules/localStorage/index.js'
+import localizationStore from './modules/localization/index.js'
 
 //
 import dialogStore from './modules/ui/dialog.js'
@@ -32,7 +33,6 @@ export default {
 
   // config
   config: {
-    localStore,
     propsStore,
     typesStore,
     utilsStore
@@ -60,5 +60,7 @@ export default {
   projectsStore,
   projectTreeStore,
   rolesStore,
-  routingStore
+  routingStore,
+  localStorageStore,
+  localizationStore
 }

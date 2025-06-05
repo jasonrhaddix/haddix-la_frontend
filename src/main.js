@@ -44,7 +44,13 @@ i18next(app)
 app.directive('match-route', MatchRoute)
 
 const routingStore = stores.routingStore()
+const localStore = stores.localStorageStore()
+const localizationStore = stores.localizationStore()
+
 routingStore.init().then(() => {
+  const storeLang = localStore.get('lang') || 'en-US'
+  localizationStore.changeLanguage(storeLang)
+  
   app.use(router)   // <<-- init router after store init
   app.mount('#app') // <<-- mount application
 })

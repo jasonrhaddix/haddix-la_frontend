@@ -13,7 +13,7 @@ export default defineStore('routing', {
 
   actions: {
     async init() {
-      const localStore = stores.config.localStore()
+      const localStore = stores.localStorageStore()
       const userStore = stores.userStore()
       
       await localStore.init()

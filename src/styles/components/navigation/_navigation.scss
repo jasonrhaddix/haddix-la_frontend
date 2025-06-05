@@ -84,6 +84,7 @@
     }
 
     header {
+        display: flex;
         position: absolute;
         width: 100vw;
         top: 0;
@@ -93,7 +94,8 @@
             color: $app-color-nav-background;
         };
 
-        .header--logo-container {
+        .header--logo-container.left-container {
+            flex: 1;
             display: flex;
             flex-direction: row;
             pointer-events: all;
@@ -132,16 +134,30 @@
             }
         }
 
-        .nav-menu-button {
-            position: absolute;
-            cursor: pointer;
-            height: 100%;
-            width: 4rem;
-            top: 0;
-            right: 0;
+        .nav-action-btns.right-container {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            pointer-events: all;
+            
+            .nav-menu-button {
+                position: relative;
+                cursor: pointer;
+                height: 100%;
+                width: 4rem;
+                top: 0;
+                right: 0;
 
-            & > div {
-                @include center-content();
+                .hamburger-menu {
+                    position: relative;
+                    margin-top: 0.3rem;
+                    @include center-content('horizontal');
+                }
+    
+                /* & > div {
+                } */
             }
         }
 

@@ -1,7 +1,11 @@
-import storage from 'store'
 import { defineStore } from 'pinia'
+import storage from 'store'
+import _get from 'lodash.get'
+import _set from 'lodash.set'
+import _unset from 'lodash.unset'
+import _isEqual from 'lodash.isequal'
 
-export default defineStore('localStorage', {
+export default defineStore('localStorageStore', {
   // STATE
   state: () => ({
     storageName: 'haddix_la'
@@ -18,11 +22,12 @@ export default defineStore('localStorage', {
     },
 
     get(prop) {
-      return storage.get(this.storageName)?.[prop] || null
+      return !prop ? storage.get(this.storageName) : storage.get(this.storageName)?.[prop] || null
     },
 
     set(data) {
-      storage.set(this.storageName, data)
+      const storageState = this.get()
+      storage.set(this.storageName, Object.assign(storageState, data))
     },
 
     clear(prop) {
