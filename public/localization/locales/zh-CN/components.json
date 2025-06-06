@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "给我写信"
+  "CONTACT_FORM": {
+    "TITLE": "给我写信"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "电子邮件"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "您当前未登录。",
+    "PASSWORD": {
+      "LABEL": "密码"
+    },
+    "TITLE": "CMS管理员登录"
+  }
 }

@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "Déjame un mensaje"
+  "CONTACT_FORM": {
+    "TITLE": "Déjame un mensaje"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Correo electrónico"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "Actualmente no has iniciado sesión.",
+    "PASSWORD": {
+      "LABEL": "Contraseña"
+    },
+    "TITLE": "Inicio de sesión de administrador de CMS"
+  }
 }

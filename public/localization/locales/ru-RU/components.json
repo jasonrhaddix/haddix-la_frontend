@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "Напишите мне"
+  "CONTACT_FORM": {
+    "TITLE": "Напишите мне"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Электронная почта"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "Вы в настоящее время не вошли в систему.",
+    "PASSWORD": {
+      "LABEL": "Пароль"
+    },
+    "TITLE": "Вход администратора CMS"
+  }
 }

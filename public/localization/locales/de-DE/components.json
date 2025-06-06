@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "Schreib mir eine Nachricht"
+  "CONTACT_FORM": {
+    "TITLE": "Schreib mir eine Nachricht"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "E-Mail"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "Sie sind derzeit nicht angemeldet.",
+    "PASSWORD": {
+      "LABEL": "Passwort"
+    },
+    "TITLE": "CMS Admin Anmeldung"
+  }
 }

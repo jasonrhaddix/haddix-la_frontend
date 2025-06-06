@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "Contattami"
+  "CONTACT_FORM": {
+    "TITLE": "Contattami"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Email"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "Non sei attualmente connesso.",
+    "PASSWORD": {
+      "LABEL": "Password"
+    },
+    "TITLE": "Accesso Amministratore CMS"
+  }
 }

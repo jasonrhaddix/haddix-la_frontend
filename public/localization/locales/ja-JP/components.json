@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "ご連絡ください"
+  "CONTACT_FORM": {
+    "TITLE": "ご連絡ください"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "メールアドレス"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "現在ログインしていません。",
+    "PASSWORD": {
+      "LABEL": "パスワード"
+    },
+    "TITLE": "CMS管理者ログイン"
+  }
 }

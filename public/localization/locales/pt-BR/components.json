@@ -1,15 +1,15 @@
 {
-    "CONTACT_FORM": {
-        "TITLE": "Me Deixe uma Mensagem"
+  "CONTACT_FORM": {
+    "TITLE": "Me Deixe uma Mensagem"
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Email"
     },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
-        },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
-        },
-        "TITLE": ""
-    }
+    "NOT_LOGGED_IN": "Você não está atualmente logado.",
+    "PASSWORD": {
+      "LABEL": "Senha"
+    },
+    "TITLE": "Login do Administrador do CMS"
+  }
 }
