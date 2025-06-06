@@ -52,7 +52,7 @@
   const languages = ref([
     { code: 'en-US', codeShort: 'en', name: 'English' },
     { code: 'fr-FR', codeShort: 'fr', name: 'Français' },
-    { code: 'pt-BR', codeShort: 'pt', name: 'Português' },
+    // { code: 'pt-BR', codeShort: 'pt', name: 'Português' },
     { code: 'es-ES', codeShort: 'es', name: 'Español' },
     { code: 'it-IT', codeShort: 'it', name: 'Italiano' },
     { code: 'ru-RU', codeShort: 'ru', name: 'Русский' },
