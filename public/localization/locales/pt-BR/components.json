@@ -1,5 +1,15 @@
 {
     "CONTACT_FORM": {
         "TITLE": "Me Deixe uma Mensagem"
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
     }
 }

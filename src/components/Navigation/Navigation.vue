@@ -81,7 +81,7 @@
         </div>
         <div class="divider" />
         <div class="breadcrumb">
-          <p v-html="routeName()" />
+          <p v-html="routeName" />
         </div>
       </div>
       <div class="nav-action-btns right-container">
@@ -95,8 +95,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import i18next from 'i18next'
 
 import stores from '@/stores/index.js'
 import router from '@/router/index.js'
@@ -123,6 +124,11 @@ const routingStore = stores.routingStore()
 const headerStore = stores.ui.headerStore()
 const navigationStore = stores.ui.navigationStore()
 
+const currentLanguage = ref(i18next.language)
+i18next.on('languageChanged', (lng) => {
+  currentLanguage.value = lng
+})
+
 const hasAccess = computed(() => {
   return (item) => {
     return !item.needsAuth || (item.needsAuth && userStore.userIsAuthenticated)
@@ -133,7 +139,12 @@ const currentRouteName = computed(() => {
 return router.currentRoute.value.name
 })  
 
-const routeName = () => {
-  return headerStore.title || router.currentRoute.value.name
-}
+const routeName = computed(() => {
+  const lang = currentLanguage.value
+
+  return (
+    headerStore?.title ||
+    i18next.t(`common:SITE_NAV.ROUTES.${currentRouteName.value?.toUpperCase()}`)
+  )
+})
 </script>

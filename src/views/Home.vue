@@ -8,7 +8,7 @@
       <div class="divider" />
       <div class="view-work-btn">
         <AppButton
-          label="View Works"
+          :label="$t('common:BUTTONS.VIEW_WORKS')"
           @click.native="routingStore.pushRoute({ name: 'projects' })"
         />
       </div>

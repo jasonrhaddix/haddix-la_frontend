@@ -59,7 +59,7 @@
             <AppButton
               v-if="clickCallback || data.link"
               variant="colorful"
-              label="View Project"
+              :label="$t('common:BUTTONS.VIEW_PROJECT')"
               @click.native.stop="clickItem"
             />
           </div>

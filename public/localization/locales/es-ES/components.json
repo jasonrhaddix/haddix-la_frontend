@@ -1,5 +1,15 @@
 {
     "CONTACT_FORM": {
         "TITLE": "Déjame un mensaje"
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
     }
 }

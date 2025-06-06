@@ -10,22 +10,23 @@
       >
         <div class="login-input__container">
           <div v-if="!userStore.userIsAuthenticated" class="login-input__inner">
-            <h3>CMS Admin Login</h3>
+            <h3>{{ $t('components:LOGIN.TITLE') }}</h3>
             <v-text-field
               solo dark
-              label="Email"
+              :label="$t('components:LOGIN.EMAIL.LABEL')"
               type="email"
               v-model="modelValue.email" />
 
             <v-text-field
               solo dark
-              label="Password"
+              :label="$t('components:LOGIN.PASSWORD.LABEL')"
               type="password"
               v-model="modelValue.password"
             />
             
             <AppButton
-              variant="colorful" label="Login"
+              variant="colorful"
+              :label="$t('common:BUTTONS.LOGIN')"
               :disabled="userStore.userIsAuthenticated"
               :loading="userStore.isAuthorizing"
               class="auth-btn login-btn"
@@ -41,10 +42,11 @@
 						</v-btn> -->
           </div>
           <div v-else class="login-input__inner">
-            <h3>You're currently logged in</h3>
+            <h3>{{ $t('components:LOGIN.NOT_LOGGED_IN') }}You're currently logged in</h3>
 
             <AppButton
-              variant="colorful" label="Logout"
+              variant="colorful"
+              :label="$t('common:BUTTONS.LOGOUT')"
               :loading="userStore.isAuthorizing"
               class="auth-btn login-btn"
               @click.native="logout" />

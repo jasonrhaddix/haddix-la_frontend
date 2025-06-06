@@ -1,5 +1,15 @@
 {
-  "CONTACT_FORM": {
-    "TITLE": "给我写信"
-  }
+    "CONTACT_FORM": {
+        "TITLE": "给我写信"
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
+    }
 }

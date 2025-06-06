@@ -1,5 +1,15 @@
 {
     "CONTACT_FORM": {
         "TITLE": "ご連絡ください"
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
     }
 }

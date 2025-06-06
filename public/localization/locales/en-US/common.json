@@ -1,4 +1,10 @@
 {
+    "BUTTONS": {
+        "LOGIN": "Login",
+        "LOGOUT": "Logout",
+        "VIEW_PROJECT": "View Project",
+        "VIEW_WORKS": "View Works"
+    },
     "SITE_NAV": {
         "ROUTES": {
             "ABOUT": "About",

@@ -1,12 +1,18 @@
 {
-  "SITE_NAV": {
-    "ROUTES": {
-      "ABOUT": "关于",
-      "CONTACT": "联系",
-      "LABS": "实验室",
-      "PROJECTS": "项目",
-      "ROLES": "角色",
-      "WORKFLOWS": "工作流程"
+    "BUTTONS": {
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
+    },
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "关于",
+            "CONTACT": "联系",
+            "LABS": "实验室",
+            "PROJECTS": "项目",
+            "ROLES": "角色",
+            "WORKFLOWS": "工作流程"
+        }
     }
-  }
 }

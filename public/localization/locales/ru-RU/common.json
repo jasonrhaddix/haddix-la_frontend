@@ -1,4 +1,10 @@
 {
+    "BUTTONS": {
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
+    },
     "SITE_NAV": {
         "ROUTES": {
             "ABOUT": "О нас",

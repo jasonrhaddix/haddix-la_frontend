@@ -1,5 +1,15 @@
 {
     "CONTACT_FORM": {
         "TITLE": "Drop Me a Line"
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": "Email"
+        },
+        "NOT_LOGGED_IN": "You're not currently logged in.",
+        "PASSWORD": {
+            "LABEL": "Password"
+        },
+        "TITLE": "CMS Admin Login"
     }
 }
