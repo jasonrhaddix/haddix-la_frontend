@@ -1,12 +1,12 @@
 {
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "О нас",
+      "CONTACT": "Контакты",
+      "LABS": "Лаборатории",
+      "PROJECTS": "Проекты",
+      "ROLES": "Роли",
+      "WORKFLOWS": "Рабочие потоки"
     }
+  }
 }

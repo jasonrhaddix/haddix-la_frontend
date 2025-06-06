@@ -1,11 +1,11 @@
 {
-    "ABOUT": {
-        "GREETING_NAME": ""
-    },
-    "HOME": {
-        "SUBTITLE": ""
-    },
-    "ROLE_DETAILS": {
-        "SUBTITLE": ""
-    }
+  "ABOUT": {
+    "GREETING_NAME": "こんにちは、私は {{name}} です"
+  },
+  "HOME": {
+    "SUBTITLE": "{{name}} のポートフォリオ"
+  },
+  "ROLE_DETAILS": {
+    "SUBTITLE": "関連する経験"
+  }
 }
