@@ -1,12 +1,12 @@
 {
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "关于",
+      "CONTACT": "联系",
+      "LABS": "实验室",
+      "PROJECTS": "项目",
+      "ROLES": "角色",
+      "WORKFLOWS": "工作流程"
     }
+  }
 }

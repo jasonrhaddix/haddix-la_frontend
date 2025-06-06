@@ -1,12 +1,12 @@
 {
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "소개",
+      "CONTACT": "연락처",
+      "LABS": "연구소",
+      "PROJECTS": "프로젝트",
+      "ROLES": "역할",
+      "WORKFLOWS": "작업 흐름"
     }
+  }
 }
