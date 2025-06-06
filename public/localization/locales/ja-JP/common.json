@@ -1,12 +1,12 @@
 {
-  "SITE_NAV": {
-    "ROUTES": {
-      "ABOUT": "約",
-      "CONTACT": "連絡",
-      "LABS": "ラボ",
-      "PROJECTS": "プロジェクト",
-      "ROLES": "役割",
-      "WORKFLOWS": "ワークフロー"
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "約",
+            "CONTACT": "連絡",
+            "LABS": "ラボ",
+            "PROJECTS": "プロジェクト",
+            "ROLES": "役割",
+            "WORKFLOWS": "ワークフロー"
+        }
     }
-  }
 }

@@ -1,11 +1,11 @@
 {
-  "ABOUT": {
-    "GREETING_NAME": "Привет, я {{name}}"
-  },
-  "HOME": {
-    "SUBTITLE": "Портфолио для {{name}}"
-  },
-  "ROLE_DETAILS": {
-    "SUBTITLE": "Соответствующий опыт для"
-  }
+    "ABOUT": {
+        "GREETING_NAME": "Привет, я {{name}}"
+    },
+    "HOME": {
+        "SUBTITLE": "Портфолио для {{name}}"
+    },
+    "ROLE_DETAILS": {
+        "SUBTITLE": "Соответствующий опыт для"
+    }
 }
