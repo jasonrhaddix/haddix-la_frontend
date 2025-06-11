@@ -1,83 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "电子邮件",
-      "FIRST_NAME": "名字",
-      "LAST_NAME": "姓氏",
-      "MESSAGE": "消息"
-    },
-    "SUBMIT": "提交",
-    "TITLE": "给我写信"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "创建项目"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "创建项目"
-    },
-    "PROJECT_BUTTON": {
-      "TITLE": "项目"
-    },
-    "ROLE_BUTTON": {
-      "TITLE": "角色"
-    },
-    "TITLE": "新建"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "UPLOAD_IMAGE": "上传图片"
-      },
-      "CLIENT": "客户",
-      "DESCRIPTION": "描述",
-      "EXCERPT": "摘录",
-      "IMAGE_SECTION": {
-        "CAROUSEL": {
-          "SUBTITLE": "项目/角色头部图片",
-          "TITLE": "轮播图片"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "副标题",
-          "TITLE": "标题"
+        "SUBMIT": "",
+        "TITLE": ""
+    },
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
+    },
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
         },
-        "TITLE": "缩略图"
-      },
-      "LINK": "项目",
-      "ROLE": "角色",
-      "SUBTITLE": "项目页面缩略图（仅限1个）",
-      "TITLE": "标题",
-      "TYPE": "类型",
-      "YEAR": "年份"
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "",
+                "UPLOAD_IMAGE": "",
+                "UPLOAD_VIDEOS": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "ERRORS": {
+                "GENERIC": ""
+            },
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "STACK": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": ""
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "不，还没有",
-      "M_2": "即将推出...",
-      "M_3": "正在制作中",
-      "M_4": "这里什么都没有"
-    },
-    "PARTICLE_TEXT": "实验室",
-    "SUB_TITLE": "相反，试着看看这个漂亮的动画。",
-    "TITLE": "{{name}} 的实验"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "语言已更改",
-        "TITLE": "翻译由 AI 生成，可能不准确。"
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "电子邮件"
-    },
-    "NOT_LOGGED_IN": "您当前未登录。",
-    "PASSWORD": {
-      "LABEL": "密码"
-    },
-    "TITLE": "CMS管理员登录"
-  }
 }

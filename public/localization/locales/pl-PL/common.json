@@ -1,18 +1,18 @@
 {
     "BUTTONS": {
-        "LOGIN": "Zaloguj się",
-        "LOGOUT": "Wyloguj się",
-        "VIEW_PROJECT": "Zobacz projekt",
-        "VIEW_WORKS": "Zobacz prace"
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
     },
     "SITE_NAV": {
         "ROUTES": {
-            "ABOUT": "O nas",
-            "CONTACT": "Kontakt",
-            "LABS": "Laboratoria",
-            "PROJECTS": "Projekty",
-            "ROLES": "Role",
-            "WORKFLOWS": "Przepływy pracy"
+            "ABOUT": "",
+            "CONTACT": "",
+            "LABS": "",
+            "PROJECTS": "",
+            "ROLES": "",
+            "WORKFLOWS": ""
         }
     }
 }

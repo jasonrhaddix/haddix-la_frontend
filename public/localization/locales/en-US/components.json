@@ -27,27 +27,54 @@
     "CREATE_PROJECT": {
         "FORMS": {
             "BUTTONS": {
-                "UPLOAD_IMAGE": "Upload Image"
+                "SUBMIT": "Save Project",
+                "UPLOAD_IMAGE": "Upload Image(s)",
+                "UPLOAD_VIDEOS": "Upload Videos"
             },
             "CLIENT": "Client",
             "DESCRIPTION": "Description",
+            "ERRORS": {
+                "GENERIC": "Please complete all require fields"
+            },
             "EXCERPT": "Excerpt",
             "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Project images",
+                    "TITLE": "Body Images (Optional)"
+                },
                 "CAROUSEL": {
                     "SUBTITLE": "Project/Role header images",
                     "TITLE": "Carousel Images"
                 },
                 "THUMBNAIL": {
-                    "SUBTITLE": "Subtitle",
-                    "TITLE": "Title"
+                    "SUBTITLE": "Projects page thumbnail (only 1)",
+                    "TITLE": "Thumbnail Images"
                 },
-                "TITLE": "Thumbnail Image"
+                "TITLE": "Images"
             },
             "LINK": "Project",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "Languages used creating this project.",
+                    "TITLE": "Project Languages (Optional)"
+                },
+                "STACK": {
+                    "SUBTITLE": "Resources used creating this project.",
+                    "TITLE": "Project Stack (Optional)"
+                },
+                "TITLE": "Meta"
+            },
             "ROLE": "Role",
-            "SUBTITLE": "Projects page thumbnail (only 1)",
+            "SUBTITLE": "Subtitle",
             "TITLE": "Title",
             "TYPE": "Type",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Project videos",
+                    "TITLE": "Body Videos (Optional)"
+                },
+                "TITLE": "Videos"
+            },
             "YEAR": "Year"
         }
     },
@@ -79,5 +106,10 @@
             "LABEL": "Password"
         },
         "TITLE": "CMS Admin Login"
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": "Add Language"
+        }
     }
 }

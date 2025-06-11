@@ -186,8 +186,8 @@
         <v-col class="col-12 col-md-4">
           <div class="images-section images__body">
             <div class="section__title">
-              <h3>Body Images <span class="caption">(Optional)</span></h3>
-              <p>Project images</p>
+              <h3>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.BODY.TITLE') }}</h3>
+              <p>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.BODY.SUBTITLE') }}</p>
             </div>
 
             <div class="images__container">
@@ -208,7 +208,7 @@
                   @click="$refs.attachmentUploader_Body.select()"
                 >
                   <div class="button__content">
-                    <p class="subheading">Upload Images</p>
+                    <p class="subheading">{{ $t('components:CREATE_PROJECT.FORMS.BUTTONS.UPLOAD_IMAGE') }}</p>
                     <v-icon color="grey darken-1">add</v-icon>
                   </div>
                 </div>
@@ -230,14 +230,14 @@
 
     <!-- VIDEOS -->
     <div class="form-section create__images">
-      <h2>Videos</h2>
+      <h2>{{ $t('components:CREATE_PROJECT.FORMS.VIDEO_SECTION.TITLE') }}</h2>
 
       <div class="inner__divider" />
 
       <div class="images-section images__thumbnails">
         <div class="section__title">
-          <h3>Body Videos <span class="caption">(Optional)</span></h3>
-          <p>Project videos.</p>
+          <h3>{{ $t('components:CREATE_PROJECT.FORMS.VIDEO_SECTION.BODY.TITLE') }}</h3>
+          <p>{{ $t('components:CREATE_PROJECT.FORMS.VIDEO_SECTION.BODY.SUBTITLE') }}</p>
         </div>
         <div class="images__container">
           <AttachmentUploader
@@ -258,7 +258,7 @@
               @click="$refs.attachmentUploader_Video.select()"
             >
               <div class="button__content">
-                <p class="subheading">Upload Video</p>
+                <p class="subheading">{{ $t('components:CREATE_PROJECT.FORMS.BUTTONS.UPLOAD_VIDEOS') }}</p>
                 <v-icon color="grey darken-1">add</v-icon>
               </div>
             </div>
@@ -278,15 +278,15 @@
 
     <!-- META -->
     <div class="form-section create__meta">
-      <h2>Meta</h2>
+      <h2>{{ $t('components:CREATE_PROJECT.FORMS.META_SECTION.TITLE') }}</h2>
 
       <div class="inner__divider" />
 
       <!-- Languages -->
       <div class="meta-section project__languages">
         <div class="section__title">
-          <h3>Project Languages <span class="caption">(Optional)</span></h3>
-          <p>Languages used creating this project.</p>
+          <h3>{{ $t('components:CREATE_PROJECT.FORMS.META_SECTION.LANGUAGES.TITLE') }}</h3>
+          <p>{{ $t('components:CREATE_PROJECT.FORMS.META_SECTION.LANGUAGES.SUBTITLE') }}</p>
         </div>
         <div class="languages__container">
           <LanguagePicker v-model="formModel.languages"/>
@@ -296,8 +296,8 @@
       <!-- Resources -->
       <div class="meta-section project__languages">
         <div class="section__title">
-          <h3>Project Stack<span class="caption"> (Optional)</span></h3>
-          <p>Resources used creating this project.</p>
+          <h3>{{ $t('components:CREATE_PROJECT.FORMS.META_SECTION.STACK.TITLE') }}</h3>
+          <p>{{ $t('components:CREATE_PROJECT.FORMS.META_SECTION.STACK.SUBTITLE') }}</p>
         </div>
         <div class="languages__container">
           <ResourcePicker
@@ -317,11 +317,11 @@
         size="38"
       /> -->
       <div v-if="false /* $v.$invalid && submitted */" class="error-prompt">
-        <p>Please complete all require fields</p>
+        <p>{{ $t('components:CREATE_PROJECT.FORMS.ERRORS.GENERIC') {{Please complete all require fields</p>
         <div class="divider" />
       </div>
       <AppButton
-        label="Save Project"
+        :label="$t('components:CREATE_PROJECT.FORMS.BUTTONS.SUBMIT')"
         :loading="projectsStore.saving"
         @click.native="submitForm"
       />

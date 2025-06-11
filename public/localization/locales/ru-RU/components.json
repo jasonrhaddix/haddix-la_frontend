@@ -1,83 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "Электронная почта",
-      "FIRST_NAME": "Имя",
-      "LAST_NAME": "Фамилия",
-      "MESSAGE": "Сообщение"
-    },
-    "SUBMIT": "Отправить",
-    "TITLE": "Напишите мне"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "Создать проект"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "Создать проект"
-    },
-    "PROJECT_BUTTON": {
-      "TITLE": "Проект"
-    },
-    "ROLE_BUTTON": {
-      "TITLE": "Роль"
-    },
-    "TITLE": "Создать новое"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "UPLOAD_IMAGE": "Загрузить изображение"
-      },
-      "CLIENT": "Клиент",
-      "DESCRIPTION": "Описание",
-      "EXCERPT": "Аннотация",
-      "IMAGE_SECTION": {
-        "CAROUSEL": {
-          "SUBTITLE": "Изображения заголовков проектов/ролей",
-          "TITLE": "Картинки карусели"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "Подзаголовок",
-          "TITLE": "Заголовок"
+        "SUBMIT": "",
+        "TITLE": ""
+    },
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
+    },
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
         },
-        "TITLE": "Изображение миниатюры"
-      },
-      "LINK": "Проект",
-      "ROLE": "Роль",
-      "SUBTITLE": "Миниатюра страницы проектов (только 1)",
-      "TITLE": "Название",
-      "TYPE": "Тип",
-      "YEAR": "Год"
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "",
+                "UPLOAD_IMAGE": "",
+                "UPLOAD_VIDEOS": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "ERRORS": {
+                "GENERIC": ""
+            },
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "STACK": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": ""
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "Нет, ещё нет",
-      "M_2": "Скоро... почти",
-      "M_3": "Работаем над этим",
-      "M_4": "Здесь ничего нет"
-    },
-    "PARTICLE_TEXT": "ЛАБОРАТОРИИ",
-    "SUB_TITLE": "Попробуйте взглянуть на эту красивую анимацию.",
-    "TITLE": "Эксперименты от {{name}}"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "Язык изменён",
-        "TITLE": "Переводы сгенерированы ИИ и могут быть неточными."
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "Электронная почта"
-    },
-    "NOT_LOGGED_IN": "Вы в настоящее время не вошли в систему.",
-    "PASSWORD": {
-      "LABEL": "Пароль"
-    },
-    "TITLE": "Вход администратора CMS"
-  }
 }

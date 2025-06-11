@@ -1,83 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "Email",
-      "FIRST_NAME": "Prénom",
-      "LAST_NAME": "Nom",
-      "MESSAGE": "Message"
-    },
-    "SUBMIT": "Soumettre",
-    "TITLE": "Laissez-moi un message"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "Créer un projet"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "Créer un projet"
-    },
-    "PROJECT_BUTTON": {
-      "TITLE": "Projet"
-    },
-    "ROLE_BUTTON": {
-      "TITLE": "Rôle"
-    },
-    "TITLE": "Créer nouveau"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "UPLOAD_IMAGE": "Télécharger une image"
-      },
-      "CLIENT": "Client",
-      "DESCRIPTION": "Description",
-      "EXCERPT": "Extrait",
-      "IMAGE_SECTION": {
-        "CAROUSEL": {
-          "SUBTITLE": "Images d'en-tête projet/rôle",
-          "TITLE": "Images du carrousel"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "Sous-titre",
-          "TITLE": "Titre"
+        "SUBMIT": "",
+        "TITLE": ""
+    },
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
+    },
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
         },
-        "TITLE": "Image miniature"
-      },
-      "LINK": "Projet",
-      "ROLE": "Rôle",
-      "SUBTITLE": "Miniature de la page des projets (seulement 1)",
-      "TITLE": "Titre",
-      "TYPE": "Type",
-      "YEAR": "Année"
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "",
+                "UPLOAD_IMAGE": "",
+                "UPLOAD_VIDEOS": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "ERRORS": {
+                "GENERIC": ""
+            },
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "STACK": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": ""
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "Non, pas encore",
-      "M_2": "Prochainement... enfin, presque",
-      "M_3": "On y travaille",
-      "M_4": "Rien ici"
-    },
-    "PARTICLE_TEXT": "LABORATOIRES",
-    "SUB_TITLE": "Au lieu de cela, essayez de regarder cette jolie animation.",
-    "TITLE": "Expériences de {{name}}"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "Langue changée",
-        "TITLE": "Les traductions sont générées par IA et peuvent ne pas être précises."
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "E-mail"
-    },
-    "NOT_LOGGED_IN": "Vous n'êtes pas actuellement connecté.",
-    "PASSWORD": {
-      "LABEL": "Mot de passe"
-    },
-    "TITLE": "Connexion Admin CMS"
-  }
 }

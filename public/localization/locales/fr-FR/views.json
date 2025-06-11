@@ -1,11 +1,11 @@
 {
     "ABOUT": {
-        "GREETING_NAME": "Bonjour, je suis {{name}}"
+        "GREETING_NAME": ""
     },
     "HOME": {
-        "SUBTITLE": "Portfolio de {{name}}"
+        "SUBTITLE": ""
     },
     "ROLE_DETAILS": {
-        "SUBTITLE": "Expérience pertinente pour"
+        "SUBTITLE": ""
     }
 }

@@ -1,18 +1,18 @@
 {
     "BUTTONS": {
-        "LOGIN": "ログイン",
-        "LOGOUT": "ログアウト",
-        "VIEW_PROJECT": "プロジェクトを表示",
-        "VIEW_WORKS": "作品を表示"
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
     },
     "SITE_NAV": {
         "ROUTES": {
-            "ABOUT": "約",
-            "CONTACT": "連絡",
-            "LABS": "ラボ",
-            "PROJECTS": "プロジェクト",
-            "ROLES": "役割",
-            "WORKFLOWS": "ワークフロー"
+            "ABOUT": "",
+            "CONTACT": "",
+            "LABS": "",
+            "PROJECTS": "",
+            "ROLES": "",
+            "WORKFLOWS": ""
         }
     }
 }

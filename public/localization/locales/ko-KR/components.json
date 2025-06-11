@@ -1,83 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "이메일",
-      "FIRST_NAME": "이름",
-      "LAST_NAME": "성",
-      "MESSAGE": "메시지"
-    },
-    "SUBMIT": "제출",
-    "TITLE": "연락주세요"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "프로젝트 생성"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "프로젝트 생성"
-    },
-    "PROJECT_BUTTON": {
-      "TITLE": "프로젝트"
-    },
-    "ROLE_BUTTON": {
-      "TITLE": "역할"
-    },
-    "TITLE": "새로 만들기"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "UPLOAD_IMAGE": "이미지 업로드"
-      },
-      "CLIENT": "클라이언트",
-      "DESCRIPTION": "설명",
-      "EXCERPT": "발췌",
-      "IMAGE_SECTION": {
-        "CAROUSEL": {
-          "SUBTITLE": "프로젝트/역할 헤더 이미지",
-          "TITLE": "캐러셀 이미지"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "부제",
-          "TITLE": "제목"
+        "SUBMIT": "",
+        "TITLE": ""
+    },
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
+    },
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
         },
-        "TITLE": "썸네일 이미지"
-      },
-      "LINK": "프로젝트",
-      "ROLE": "역할",
-      "SUBTITLE": "프로젝트 페이지 썸네일 (1개만 가능)",
-      "TITLE": "제목",
-      "TYPE": "유형",
-      "YEAR": "연도"
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "",
+                "UPLOAD_IMAGE": "",
+                "UPLOAD_VIDEOS": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "ERRORS": {
+                "GENERIC": ""
+            },
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "STACK": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": ""
+        },
+        "NOT_LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": ""
+        },
+        "TITLE": ""
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": ""
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "아니요, 아직 아닙니다.",
-      "M_2": "조만간 나올 예정...",
-      "M_3": "작업 중입니다.",
-      "M_4": "여기에는 아무것도 없습니다."
-    },
-    "PARTICLE_TEXT": "랩스",
-    "SUB_TITLE": "대신 이 멋진 애니메이션을 한번 봐보세요.",
-    "TITLE": "{{name}}의 실험"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "언어 변경됨",
-        "TITLE": "번역은 AI에 의해 생성되며 정확하지 않을 수 있습니다."
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "이메일"
-    },
-    "NOT_LOGGED_IN": "현재 로그인되어 있지 않습니다.",
-    "PASSWORD": {
-      "LABEL": "비밀번호"
-    },
-    "TITLE": "CMS 관리자 로그인"
-  }
 }

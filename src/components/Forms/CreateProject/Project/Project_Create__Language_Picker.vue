@@ -3,7 +3,7 @@
     
     <div :ripple="false" class="language__add-button" @click="addLanguage">
       <div class="button__content">
-        <p class="subheading">Add Language</p>
+        <p class="subheading">{{ $t('components:PROJECT_CREATE_LANGUAGE_PICKER.BUTTONS.ADD_LANGUAGE') }}</p>
         <v-icon color="grey darken-1">add</v-icon>
       </div>
     </div>

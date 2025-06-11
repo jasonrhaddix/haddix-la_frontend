@@ -1,18 +1,18 @@
 {
     "BUTTONS": {
-        "LOGIN": "Войти",
-        "LOGOUT": "Выйти",
-        "VIEW_PROJECT": "Просмотреть проект",
-        "VIEW_WORKS": "Просмотреть работы"
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
     },
     "SITE_NAV": {
         "ROUTES": {
-            "ABOUT": "О нас",
-            "CONTACT": "Контакты",
-            "LABS": "Лаборатории",
-            "PROJECTS": "Проекты",
-            "ROLES": "Роли",
-            "WORKFLOWS": "Рабочие потоки"
+            "ABOUT": "",
+            "CONTACT": "",
+            "LABS": "",
+            "PROJECTS": "",
+            "ROLES": "",
+            "WORKFLOWS": ""
         }
     }
 }

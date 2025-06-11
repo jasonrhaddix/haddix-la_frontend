@@ -1,18 +1,18 @@
 {
     "BUTTONS": {
-        "LOGIN": "登录",
-        "LOGOUT": "登出",
-        "VIEW_PROJECT": "查看项目",
-        "VIEW_WORKS": "查看作品"
+        "LOGIN": "",
+        "LOGOUT": "",
+        "VIEW_PROJECT": "",
+        "VIEW_WORKS": ""
     },
     "SITE_NAV": {
         "ROUTES": {
-            "ABOUT": "关于",
-            "CONTACT": "联系",
-            "LABS": "实验室",
-            "PROJECTS": "项目",
-            "ROLES": "角色",
-            "WORKFLOWS": "工作流程"
+            "ABOUT": "",
+            "CONTACT": "",
+            "LABS": "",
+            "PROJECTS": "",
+            "ROLES": "",
+            "WORKFLOWS": ""
         }
     }
 }
