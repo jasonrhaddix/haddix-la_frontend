@@ -9,10 +9,10 @@
     "ROUTES": {
       "ABOUT": "Über",
       "CONTACT": "Kontakt",
-      "LABS": "Labs",
+      "LABS": "Labore",
       "PROJECTS": "Projekte",
       "ROLES": "Rollen",
-      "WORKFLOWS": "Workflows"
+      "WORKFLOWS": "Arbeitsabläufe"
     }
   }
 }
