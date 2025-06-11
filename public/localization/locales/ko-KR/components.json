@@ -1,115 +1,115 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": ""
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "이메일",
+      "FIRST_NAME": "이름",
+      "LAST_NAME": "성",
+      "MESSAGE": "메시지"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "제출",
+    "TITLE": "연락하기"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "프로젝트 생성"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "프로젝트 생성"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "프로젝트"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "SUBMIT": "",
-                "UPLOAD_IMAGE": "",
-                "UPLOAD_VIDEOS": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "ERRORS": {
-                "GENERIC": ""
-            },
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "META_SECTION": {
-                "LANGUAGES": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "STACK": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "VIDEO_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "역할"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "새로 만들기"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "SUBMIT": "프로젝트 저장",
+        "UPLOAD_IMAGE": "이미지 업로드",
+        "UPLOAD_VIDEOS": "비디오 업로드"
+      },
+      "CLIENT": "클라이언트",
+      "DESCRIPTION": "설명",
+      "ERRORS": {
+        "GENERIC": "필수 필드를 모두 채워주세요."
+      },
+      "EXCERPT": "발췌",
+      "IMAGE_SECTION": {
+        "BODY": {
+          "SUBTITLE": "프로젝트 이미지",
+          "TITLE": "본문 이미지 (선택 사항)"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
+        "CAROUSEL": {
+          "SUBTITLE": "프로젝트/역할 헤더 이미지",
+          "TITLE": "캐러셀 이미지"
         },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
+        "THUMBNAIL": {
+          "SUBTITLE": "프로젝트 페이지 썸네일 (오직 1개)",
+          "TITLE": "썸네일 이미지"
         },
-        "TITLE": ""
-    },
-    "PROJECT_CREATE_LANGUAGE_PICKER": {
-        "BUTTONS": {
-            "ADD_LANGUAGE": ""
-        }
+        "TITLE": "이미지"
+      },
+      "LINK": "프로젝트",
+      "META_SECTION": {
+        "LANGUAGES": {
+          "SUBTITLE": "이 프로젝트를 생성하는 데 사용된 언어입니다.",
+          "TITLE": "프로젝트 언어 (선택 사항)"
+        },
+        "STACK": {
+          "SUBTITLE": "이 프로젝트를 만드는 데 사용된 리소스입니다.",
+          "TITLE": "프로젝트 스택 (선택 사항)"
+        },
+        "TITLE": "메타"
+      },
+      "ROLE": "역할",
+      "SUBTITLE": "부제목",
+      "TITLE": "제목",
+      "TYPE": "유형",
+      "VIDEO_SECTION": {
+        "BODY": {
+          "SUBTITLE": "프로젝트 비디오",
+          "TITLE": "본문 비디오 (선택 사항)"
+        },
+        "TITLE": "비디오"
+      },
+      "YEAR": "연도"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "아니요, 아직 아니에요",
+      "M_2": "곧 출시...처럼",
+      "M_3": "작업 중입니다",
+      "M_4": "여기에는 아무것도 없습니다"
+    },
+    "PARTICLE_TEXT": "LABS",
+    "SUB_TITLE": "대신, 이 예쁜 애니메이션을 보세요.",
+    "TITLE": "{{name}}의 실험"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "언어가 변경되었습니다",
+        "TITLE": "번역은 AI에 의해 생성되었으며 정확하지 않을 수 있습니다."
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "이메일"
+    },
+    "NOT_LOGGED_IN": "현재 로그인하지 않았습니다.",
+    "PASSWORD": {
+      "LABEL": "비밀번호"
+    },
+    "TITLE": "CMS 관리자 로그인"
+  },
+  "PROJECT_CREATE_LANGUAGE_PICKER": {
+    "BUTTONS": {
+      "ADD_LANGUAGE": "언어 추가"
+    }
+  }
 }

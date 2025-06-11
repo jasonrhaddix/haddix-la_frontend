@@ -1,11 +1,11 @@
 {
-    "ABOUT": {
-        "GREETING_NAME": ""
-    },
-    "HOME": {
-        "SUBTITLE": ""
-    },
-    "ROLE_DETAILS": {
-        "SUBTITLE": ""
-    }
+  "ABOUT": {
+    "GREETING_NAME": "안녕하세요, 저는 {{name}}입니다"
+  },
+  "HOME": {
+    "SUBTITLE": "{{name}}의 포트폴리오"
+  },
+  "ROLE_DETAILS": {
+    "SUBTITLE": "관련 경험"
+  }
 }

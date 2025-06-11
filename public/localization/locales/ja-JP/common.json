@@ -1,18 +1,18 @@
 {
-    "BUTTONS": {
-        "LOGIN": "",
-        "LOGOUT": "",
-        "VIEW_PROJECT": "",
-        "VIEW_WORKS": ""
-    },
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "BUTTONS": {
+    "LOGIN": "ログイン",
+    "LOGOUT": "ログアウト",
+    "VIEW_PROJECT": "プロジェクトを見る",
+    "VIEW_WORKS": "作品を見る"
+  },
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "について",
+      "CONTACT": "お問い合わせ",
+      "LABS": "ラボ",
+      "PROJECTS": "プロジェクト",
+      "ROLES": "役割",
+      "WORKFLOWS": "ワークフロー"
     }
+  }
 }

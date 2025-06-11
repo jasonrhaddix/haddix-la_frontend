@@ -1,115 +1,115 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": ""
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "メール",
+      "FIRST_NAME": "名前",
+      "LAST_NAME": "苗字",
+      "MESSAGE": "メッセージ"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "送信",
+    "TITLE": "お問い合わせ"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "プロジェクト作成"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "プロジェクト作成"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "プロジェクト"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "SUBMIT": "",
-                "UPLOAD_IMAGE": "",
-                "UPLOAD_VIDEOS": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "ERRORS": {
-                "GENERIC": ""
-            },
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "META_SECTION": {
-                "LANGUAGES": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "STACK": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "VIDEO_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "役割"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "新規作成"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "SUBMIT": "プロジェクトを保存",
+        "UPLOAD_IMAGE": "画像をアップロード",
+        "UPLOAD_VIDEOS": "動画をアップロード"
+      },
+      "CLIENT": "クライアント",
+      "DESCRIPTION": "説明",
+      "ERRORS": {
+        "GENERIC": "必須項目をすべて入力してください"
+      },
+      "EXCERPT": "抜粋",
+      "IMAGE_SECTION": {
+        "BODY": {
+          "SUBTITLE": "プロジェクト画像",
+          "TITLE": "本文画像（任意）"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
+        "CAROUSEL": {
+          "SUBTITLE": "プロジェクト/役割のヘッダー画像",
+          "TITLE": "カルーセル画像"
         },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
+        "THUMBNAIL": {
+          "SUBTITLE": "プロジェクトページ用サムネイル（1つのみ）",
+          "TITLE": "サムネイル画像"
         },
-        "TITLE": ""
-    },
-    "PROJECT_CREATE_LANGUAGE_PICKER": {
-        "BUTTONS": {
-            "ADD_LANGUAGE": ""
-        }
+        "TITLE": "画像"
+      },
+      "LINK": "プロジェクト",
+      "META_SECTION": {
+        "LANGUAGES": {
+          "SUBTITLE": "このプロジェクトを作成するために使用された言語。",
+          "TITLE": "プロジェクト言語（任意）"
+        },
+        "STACK": {
+          "SUBTITLE": "このプロジェクトを作成するために使用されたリソース。",
+          "TITLE": "プロジェクトスタック（任意）"
+        },
+        "TITLE": "メタ"
+      },
+      "ROLE": "役割",
+      "SUBTITLE": "サブタイトル",
+      "TITLE": "タイトル",
+      "TYPE": "タイプ",
+      "VIDEO_SECTION": {
+        "BODY": {
+          "SUBTITLE": "プロジェクト動画",
+          "TITLE": "本文動画（任意）"
+        },
+        "TITLE": "動画"
+      },
+      "YEAR": "年"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "まだです",
+      "M_2": "もうすぐ登場...ish",
+      "M_3": "作業中",
+      "M_4": "何もありません"
+    },
+    "PARTICLE_TEXT": "LABS",
+    "SUB_TITLE": "代わりに、このきれいなアニメーションを見てみてください。",
+    "TITLE": "{{name}} からの実験"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "言語が変更されました",
+        "TITLE": "翻訳はAIによって生成されており、正確でない場合があります。"
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "メール"
+    },
+    "NOT_LOGGED_IN": "現在ログインしていません。",
+    "PASSWORD": {
+      "LABEL": "パスワード"
+    },
+    "TITLE": "CMS管理者ログイン"
+  },
+  "PROJECT_CREATE_LANGUAGE_PICKER": {
+    "BUTTONS": {
+      "ADD_LANGUAGE": "言語を追加"
+    }
+  }
 }

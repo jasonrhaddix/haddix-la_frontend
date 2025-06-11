@@ -1,115 +1,115 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": ""
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "Электронная почта",
+      "FIRST_NAME": "Имя",
+      "LAST_NAME": "Фамилия",
+      "MESSAGE": "Сообщение"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "Отправить",
+    "TITLE": "Свяжитесь со мной"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "Создать проект"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "Создать проект"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "Проект"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "SUBMIT": "",
-                "UPLOAD_IMAGE": "",
-                "UPLOAD_VIDEOS": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "ERRORS": {
-                "GENERIC": ""
-            },
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "META_SECTION": {
-                "LANGUAGES": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "STACK": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "VIDEO_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "Роль"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "Создать новый"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "SUBMIT": "Сохранить проект",
+        "UPLOAD_IMAGE": "Загрузить изображение(я)",
+        "UPLOAD_VIDEOS": "Загрузить видео"
+      },
+      "CLIENT": "Клиент",
+      "DESCRIPTION": "Описание",
+      "ERRORS": {
+        "GENERIC": "Пожалуйста, заполните все обязательные поля"
+      },
+      "EXCERPT": "Цитата",
+      "IMAGE_SECTION": {
+        "BODY": {
+          "SUBTITLE": "Изображения проекта",
+          "TITLE": "Изображения тела (необязательно)"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
+        "CAROUSEL": {
+          "SUBTITLE": "Изображения заголовков проекта/роли",
+          "TITLE": "Картинки для карусели"
         },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
+        "THUMBNAIL": {
+          "SUBTITLE": "Эскиз для страницы проектов (только 1)",
+          "TITLE": "Эскизные изображения"
         },
-        "TITLE": ""
-    },
-    "PROJECT_CREATE_LANGUAGE_PICKER": {
-        "BUTTONS": {
-            "ADD_LANGUAGE": ""
-        }
+        "TITLE": "Изображения"
+      },
+      "LINK": "Проект",
+      "META_SECTION": {
+        "LANGUAGES": {
+          "SUBTITLE": "Языки, использованные для создания этого проекта.",
+          "TITLE": "Языки проекта (необязательно)"
+        },
+        "STACK": {
+          "SUBTITLE": "Ресурсы, использованные для создания этого проекта.",
+          "TITLE": "Технологический стек проекта (необязательно)"
+        },
+        "TITLE": "Метаданные"
+      },
+      "ROLE": "Роль",
+      "SUBTITLE": "Подзаголовок",
+      "TITLE": "Название",
+      "TYPE": "Тип",
+      "VIDEO_SECTION": {
+        "BODY": {
+          "SUBTITLE": "Видео проекта",
+          "TITLE": "Видео тела (необязательно)"
+        },
+        "TITLE": "Видеоматериалы"
+      },
+      "YEAR": "Год"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "Нет, еще нет",
+      "M_2": "Скоро... почти",
+      "M_3": "Работаем над этим",
+      "M_4": "Здесь ничего нет"
+    },
+    "PARTICLE_TEXT": "ЛАБОРАТОРИИ",
+    "SUB_TITLE": "Вместо этого попробуйте посмотреть на эту красивую анимацию.",
+    "TITLE": "Эксперименты от {{name}}"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "Язык изменен",
+        "TITLE": "Переводы генерируются ИИ и могут быть неточными."
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Электронная почта"
+    },
+    "NOT_LOGGED_IN": "Вы в данный момент не входили в систему.",
+    "PASSWORD": {
+      "LABEL": "Пароль"
+    },
+    "TITLE": "Вход администратора CMS"
+  },
+  "PROJECT_CREATE_LANGUAGE_PICKER": {
+    "BUTTONS": {
+      "ADD_LANGUAGE": "Добавить язык"
+    }
+  }
 }

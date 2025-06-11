@@ -1,18 +1,18 @@
 {
-    "BUTTONS": {
-        "LOGIN": "",
-        "LOGOUT": "",
-        "VIEW_PROJECT": "",
-        "VIEW_WORKS": ""
-    },
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "BUTTONS": {
+    "LOGIN": "Anmelden",
+    "LOGOUT": "Abmelden",
+    "VIEW_PROJECT": "Projekt anzeigen",
+    "VIEW_WORKS": "Werke anzeigen"
+  },
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "Über",
+      "CONTACT": "Kontakt",
+      "LABS": "Labs",
+      "PROJECTS": "Projekte",
+      "ROLES": "Rollen",
+      "WORKFLOWS": "Workflows"
     }
+  }
 }

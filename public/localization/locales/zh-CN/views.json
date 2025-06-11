@@ -1,11 +1,11 @@
 {
-    "ABOUT": {
-        "GREETING_NAME": ""
-    },
-    "HOME": {
-        "SUBTITLE": ""
-    },
-    "ROLE_DETAILS": {
-        "SUBTITLE": ""
-    }
+  "ABOUT": {
+    "GREETING_NAME": "你好，我是{{name}}"
+  },
+  "HOME": {
+    "SUBTITLE": "{{name}}的作品集"
+  },
+  "ROLE_DETAILS": {
+    "SUBTITLE": "相关经验"
+  }
 }

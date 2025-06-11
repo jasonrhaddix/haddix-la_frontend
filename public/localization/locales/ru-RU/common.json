@@ -1,18 +1,18 @@
 {
-    "BUTTONS": {
-        "LOGIN": "",
-        "LOGOUT": "",
-        "VIEW_PROJECT": "",
-        "VIEW_WORKS": ""
-    },
-    "SITE_NAV": {
-        "ROUTES": {
-            "ABOUT": "",
-            "CONTACT": "",
-            "LABS": "",
-            "PROJECTS": "",
-            "ROLES": "",
-            "WORKFLOWS": ""
-        }
+  "BUTTONS": {
+    "LOGIN": "Вход",
+    "LOGOUT": "Выход",
+    "VIEW_PROJECT": "Просмотреть проект",
+    "VIEW_WORKS": "Просмотреть работы"
+  },
+  "SITE_NAV": {
+    "ROUTES": {
+      "ABOUT": "О нас",
+      "CONTACT": "Контакт",
+      "LABS": "Лаборатории",
+      "PROJECTS": "Проекты",
+      "ROLES": "Роли",
+      "WORKFLOWS": "Рабочие процессы"
     }
+  }
 }

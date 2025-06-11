@@ -1,115 +1,115 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": ""
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "电子邮件",
+      "FIRST_NAME": "名字",
+      "LAST_NAME": "姓氏",
+      "MESSAGE": "留言"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "提交",
+    "TITLE": "联系我"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "创建项目"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "创建项目"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "项目"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "SUBMIT": "",
-                "UPLOAD_IMAGE": "",
-                "UPLOAD_VIDEOS": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "ERRORS": {
-                "GENERIC": ""
-            },
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "META_SECTION": {
-                "LANGUAGES": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "STACK": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "VIDEO_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "角色"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "新建"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "SUBMIT": "保存项目",
+        "UPLOAD_IMAGE": "上传图片",
+        "UPLOAD_VIDEOS": "上传视频"
+      },
+      "CLIENT": "客户",
+      "DESCRIPTION": "描述",
+      "ERRORS": {
+        "GENERIC": "请填写所有必填字段"
+      },
+      "EXCERPT": "摘要",
+      "IMAGE_SECTION": {
+        "BODY": {
+          "SUBTITLE": "项目图片",
+          "TITLE": "主体图片（可选）"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
+        "CAROUSEL": {
+          "SUBTITLE": "项目/角色头图",
+          "TITLE": "轮播图片"
         },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
+        "THUMBNAIL": {
+          "SUBTITLE": "项目页面缩略图（仅限1个）",
+          "TITLE": "缩略图"
         },
-        "TITLE": ""
-    },
-    "PROJECT_CREATE_LANGUAGE_PICKER": {
-        "BUTTONS": {
-            "ADD_LANGUAGE": ""
-        }
+        "TITLE": "图片"
+      },
+      "LINK": "项目",
+      "META_SECTION": {
+        "LANGUAGES": {
+          "SUBTITLE": "创建此项目所使用的语言。",
+          "TITLE": "项目语言（可选）"
+        },
+        "STACK": {
+          "SUBTITLE": "创建此项目所使用的资源。",
+          "TITLE": "项目技术栈（可选）"
+        },
+        "TITLE": "元数据"
+      },
+      "ROLE": "角色",
+      "SUBTITLE": "副标题",
+      "TITLE": "标题",
+      "TYPE": "类型",
+      "VIDEO_SECTION": {
+        "BODY": {
+          "SUBTITLE": "项目视频",
+          "TITLE": "主体视频（可选）"
+        },
+        "TITLE": "视频"
+      },
+      "YEAR": "年份"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "不，暂时没有",
+      "M_2": "即将推出...差不多",
+      "M_3": "正在努力中",
+      "M_4": "这里什么都没有"
+    },
+    "PARTICLE_TEXT": "实验室",
+    "SUB_TITLE": "相反，试试看看这个漂亮的动画。",
+    "TITLE": "{{name}} 的实验"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "语言已更改",
+        "TITLE": "翻译由 AI 生成，可能不准确。"
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "电子邮件"
+    },
+    "NOT_LOGGED_IN": "您当前未登录。",
+    "PASSWORD": {
+      "LABEL": "密码"
+    },
+    "TITLE": "CMS 管理员登录"
+  },
+  "PROJECT_CREATE_LANGUAGE_PICKER": {
+    "BUTTONS": {
+      "ADD_LANGUAGE": "添加语言"
+    }
+  }
 }

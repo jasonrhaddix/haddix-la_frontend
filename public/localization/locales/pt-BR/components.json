@@ -1,115 +1,115 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": ""
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "Email",
+      "FIRST_NAME": "Nome",
+      "LAST_NAME": "Sobrenome",
+      "MESSAGE": "Mensagem"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "Enviar",
+    "TITLE": "Entre em Contato"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "Criar Projeto"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "Criar Projeto"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "Projeto"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "SUBMIT": "",
-                "UPLOAD_IMAGE": "",
-                "UPLOAD_VIDEOS": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "ERRORS": {
-                "GENERIC": ""
-            },
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "META_SECTION": {
-                "LANGUAGES": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "STACK": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "VIDEO_SECTION": {
-                "BODY": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "Função"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "Criar Novo"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "SUBMIT": "Salvar Projeto",
+        "UPLOAD_IMAGE": "Enviar Imagem(ns)",
+        "UPLOAD_VIDEOS": "Enviar Vídeos"
+      },
+      "CLIENT": "Cliente",
+      "DESCRIPTION": "Descrição",
+      "ERRORS": {
+        "GENERIC": "Por favor, complete todos os campos obrigatórios"
+      },
+      "EXCERPT": "Resumo",
+      "IMAGE_SECTION": {
+        "BODY": {
+          "SUBTITLE": "Imagens do projeto",
+          "TITLE": "Imagens do Corpo (Opcional)"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": ""
+        "CAROUSEL": {
+          "SUBTITLE": "Imagens do cabeçalho do Projeto/Função",
+          "TITLE": "Imagens do Carrossel"
         },
-        "NOT_LOGGED_IN": "",
-        "PASSWORD": {
-            "LABEL": ""
+        "THUMBNAIL": {
+          "SUBTITLE": "Miniatura da página de projetos (apenas 1)",
+          "TITLE": "Imagens de Miniatura"
         },
-        "TITLE": ""
-    },
-    "PROJECT_CREATE_LANGUAGE_PICKER": {
-        "BUTTONS": {
-            "ADD_LANGUAGE": ""
-        }
+        "TITLE": "Imagens"
+      },
+      "LINK": "Projeto",
+      "META_SECTION": {
+        "LANGUAGES": {
+          "SUBTITLE": "Idiomas usados para criar este projeto.",
+          "TITLE": "Idiomas do Projeto (Opcional)"
+        },
+        "STACK": {
+          "SUBTITLE": "Recursos usados para criar este projeto.",
+          "TITLE": "Stack do Projeto (Opcional)"
+        },
+        "TITLE": "Meta"
+      },
+      "ROLE": "Função",
+      "SUBTITLE": "Subtítulo",
+      "TITLE": "Título",
+      "TYPE": "Tipo",
+      "VIDEO_SECTION": {
+        "BODY": {
+          "SUBTITLE": "Vídeos do projeto",
+          "TITLE": "Vídeos do Corpo (Opcional)"
+        },
+        "TITLE": "Vídeos"
+      },
+      "YEAR": "Ano"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "Não, Ainda Não",
+      "M_2": "Em Breve...ish",
+      "M_3": "Trabalhando Nisso",
+      "M_4": "Nada Aqui"
+    },
+    "PARTICLE_TEXT": "LABS",
+    "SUB_TITLE": "Em vez disso, tente olhar para esta animação bonita.",
+    "TITLE": "Experimentos de {{name}}"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "Idioma Alterado",
+        "TITLE": "As traduções são geradas por IA e podem não ser precisas."
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Email"
+    },
+    "NOT_LOGGED_IN": "Você não está logado no momento.",
+    "PASSWORD": {
+      "LABEL": "Senha"
+    },
+    "TITLE": "Login do Admin do CMS"
+  },
+  "PROJECT_CREATE_LANGUAGE_PICKER": {
+    "BUTTONS": {
+      "ADD_LANGUAGE": "Adicionar Idioma"
+    }
+  }
 }
