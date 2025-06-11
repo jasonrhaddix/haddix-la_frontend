@@ -1,83 +1,83 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": "ご連絡ください"
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "メール",
+      "FIRST_NAME": "名",
+      "LAST_NAME": "姓",
+      "MESSAGE": "メッセージ"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "送信",
+    "TITLE": "ご連絡ください"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "プロジェクト作成"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "プロジェクト作成"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "プロジェクト"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "UPLOAD_IMAGE": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "役割"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "新規作成"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "UPLOAD_IMAGE": "画像をアップロード"
+      },
+      "CLIENT": "クライアント",
+      "DESCRIPTION": "説明",
+      "EXCERPT": "抜粋",
+      "IMAGE_SECTION": {
+        "CAROUSEL": {
+          "SUBTITLE": "プロジェクト/役割のヘッダー画像",
+          "TITLE": "カルーセル画像"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": "メールアドレス"
+        "THUMBNAIL": {
+          "SUBTITLE": "サブタイトル",
+          "TITLE": "タイトル"
         },
-        "NOT_LOGGED_IN": "現在ログインしていません。",
-        "PASSWORD": {
-            "LABEL": "パスワード"
-        },
-        "TITLE": "CMS管理者ログイン"
+        "TITLE": "サムネイル画像"
+      },
+      "LINK": "プロジェクト",
+      "ROLE": "役割",
+      "SUBTITLE": "プロジェクトページのサムネイル（1つのみ）",
+      "TITLE": "タイトル",
+      "TYPE": "タイプ",
+      "YEAR": "年"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "まだです",
+      "M_2": "もうすぐ…かも",
+      "M_3": "作業中です",
+      "M_4": "ここに何もありません"
+    },
+    "PARTICLE_TEXT": "LABS",
+    "SUB_TITLE": "代わりにこのかわいいアニメーションを見てみてください。",
+    "TITLE": "{{name}} からの実験"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "言語が変更されました",
+        "TITLE": "翻訳はAIによって生成されており、正確ではない場合があります。"
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "メールアドレス"
+    },
+    "NOT_LOGGED_IN": "現在ログインしていません。",
+    "PASSWORD": {
+      "LABEL": "パスワード"
+    },
+    "TITLE": "CMS管理者ログイン"
+  }
 }

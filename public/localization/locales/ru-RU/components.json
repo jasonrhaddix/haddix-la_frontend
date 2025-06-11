@@ -1,83 +1,83 @@
 {
-    "CONTACT_FORM": {
-        "FORMS": {
-            "EMAIL": "",
-            "FIRST_NAME": "",
-            "LAST_NAME": "",
-            "MESSAGE": ""
-        },
-        "SUBMIT": "",
-        "TITLE": "Напишите мне"
+  "CONTACT_FORM": {
+    "FORMS": {
+      "EMAIL": "Электронная почта",
+      "FIRST_NAME": "Имя",
+      "LAST_NAME": "Фамилия",
+      "MESSAGE": "Сообщение"
     },
-    "CREATE_BUTTON": {
-        "CREATE_PROJECT": ""
+    "SUBMIT": "Отправить",
+    "TITLE": "Напишите мне"
+  },
+  "CREATE_BUTTON": {
+    "CREATE_PROJECT": "Создать проект"
+  },
+  "CREATE_PICKER": {
+    "BUTTONS": {
+      "CREATE_PROJECT": "Создать проект"
     },
-    "CREATE_PICKER": {
-        "BUTTONS": {
-            "CREATE_PROJECT": ""
-        },
-        "PROJECT_BUTTON": {
-            "TITLE": ""
-        },
-        "ROLE_BUTTON": {
-            "TITLE": ""
-        },
-        "TITLE": ""
+    "PROJECT_BUTTON": {
+      "TITLE": "Проект"
     },
-    "CREATE_PROJECT": {
-        "FORMS": {
-            "BUTTONS": {
-                "UPLOAD_IMAGE": ""
-            },
-            "CLIENT": "",
-            "DESCRIPTION": "",
-            "EXCERPT": "",
-            "IMAGE_SECTION": {
-                "CAROUSEL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "THUMBNAIL": {
-                    "SUBTITLE": "",
-                    "TITLE": ""
-                },
-                "TITLE": ""
-            },
-            "LINK": "",
-            "ROLE": "",
-            "SUBTITLE": "",
-            "TITLE": "",
-            "TYPE": "",
-            "YEAR": ""
-        }
+    "ROLE_BUTTON": {
+      "TITLE": "Роль"
     },
-    "LABS": {
-        "COMING_SOON_MESSAGES": {
-            "M_1": "",
-            "M_2": "",
-            "M_3": "",
-            "M_4": ""
+    "TITLE": "Создать новое"
+  },
+  "CREATE_PROJECT": {
+    "FORMS": {
+      "BUTTONS": {
+        "UPLOAD_IMAGE": "Загрузить изображение"
+      },
+      "CLIENT": "Клиент",
+      "DESCRIPTION": "Описание",
+      "EXCERPT": "Аннотация",
+      "IMAGE_SECTION": {
+        "CAROUSEL": {
+          "SUBTITLE": "Изображения заголовков проектов/ролей",
+          "TITLE": "Картинки карусели"
         },
-        "PARTICLE_TEXT": "",
-        "SUB_TITLE": "",
-        "TITLE": ""
-    },
-    "LANGUAGE_PICKER": {
-        "TOASTS": {
-            "LANGUAGE_CHANGED": {
-                "DESC": "",
-                "TITLE": ""
-            }
-        }
-    },
-    "LOGIN": {
-        "EMAIL": {
-            "LABEL": "Электронная почта"
+        "THUMBNAIL": {
+          "SUBTITLE": "Подзаголовок",
+          "TITLE": "Заголовок"
         },
-        "NOT_LOGGED_IN": "Вы в настоящее время не вошли в систему.",
-        "PASSWORD": {
-            "LABEL": "Пароль"
-        },
-        "TITLE": "Вход администратора CMS"
+        "TITLE": "Изображение миниатюры"
+      },
+      "LINK": "Проект",
+      "ROLE": "Роль",
+      "SUBTITLE": "Миниатюра страницы проектов (только 1)",
+      "TITLE": "Название",
+      "TYPE": "Тип",
+      "YEAR": "Год"
     }
+  },
+  "LABS": {
+    "COMING_SOON_MESSAGES": {
+      "M_1": "Нет, ещё нет",
+      "M_2": "Скоро... почти",
+      "M_3": "Работаем над этим",
+      "M_4": "Здесь ничего нет"
+    },
+    "PARTICLE_TEXT": "ЛАБОРАТОРИИ",
+    "SUB_TITLE": "Попробуйте взглянуть на эту красивую анимацию.",
+    "TITLE": "Эксперименты от {{name}}"
+  },
+  "LANGUAGE_PICKER": {
+    "TOASTS": {
+      "LANGUAGE_CHANGED": {
+        "DESC": "Язык изменён",
+        "TITLE": "Переводы сгенерированы ИИ и могут быть неточными."
+      }
+    }
+  },
+  "LOGIN": {
+    "EMAIL": {
+      "LABEL": "Электронная почта"
+    },
+    "NOT_LOGGED_IN": "Вы в настоящее время не вошли в систему.",
+    "PASSWORD": {
+      "LABEL": "Пароль"
+    },
+    "TITLE": "Вход администратора CMS"
+  }
 }
