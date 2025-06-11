@@ -8,13 +8,13 @@
 							<v-col class="py-0 col-12 col-sm-12 col-md-6">
 								<v-text-field
 										filled
-										label="First Name"
+										:label="$t('components:CONTACT_FORM.FORMS.FIRST_NAME')"
 										v-model="modelValue.first_name" />
 							</v-col>
 							<v-col class="py-0 col-12 col-sm-12 col-md-6">
 								<v-text-field
 										filled
-										label="Last Name"
+										:label="$t('components:CONTACT_FORM.FORMS.LAST_NAME')"
 										v-model="modelValue.last_name" />
 							</v-col>
 					</v-row>
@@ -22,7 +22,7 @@
 							<v-col xs12 class="py-0">
 								<v-text-field
 									filled
-									label="Email"
+									:label="$t('components:CONTACT_FORM.FORMS.EMAIL')"
 									v-model="modelValue.email" />
 							</v-col>
 					</v-row>
@@ -31,7 +31,7 @@
 								<v-textarea
 									filled
 									no-resize
-									label="Message"
+									:label="$t('components:CONTACT_FORM.FORMS.MESSAGE')"
 									v-model="modelValue.message" />
 
 									<v-text-field
@@ -49,8 +49,8 @@
 										variant="light"
 										:disabled="!formValid"
 										:loading="contactStore.saving"
+										:label="$t('components:CONTACT_FORM.SUBMIT')"
 										class="form-submit--btn"
-										label="Submit"
 										@click.native="sendEmail"/>
 							</div>
 					</div>

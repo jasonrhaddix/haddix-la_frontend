@@ -59,7 +59,7 @@
             <AppButton
               v-if="clickCallback || data.link"
               variant="colorful"
-              :label="$t('common:BUTTONS.VIEW_PROJECT')"
+              :label="viewProjectLabel"
               @click.native.stop="clickItem"
             />
           </div>
@@ -70,7 +70,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
+import i18next from 'i18next'
 
 import stores from '@/stores'
 import { asyncComponents } from '@/utils/helpers'
@@ -84,6 +85,11 @@ const overlayStore = stores.ui.overlayStore()
 const dialogStore = stores.ui.dialogStore()
 const toastStore = stores.ui.toastStore()
 const userStore = stores.userStore()
+
+const currentLanguage = ref(i18next.language)
+i18next.on('languageChanged', (lng) => {
+  currentLanguage.value = lng
+})
 
 /* const patterns = [
   {
@@ -136,6 +142,11 @@ const projectClient = computed(() => {
     : props.data?.clientName || props.data?.client
 })
 
+const viewProjectLabel = computed(() => {
+  const lang = currentLanguage.value
+  return i18next.t('common:BUTTONS.VIEW_PROJECT')
+})
+
 const updateProject = () => {
   overlayStore.setComponent({
       component: asyncComponents.CreateProject,
@@ -147,6 +158,7 @@ const updateProject = () => {
 
     overlayStore.showOverlay()
 }
+
 
 const deleteProject = () => {
   dialogStore.showDialog({

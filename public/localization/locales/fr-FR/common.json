@@ -1,18 +1,18 @@
 {
-  "BUTTONS": {
-    "LOGIN": "Connexion",
-    "LOGOUT": "Déconnexion",
-    "VIEW_PROJECT": "Voir le projet",
-    "VIEW_WORKS": "Voir les réalisations"
-  },
-  "SITE_NAV": {
-    "ROUTES": {
-      "ABOUT": "À propos",
-      "CONTACT": "Contact",
-      "LABS": "Laboratoires",
-      "PROJECTS": "Projets",
-      "ROLES": "Rôles",
-      "WORKFLOWS": "Flux de travail"
+    "BUTTONS": {
+        "LOGIN": "Connexion",
+        "LOGOUT": "Déconnexion",
+        "VIEW_PROJECT": "Voir le projet",
+        "VIEW_WORKS": "Voir les réalisations"
+    },
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "À propos",
+            "CONTACT": "Contact",
+            "LABS": "Laboratoires",
+            "PROJECTS": "Projets",
+            "ROLES": "Rôles",
+            "WORKFLOWS": "Flux de travail"
+        }
     }
-  }
 }

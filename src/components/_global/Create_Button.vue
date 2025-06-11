@@ -5,6 +5,8 @@
 </template>
 
 <script setup>
+import i18next from 'i18next'
+
 import { asyncComponents } from '@/utils/helpers'
 
 import stores from '@/stores/index.js'
@@ -22,7 +24,7 @@ function createClick() {
   } else {
     overlayStore.setComponent({
       component: asyncComponents.CreateProject,
-      title: 'Create Project'
+      title: i18next.t('components:CREATE_BUTTON.CREATE_PROJECT'),
     })
 
     overlayStore.showOverlay()

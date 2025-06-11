@@ -11,7 +11,7 @@
           <v-select
             :key="projectTypesKey"
             dense
-            label="Project Type"
+            :label="$t('components:CREATE_PROJECT.FORMS.TYPE')"
             :error="/* $v.model.type.$invalid &&  */ submitted"
             :items="propsStore.projectTypes"
             v-model="formModel.type"
@@ -22,7 +22,7 @@
       <v-row>
         <v-col class="col-12">
           <v-text-field
-            label="Title"
+            :label="$t('components:CREATE_PROJECT.FORMS.TITLE')"
             :error="/* $v.model.title.$invalid &&  */ submitted"
             v-model="formModel.title"
           />
@@ -31,7 +31,7 @@
 
       <v-row>
         <v-col class="col-12">
-          <v-text-field label="Subtitle" v-model="formModel.subtitle" />
+          <v-text-field :label="$t('components:CREATE_PROJECT.FORMS.SUBTITLE')" v-model="formModel.subtitle" />
         </v-col>
       </v-row>
 
@@ -39,7 +39,7 @@
         <v-col class="col-12 col-md-4">
           <v-select
             dense
-            label="Client"
+            :label="$t('components:CREATE_PROJECT.FORMS.CLIENT')"
             :items="propsStore.projectClients"
             v-model="formModel.client"
           />
@@ -47,7 +47,7 @@
         <v-col class="col-12 col-md-4">
           <v-select
             dense
-            label="Role"
+            :label="$t('components:CREATE_PROJECT.FORMS.ROLE')"
             :items="propsStore.projectRoles"
             v-model="formModel.role"
           />
@@ -56,7 +56,7 @@
         <v-col class="col-12 col-md-4">
           <v-select
             dense
-            label="Year"
+            :label="$t('components:CREATE_PROJECT.FORMS.YEAR')"
             :items="propsStore.projectYears"
             v-model="formModel.projectYear"
           />
@@ -65,20 +65,20 @@
 
       <v-row>
         <v-col class="col-12">
-          <v-text-field label="Excerpt" v-model="formModel.excerpt" />
+          <v-text-field :label="$t('components:CREATE_PROJECT.FORMS.EXCERPT')" v-model="formModel.excerpt" />
         </v-col>
       </v-row>
 
       <v-row>
         <v-col class="col-12">
-          <v-textarea label="Description" v-model="formModel.description" />
+          <v-textarea :label="$t('components:CREATE_PROJECT.FORMS.DESCRIPTION')" v-model="formModel.description" />
         </v-col>
       </v-row>
 
       <v-row>
         <v-col clasa="col-12">
           <v-text-field
-            label="Project Link"
+            :label="$t('components:CREATE_PROJECT.FORMS.LINK')"
             hint="Requires link format (Example: http://www.my-link.com)"
             :error="/* $v.model.link.$invalid &&  */ submitted"
             v-model="formModel.link"
@@ -88,7 +88,7 @@
     </div>
 
     <div class="form-section create__images">
-      <h2>Images</h2>
+      <h2>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.TITLE') }}</h2>
 
       <div class="inner__divider" />
 
@@ -96,8 +96,8 @@
         <v-col class="col-12 col-md-4">
           <div class="images-section images__thumbnails">
             <div class="section__title">
-              <h3>Thumbnail Image</h3>
-              <p>Projects page thumbnail (only 1)</p>
+              <h3>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.THUMBNAIL.TITLE') }}</h3>
+              <p>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.THUMBNAIL.SUBTITLE') }}</p>
             </div>
             <div class="images__container">
               <AttachmentUploader
@@ -121,7 +121,7 @@
                   @click="attachmentUploader_Thumbnail.select()"
                 >
                   <div class="button__content">
-                    <p class="subheading">Upload Image</p>
+                    <p class="subheading">{{ $t('components:CREATE_PROJECT.FORMS.BUTTONS.UPLOAD_IMAGE') }}</p>
                     <v-icon color="grey darken-1">add</v-icon>
                   </div>
                 </div>
@@ -143,8 +143,8 @@
         <v-col class="col-12 col-md-4">
           <div class="images-section images__carousel">
             <div class="section__title">
-              <h3>Carousel Images</h3>
-              <p>Header images</p>
+              <h3>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.CAROUSEL.TITLE') }}</h3>
+              <p>{{ $t('components:CREATE_PROJECT.FORMS.IMAGE_SECTION.CAROUSEL.SUBTITLE') }}</p>
             </div>
             <div class="images__container">
               <AttachmentUploader
@@ -164,7 +164,7 @@
                   @click="attachmentUploader_Header.select()"
                 >
                   <div class="button__content">
-                    <p class="subheading">Upload Images</p>
+                    <p class="subheading">{{ $t('components:CREATE_PROJECT.FORMS.BUTTONS.UPLOAD_IMAGE') }}</p>
                     <v-icon color="grey darken-1">add</v-icon>
                   </div>
                 </div>

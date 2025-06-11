@@ -8,15 +8,20 @@ const CustomerLexer = class JavascriptLexer extends BaseLexer {
   constructor (options = {}) {
     super(options)
 
-    this.callPattern = '(?<=^|\\s|\\.)' + this.functionPattern() + '\\(.*\\)'
-    this.functions = options.functions || ['t']
+    // Updated functions list to include both `t` and `i18next.t`
+    this.functions = options.functions || ['t', 'i18next.t']
+
     this.namespaceFunctions = options.namespaceFunctions || [
       'useTranslation',
       'withTranslation'
     ]
+
     this.attr = options.attr || 'i18nKey'
-    this.parseGenerics= options.parseGenerics || false
+    this.parseGenerics = options.parseGenerics || false
     this.typeMap = options.typeMap || {}
+
+    // Updated pattern to support dotted function calls like `i18next.t(...)`
+    this.callPattern = '(?<=^|\\s|\\.|\\b)' + this.functionPattern() + '\\(.*\\)'
   }
 
   createCommentNodeParser () {

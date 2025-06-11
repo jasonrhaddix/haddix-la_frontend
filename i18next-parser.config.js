@@ -9,11 +9,16 @@ export default {
   keepRemoved: false,
 
   lexers: {
-    js: ['JavascriptLexer'],
+    /* js: [
+      {
+        lexer: 'JavascriptLexer',
+        // functions: ['i18next.t', 'i18next.$t', '$t'],
+      }
+    ] */
     vue: [
       {
         lexer: CustomerLexer,
-        functions: ['i18next', 'i18next.t', '$i18next.t', '$t']
+        functions: ['t', '$t']
       }
     ],
 

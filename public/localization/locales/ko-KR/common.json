@@ -1,18 +1,18 @@
 {
-  "BUTTONS": {
-    "LOGIN": "로그인",
-    "LOGOUT": "로그아웃",
-    "VIEW_PROJECT": "프로젝트 보기",
-    "VIEW_WORKS": "작품 보기"
-  },
-  "SITE_NAV": {
-    "ROUTES": {
-      "ABOUT": "소개",
-      "CONTACT": "연락처",
-      "LABS": "연구소",
-      "PROJECTS": "프로젝트",
-      "ROLES": "역할",
-      "WORKFLOWS": "작업 흐름"
+    "BUTTONS": {
+        "LOGIN": "로그인",
+        "LOGOUT": "로그아웃",
+        "VIEW_PROJECT": "프로젝트 보기",
+        "VIEW_WORKS": "작품 보기"
+    },
+    "SITE_NAV": {
+        "ROUTES": {
+            "ABOUT": "소개",
+            "CONTACT": "연락처",
+            "LABS": "연구소",
+            "PROJECTS": "프로젝트",
+            "ROLES": "역할",
+            "WORKFLOWS": "작업 흐름"
+        }
     }
-  }
 }

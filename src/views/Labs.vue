@@ -6,14 +6,14 @@
 
     <div class="labs__header">
       <div class="header__content">
-        <particle-text text="HADDIX" />
-        <p>Experiments from Jason R. Haddix</p>
+        <particle-text :text="particleTxtStr" />
+        <p>{{ $t('components:LABS.TITLE', { name: 'Jason R. Haddix'}) }}</p>
         <div class="scroll-arrow">
           <v-icon color="grey darken-2">keyboard_arrow_down</v-icon>
         </div>
         <div v-if="!projectsStore.hasProjects" class="coming-soon">
           <h3><span>¯\_(ツ)_/¯</span> {{ getMessage }}</h3>
-          <p><small>Instead, try looking at this pretty animation.</small></p>
+          <p><small>{{ $t('components:LABS.SUB_TITLE') }}</small></p>
         </div>
       </div>
       <!-- <div
@@ -51,7 +51,8 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import i18next from 'i18next'
 
 import stores from '@/stores/index.js'
 
@@ -61,6 +62,16 @@ import ProjectItem from '@/components/Projects/Project_Item.vue'
 const typesStore = stores.config.typesStore()
 const projectsStore = stores.projectsStore()
 const overlayStore = stores.ui.overlayStore()
+
+const currentLanguage = ref(i18next.language)
+i18next.on('languageChanged', (lng) => {
+  currentLanguage.value = lng
+})
+
+const particleTxtStr = computed(() => {
+  const lang = currentLanguage.value
+	return i18next.t('components:LABS.PARTICLE_TEXT')
+})
 
 // #region LIFECYCLE HOOKS ------------------------------
 onMounted(() => {
@@ -98,10 +109,10 @@ function addProject() {
 // #region HEADER ---------------------------------------
 const getMessage = computed(() => {
   const msgs = [
-    'Nope, Not Yet',
-    'Coming Soon...ish',
-    "Workin' On It",
-    'Nothing Here'
+		i18next.t('components:LABS.COMING_SOON_MESSAGES.M_1'),
+		i18next.t('components:LABS.COMING_SOON_MESSAGES.M_2'),
+		i18next.t('components:LABS.COMING_SOON_MESSAGES.M_3'),
+		i18next.t('components:LABS.COMING_SOON_MESSAGES.M_4')
   ]
   return msgs[Math.round(Math.random() * msgs.length - 1)]
 })

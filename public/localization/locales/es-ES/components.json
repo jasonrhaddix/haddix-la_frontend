@@ -1,15 +1,83 @@
 {
-  "CONTACT_FORM": {
-    "TITLE": "Déjame un mensaje"
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "Correo electrónico"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
+        },
+        "SUBMIT": "",
+        "TITLE": "Déjame un mensaje"
     },
-    "NOT_LOGGED_IN": "Actualmente no has iniciado sesión.",
-    "PASSWORD": {
-      "LABEL": "Contraseña"
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
     },
-    "TITLE": "Inicio de sesión de administrador de CMS"
-  }
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
+        },
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "UPLOAD_IMAGE": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "ES TEST",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": "Correo electrónico"
+        },
+        "NOT_LOGGED_IN": "Actualmente no has iniciado sesión.",
+        "PASSWORD": {
+            "LABEL": "Contraseña"
+        },
+        "TITLE": "Inicio de sesión de administrador de CMS"
+    }
 }

@@ -3,8 +3,6 @@
 </template>
 
 <script>
-	// import { mapState } from 'vuex'
-
 	class Particle {
 		constructor (canvas, options, colors) {
 			// let random = Math.random()
@@ -67,11 +65,6 @@
 				required: true,
 				default: ''
 			}
-			/* autoStart: {
-				type: [Boolean, Number],
-				required: false,
-				default: 0
-			} */
 		},
 
 		data: () => ({
@@ -93,11 +86,7 @@
 			]
 		}),
 
-		computed: {
-			/* ...mapState({
-				initialized: state => state.app.initialized
-			}) */
-		},
+		computed: {},
 
 		mounted () {
 			this.init()
@@ -220,6 +209,27 @@
 				this.particles = this.particles.filter(p => p.move(this.currentColor))
 				this.maskCanvas()
 				requestAnimationFrame(this.update.bind(this.currentColor))
+			}
+		},
+
+		watch: {
+			text: {
+				deep: true,
+				handler (text) {
+					if (this.interval) {
+						clearInterval(this.interval)
+						clearInterval(this.colorInterval)
+	
+						this.$refs.particleText.removeChild(this.c[2].canvas)
+	
+						this.interval = null
+						this.c = []
+						this.particles = []
+						this.currentColor = []
+	
+						this.init()
+					}
+				}
 			}
 		}
 	}

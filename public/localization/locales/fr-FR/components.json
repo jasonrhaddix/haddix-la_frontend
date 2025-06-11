@@ -1,15 +1,83 @@
 {
-  "CONTACT_FORM": {
-    "TITLE": "Laissez-moi un message"
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "E-mail"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "",
+            "FIRST_NAME": "",
+            "LAST_NAME": "",
+            "MESSAGE": ""
+        },
+        "SUBMIT": "",
+        "TITLE": "Laissez-moi un message"
     },
-    "NOT_LOGGED_IN": "Vous n'êtes pas actuellement connecté.",
-    "PASSWORD": {
-      "LABEL": "Mot de passe"
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": ""
     },
-    "TITLE": "Connexion Admin CMS"
-  }
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": ""
+        },
+        "PROJECT_BUTTON": {
+            "TITLE": ""
+        },
+        "ROLE_BUTTON": {
+            "TITLE": ""
+        },
+        "TITLE": ""
+    },
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "UPLOAD_IMAGE": ""
+            },
+            "CLIENT": "",
+            "DESCRIPTION": "",
+            "EXCERPT": "",
+            "IMAGE_SECTION": {
+                "CAROUSEL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "",
+                    "TITLE": ""
+                },
+                "TITLE": ""
+            },
+            "LINK": "",
+            "ROLE": "",
+            "SUBTITLE": "",
+            "TITLE": "",
+            "TYPE": "",
+            "YEAR": ""
+        }
+    },
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "",
+            "M_2": "",
+            "M_3": "",
+            "M_4": ""
+        },
+        "PARTICLE_TEXT": "",
+        "SUB_TITLE": "",
+        "TITLE": ""
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "",
+                "TITLE": ""
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": "E-mail"
+        },
+        "NOT_LOGGED_IN": "Vous n'êtes pas actuellement connecté.",
+        "PASSWORD": {
+            "LABEL": "Mot de passe"
+        },
+        "TITLE": "Connexion Admin CMS"
+    }
 }

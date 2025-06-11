@@ -2,14 +2,14 @@
   <div class="create-picker">
     <div class="create-picker__content">
       <div class="picker__title">
-        <h1>Create New</h1>
+        <h1>{{ $t('components:CREATE_PICKER.TITLE') }}</h1>
       </div>
       <div class="picker__options">
         <div v-ripple class="content__item">
           <div class="item" @click="openForm(typesStore.PROJECT_TYPE__WORK)">
             <v-icon size="170" color="white">dashboard</v-icon>
             <div>
-              <h3>Project</h3>
+              <h3>{{ $t('components:CREATE_PICKER.PROJECT_BUTTON.TITLE') }}</h3>
             </div>
           </div>
         </div>
@@ -17,7 +17,7 @@
           <div v-ripple class="item" @click="openForm(typesStore.PROJECT_TYPE__NEW_ROLE)">
             <v-icon size="170" color="white">person</v-icon>
             <div>
-              <h3>Role</h3>
+              <h3>{{ $t('components:CREATE_PICKER.ROLE_BUTTON.TITLE') }}</h3>
             </div>
           </div>
         </div>
@@ -27,6 +27,8 @@
 </template>
 
 <script setup>
+import i18next from 'i18next'
+
 import stores from '@/stores/index.js'
 
 import { asyncComponents } from '@/utils/helpers'
@@ -43,7 +45,7 @@ function openForm(type) {
     case typesStore.PROJECT_TYPE__EXPERIMENT:
       overlayStore.setComponent({
         component: asyncComponents.CreateProject,
-        title: 'Create Project'
+        title: i18next.t('components:CREATE_PICKER.BUTTONS.CREATE_PROJECT'),
       })
 
       overlayStore.showOverlay()
@@ -52,7 +54,7 @@ function openForm(type) {
     case typesStore.PROJECT_TYPE__NEW_ROLE:
       overlayStore.setComponent({
         component: asyncComponents.CreateRole,
-        title: 'Create Role'
+        title: i18next.t('components:CREATE_PICKER.BUTTONS.CREATE_PROJECT')
       })
 
       overlayStore.showOverlay()
