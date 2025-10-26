@@ -1,7 +1,7 @@
 {
   "CONTACT_FORM": {
     "FORMS": {
-      "EMAIL": "Email",
+      "EMAIL": "E-mail",
       "FIRST_NAME": "Imię",
       "LAST_NAME": "Nazwisko",
       "MESSAGE": "Wiadomość"
@@ -99,7 +99,7 @@
   },
   "LOGIN": {
     "EMAIL": {
-      "LABEL": "Email"
+      "LABEL": "E-mail"
     },
     "NOT_LOGGED_IN": "Nie jesteś aktualnie zalogowany.",
     "PASSWORD": {
