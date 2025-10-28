@@ -87,7 +87,8 @@
     },
     "PARTICLE_TEXT": "LABS",
     "SUB_TITLE": "Versuchen Sie stattdessen, sich diese schöne Animation anzusehen.",
-    "TITLE": "Experimente von {{name}}"
+    "TITLE": "Experimente von {{name}}",
+    "PARTIKEL_TEXT": "LABS"
   },
   "LANGUAGE_PICKER": {
     "TOASTS": {
@@ -110,6 +111,13 @@
   "PROJECT_CREATE_LANGUAGE_PICKER": {
     "BUTTONS": {
       "ADD_LANGUAGE": "Sprache hinzufügen"
+    }
+  },
+  "CREATE_PROJEKT": {
+    "FORMULARE": {
+      "VIDEO_BEREICH": {
+        "TITEL": "Videos"
+      }
     }
   }
 }
