@@ -42,7 +42,7 @@
 						</v-btn> -->
           </div>
           <div v-else class="login-input__inner">
-            <h3>{{ $t('components:LOGIN.NOT_LOGGED_IN') }}You're currently logged in</h3>
+            <h3>{{ $t('components:LOGIN.LOGGED_IN') }}</h3>
 
             <AppButton
               variant="colorful"

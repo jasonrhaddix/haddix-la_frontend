@@ -1,115 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "Correo electrónico",
-      "FIRST_NAME": "Nombre",
-      "LAST_NAME": "Apellido",
-      "MESSAGE": "Mensaje"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "Correo electrónico",
+            "FIRST_NAME": "Nombre",
+            "LAST_NAME": "Apellido",
+            "MESSAGE": "Mensaje"
+        },
+        "SUBMIT": "Enviar",
+        "TITLE": "Contáctame"
     },
-    "SUBMIT": "Enviar",
-    "TITLE": "Contáctame"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "Crear Proyecto"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "Crear Proyecto"
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": "Crear Proyecto"
     },
-    "PROJECT_BUTTON": {
-      "TITLE": "Proyecto"
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": "Crear Proyecto"
+        },
+        "PROJECT_BUTTON": {
+            "TITLE": "Proyecto"
+        },
+        "ROLE_BUTTON": {
+            "TITLE": "Rol"
+        },
+        "TITLE": "Crear Nuevo"
     },
-    "ROLE_BUTTON": {
-      "TITLE": "Rol"
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "Guardar Proyecto",
+                "UPLOAD_IMAGE": "Subir Imagen(es)",
+                "UPLOAD_VIDEOS": "Subir Videos"
+            },
+            "CLIENT": "Cliente",
+            "DESCRIPTION": "Descripción",
+            "ERRORS": {
+                "GENERIC": "Por favor completa todos los campos requeridos"
+            },
+            "EXCERPT": "Extracto",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Imágenes del proyecto",
+                    "TITLE": "Imágenes del Cuerpo (Opcional)"
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "Imágenes de encabezado del Proyecto/Rol",
+                    "TITLE": "Imágenes del Carrusel"
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "Miniatura de la página de proyectos (solo 1)",
+                    "TITLE": "Imágenes de Miniatura"
+                },
+                "TITLE": "Imágenes"
+            },
+            "LINK": "Proyecto",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "Lenguajes utilizados para crear este proyecto.",
+                    "TITLE": "Lenguajes del Proyecto (Opcional)"
+                },
+                "STACK": {
+                    "SUBTITLE": "Recursos utilizados para crear este proyecto.",
+                    "TITLE": "Stack del Proyecto (Opcional)"
+                },
+                "TITLE": "Meta"
+            },
+            "ROLE": "Rol",
+            "SUBTITLE": "Subtítulo",
+            "TITLE": "Título",
+            "TYPE": "Tipo",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Videos del proyecto",
+                    "TITLE": "Videos del Cuerpo (Opcional)"
+                },
+                "TITLE": "Vídeos"
+            },
+            "YEAR": "Año"
+        }
     },
-    "TITLE": "Crear Nuevo"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "SUBMIT": "Guardar Proyecto",
-        "UPLOAD_IMAGE": "Subir Imagen(es)",
-        "UPLOAD_VIDEOS": "Subir Videos"
-      },
-      "CLIENT": "Cliente",
-      "DESCRIPTION": "Descripción",
-      "ERRORS": {
-        "GENERIC": "Por favor completa todos los campos requeridos"
-      },
-      "EXCERPT": "Extracto",
-      "IMAGE_SECTION": {
-        "BODY": {
-          "SUBTITLE": "Imágenes del proyecto",
-          "TITLE": "Imágenes del Cuerpo (Opcional)"
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "No, Aún No",
+            "M_2": "Próximamente... más o menos",
+            "M_3": "Trabajando en ello",
+            "M_4": "Nada Aquí"
         },
-        "CAROUSEL": {
-          "SUBTITLE": "Imágenes de encabezado del Proyecto/Rol",
-          "TITLE": "Imágenes del Carrusel"
+        "PARTICLE_TEXT": "LABORATORIOS",
+        "SUB_TITLE": "En su lugar, intenta mirar esta bonita animación.",
+        "TITLE": "Experimentos de {{name}}"
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "Idioma Cambiado",
+                "TITLE": "Las traducciones son generadas por IA y pueden no ser precisas."
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": "Correo electrónico"
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "Miniatura de la página de proyectos (solo 1)",
-          "TITLE": "Imágenes de Miniatura"
+        "LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": "Contraseña"
         },
-        "TITLE": "Imágenes"
-      },
-      "LINK": "Proyecto",
-      "META_SECTION": {
-        "LANGUAGES": {
-          "SUBTITLE": "Lenguajes utilizados para crear este proyecto.",
-          "TITLE": "Lenguajes del Proyecto (Opcional)"
-        },
-        "STACK": {
-          "SUBTITLE": "Recursos utilizados para crear este proyecto.",
-          "TITLE": "Stack del Proyecto (Opcional)"
-        },
-        "TITLE": "Meta"
-      },
-      "ROLE": "Rol",
-      "SUBTITLE": "Subtítulo",
-      "TITLE": "Título",
-      "TYPE": "Tipo",
-      "VIDEO_SECTION": {
-        "BODY": {
-          "SUBTITLE": "Videos del proyecto",
-          "TITLE": "Videos del Cuerpo (Opcional)"
-        },
-        "TITLE": "Vídeos"
-      },
-      "YEAR": "Año"
+        "TITLE": "Inicio de Sesión de Admin del CMS"
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": "Añadir Idioma"
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "No, Aún No",
-      "M_2": "Próximamente... más o menos",
-      "M_3": "Trabajando en ello",
-      "M_4": "Nada Aquí"
-    },
-    "PARTICLE_TEXT": "LABORATORIOS",
-    "SUB_TITLE": "En su lugar, intenta mirar esta bonita animación.",
-    "TITLE": "Experimentos de {{name}}"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "Idioma Cambiado",
-        "TITLE": "Las traducciones son generadas por IA y pueden no ser precisas."
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "Correo electrónico"
-    },
-    "NOT_LOGGED_IN": "No estás actualmente conectado.",
-    "PASSWORD": {
-      "LABEL": "Contraseña"
-    },
-    "TITLE": "Inicio de Sesión de Admin del CMS"
-  },
-  "PROJECT_CREATE_LANGUAGE_PICKER": {
-    "BUTTONS": {
-      "ADD_LANGUAGE": "Añadir Idioma"
-    }
-  }
 }

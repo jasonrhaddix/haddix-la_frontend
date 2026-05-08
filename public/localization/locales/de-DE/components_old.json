@@ -1,0 +1,15 @@
+{
+    "CREATE_PROJEKT": {
+        "FORMULARE": {
+            "VIDEO_BEREICH": {
+                "TITEL": "Videos"
+            }
+        }
+    },
+    "LABS": {
+        "PARTIKEL_TEXT": "LABS"
+    },
+    "LOGIN": {
+        "NOT_LOGGED_IN": "Sie sind zurzeit nicht eingeloggt."
+    }
+}

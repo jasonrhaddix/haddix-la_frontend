@@ -101,7 +101,7 @@
         "EMAIL": {
             "LABEL": "Email"
         },
-        "NOT_LOGGED_IN": "You're not currently logged in.",
+        "LOGGED_IN": "You're currently logged in",
         "PASSWORD": {
             "LABEL": "Password"
         },

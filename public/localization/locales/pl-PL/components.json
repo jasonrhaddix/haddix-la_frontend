@@ -1,115 +1,115 @@
 {
-  "CONTACT_FORM": {
-    "FORMS": {
-      "EMAIL": "E-mail",
-      "FIRST_NAME": "Imię",
-      "LAST_NAME": "Nazwisko",
-      "MESSAGE": "Wiadomość"
+    "CONTACT_FORM": {
+        "FORMS": {
+            "EMAIL": "E-mail",
+            "FIRST_NAME": "Imię",
+            "LAST_NAME": "Nazwisko",
+            "MESSAGE": "Wiadomość"
+        },
+        "SUBMIT": "Prześlij",
+        "TITLE": "Skontaktuj się ze mną"
     },
-    "SUBMIT": "Prześlij",
-    "TITLE": "Skontaktuj się ze mną"
-  },
-  "CREATE_BUTTON": {
-    "CREATE_PROJECT": "Utwórz projekt"
-  },
-  "CREATE_PICKER": {
-    "BUTTONS": {
-      "CREATE_PROJECT": "Utwórz projekt"
+    "CREATE_BUTTON": {
+        "CREATE_PROJECT": "Utwórz projekt"
     },
-    "PROJECT_BUTTON": {
-      "TITLE": "Projekt"
+    "CREATE_PICKER": {
+        "BUTTONS": {
+            "CREATE_PROJECT": "Utwórz projekt"
+        },
+        "PROJECT_BUTTON": {
+            "TITLE": "Projekt"
+        },
+        "ROLE_BUTTON": {
+            "TITLE": "Rola"
+        },
+        "TITLE": "Utwórz nowy"
     },
-    "ROLE_BUTTON": {
-      "TITLE": "Rola"
+    "CREATE_PROJECT": {
+        "FORMS": {
+            "BUTTONS": {
+                "SUBMIT": "Zapisz projekt",
+                "UPLOAD_IMAGE": "Prześlij obraz(y)",
+                "UPLOAD_VIDEOS": "Prześlij filmy"
+            },
+            "CLIENT": "Klient",
+            "DESCRIPTION": "Opis",
+            "ERRORS": {
+                "GENERIC": "Proszę wypełnić wszystkie wymagane pola"
+            },
+            "EXCERPT": "Wyciąg",
+            "IMAGE_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Obrazy projektu",
+                    "TITLE": "Obrazy główne (opcjonalnie)"
+                },
+                "CAROUSEL": {
+                    "SUBTITLE": "Obrazy nagłówkowe projektu/roli",
+                    "TITLE": "Obrazy karuzelowe"
+                },
+                "THUMBNAIL": {
+                    "SUBTITLE": "Miniatura na stronie projektów (tylko 1)",
+                    "TITLE": "Miniatury"
+                },
+                "TITLE": "Obrazy"
+            },
+            "LINK": "Projekt",
+            "META_SECTION": {
+                "LANGUAGES": {
+                    "SUBTITLE": "Języki użyte przy tworzeniu tego projektu.",
+                    "TITLE": "Języki projektu (opcjonalnie)"
+                },
+                "STACK": {
+                    "SUBTITLE": "Zasoby użyte przy tworzeniu tego projektu.",
+                    "TITLE": "Stos projektu (opcjonalnie)"
+                },
+                "TITLE": "Meta"
+            },
+            "ROLE": "Rola",
+            "SUBTITLE": "Podtytuł",
+            "TITLE": "Tytuł",
+            "TYPE": "Typ",
+            "VIDEO_SECTION": {
+                "BODY": {
+                    "SUBTITLE": "Filmy projektu",
+                    "TITLE": "Filmy główne (opcjonalnie)"
+                },
+                "TITLE": "Filmy"
+            },
+            "YEAR": "Rok"
+        }
     },
-    "TITLE": "Utwórz nowy"
-  },
-  "CREATE_PROJECT": {
-    "FORMS": {
-      "BUTTONS": {
-        "SUBMIT": "Zapisz projekt",
-        "UPLOAD_IMAGE": "Prześlij obraz(y)",
-        "UPLOAD_VIDEOS": "Prześlij filmy"
-      },
-      "CLIENT": "Klient",
-      "DESCRIPTION": "Opis",
-      "ERRORS": {
-        "GENERIC": "Proszę wypełnić wszystkie wymagane pola"
-      },
-      "EXCERPT": "Wyciąg",
-      "IMAGE_SECTION": {
-        "BODY": {
-          "SUBTITLE": "Obrazy projektu",
-          "TITLE": "Obrazy główne (opcjonalnie)"
+    "LABS": {
+        "COMING_SOON_MESSAGES": {
+            "M_1": "Nie, jeszcze nie",
+            "M_2": "Wkrótce... w pewnym sensie",
+            "M_3": "Pracuję nad tym",
+            "M_4": "Nic tutaj nie ma"
         },
-        "CAROUSEL": {
-          "SUBTITLE": "Obrazy nagłówkowe projektu/roli",
-          "TITLE": "Obrazy karuzelowe"
+        "PARTICLE_TEXT": "LABY",
+        "SUB_TITLE": "Zamiast tego spróbuj przyjrzeć się tej ładnej animacji.",
+        "TITLE": "Eksperymenty od {{name}}"
+    },
+    "LANGUAGE_PICKER": {
+        "TOASTS": {
+            "LANGUAGE_CHANGED": {
+                "DESC": "Język zmieniony",
+                "TITLE": "Tłumaczenia są generowane przez AI i mogą być niedokładne."
+            }
+        }
+    },
+    "LOGIN": {
+        "EMAIL": {
+            "LABEL": "E-mail"
         },
-        "THUMBNAIL": {
-          "SUBTITLE": "Miniatura na stronie projektów (tylko 1)",
-          "TITLE": "Miniatury"
+        "LOGGED_IN": "",
+        "PASSWORD": {
+            "LABEL": "Hasło"
         },
-        "TITLE": "Obrazy"
-      },
-      "LINK": "Projekt",
-      "META_SECTION": {
-        "LANGUAGES": {
-          "SUBTITLE": "Języki użyte przy tworzeniu tego projektu.",
-          "TITLE": "Języki projektu (opcjonalnie)"
-        },
-        "STACK": {
-          "SUBTITLE": "Zasoby użyte przy tworzeniu tego projektu.",
-          "TITLE": "Stos projektu (opcjonalnie)"
-        },
-        "TITLE": "Meta"
-      },
-      "ROLE": "Rola",
-      "SUBTITLE": "Podtytuł",
-      "TITLE": "Tytuł",
-      "TYPE": "Typ",
-      "VIDEO_SECTION": {
-        "BODY": {
-          "SUBTITLE": "Filmy projektu",
-          "TITLE": "Filmy główne (opcjonalnie)"
-        },
-        "TITLE": "Filmy"
-      },
-      "YEAR": "Rok"
+        "TITLE": "Logowanie do CMS"
+    },
+    "PROJECT_CREATE_LANGUAGE_PICKER": {
+        "BUTTONS": {
+            "ADD_LANGUAGE": "Dodaj język"
+        }
     }
-  },
-  "LABS": {
-    "COMING_SOON_MESSAGES": {
-      "M_1": "Nie, jeszcze nie",
-      "M_2": "Wkrótce... w pewnym sensie",
-      "M_3": "Pracuję nad tym",
-      "M_4": "Nic tutaj nie ma"
-    },
-    "PARTICLE_TEXT": "LABY",
-    "SUB_TITLE": "Zamiast tego spróbuj przyjrzeć się tej ładnej animacji.",
-    "TITLE": "Eksperymenty od {{name}}"
-  },
-  "LANGUAGE_PICKER": {
-    "TOASTS": {
-      "LANGUAGE_CHANGED": {
-        "DESC": "Język zmieniony",
-        "TITLE": "Tłumaczenia są generowane przez AI i mogą być niedokładne."
-      }
-    }
-  },
-  "LOGIN": {
-    "EMAIL": {
-      "LABEL": "E-mail"
-    },
-    "NOT_LOGGED_IN": "Nie jesteś aktualnie zalogowany.",
-    "PASSWORD": {
-      "LABEL": "Hasło"
-    },
-    "TITLE": "Logowanie do CMS"
-  },
-  "PROJECT_CREATE_LANGUAGE_PICKER": {
-    "BUTTONS": {
-      "ADD_LANGUAGE": "Dodaj język"
-    }
-  }
 }

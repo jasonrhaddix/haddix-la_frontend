@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "serve -s dist",
+    "start": "serve -s dist -l 5173",
     "dev": "yarn run i18next && vite",
     "build": "vite build",
     "preview": "vite preview",

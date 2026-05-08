@@ -317,7 +317,7 @@
         size="38"
       /> -->
       <div v-if="false /* $v.$invalid && submitted */" class="error-prompt">
-        <p>{{ $t('components:CREATE_PROJECT.FORMS.ERRORS.GENERIC') {{Please complete all require fields</p>
+        <p>{{ $t('components:CREATE_PROJECT.FORMS.ERRORS.GENERIC') }}</p>
         <div class="divider" />
       </div>
       <AppButton
