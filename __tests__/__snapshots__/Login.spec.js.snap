@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login.vue > renders correctly 1`] = `
+"<div class="login-container">
+  <div class="login-drawer__container">
+    <v-navigation-drawer-stub fixed="" temporary="" width="300" class="login-drawer" modelvalue="false"></v-navigation-drawer-stub>
+  </div>
+  <div class="login-btn__container">
+    <v-btn-stub small="" color="primary" class="login-btn" prepend-icon="vpn_key"></v-btn-stub>
+  </div>
+</div>"
+`;

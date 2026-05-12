@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Project_Create__Attachment_Item.vue > renders correctly with default props 1`] = `
+"<div class="create-attachment-item">
+  <div class="item__inner">
+    <div class="item__image"><img src="preview.png"></div>
+    <div class="item__remove">
+      <v-icon-stub color="error"></v-icon-stub>
+    </div>
+    <div class="item__progress upload_pending">
+      <!--v-if-->
+    </div>
+    <!--
+      <div class="item__actions">
+        Remove
+      </div>
+      -->
+  </div>
+</div>"
+`;

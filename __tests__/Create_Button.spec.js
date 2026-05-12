@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import CreateButton from '@/components/CreateButton.vue'
+import Create_Button from '@/components/_global/Create_Button.vue'
 
-describe('CreateButton.vue', () => {
+describe('Create_Button.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(CreateButton)
+    const wrapper = shallowMount(Create_Button)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

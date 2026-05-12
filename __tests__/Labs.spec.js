@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import LabsView from './LabsView.vue'
+import Labs from '@/views/Labs.vue'
 
-describe('LabsView.vue', () => {
+describe('Labs.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(LabsView)
+    const wrapper = shallowMount(Labs)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

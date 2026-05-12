@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
-import CreateAttachmentItem from '@/components/CreateAttachmentItem.vue'
+import Project_Create__Attachment_Item from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item.vue'
 
-describe('CreateAttachmentItem.vue', () => {
+describe('Project_Create__Attachment_Item.vue', () => {
   test('renders correctly with default props', () => {
     const data = {
       file: { type: 'image/png' },
@@ -11,7 +11,7 @@ describe('CreateAttachmentItem.vue', () => {
       status: 'SUCCESS',
       progress: { total: 100, loaded: 50 }
     }
-    const wrapper = shallowMount(CreateAttachmentItem, {
+    const wrapper = shallowMount(Project_Create__Attachment_Item, {
       props: { data }
     })
     expect(wrapper.html()).toMatchSnapshot()

@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import SphereBgContainer from '@/components/sphere-bg-container.vue'
+import Sphere_BG from '@/components/SphereBG/Sphere_BG.vue'
 
-describe('SphereBgContainer', () => {
+describe('Sphere_BG.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(SphereBgContainer)
+    const wrapper = shallowMount(Sphere_BG)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

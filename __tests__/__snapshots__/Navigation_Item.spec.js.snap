@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation_Item.vue > matches snapshot 1`] = `
+"<div class="navigation-item" routename="home">
+  <div class="nav-item nav-item__left">
+    <h1>home</h1>
+  </div>
+  <div class="nav-item nav-item__right">
+    <h1>home</h1>
+  </div>
+  <div class="nav-item nav-item__hidden">
+    <h1>home</h1>
+  </div>
+</div>"
+`;

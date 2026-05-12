@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Dialog_Container.vue > renders correctly 1`] = `"<v-dialog-stub light="" content-class="dialog-container" modelvalue="false"></v-dialog-stub>"`;

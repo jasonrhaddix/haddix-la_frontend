@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import NavigationContainer from '@/components/NavigationContainer.vue'
+import Navigation from '@/components/Navigation/Navigation.vue'
 
-describe('NavigationContainer.vue', () => {
+describe('Navigation.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(NavigationContainer)
+    const wrapper = shallowMount(Navigation)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

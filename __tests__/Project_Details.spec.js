@@ -1,10 +1,9 @@
-// ProjectDetailsView.spec.js
 import { shallowMount } from '@vue/test-utils'
-import ProjectDetailsView from '@/components/ProjectDetailsView.vue'
+import Project_Details from '@/views/Project_Details.vue'
 
-describe('ProjectDetailsView.vue', () => {
+describe('Project_Details.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(ProjectDetailsView)
+    const wrapper = shallowMount(Project_Details)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

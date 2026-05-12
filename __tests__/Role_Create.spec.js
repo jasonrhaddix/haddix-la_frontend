@@ -1,10 +1,11 @@
-// RoleCreate.spec.js
 import { shallowMount } from '@vue/test-utils'
-import RoleCreate from '@/components/RoleCreate.vue'
+import Role_Create from '@/components/Forms/CreateProject/Role/Role_Create.vue'
 
-describe('RoleCreate.vue', () => {
+describe('Role_Create.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(RoleCreate)
+    const wrapper = shallowMount(Role_Create, {
+      props: { data: {} }
+    })
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

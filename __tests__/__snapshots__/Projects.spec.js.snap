@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Projects.vue > renders correctly 1`] = `
+"<div class="projects-view">
+  <!-- <SphereBG :style="{position: 'fixed'}" class="sphere-bg" /> -->
+  <!--v-if-->
+  <div class="projects__add-btn">
+    <create-button-stub></create-button-stub>
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;

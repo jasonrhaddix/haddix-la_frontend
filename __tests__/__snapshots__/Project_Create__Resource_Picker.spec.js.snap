@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Project_Create__Resource_Picker.vue > renders correctly 1`] = `
+"<div class="create-resource-picker">
+  <v-row-stub class="picker__inner"></v-row-stub>
+</div>"
+`;

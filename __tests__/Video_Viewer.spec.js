@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import VideoViewer from './video-viewer.vue'
+import Video_Viewer from '@/components/_global/Video_Viewer.vue'
 
-describe('VideoViewer.vue', () => {
+describe('Video_Viewer.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(VideoViewer, {
+    const wrapper = shallowMount(Video_Viewer, {
       props: {
         videos: { uri: 'test-video.mp4' }
       }

@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Overlay_Container.vue > matches snapshot 1`] = `"<v-dialog-stub dark="" fullscreen="" persistent="" hide-overlay="" transition="dialog-bottom-transition" scroll-strategy="none" content-class="overlay-container" modelvalue="false"></v-dialog-stub>"`;

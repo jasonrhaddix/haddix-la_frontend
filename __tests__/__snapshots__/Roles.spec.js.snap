@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Roles.vue > renders correctly 1`] = `
+"<div class="roles-view">
+  <!-- <SphereBG :style="{position: 'fixed'}" class="sphere-bg" /> -->
+  <div class="projects__add-btn">
+    <create-button-stub></create-button-stub>
+  </div>
+  <div class="roles__inner">
+    <v-data-table-stub dark="" headers="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" items="" items-per-page="50" class="elevation-1"></v-data-table-stub>
+  </div>
+</div>"
+`;

@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import AppButton from './AppButton.vue'
+import App_Button from '@/components/_global/App_Button.vue'
 
-describe('AppButton.vue', () => {
+describe('App_Button.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(AppButton, {
+    const wrapper = shallowMount(App_Button, {
       props: {
         label: 'Test Label'
       }

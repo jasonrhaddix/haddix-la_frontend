@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import DialogComponent from '@/components/DialogComponent.vue'
+import Dialog_Container from '@/components/Containers/Dialog_Container.vue'
 
-describe('DialogComponent.vue', () => {
+describe('Dialog_Container.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(DialogComponent)
+    const wrapper = shallowMount(Dialog_Container)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Language_Graph.vue > renders correctly 1`] = `
+"<div class="language-graph"><canvas class="language-graph__canvas" height="130" width="130"></canvas>
+  <div class="language-graph__text">
+    <p class="value">0<span>%</span></p>
+    <p class="language"></p>
+  </div>
+</div>"
+`;

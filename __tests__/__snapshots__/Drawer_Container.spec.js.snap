@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Drawer_Container.vue > renders correctly 1`] = `
+"<div class="drawer-container">
+  <v-navigation-drawer-stub fixed="" temporary="" right="" width="300" class="login-drawer" location="right"></v-navigation-drawer-stub>
+</div>"
+`;

@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import RolesView from '@/components/RolesView.vue'
+import Roles from '@/views/Roles.vue'
 
-describe('RolesView.vue', () => {
+describe('Roles.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(RolesView, {
+    const wrapper = shallowMount(Roles, {
       global: {
         stubs: [
           'CreateButton',

@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Project_Create__Language_Picker.vue > renders correctly 1`] = `
+"<div class="language__picker">
+  <div ripple="false" class="language__add-button">
+    <div class="button__content">
+      <p class="subheading">components:PROJECT_CREATE_LANGUAGE_PICKER.BUTTONS.ADD_LANGUAGE</p>
+      <v-icon-stub color="grey darken-1"></v-icon-stub>
+    </div>
+  </div>
+  <div class="language__list"></div>
+</div>"
+`;

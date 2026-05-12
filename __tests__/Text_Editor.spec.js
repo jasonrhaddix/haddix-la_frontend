@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import TextEditor from './TextEditor.vue'
+import Text_Editor from '@/components/_global/Text_Editor.vue'
 
-describe('TextEditor.vue', () => {
+describe('Text_Editor.vue', () => {
   test('renders correctly and matches snapshot', () => {
-    const wrapper = shallowMount(TextEditor)
+    const wrapper = shallowMount(Text_Editor)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

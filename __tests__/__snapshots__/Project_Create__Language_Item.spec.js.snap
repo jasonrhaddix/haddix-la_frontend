@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Project_Create__Language_Item.vue > renders correctly with default props 1`] = `
+"<div class="create-language-item">
+  <div class="language__graph">
+    <language-graph-stub language="" value="0"></language-graph-stub>
+  </div>
+  <div class="language__content">
+    <div class="content__inner">
+      <div class="content__type">
+        <v-select-stub filled="" dense="" label="Language" item-text="name" items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"></v-select-stub>
+      </div>
+      <div class="content__percentage">
+        <v-text-field-stub filled="" dense="" label="Percentage" min="0" max="100" type="number"></v-text-field-stub>
+      </div>
+      <div class="content__actions">
+        <v-btn-stub icon="" small="" color="primary"></v-btn-stub>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

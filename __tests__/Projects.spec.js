@@ -1,24 +1,26 @@
 import { shallowMount } from '@vue/test-utils'
-import ProjectsView from '@/components/ProjectsView.vue'
+import { vi } from 'vitest'
 
-jest.mock('@/stores/index.js', () => ({
+vi.mock('@/stores/index.js', () => ({
   __esModule: true,
   default: {
     config: { typesStore: () => ({ PROJECT_TYPE__EXPERIMENT: 'experiment' }) },
-    routingStore: () => ({ pushRoute: jest.fn() }),
+    routingStore: () => ({ pushRoute: vi.fn() }),
     projectsStore: () => ({
       hasProjects: false,
       projectsLoading: false,
       projects: []
     }),
-    ui: { drawerStore: () => ({ showDrawer: jest.fn() }) },
+    ui: { drawerStore: () => ({ showDrawer: vi.fn() }) },
     userStore: () => ({ userIsAuthenticated: false, sessionToken: '' })
   }
 }))
 
-describe('ProjectsView.vue', () => {
+import Projects from '@/views/Projects.vue'
+
+describe('Projects.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(ProjectsView, {
+    const wrapper = shallowMount(Projects, {
       global: {
         stubs: ['v-btn', 'v-progress-circular', 'project-item', 'CreateButton']
       }

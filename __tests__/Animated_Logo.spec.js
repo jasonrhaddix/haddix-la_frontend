@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import AnimatedLogoContainer from './AnimatedLogoContainer.vue'
+import Animated_Logo from '@/components/AnimatedLogo/Animated_Logo.vue'
 
-describe('AnimatedLogoContainer.vue', () => {
+describe('Animated_Logo.vue', () => {
   test('renders correctly and matches snapshot', () => {
-    const wrapper = shallowMount(AnimatedLogoContainer)
+    const wrapper = shallowMount(Animated_Logo)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

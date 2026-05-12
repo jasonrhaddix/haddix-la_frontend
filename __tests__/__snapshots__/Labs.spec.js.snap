@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Labs.vue > renders correctly 1`] = `
+"<div class="labs-view">
+  <div class="labs__add-btn">
+    <v-btn-stub color="primary" icon="add"></v-btn-stub>
+  </div>
+  <div class="labs__header">
+    <div class="header__content">
+      <particle-text-stub text=""></particle-text-stub>
+      <p>components:LABS.TITLE</p>
+      <div class="scroll-arrow">
+        <v-icon-stub color="grey darken-2"></v-icon-stub>
+      </div>
+      <div class="coming-soon">
+        <h3><span>¯\\_(ツ)_/¯</span> </h3>
+        <p><small>components:LABS.SUB_TITLE</small></p>
+      </div>
+    </div>
+    <!-- <div
+				v-if="true"
+				:class="['header__scroll', {'visible':scrollIndVisible}]">
+				<p>SCROLL</p>
+				<v-icon>keyboard_arrow_down</v-icon>
+			</div> -->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;

@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Contact_Form.vue > renders correctly 1`] = `
+"<div class="contact-form">
+  <div class="contact--title">
+    <h2>components:CONTACT_FORM.TITLE</h2>
+  </div>
+  <div class="contact--form">
+    <v-row-stub class="form-flield--name"></v-row-stub>
+    <v-row-stub></v-row-stub>
+    <v-row-stub></v-row-stub>
+    <div class="form-submit--container">
+      <div class="form-submit__inner">
+        <app-button-stub label="components:CONTACT_FORM.SUBMIT" variant="light" disabled="true" loading="false" class="form-submit--btn"></app-button-stub>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

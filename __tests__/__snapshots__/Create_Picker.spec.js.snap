@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Create_Picker.vue > renders correctly 1`] = `
+"<div class="create-picker">
+  <div class="create-picker__content">
+    <div class="picker__title">
+      <h1>components:CREATE_PICKER.TITLE</h1>
+    </div>
+    <div class="picker__options">
+      <div class="content__item">
+        <div class="item">
+          <v-icon-stub size="170" color="white"></v-icon-stub>
+          <div>
+            <h3>components:CREATE_PICKER.PROJECT_BUTTON.TITLE</h3>
+          </div>
+        </div>
+      </div>
+      <div class="content__item">
+        <div class="item">
+          <v-icon-stub size="170" color="white"></v-icon-stub>
+          <div>
+            <h3>components:CREATE_PICKER.ROLE_BUTTON.TITLE</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
