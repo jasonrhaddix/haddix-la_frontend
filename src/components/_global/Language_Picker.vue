@@ -79,7 +79,6 @@
 
       toastStore.addToast({
         component: asyncComponents.ToastMessage,
-        persist: true,
         data: {
           type: 'warning',
           // title: 'Language Changed',
