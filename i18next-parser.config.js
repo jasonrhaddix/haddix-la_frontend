@@ -25,7 +25,7 @@ export default {
     default: [CustomerLexer]
   },
 
-  locales: ['en-US', 'de-DE', 'es-ES', 'fr-FR', 'it-IT', 'pl-PL', 'pt-BR', 'ja-JP', 'ru-RU', 'zh-CN', 'ko-KR'],
+  locales: ['en-US', 'de-DE', 'es-ES', 'fr-FR', 'it-IT', 'pl-PL', 'pt-BR', 'ja-JP', 'ru-RU', 'zh-CN'],
 
   output: 'public/localization/locales/$LOCALE/$NAMESPACE.json',
 

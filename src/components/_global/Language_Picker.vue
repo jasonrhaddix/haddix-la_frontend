@@ -57,7 +57,6 @@
     { code: 'fr-FR', codeShort: 'fr', name: 'Français' },
     { code: 'it-IT', codeShort: 'it', name: 'Italiano' },
     { code: 'ja-JP', codeShort: 'ja', name: '日本語' },
-    { code: 'ko-KR', codeShort: 'ko', name: '한국어' },
     { code: 'ru-RU', codeShort: 'ru', name: 'Русский' },
     { code: 'zh-CN', codeShort: 'zh', name: '中文' }
   ])
