@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Role_Create__Projects.vue > renders correctly 1`] = `
+"<div class="projects__container">
+  <div ripple="false" class="add-project-btn">
+    <div class="button__content">
+      <p class="subheading">Add Project</p>
+      <v-icon-stub color="grey darken-1"></v-icon-stub>
+    </div>
+  </div>
+</div>"
+`;

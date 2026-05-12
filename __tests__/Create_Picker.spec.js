@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import CreatePicker from '@/components/CreatePicker.vue'
+import Create_Picker from '@/components/_global/Create_Picker.vue'
 
-describe('CreatePicker.vue', () => {
+describe('Create_Picker.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(CreatePicker)
+    const wrapper = shallowMount(Create_Picker)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

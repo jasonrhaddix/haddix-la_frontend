@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Role_Details.vue > renders correctly with default state 1`] = `"<v-container-stub fluid="" class="role-details-view"></v-container-stub>"`;

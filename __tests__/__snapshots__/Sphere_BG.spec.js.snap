@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Sphere_BG.vue > renders correctly 1`] = `
+"<div class="sphere-bg-container">
+  <div id="threeContainer" data-focus="true">
+    <div></div>
+  </div>
+</div>"
+`;

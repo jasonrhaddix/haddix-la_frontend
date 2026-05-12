@@ -3,7 +3,9 @@ import ProjectCreate from '@/components/Forms/CreateProject/Project/Project_Crea
 
 describe('Project_Create.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(ProjectCreate);
+    const wrapper = shallowMount(ProjectCreate, {
+      props: { data: {} }
+    });
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Project_Item.vue > renders correctly 1`] = `
+"<!-- <div :class="['projects-item', hue]"> -->
+<div class="projects-item">
+  <div class="project__inner">
+    <!--v-if-->
+    <!-- <div
+        class="image-container">
+        <div
+          v-for="(item, index) in patterns[0].p"
+          :key="index"
+          :class="\`poly poly-\${index}\`"
+          :style="{ clipPath:\`polygon(\${item})\` }">
+          <v-img
+            contain
+            :src="projectThumbnail"></v-img>
+        </div>
+        <v-img
+          contain
+          class="hidden-img"
+          :src="projectThumbnail"></v-img>
+      </div> -->
+    <div class="image__main">
+      <v-img-stub eager="" contain="" src="/src/assets/app/images/project-placeholder-thumb-blur.jpg"></v-img-stub>
+      <div class="scrim"></div>
+    </div>
+    <div class="title-container">
+      <div class="title-inner">
+        <div class="project-title">
+          <h3>Sample Client</h3>
+          <h1>Sample Project</h1>
+          <p><i>Sample subtitle</i></p>
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Toast_Message.vue > renders correctly with default props 1`] = `
+"<div class="toast-message">
+  <!--v-if-->
+  <div>
+    <!--v-if-->
+    <p></p>
+  </div>
+</div>"
+`;

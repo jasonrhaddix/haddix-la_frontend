@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
-import OverlayDialog from '@/components/OverlayDialog.vue'
+import Overlay_Container from '@/components/Containers/Overlay_Container.vue'
 
-describe('OverlayDialog.vue', () => {
+describe('Overlay_Container.vue', () => {
   test('matches snapshot', () => {
-    const wrapper = shallowMount(OverlayDialog, {
+    const wrapper = shallowMount(Overlay_Container, {
       global: {
         plugins: [createPinia()],
         stubs: ['v-dialog', 'v-container', 'v-layout', 'v-btn']

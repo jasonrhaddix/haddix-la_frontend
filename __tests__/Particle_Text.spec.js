@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import ParticleText from './ParticleText.vue'
+import Particle_Text from '@/components/_global/Particle_Text.vue'
 
-describe('ParticleText.vue', () => {
+describe('Particle_Text.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(ParticleText, {
+    const wrapper = shallowMount(Particle_Text, {
       props: { text: 'Sample Text' }
     })
     expect(wrapper.html()).toMatchSnapshot()

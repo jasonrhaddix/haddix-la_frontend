@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import ContactView from '@/components/ContactView.vue'
+import Contact from '@/views/Contact.vue'
 
-describe('ContactView.vue', () => {
+describe('Contact.vue', () => {
   test('matches snapshot', () => {
-    const wrapper = shallowMount(ContactView)
+    const wrapper = shallowMount(Contact)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

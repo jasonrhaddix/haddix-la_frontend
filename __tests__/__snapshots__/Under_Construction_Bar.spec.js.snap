@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Under_Construction_Bar.vue > renders and matches snapshot 1`] = `
+"<div class="under-construction-container">
+  <div class="under-construction-content">
+    <p>
+      <v-icon-stub></v-icon-stub> Site under development <v-icon-stub></v-icon-stub>
+    </p>
+  </div>
+</div>"
+`;

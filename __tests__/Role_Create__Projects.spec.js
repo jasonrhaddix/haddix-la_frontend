@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import RoleCreateProject from './Role_Create__Project.vue'
+import Role_Create__Projects from '@/components/Forms/CreateProject/Role/Role_Create__Projects.vue'
 
-describe('Role_Create__Project.vue', () => {
+describe('Role_Create__Projects.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(RoleCreateProject)
+    const wrapper = shallowMount(Role_Create__Projects)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

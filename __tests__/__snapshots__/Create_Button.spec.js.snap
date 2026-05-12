@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Create_Button.vue > renders correctly 1`] = `
+"<div class="create__button">
+  <v-btn-stub color="primary" icon="add"></v-btn-stub>
+</div>"
+`;

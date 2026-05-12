@@ -1,5 +1,5 @@
-import _isEqual from 'lodash/isEqual'
-import _isObject from 'lodash/isObject'
+import _isEqual from 'lodash.isequal'
+import _isObject from 'lodash.isobject'
 
 // =====================================
 /* OBJECT HELPERS */

@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation.vue > renders correctly 1`] = `
+"<div class="navigation-container">
+  <div class="navigation-skrim"></div>
+  <div class="navigation-poly">
+    <nav>
+      <div class="header--photo-container">
+        <div class="header--photo"><img src="/src/assets/app/images/profile-photo.png"></div>
+      </div>
+      <navigation-item-stub text="Projects" styles="[object Object]" class=""></navigation-item-stub>
+      <navigation-item-stub text="Workflows" styles="[object Object]" class=""></navigation-item-stub>
+      <!--v-if-->
+      <navigation-item-stub text="About" styles="[object Object]" class=""></navigation-item-stub>
+      <navigation-item-stub text="Contact" styles="[object Object]" class=""></navigation-item-stub>
+      <navigation-item-stub text="Labs" styles="[object Object]" class=""></navigation-item-stub>
+      <div class="social-media--container">
+        <div class="social-media--list"><a class="social-list" href="http://github.com/jasonrhaddix" target="_blank">
+            <font-awesome-icon-stub icon="[object Object]" size="2x"></font-awesome-icon-stub>
+          </a><a class="social-list" href="https://codepen.io/Jasonrhaddix/" target="_blank">
+            <font-awesome-icon-stub icon="[object Object]" size="2x"></font-awesome-icon-stub>
+          </a><a class="social-list" href="https://medium.com/@jasonrhaddix" target="_blank">
+            <font-awesome-icon-stub icon="[object Object]" size="2x"></font-awesome-icon-stub>
+          </a><a class="social-list" href="https://x.com/jasonrhaddix" target="_blank">
+            <font-awesome-icon-stub icon="[object Object]" size="2x"></font-awesome-icon-stub>
+          </a><a class="social-list" href="https://www.linkedin.com/in/jasonrhaddix/" target="_blank">
+            <font-awesome-icon-stub icon="[object Object]" size="2x"></font-awesome-icon-stub>
+          </a></div>
+      </div>
+    </nav>
+  </div>
+  <header class="">
+    <div class="header--logo-container left-container">
+      <div class="app-logo"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Generator:%20Adobe%20Illustrator%2022.1.0,%20SVG%20Export%20Plug-In%20.%20SVG%20Version:%206.00%20Build%200)%20--%3e%3csvg%20version='1.1'%20id='Layer_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20x='0px'%20y='0px'%20viewBox='0%200%20196%2071'%20style='enable-background:new%200%200%20196%2071;'%20xml:space='preserve'%3e%3cstyle%20type='text/css'%3e%20.st0{fill:%23FFFFFF;}%20%3c/style%3e%3ctitle%3eheader-logo%3c/title%3e%3crect%20class='st0'%20width='196'%20height='71'/%3e%3cpath%20d='M29.4,64.8V42H21v22.8H11V10.3h10v21.9h8.3V10.3h10v54.5H29.4z'/%3e%3cpath%20d='M65.8,64.8l-1.6-8.5H52.7L51,64.8H40.6l12.9-54.5h9.9l12.9,54.5H65.8z%20M58.4,26.3l-3.9,20.2h7.8L58.4,26.3z'/%3e%3cpath%20d='M102.7,59.5c-2.6,3.5-6.7,5.5-11,5.3H77.5V10.3h14.2c4.3-0.2,8.4,1.8,11,5.3c3.5,4.4,3.7,11.9,3.7,21.9%20S106.2,55.1,102.7,59.5z%20M95.2,22.5c-0.7-1.5-2.1-2.4-3.7-2.4h-4V55h4c1.6,0,3.1-0.9,3.7-2.4c1.2-2.5,1.2-9.1,1.2-15.1%20S96.4,25,95.2,22.5L95.2,22.5z'/%3e%3cpath%20d='M134.8,59.5c-2.6,3.5-6.7,5.5-11,5.3h-14.2V10.3h14.2c4.3-0.2,8.4,1.8,11,5.3c3.5,4.4,3.7,11.9,3.7,21.9%20S138.3,55.1,134.8,59.5z%20M127.3,22.5c-0.7-1.5-2.1-2.4-3.7-2.4h-4V55h4c1.6,0,3.1-0.9,3.7-2.4c1.2-2.5,1.2-9.1,1.2-15.1%20S128.5,25,127.3,22.5L127.3,22.5z'/%3e%3cpath%20d='M141.7,64.8V10.3h10v54.5H141.7z'/%3e%3cpath%20d='M174,64.8l-5-17.4l-5,17.4h-11l10.3-28.2l-9.5-26.3h11l4.3,16.3l4.2-16.3h11l-9.8,26.3L185,64.8H174z'/%3e%3c/svg%3e"></div>
+      <div class="divider"></div>
+      <div class="breadcrumb">
+        <p></p>
+      </div>
+    </div>
+    <div class="nav-action-btns right-container">
+      <language-picker-stub></language-picker-stub>
+      <div class="nav-menu-button">
+        <hamburger-menu-stub menustate="false"></hamburger-menu-stub>
+      </div>
+    </div>
+  </header>
+</div>"
+`;

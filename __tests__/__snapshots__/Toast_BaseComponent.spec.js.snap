@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Toast_BaseComponent.vue > matches snapshot 1`] = `
+"<div class="toast__content">
+  <div data="[object Object]"></div>
+</div>"
+`;

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Copy_Link.vue > renders correctly 1`] = `
+"<div class="copy-link-container" style="display: inline-block; position: relative;">
+  <v-tooltip-stub modelvalue="false" text="Copy link" location="top" transition="fade-transition"></v-tooltip-stub>
+</div>"
+`;

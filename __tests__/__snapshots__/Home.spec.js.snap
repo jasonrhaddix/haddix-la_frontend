@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home.vue > renders correctly 1`] = `
+"<div class="home-view">
+  <sphere-b-g-stub class="sphere-bg"></sphere-b-g-stub>
+  <div class="home-view--content">
+    <logo-stub class="animated-logo"></logo-stub>
+    <p>views:HOME.SUBTITLE</p>
+    <div class="divider"></div>
+    <div class="view-work-btn">
+      <app-button-stub label="common:BUTTONS.VIEW_WORKS" variant="default" disabled="false" loading="false"></app-button-stub>
+    </div>
+  </div>
+</div>"
+`;

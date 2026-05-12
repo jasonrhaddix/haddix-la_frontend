@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Video_Viewer.vue > renders correctly 1`] = `"<div class="video-viewer"><video autoplay="" controls="" loop="" src="test-video.mp4"></video></div>"`;

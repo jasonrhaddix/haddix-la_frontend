@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Confirmation_Dialog.vue > renders correctly and matches snapshot 1`] = `
+"<div class="confirmation-dialog">
+  <div class="confirmation-dialog__content">
+    <div class="confirmation__title">
+      <h1>Are you sure?</h1>
+      <h4>This action cannot be undone.</h4>
+    </div>
+    <div class="confirmation__options">
+      <div class="options__inner">
+        <app-button-stub label="Cancel" variant="colorful" disabled="false" loading="false" class="btn cancel-btn"></app-button-stub>
+        <app-button-stub label="OK" variant="light" disabled="false" loading="false" class="btn confirm-btn"></app-button-stub>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

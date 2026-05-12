@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import ProjectsSort from './ProjectsSort.vue'
+import Projects_Sort from '@/components/Projects/Sort/Projects_Sort.vue'
 
-describe('ProjectsSort.vue', () => {
+describe('Projects_Sort.vue', () => {
   test('matches snapshot', () => {
-    const wrapper = shallowMount(ProjectsSort, {
+    const wrapper = shallowMount(Projects_Sort, {
       global: {
         stubs: ['draggable']
       }

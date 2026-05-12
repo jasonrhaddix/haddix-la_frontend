@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App_Button.vue > renders correctly 1`] = `
+"<div class="app-button__container">
+  <div class="app-button default">
+    <div class="inner">
+      <div class="text app-button__text">Test Label</div>
+      <div class="app-button__bg-under"></div>
+      <div class="app-button__bg"></div>
+      <div class="text app-button__text-animated">Test Label</div>
+    </div>
+    <div class="inner" style="display: none;">
+      <div class="progress__ind__container">
+        <v-progress-circular-stub indeterminate="" class="progress__ind" color="grey lighten-1" width="4" size="30"></v-progress-circular-stub>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

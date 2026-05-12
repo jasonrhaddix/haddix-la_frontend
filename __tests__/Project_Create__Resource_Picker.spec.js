@@ -1,8 +1,7 @@
-// CreateResourcePicker.spec.js
 import { shallowMount } from '@vue/test-utils'
-import CreateResourcePicker from './CreateResourcePicker.vue'
+import { vi } from 'vitest'
 
-jest.mock('@/stores', () => ({
+vi.mock('@/stores', () => ({
   default: {
     config: {
       propsStore: () => ({ projectResources: [] })
@@ -10,9 +9,11 @@ jest.mock('@/stores', () => ({
   }
 }))
 
-describe('CreateResourcePicker.vue', () => {
+import Project_Create__Resource_Picker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker.vue'
+
+describe('Project_Create__Resource_Picker.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(CreateResourcePicker)
+    const wrapper = shallowMount(Project_Create__Resource_Picker)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

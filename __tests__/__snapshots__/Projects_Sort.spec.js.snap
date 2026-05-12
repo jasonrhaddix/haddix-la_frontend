@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Projects_Sort.vue > matches snapshot 1`] = `
+"<div data-v-802bfc57="" class="projects__sort">
+  <div data-v-802bfc57="">
+    <div data-v-802bfc57="" class="projects-sort-title"> Sort Projects </div>
+    <div data-v-802bfc57="">
+      <draggable-stub data-v-802bfc57="" modelvalue="" item-key="projectId" class="project-sort-list"></draggable-stub>
+    </div>
+  </div>
+</div>"
+`;

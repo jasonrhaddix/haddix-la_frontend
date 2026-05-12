@@ -108,14 +108,47 @@ yarn start           # serve dist on port 5173 (production preview via `serve`)
 - `localStorage` access scattered across components (centralize in a Pinia store)
 - Importing from deep relative paths like `../../../utils/foo` (use absolute `@/utils/foo`)
 
-## Testing — Current Limitation
+## Testing
 
-There is **no test runner** configured. `__tests__/` directory exists but is empty.
-Until a runner is added (Vitest is the natural Vite-native pick):
+The repo uses **Vitest** with `@vue/test-utils` and `jsdom`. Specs live under `__tests__/`.
 
-- BMad's QA phase should do **lint + manual review only** for this repo.
-- New code should still be written in a test-friendly shape (pure functions in `utils/`, thin components, business logic in stores).
-- Adding Vitest is in scope for any feature that introduces non-trivial logic.
+### Commands
+
+```bash
+yarn test            # run the full suite once
+yarn test:watch      # run + watch for changes
+yarn test:coverage   # run + emit coverage to ./coverage (HTML + text)
+```
+
+### Layout
+
+```
+__tests__/
+├── *.spec.js                # one snapshot spec per component / view (shallowMount)
+├── utils/helpers/*.spec.js  # unit specs for src/utils/helpers/* (concrete I/O assertions)
+├── stores/ui/*.spec.js      # unit specs for src/stores/modules/ui/* (Pinia stores)
+└── _meta/*.spec.js          # regression gates (runner present, no Jest globals, AGENT.md current)
+```
+
+### What is covered
+
+- Every component / view has a `shallowMount` snapshot spec.
+- All four `src/utils/helpers/*` modules have non-snapshot input/output tests.
+- All seven `src/stores/modules/ui/*` Pinia stores have state-mutation tests.
+- Three meta-regression gates protect against rot (runner removed, Jest globals creeping back in, AGENT.md going stale).
+
+### What is explicitly deferred
+
+- **Non-`ui` Pinia stores** (`config`, `contact`, `localStorage`, `localization`, `projectTree`, `projects`, `roles`, `routing`, `uploadManager`, `user`) — they couple to S3 / Cognito / backend API and need richer mocking; out of scope for the runner introduction.
+- **Deep tests of view-level components** (`src/views/*.vue`) and large form components — repaired specs only do shallow snapshot rendering.
+- **Coverage thresholds** — `yarn test:coverage` reports but does not gate. Add a threshold once a baseline is established.
+
+### Conventions
+
+- `globals: true` in `vitest.config.js`, so specs use bare `describe` / `test` / `expect` (no import from `vitest`). Use `vi` (also global) for mocks; **never** `jest.*`.
+- Test file names mirror the source: `src/foo/Bar.vue` → `__tests__/Bar.spec.js`; subdirectories under `__tests__/` mirror `src/` for non-component code.
+- Heavy libs that misbehave in jsdom (GSAP, three, vue3-google-map, TipTap, `vuedraggable`, FontAwesome) are stubbed globally in `test-setup.js`. Add deeper sub-path mocks per-spec only when an SFC pulls in something the global mock didn't cover.
+- Vuetify primitives are stubbed globally too — snapshots reflect stubs, not real Vuetify markup.
 
 ## External Services
 

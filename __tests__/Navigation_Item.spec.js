@@ -1,9 +1,11 @@
 import { shallowMount } from '@vue/test-utils'
-import NavigationItem from './navigation-item.vue'
+import Navigation_Item from '@/components/Navigation/Navigation_Item.vue'
 
-describe('navigation-item.vue', () => {
+describe('Navigation_Item.vue', () => {
   test('matches snapshot', () => {
-    const wrapper = shallowMount(NavigationItem)
+    const wrapper = shallowMount(Navigation_Item, {
+      props: { text: 'home', routeName: 'home' }
+    })
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

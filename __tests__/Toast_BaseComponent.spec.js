@@ -1,10 +1,9 @@
-// ToastContent.spec.js
 import { shallowMount } from '@vue/test-utils'
-import ToastContent from './ToastContent.vue'
+import Toast_BaseComponent from '@/components/_global/Toast/Toast_BaseComponent.vue'
 
-describe('ToastContent.vue', () => {
+describe('Toast_BaseComponent.vue', () => {
   test('matches snapshot', () => {
-    const wrapper = shallowMount(ToastContent, {
+    const wrapper = shallowMount(Toast_BaseComponent, {
       props: {
         item: {
           component: 'div',

@@ -1,29 +1,35 @@
 import { shallowMount } from '@vue/test-utils'
-import Drawer from '@/components/Drawer.vue'
+import { vi } from 'vitest'
 
-jest.mock('pinia', () => ({
-  storeToRefs: () => ({
-    openState: { value: false },
-    component: { value: 'div' },
-    width: { value: '300' },
-    props: { value: {} }
-  })
-}))
+vi.mock('pinia', async () => {
+  const actual = await vi.importActual('pinia')
+  return {
+    ...actual,
+    storeToRefs: () => ({
+      openState: { value: false },
+      component: { value: 'div' },
+      width: { value: '300' },
+      props: { value: {} }
+    })
+  }
+})
 
-jest.mock('@/stores/index.js', () => ({
+vi.mock('@/stores/index.js', () => ({
   __esModule: true,
   default: {
     ui: {
       drawerStore: () => ({
-        hideDrawer: jest.fn()
+        hideDrawer: vi.fn()
       })
     }
   }
 }))
 
-describe('Drawer.vue', () => {
+import Drawer_Container from '@/components/Containers/Drawer_Container.vue'
+
+describe('Drawer_Container.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(Drawer)
+    const wrapper = shallowMount(Drawer_Container)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

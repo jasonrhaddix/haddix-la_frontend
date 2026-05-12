@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Attachment_Uploader.vue > renders correctly with default props 1`] = `
+"<div class="attahment-uploader">
+  <div>
+    <!-- <video
+			loop
+			ref="videoControl"
+			type="video/mp4"
+			:style="{width: 'auto', display:'none'}"></video> -->
+    <!-- <canvas
+			ref="videoControlCanvas"
+			:style="{width: 'auto', display:'none'}"></canvas> -->
+    <v-img-stub alt=""></v-img-stub>
+  </div><input hidden="" type="file" name="thumbnail" class="attachment-uploader__input" accept="*">
+</div>"
+`;

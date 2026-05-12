@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Role_Create__Project_item.vue > renders correctly 1`] = `
+"<div class="form--role-create--item">
+  <div class="inner">
+    <v-row-stub></v-row-stub>
+    <v-row-stub></v-row-stub>
+    <v-row-stub></v-row-stub>
+  </div>
+  <div class="divider"></div>
+</div>"
+`;

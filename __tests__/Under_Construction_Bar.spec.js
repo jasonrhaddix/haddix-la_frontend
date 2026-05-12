@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import UnderConstructionContainer from './UnderConstructionContainer.vue'
+import Under_Construction_Bar from '@/components/_global/Under_Construction_Bar.vue'
 
-describe('UnderConstructionContainer.vue', () => {
+describe('Under_Construction_Bar.vue', () => {
   test('renders and matches snapshot', () => {
-    const wrapper = shallowMount(UnderConstructionContainer)
+    const wrapper = shallowMount(Under_Construction_Bar)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

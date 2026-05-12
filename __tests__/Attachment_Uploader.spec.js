@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import AttahmentUploader from '@/components/AttahmentUploader.vue'
+import Attachment_Uploader from '@/components/_global/Attachment_Uploader.vue'
 
-describe('AttahmentUploader.vue', () => {
+describe('Attachment_Uploader.vue', () => {
   test('renders correctly with default props', () => {
-    const wrapper = shallowMount(AttahmentUploader, {
+    const wrapper = shallowMount(Attachment_Uploader, {
       props: {
         attachTo: {},
         fileUsageType: 'test'

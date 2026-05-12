@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Contact.vue > matches snapshot 1`] = `
+"<div class="contact-view">
+  <div class="contact-view--inner">
+    <div class="contact-view--content">
+      <contact-form-stub></contact-form-stub>
+      <div class="contact--map">
+        <google-map-stub></google-map-stub>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

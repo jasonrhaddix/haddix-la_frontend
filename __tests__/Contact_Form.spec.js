@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import ContactForm from '@/components/ContactForm.vue'
+import Contact_Form from '@/components/Forms/Contact/Contact_Form.vue'
 
-describe('ContactForm.vue', () => {
+describe('Contact_Form.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(ContactForm)
+    const wrapper = shallowMount(Contact_Form)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

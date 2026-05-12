@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import LanguageGraph from './LanguageGraph.vue'
+import Language_Graph from '@/components/_global/Language_Graph.vue'
 
-describe('LanguageGraph.vue', () => {
+describe('Language_Graph.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(LanguageGraph)
+    const wrapper = shallowMount(Language_Graph)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

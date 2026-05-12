@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import CopyLink from './CopyLink.vue'
+import Copy_Link from '@/components/_global/Copy_Link.vue'
 
-describe('CopyLink.vue', () => {
+describe('Copy_Link.vue', () => {
   test('renders correctly', () => {
-    const wrapper = shallowMount(CopyLink)
+    const wrapper = shallowMount(Copy_Link)
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
