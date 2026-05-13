@@ -8,6 +8,7 @@
     "SITE_NAV": {
         "ROUTES": {
             "ABOUT": "Chi Siamo",
+            "AI": "IA",
             "CONTACT": "Contatto",
             "LABS": "Laboratori",
             "PROJECTS": "Progetti",
