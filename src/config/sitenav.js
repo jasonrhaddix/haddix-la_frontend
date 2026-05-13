@@ -9,6 +9,13 @@ const sitenav = [
 		children: []
 	},
 	{
+		// i8next.t('common:SITE_NAV.ROUTES.AI')
+		label: 'AI',
+		routeName: 'ai-projects',
+		needsAuth: false,
+		children: []
+	},
+	{
 		// i8next.t('common:SITE_NAV.ROUTES.WORKFLOWS')
 		label: 'Workflows',
 		routeName: 'workflows',
