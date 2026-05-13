@@ -8,6 +8,7 @@
     "SITE_NAV": {
         "ROUTES": {
             "ABOUT": "关于",
+            "AI": "AI",
             "CONTACT": "联系",
             "LABS": "实验室",
             "PROJECTS": "项目",

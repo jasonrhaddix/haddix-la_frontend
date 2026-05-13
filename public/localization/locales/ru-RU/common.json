@@ -8,6 +8,7 @@
     "SITE_NAV": {
         "ROUTES": {
             "ABOUT": "О нас",
+            "AI": "AI",
             "CONTACT": "Контакт",
             "LABS": "Лаборатории",
             "PROJECTS": "Проекты",

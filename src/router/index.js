@@ -41,13 +41,19 @@ const router = createRouter({
       meta: {
         beforeEnterCallback: (to, from, next) => {
           stores.routingStore().enterProjectsRoute()
-          
+
           next()
         }
       }
     },
 
     { path: '/projects/project-details', redirect: { name: 'home' } },
+
+    {
+      path: '/ai-projects',
+      name: 'ai-projects',
+      component: () => import('@/views/AI.vue')
+    },
     
     {
       path: '/projects/project-details/:_id',
